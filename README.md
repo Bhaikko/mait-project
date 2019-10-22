@@ -54,7 +54,7 @@ If both the above steps are followed correctly, the development mode should be u
     │   │           ├── dating.css
     │   │       ├── marketplace
     │   │           ├── ... same as dating
-    │   │       ├── stories
+    │   │       ├── feed
     │   │           ├── ... same as dating
     │   │       ├── notes
     │   │           ├── ... same as dating
