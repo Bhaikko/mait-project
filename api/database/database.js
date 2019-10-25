@@ -1,6 +1,8 @@
 const Sequelize = require("sequelize");
 
-const database = new Sequelize("maitTalks", "maitTalksAdmin", "123456", {
+const { DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD } = require("./../constants");
+
+const database = new Sequelize(DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD, {
     host: "localhost",
     dialect: "mysql",
     logging: false 

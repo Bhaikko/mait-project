@@ -4,6 +4,7 @@ const cors = require("cors");
 
 const { database } = require("./database/database");
 const router = require("./api/index").router;
+const { SESSION_SECRET_KEY } = require("./constants");
 
 const app = express();
 
@@ -12,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 const sessionMiddleware = session({
-    secret: "FFFFFF",
+    secret: SESSION_SECRET_KEY,
     resave: false,
     saveUninitialized: true
 });
