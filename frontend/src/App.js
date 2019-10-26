@@ -1,13 +1,46 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import classes from './App.css';
+import Layout from './hoc/Layout/Layout';
 
-function App() {
-  return (
-    <div className={classes.App}>
-      Hello World
-    </div>
-  );
+import AdminApp from './apps/admin/Admin';
+import DatingApp from './apps/dating/Dating';
+import FeedApp from './apps/feed/Feed';
+import Homepage from './apps/homepage/homepage';
+import MarketPlaceApp from './apps/marketplace/Marketplace';
+import NotesApp from './apps/notes/Notes';
+
+
+class App extends Component {
+
+  render () {
+    let routes = (
+      <Switch>
+        <Route path="/admin" component={AdminApp} />
+        <Route path="/dating" component={DatingApp} />
+        <Route path="/feed" component={FeedApp} />
+        <Route path="/marketplace" component={MarketPlaceApp} />
+        <Route path="/notes" component={NotesApp} />
+        <Route path="/" component={Homepage} />
+        <Redirect to="/" />
+      </Switch>
+    );
+
+    return (
+      <div>
+        <Layout>
+          {routes}
+        </Layout>
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    app: state.app.app 
+  }
+}
+
+export default connect(mapStateToProps)(App);
