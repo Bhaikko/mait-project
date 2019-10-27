@@ -11,6 +11,7 @@ Button {
     color: #FFFFFF;
     text-align: center;
     transition: all 0.2s;
+    background-color: transparent;
 }
 Button:hover{
     color: #000000;

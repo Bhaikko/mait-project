@@ -4,4 +4,38 @@
     box-sizing: border-box;
 }
 
+.PeopleTitle {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    display: inline-block;
+    box-sizing: border-box;
+    color: white;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
 
+
+.PeopleBox {
+    display: inline-block;
+    /* width: 100px; */
+    min-width: 200px;
+    padding: 10px;
+    background-color: white;
+    color: black;
+    margin-left: 50px;
+    margin-bottom: 25px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.CommunityTitle {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    display: inline-block;
+    box-sizing: border-box;
+    color: white;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
