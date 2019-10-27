@@ -15,8 +15,10 @@ class NavigationItems extends Component {
                     <ul className={classes.NavigationItems}>
                         <NavigationItem link="/">About</NavigationItem>
                         <NavigationItem link="/login">Login</NavigationItem>
+                        <NavigationItem link="/signup">Sign Up</NavigationItem>
                     </ul>
                 );
+                break;
             
             case "dating":
                 navigationItems = (
@@ -27,6 +29,7 @@ class NavigationItems extends Component {
                         <NavigationItem link="/logout">Logout</NavigationItem>
                     </ul>
                 );
+                break;
 
             default: 
                 navigationItems = (
@@ -34,7 +37,8 @@ class NavigationItems extends Component {
                         <NavigationItem link="/">About</NavigationItem>
                         <NavigationItem link="/login">Login</NavigationItem>
                     </ul>
-                )
+                );
+                break;
         }
 
         return (

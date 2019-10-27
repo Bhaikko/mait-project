@@ -2,4 +2,7 @@
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 5px;
+    display: inline-block;
+    box-sizing: border-box;
+    color: white;
 }

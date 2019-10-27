@@ -1,0 +1,18 @@
+.Info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50%;
+    transform: translateX(-20%);
+
+}
+
+.InfoImage {
+    width: 40px;
+    margin-right: 5%;
+}
+
+.InfoText {
+    color: white;
+    width: 100%;
+}
