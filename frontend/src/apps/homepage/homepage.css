@@ -1,7 +1,13 @@
+.Homepage {
+    overflow-x: hidden;
+}
+
 .CardContainer {
     display: flex;
     flex-wrap: wrap;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 .PeopleTitle {
@@ -38,4 +44,47 @@
     color: white;
     font-size: 40px;
     margin-bottom: 20px;
+}
+
+.CommunityContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    width: 600px;
+}
+
+.CommunityCard {
+    width: 200px;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: black;
+    display: inline-flex; 
+    background-size: cover;
+    background-position: -200px 0px;
+    transition: transform 0.5s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 25px;
+    overflow: hidden;
+}
+
+.CommunityCard:hover {
+    transform: scale(1.2);
+}
+
+.AboutContainer {
+    width: 100%;
+    padding: 10px;
+    background-color: #FFFA00;
+    letter-spacing: 2px;
+    font-size: 20px;
+    text-align: center;
+    border-bottom: 2px solid black;
 }

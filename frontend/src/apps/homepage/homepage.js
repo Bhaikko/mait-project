@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import classes from './homepage.css';
 import Logo from './../../components/Logo/Logo';
@@ -6,11 +7,15 @@ import Infos from './../../components/Homepage/Infos/Infos';
 import HomepageCard from './../../components/Homepage/HomepageCard/HomepageCard';
 import Button from './../../components/UI/Button/Button';
 
+import DatingBackground from './../../assets/images/dating.jpeg';
+import FeedBackground from './../../assets/images/feed.jpeg';
+import MarketplaceBackground from './../../assets/images/marketplace.jpeg';
+
 class Homepage extends Component {
     render () {
         return (
             <div className={classes.Homepage}>
-                <div className={classes.CardsContainer}>
+                <div className={classes.CardContainer}>
                     <HomepageCard style={{ backgroundColor: "#9D354B"}} >
                         <Logo style={{fontSize: 40}} />
                         <Infos />
@@ -60,9 +65,55 @@ class Homepage extends Component {
                         </div>
                     </HomepageCard>
                     <HomepageCard style={{ backgroundColor: "#9D354B"}} >
-                        <Logo />
-                        <Infos />
+                        <div className={classes.CommunityTitle}>The Communities</div>
+                        <div className={classes.CommunityContainer}>
+                            <Link 
+                                to="/dating"
+                                style={{ textDecoration: "none" }}
+                            >
+                                
+                                    <div className={classes.CommunityCard} style={{backgroundImage: `url(${DatingBackground})`}}>
+                                        Dating
+                                    </div>
+                            </Link>
+                            
+                            <Link 
+                                to="/feed"
+                                style={{ textDecoration: "none" }}
+                            >
+                                
+                                    <div className={classes.CommunityCard} style={{backgroundImage: `url(${FeedBackground})`}}>
+                                        Feed
+                                    </div>
+                            </Link>
+                            
+                            <Link 
+                                to="/marketplace"
+                                style={{ textDecoration: "none" }}
+                            >
+                                
+                                    <div className={classes.CommunityCard} style={{backgroundImage: `url(${MarketplaceBackground})`}}>
+                                        Marketplace
+                                    </div>
+                            </Link>
+                            
+                            <Link 
+                                to="/notes"
+                                style={{ textDecoration: "none" }}
+                            >
+                                
+                                    <div className={classes.CommunityCard} style={{backgroundImage: `url(${MarketplaceBackground})`}}>
+                                        Notes
+                                    </div>
+                            </Link>
+                        </div>
                     </HomepageCard>
+                </div>
+                <div className={classes.AboutContainer}>
+                    Mait talks is an open source project. If you would like to report an issue or conribute to the project. Feel free to visit our github page.
+                </div>
+                <div className={classes.AboutContainer}>
+                    c Copyright 2019. Mait Talks
                 </div>
             </div>
         );

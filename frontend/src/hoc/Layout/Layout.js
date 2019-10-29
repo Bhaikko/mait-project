@@ -32,10 +32,10 @@ class Layout extends Component {
             //Aux Is used as HOC to wrap adjacent elements
             <Aux>
                 {/* <div>Toolbar, SideDrawer, Backdrop</div> */}
-                <Toolbar 
+                {/* <Toolbar 
                     drawerToggleClicked={this.sideDrawerToogleHandler}
                     // isAuth={this.props.isAuthenticated} 
-                />
+                /> */}
                 {/* <SideDrawer 
                     // isAuth={this.props.isAuthenticated}
                     open={this.state.showSideDrawer}
