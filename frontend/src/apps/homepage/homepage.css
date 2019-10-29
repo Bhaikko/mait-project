@@ -22,18 +22,6 @@
 }
 
 
-.PeopleBox {
-    display: inline-block;
-    /* width: 100px; */
-    min-width: 200px;
-    padding: 10px;
-    background-color: white;
-    color: black;
-    margin-left: 50px;
-    margin-bottom: 25px;
-    text-align: center;
-    border-radius: 10px;
-}
 
 .CommunityTitle {
     font-weight: bold;
@@ -54,30 +42,6 @@
     width: 600px;
 }
 
-.CommunityCard {
-    width: 200px;
-    height: 300px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    padding: 20px;
-    font-size: 30px;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: black;
-    display: inline-flex; 
-    background-size: cover;
-    background-position: -200px 0px;
-    transition: transform 0.5s;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin: 25px;
-    overflow: hidden;
-}
-
-.CommunityCard:hover {
-    transform: scale(1.2);
-}
 
 .AboutContainer {
     width: 100%;

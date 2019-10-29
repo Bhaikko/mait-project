@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import classes from './homepage.css';
 import Logo from './../../components/Logo/Logo';
@@ -11,6 +10,9 @@ import DatingBackground from './../../assets/images/dating.jpeg';
 import FeedBackground from './../../assets/images/feed.jpeg';
 import MarketplaceBackground from './../../assets/images/marketplace.jpeg';
 
+import PeopleCard from './../../components/Homepage/PeopleCard/PeopleCard';
+import CommunityCard from './../../components/Homepage/CommunityCard/CommunityCard';
+
 class Homepage extends Component {
     render () {
         return (
@@ -20,6 +22,7 @@ class Homepage extends Component {
                         <Logo style={{fontSize: 40}} />
                         <Infos />
                     </HomepageCard>
+
                     <HomepageCard style={{ backgroundColor: "#2D4571"}} >
                         <div>
                             <Logo style={{fontSize: 40}} />
@@ -35,77 +38,54 @@ class Homepage extends Component {
                             <Button style={{marginLeft: 50}}>Sign Up</Button>
                         </div>
                     </HomepageCard>
+
                     <HomepageCard style={{ backgroundColor: "#2D4571"}} >
                         <div className={classes.PeopleTitle}>The People</div>
-                        <div className={classes.PeopleContainer}>
-                            <div>
-                                <div className={classes.PeopleBox}>
-                                    Sarthak Mittal
-                                </div>
-                                <div className={classes.PeopleBox}>
-                                    Web Developer
-                                </div>
-                            </div>
-                            <div>
-                                <div className={classes.PeopleBox}>
-                                    Khush Khanna
-                                </div>
-                                <div className={classes.PeopleBox}>
-                                    UI/UX Designer
-                                </div>
-                            </div>
-                            <div>
-                                <div className={classes.PeopleBox}>
-                                    Siddharth Pawar
-                                </div>
-                                <div className={classes.PeopleBox}>
-                                    Web Developer
-                                </div>
-                            </div>
+                        <div>
+                            <PeopleCard
+                                name="Sarthak Mittal"
+                                designation="Web Developer"
+                            />
+
+                            <PeopleCard
+                                name="Khush Khanna"
+                                designation="UI/UX Designer"
+                            />
+
+                            <PeopleCard
+                                name="Siddharth Pawar"
+                                designation="Web Developer"
+                            />
+                            
                         </div>
                     </HomepageCard>
                     <HomepageCard style={{ backgroundColor: "#9D354B"}} >
                         <div className={classes.CommunityTitle}>The Communities</div>
                         <div className={classes.CommunityContainer}>
-                            <Link 
-                                to="/dating"
-                                style={{ textDecoration: "none" }}
-                            >
-                                
-                                    <div className={classes.CommunityCard} style={{backgroundImage: `url(${DatingBackground})`}}>
-                                        Dating
-                                    </div>
-                            </Link>
-                            
-                            <Link 
-                                to="/feed"
-                                style={{ textDecoration: "none" }}
-                            >
-                                
-                                    <div className={classes.CommunityCard} style={{backgroundImage: `url(${FeedBackground})`}}>
-                                        Feed
-                                    </div>
-                            </Link>
-                            
-                            <Link 
-                                to="/marketplace"
-                                style={{ textDecoration: "none" }}
-                            >
-                                
-                                    <div className={classes.CommunityCard} style={{backgroundImage: `url(${MarketplaceBackground})`}}>
-                                        Marketplace
-                                    </div>
-                            </Link>
-                            
-                            <Link 
-                                to="/notes"
-                                style={{ textDecoration: "none" }}
-                            >
-                                
-                                    <div className={classes.CommunityCard} style={{backgroundImage: `url(${MarketplaceBackground})`}}>
-                                        Notes
-                                    </div>
-                            </Link>
+                            <CommunityCard
+                                link="/dating"
+                                heading="Dating"
+                                backgroundImage={DatingBackground}
+                            />
+
+                            <CommunityCard
+                                link="/feed"
+                                heading="Feed"
+                                backgroundImage={FeedBackground}
+                            />
+
+                            <CommunityCard
+                                link="/marketplace"
+                                heading="Marketplace"
+                                backgroundImage={MarketplaceBackground}
+                            />
+
+                            <CommunityCard
+                                link="/notes"
+                                heading="Notes"
+                                backgroundImage={MarketplaceBackground}
+                            />
+
                         </div>
                     </HomepageCard>
                 </div>
