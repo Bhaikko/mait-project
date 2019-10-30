@@ -41,7 +41,7 @@ class Homepage extends Component {
 
                     <HomepageCard style={{ backgroundColor: "#2D4571"}} >
                         <div className={classes.PeopleTitle}>The People</div>
-                        <div>
+                        <div className={classes.PeopleHolder}>
                             <PeopleCard
                                 name="Sarthak Mittal"
                                 designation="Web Developer"

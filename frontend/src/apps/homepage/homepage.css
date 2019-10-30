@@ -31,7 +31,7 @@
     box-sizing: border-box;
     color: white;
     font-size: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 .CommunityContainer {
@@ -40,15 +40,22 @@
     flex-wrap: wrap;
     margin-top: 20px;
     width: 600px;
+    align-content: center;
 }
 
 
 .AboutContainer {
     width: 100%;
     padding: 10px;
-    background-color: #FFFA00;
+    background-color: rgb(56, 56, 54);
     letter-spacing: 2px;
     font-size: 20px;
     text-align: center;
     border-bottom: 2px solid black;
+    color: azure;
+}
+
+
+.PeopleHolder {
+    align-items: center;
 }
