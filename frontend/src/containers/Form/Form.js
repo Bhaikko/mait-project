@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import Input from './../../components/UI/Input/Input';
 import Button from './../../components/UI/Button/Button';
+import Spinner from './../../components/UI/Spinner/Spinner';
 
-// import * as formActions from './../../../store/action/index';
+import * as authActions from './../../store/actions/index';
 
 import classes from './Form.css';
 
@@ -14,7 +16,6 @@ class Form extends Component {
         this.state = {
             form: this.props.formConfig,
             formIsValid: false,
-            file: null 
         }
     }
 
@@ -47,27 +48,29 @@ class Form extends Component {
 
     formSubmitHandler = event => {
         event.preventDefault();
-        console.log("Form Submitted");
-        // const formData = {};
 
-        // // eslint-disable-next-line
-        // for(let formElementIdentifier in this.state.form) {
-        //     formData[formElementIdentifier] = this.state.form[formElementIdentifier].value;
-        // }
+        const formData = new FormData();
 
-        // if(this.state.file) {
-        //     formData.files = this.state.file[0];
-        // }
+        // eslint-disable-next-line
+        for(let formElementIdentifier in this.state.form) {
+            formData.append(formElementIdentifier, this.state.form[formElementIdentifier].value);
+            // formData[formElementIdentifier] = this.state.form[formElementIdentifier].value;
+        }
 
-        // switch (this.props.requestType) {
-        //     case "loginAttempt":
-        //         this.props.onLogin(formData);
-        //         break;
-        //     default:
-                
-        //         this.props.onSubmit(formData, this.props.url);
-        //         break;
-        // }
+        switch (this.props.url) {
+            case "/auth/login":
+                this.props.onLogin(formData);
+                break;
+
+            case "/auth/signup":
+                this.props.onSignUp(formData);
+                break;
+            
+            default:
+                break;
+        }
+
+        
     }
 
     inputChangeHandler = (event, inputIdentifier) => {
@@ -131,6 +134,7 @@ class Form extends Component {
                         shouldValidate={formElement.config.validation}
                         touched={formElement.config.touched} />
                 ))}
+                {this.props.error ? <div>{this.props.error}</div> : null}
                 <Button 
                     disabled={!this.state.formIsValid} 
                     onClick={this.formSubmitHandler} 
@@ -146,28 +150,42 @@ class Form extends Component {
         );
         
         let classesArray = [classes.Form, this.props.className].join(" ");
+
+        if (this.props.loading) {
+            return (
+                <Spinner />
+            );
+        }
+
+        if (this.props.token) {
+            return (
+                <Redirect to="/" />
+            )
+        }
+
         return (
             <div className={classesArray}>
                 <div className={classes.FormName}>{this.props.formName}</div>
                 {form}
-                {/* {this.props.error ? <Title>{this.props.error}</Title> : null} */}
+                
             </div>
         );
     }
 }
 
-// const mapStateToProps = state => {
-//     return {
-//         loading: state.form.loading, 
-//     }
-// }
+const mapStateToProps = state => {
+    return {
+        loading: state.auth.loading, 
+        error: state.auth.error,
+        token: state.auth.token
+    }
+}
 
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         onSubmit: (formData, url) => dispatch(formActions.formSubmit(formData, url)),
-//         onLogin: (formData) => dispatch(formActions.loginAttempt(formData))
-//     }
-// }
+const mapDispatchToProps = dispatch => {
+    return {
+        onLogin: formData => dispatch(authActions.login(formData)),
+        onSignUp: formData => dispatch(authActions.signup(formData))
+    }
+}
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Form);
-export default Form;
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

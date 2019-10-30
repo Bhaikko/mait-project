@@ -25,10 +25,10 @@ const Users = database.define("users", {
         type: Sequelize.STRING,
         allowNull: false 
     },
-    isVerified: {
-        type: Sequelize.STRING,
-        allowNull: false
-    }
+    // isVerified: {
+    //     type: Sequelize.STRING,
+    //     allowNull: false
+    // }
 });
 
 module.exports = {

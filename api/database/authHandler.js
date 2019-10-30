@@ -8,7 +8,7 @@ const addUser = (name, email, password) => {
         isVerified: password 
     })
         .then(response => response)
-        .catch(err => err.errors[0].message);    
+        .catch(err => { throw err });    
 }
 
 const getUser = email => {

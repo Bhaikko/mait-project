@@ -21,11 +21,11 @@ router.post("/signup", (req, res, next) => {
         }
 
         databaseHandler.addUser(req.body.name, req.body.email, password)
-            .then(user => res.status(200).json({
+            .then(user => res.status(200).send({
                 user: user 
             }))
             .catch(err => {
-                res.status(400).json({
+                res.status(400).send({
                     message: "Email Already Exists" 
                 });
                 throw err;
@@ -34,17 +34,19 @@ router.post("/signup", (req, res, next) => {
 });
 
 router.post("/login", (req, res, next) => {
-    console.log(req.body);
     passport.authenticate("user", { session: false }, (err, user, info) => {
         if (err || !user) {
-            return res.status(400).json({
+            return res.status(400).send({
                 message: "Invalid Email or Password"
             });
         }
 
         req.login(user, { session: false }, err => {
             if (err) {
-                res.json(err);
+                // res.json(err);
+                res.status(400).send({
+                    message: "Invalid Email or Password"
+                });
             }
 
             const expirationTime = new Date().getTime() + (60 * 60 * 1000);
@@ -54,7 +56,7 @@ router.post("/login", (req, res, next) => {
                 exp: expirationTime
             }, TOKEN_SECRET_KEY);
 
-            return res.json({
+            return res.send({
                 userId: user.id,
                 expirationTime: expirationTime,
                 token: token 

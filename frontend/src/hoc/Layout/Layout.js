@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
 import Aux from '../Aux/Aux';
-import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
+// import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 // import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 
 import classes from './Layout.css';
