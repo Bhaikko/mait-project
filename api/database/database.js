@@ -24,6 +24,10 @@ const Users = database.define("users", {
     password: {
         type: Sequelize.STRING,
         allowNull: false 
+    },
+    isVerified: {
+        type: Sequelize.STRING,
+        allowNull: false
     }
 });
 

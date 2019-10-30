@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import classes from './homepage.css';
 import Logo from './../../components/Logo/Logo';
@@ -26,7 +27,11 @@ class Homepage extends Component {
                     <HomepageCard style={{ backgroundColor: "#2D4571"}} >
                         <div>
                             <Logo style={{fontSize: 40}} />
-                            <Button style={{marginLeft: 50}}>Login</Button>
+                            <Link
+                                to="/auth"
+                            >
+                                <Button style={{marginLeft: 50}}>Login</Button>
+                            </Link>
                         </div>
                         <div style={{fontSize: 20, color: "white", marginTop: 20}}>
                             A place to talk and have <br />
@@ -35,7 +40,11 @@ class Homepage extends Component {
                         </div>
                         <div style={{fontSize: 20, color: "white", marginTop: 20}}>
                             Join Mait Talks today.
-                            <Button style={{marginLeft: 50}}>Sign Up</Button>
+                            <Link 
+                                to="/auth"
+                            >
+                                <Button style={{marginLeft: 50}}>Sign Up</Button>
+                            </Link>
                         </div>
                     </HomepageCard>
 

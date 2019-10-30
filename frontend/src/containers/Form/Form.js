@@ -131,13 +131,24 @@ class Form extends Component {
                         shouldValidate={formElement.config.validation}
                         touched={formElement.config.touched} />
                 ))}
-                <Button disabled={!this.state.formIsValid} onClick={this.formSubmitHandler} >{this.props.buttonName}</Button>
+                <Button 
+                    disabled={!this.state.formIsValid} 
+                    onClick={this.formSubmitHandler} 
+                    style={{
+                        marginTop: 50,
+                        width: 150,
+                        height: 25
+                    }}
+                >
+                    {this.props.buttonName}
+                </Button>
             </form>
         );
-                    
+        
+        let classesArray = [classes.Form, this.props.className].join(" ");
         return (
-            <div className={classes.Form}>
-                <h4>{this.props.formName}</h4>
+            <div className={classesArray}>
+                <div className={classes.FormName}>{this.props.formName}</div>
                 {form}
                 {/* {this.props.error ? <Title>{this.props.error}</Title> : null} */}
             </div>

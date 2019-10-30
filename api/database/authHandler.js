@@ -4,7 +4,8 @@ const addUser = (name, email, password) => {
     return Users.create({
         name,
         email,
-        password 
+        password,
+        isVerified: password 
     })
         .then(response => response)
         .catch(err => err.errors[0].message);    

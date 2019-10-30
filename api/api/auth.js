@@ -34,6 +34,7 @@ router.post("/signup", (req, res, next) => {
 });
 
 router.post("/login", (req, res, next) => {
+    console.log(req.body);
     passport.authenticate("user", { session: false }, (err, user, info) => {
         if (err || !user) {
             return res.status(400).json({

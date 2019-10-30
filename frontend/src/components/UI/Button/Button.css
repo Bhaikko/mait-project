@@ -18,6 +18,12 @@ Button:hover{
     background-color: #FFFFFF;
 }
 
+Button:disabled {
+    cursor: not-allowed;
+    color: #ccc;
+    background-color: #FFFFFF;
+}
+
 @media all and (max-width:30em){
     Button {
         display: block;

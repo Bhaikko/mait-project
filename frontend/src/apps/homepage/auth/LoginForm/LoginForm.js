@@ -1,21 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import Form from '../../../../containers/Form/Form';
+import classes from './LoginForm.css';
 
 class LoginForm extends Component {
     constructor (props) {
         super(props);
         this.state = {
             formConfig: {
-                username: {
+                email: {
                     elementType: "input",
                     elementConfig: {
-                        type: "text",
-                        placeholder: "Username",
+                        type: "email",
+                        placeholder: "Email",
                     },
                     value: "",
                     validation: {
-                        required: true
+                        required: true,
+                        isEmail: true
                     },
                     valid: false,
                     touched: false
@@ -28,7 +30,8 @@ class LoginForm extends Component {
                     },
                     value: "",
                     validation: {
-                        required: true 
+                        required: true,
+                        minLength: 8 
                     },
                     valid: false,
                     touched: false 
@@ -41,12 +44,18 @@ class LoginForm extends Component {
 
     render () {
         return (
-            <Form 
-                formConfig={this.state.formConfig} 
-                formName="Login" 
-                url="/auth/login" 
-                buttonName="Login"
-            />
+            <Fragment>
+                <div className={classes.Header}>
+                    Hello Friend.
+                </div>
+                <Form 
+                    className={classes.LoginForm}
+                    formConfig={this.state.formConfig} 
+                    formName="Login" 
+                    url="/auth/login" 
+                    buttonName="Login"
+                />
+            </Fragment>
         );
     }
 }

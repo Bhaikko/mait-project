@@ -7,7 +7,7 @@ import Layout from './hoc/Layout/Layout';
 import AdminApp from './apps/admin/Admin';
 import DatingApp from './apps/dating/Dating';
 import FeedApp from './apps/feed/Feed';
-import Homepage from './apps/homepage/homepage';
+import HomepageApp from './apps/homepage/index';
 import MarketPlaceApp from './apps/marketplace/Marketplace';
 import NotesApp from './apps/notes/Notes';
 
@@ -22,7 +22,7 @@ class App extends Component {
         <Route path="/feed" component={FeedApp} />
         <Route path="/marketplace" component={MarketPlaceApp} />
         <Route path="/notes" component={NotesApp} />
-        <Route path="/" component={Homepage} />
+        <Route path="/" component={HomepageApp} />
         <Redirect to="/" />
       </Switch>
     );
