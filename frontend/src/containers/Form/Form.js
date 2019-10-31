@@ -70,7 +70,9 @@ class Form extends Component {
                 break;
         }
 
-        
+        this.setState({
+            form: this.props.formConfig
+        });
     }
 
     inputChangeHandler = (event, inputIdentifier) => {

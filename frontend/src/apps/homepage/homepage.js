@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import classes from './homepage.css';
@@ -14,6 +15,8 @@ import MarketplaceBackground from './../../assets/images/marketplace.jpeg';
 import PeopleCard from './../../components/Homepage/PeopleCard/PeopleCard';
 import CommunityCard from './../../components/Homepage/CommunityCard/CommunityCard';
 
+import * as authActions from './../../store/actions/index';
+
 class Homepage extends Component {
     render () {
         return (
@@ -25,27 +28,50 @@ class Homepage extends Component {
                     </HomepageCard>
 
                     <HomepageCard style={{ backgroundColor: "#2D4571"}} >
-                        <div>
-                            <Logo style={{fontSize: 40}} />
-                            <Link
-                                to="/auth"
-                            >
-                                <Button style={{marginLeft: 50}}>Login</Button>
-                            </Link>
-                        </div>
-                        <div style={{fontSize: 20, color: "white", marginTop: 20}}>
-                            A place to talk and have <br />
-                            community-based discussions <br />
-                            with like-minded people. <br />
-                        </div>
-                        <div style={{fontSize: 20, color: "white", marginTop: 20}}>
-                            Join Mait Talks today.
-                            <Link 
-                                to="/auth"
-                            >
-                                <Button style={{marginLeft: 50}}>Sign Up</Button>
-                            </Link>
-                        </div>
+                        {this.props.token ? (
+                            <Fragment>
+                                <p className={classes.LoggedIn}>
+                                    <span style={{fontSize: 40}}>Hi {this.props.username}</span>, <br /> 
+                                    Thank You Joining Us.   <br />
+                                    Get Started by choosing one of the Communities Below.   <br />
+                                    Have Fun.
+                                </p>
+                                <Button
+                                    style={{
+                                        position: "absolute",
+                                        right: 20,
+                                        top: 20
+                                    }}
+                                    onClick={this.props.onLogout}
+                                >
+                                    Log-out
+                                </Button>
+                            </Fragment>
+                        ) : (
+                            <Fragment>
+                                <div>
+                                    <Logo style={{fontSize: 40}} />
+                                    <Link
+                                        to="/auth"
+                                    >
+                                        <Button style={{marginLeft: 50}}>Login</Button>
+                                    </Link>
+                                </div>
+                                <div style={{fontSize: 20, color: "white", marginTop: 20}}>
+                                    A place to talk and have <br />
+                                    community-based discussions <br />
+                                    with like-minded people. <br />
+                                </div>
+                                <div style={{fontSize: 20, color: "white", marginTop: 20}}>
+                                    Join Mait Talks today.
+                                    <Link 
+                                        to="/auth"
+                                    >
+                                        <Button style={{marginLeft: 50}}>Sign Up</Button>
+                                    </Link>
+                                </div>
+                            </Fragment>
+                        )}
                     </HomepageCard>
 
                     <HomepageCard style={{ backgroundColor: "#2D4571"}} >
@@ -109,4 +135,17 @@ class Homepage extends Component {
     }
 }
 
-export default Homepage;
+const mapStateToProps = state => {
+    return {
+        token: state.auth.token,
+        username: state.auth.username
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onLogout: () => dispatch(authActions.logout())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Homepage);

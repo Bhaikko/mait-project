@@ -59,3 +59,15 @@
 .PeopleHolder {
     align-items: center;
 }
+
+.LoggedIn {
+    font-weight: bold;
+    letter-spacing: 5px;
+    display: inline-block;
+    box-sizing: border-box;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 0px;
+    text-align: center;
+    line-height: 40px;
+}

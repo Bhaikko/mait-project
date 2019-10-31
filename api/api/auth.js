@@ -58,6 +58,7 @@ router.post("/login", (req, res, next) => {
 
             return res.send({
                 userId: user.id,
+                username: user.name,
                 expirationTime: expirationTime,
                 token: token 
             });

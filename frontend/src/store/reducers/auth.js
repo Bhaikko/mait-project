@@ -4,6 +4,7 @@ const initialState = {
     loading: false,
     token: null,
     userId: null,
+    username: null,
     error: null    
 }
 
@@ -11,10 +12,8 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.AUTH_START:
             return {
-                loading: true,
-                token: null,
-                userId: null,
-                error: null 
+                ...initialState,
+                loading: true
             }
 
         case actionTypes.AUTH_SUCCESS:
@@ -22,34 +21,31 @@ const reducer = (state = initialState, action) => {
                 loading: false,
                 token: action.token,
                 userId: action.userId,
+                username: action.username,
                 error: null
             }
 
         case actionTypes.AUTH_FAILED:
             return {
-                loading: false,
-                token: null,
-                userId: null,
+                ...initialState,
                 error: action.error 
             }
 
         case actionTypes.SIGNUP_START:
             return {
-                loading: true,
-                error: null 
-            }
-        
-        case actionTypes.SIGNUP_SUCCESS:
-            return {
-                loading: false,
-                error: null,
+                ...initialState,
+                loading: true
             }
 
         case actionTypes.SIGNUP_FAILED:
             return {
-                loading: false,
+                ...initialState,
                 error: action.error
             }
+
+        case actionTypes.LOGOUT:
+            window.location = "/";
+            return initialState;
 
         default: 
             return state;

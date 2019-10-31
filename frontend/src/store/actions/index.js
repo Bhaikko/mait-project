@@ -1,4 +1,6 @@
 export {
     login,
-    signup
+    signup,
+    autoLogin,
+    logout
 } from './auth';

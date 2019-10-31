@@ -10,9 +10,21 @@ import FeedApp from './apps/feed/Feed';
 import HomepageApp from './apps/homepage/index';
 import MarketPlaceApp from './apps/marketplace/Marketplace';
 import NotesApp from './apps/notes/Notes';
+import AuthPage from './apps/homepage/auth/Auth';
+
+import * as authActions from './store/actions/index';
 
 
 class App extends Component {
+
+  componentDidMount () {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const userId = localStorage.getItem("userId");
+      const username = localStorage.getItem("username");
+      this.props.onAutoLogin(token, userId, username);
+    }
+  }
 
   render () {
     let routes = (
@@ -27,6 +39,16 @@ class App extends Component {
       </Switch>
     );
 
+    if (!this.props.token) {
+      routes = (
+        <Switch>
+          <Route path="/" exact component={HomepageApp} />
+          <Route path="/auth" component={AuthPage} />
+          <Redirect to="/auth" />
+        </Switch>
+      );
+    }
+
     return (
       <div>
         <Layout>
@@ -39,8 +61,15 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    app: state.app.app 
+    app: state.app.app,
+    token: state.auth.token 
   }
 }
 
-export default connect(mapStateToProps)(App);
+const mapDisptachToProps = dispatch => {
+  return {
+    onAutoLogin: (token, userId, username) => dispatch(authActions.autoLogin(token, userId, username))
+  }
+}
+
+export default connect(mapStateToProps, mapDisptachToProps)(App);
