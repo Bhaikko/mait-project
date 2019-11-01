@@ -38,9 +38,36 @@ For the backend server using express
   node server.js
 ```
 
-If both the above steps are followed correctly, the development mode should be up and running. :)
+For setup of Database, mysql must be installed.
+*Sequelize* as ORM is used for Database Management.
 
-## Project Structure
+Once mysql is installed and can be accessed through CLI. 
+Login as root in mysql using
+```
+  mysql -u root -p
+```
+
+After logging in, run the following commands
+```
+  CREATE DATABASE maitTalks;
+  CREATE USER "maitTalksAdmin" IDENTIFIED BY "123456";
+  USE maitTalks;
+  GRANT ALL PRIVILEGES ON maitTalks.* TO maitTalksAdmin;
+  FLUSH ALL PRIVILEGES;
+  UPDATE mysql.user SET host = "localhost" WHERE user = "maitTalksAdmin";
+```
+
+For reviewing mysql database using CLI,
+```
+  mysql -u maitTalksAdmin -p
+```
+
+*Note: If you want to have your own database name, password, etc. Edit the constants.js in api/*
+
+
+If all the above steps are followed correctly, the development mode should be up and running. :)
+
+## Folder Structure
 ```
 .
     ├── frontend
