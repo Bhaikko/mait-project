@@ -13,13 +13,13 @@ const Login = props => {
             <HomepageCard style={{ 
                 backgroundColor: "#9D354B",
                 padding: 100
-            }} >
+            }} class="Card">
                 <LoginForm />
             </HomepageCard>
             <HomepageCard style={{ 
                 backgroundColor: "#2D4571",
                 padding: 100
-            }} >
+            }} class="Card">
                 <SignupForm />
             </HomepageCard>
         </div>

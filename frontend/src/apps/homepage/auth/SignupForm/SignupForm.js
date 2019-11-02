@@ -64,6 +64,7 @@ class LoginForm extends Component {
                 </div>
                 <Form 
                     className={classes.SignupForm}
+                    FormClassName={classes.SignupFormName}
                     formConfig={this.state.formConfig} 
                     formName="Sign Up" 
                     url="/auth/signup" 

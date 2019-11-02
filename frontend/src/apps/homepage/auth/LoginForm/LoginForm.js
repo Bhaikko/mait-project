@@ -50,6 +50,7 @@ class LoginForm extends Component {
                 </div>
                 <Form 
                     className={classes.LoginForm}
+                    FormClassName={classes.LoginFormName}
                     formConfig={this.state.formConfig} 
                     formName="Login" 
                     url="/auth/login" 

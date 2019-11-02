@@ -1,6 +1,7 @@
 .Form {
-    margin: 20px auto;
+    /* margin: 20px auto; */
     width: 80%;
+    /* height:80%; */
     text-align: center;
     box-shadow: 0 2px 3px #ccc;
     border: 1px solid #EEE;
@@ -16,13 +17,13 @@
     box-sizing: border-box;
     color: white;
     font-size: 40px;
-    margin-bottom: 20px;
+    
 }
 
 @media (min-width: 540px) {
     .Form {
         width: 100%;
-        overflow: hidden;
-        max-height: 70%;
+        /* overflow: hidden; */
+        /* max-height: 80%; */
     }
 }

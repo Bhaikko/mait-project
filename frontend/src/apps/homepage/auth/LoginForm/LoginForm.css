@@ -4,6 +4,10 @@
     padding: 50px;
 }
 
+.LoginFormName{
+    margin-bottom: 20px;
+}
+
 .Header {
     font-weight: bold;
     text-transform: uppercase;

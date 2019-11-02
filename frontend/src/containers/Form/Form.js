@@ -165,9 +165,11 @@ class Form extends Component {
             )
         }
 
+        let FormNameClasses =[classes.FormName , this.props.FormNameClass].join(" ");
+
         return (
             <div className={classesArray}>
-                <div className={classes.FormName}>{this.props.formName}</div>
+                <div className={FormNameClasses}>{this.props.formName}</div>
                 {form}
                 
             </div>
