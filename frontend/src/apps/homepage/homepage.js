@@ -22,12 +22,12 @@ class Homepage extends Component {
         return (
             <div className={classes.Homepage}>
                 <div className={classes.CardContainer}>
-                    <HomepageCard style={{ backgroundColor: "#9D354B"}} >
+                    <HomepageCard style={{ backgroundColor: "#9D354B"}} class="fcard" >
                         <Logo style={{fontSize: 40}} />
                         <Infos />
                     </HomepageCard>
 
-                    <HomepageCard style={{ backgroundColor: "#2D4571"}} >
+                    <HomepageCard style={{ backgroundColor: "#2D4571"}} class="Card" >
                         {this.props.token ? (
                             <Fragment>
                                 <p className={classes.LoggedIn}>
@@ -74,7 +74,7 @@ class Homepage extends Component {
                         )}
                     </HomepageCard>
 
-                    <HomepageCard style={{ backgroundColor: "#2D4571"}} >
+                    <HomepageCard style={{ backgroundColor: "#2D4571"}} class="fcard" >
                         <div className={classes.PeopleTitle}>The People</div>
                         <div className={classes.PeopleHolder}>
                             <PeopleCard
@@ -94,7 +94,7 @@ class Homepage extends Component {
                             
                         </div>
                     </HomepageCard>
-                    <HomepageCard style={{ backgroundColor: "#9D354B"}} >
+                    <HomepageCard style={{ backgroundColor: "#9D354B"}} class="Card" >
                         <div className={classes.CommunityTitle}>The Communities</div>
                         <div className={classes.CommunityContainer}>
                             <CommunityCard
