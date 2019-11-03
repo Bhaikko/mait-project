@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Dating from './Dating';
-import Toolbar from './../../components/Navigation/Toolbar/Toolbar';
+import Layout from './../../containers/Layout/Layout';
 
 import NavigationItem from './../../components/Navigation/NavigationItems/NavigationItem/NavigationItem';
 
@@ -26,10 +26,9 @@ class DatingRoute extends Component {
         );
 
         return (
-            <div>
-                <Toolbar navigationItems={navigationItems}/>
+            <Layout navigationItems={navigationItems}>
                 {routes}
-            </div>
+            </Layout>
         );
     }
 }
