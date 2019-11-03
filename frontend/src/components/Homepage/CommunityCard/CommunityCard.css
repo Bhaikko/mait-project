@@ -22,3 +22,11 @@
 .CommunityCard:hover {
     transform: scale(1.2);
 }
+
+
+@media screen and (max-width: 576px) {
+    .CommunityCard {
+        width: 15rem;
+        height: 16rem;
+    }
+}

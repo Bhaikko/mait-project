@@ -1,12 +1,18 @@
 .PeopleCard {
     display: inline-block;
-    /* width: 100px; */
     min-width: 200px;
     padding: 10px;
     background-color: white;
     color: black;
-    margin-left: 50px;
-    margin-bottom: 25px;
+    margin-left: 20px;
+    margin-bottom: 20px;
     text-align: center;
     border-radius: 10px;
+}
+
+
+@media screen and (max-width: 576px) {
+    .PeopleCard {
+        min-width: 125px;
+    }
 }

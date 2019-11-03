@@ -22,12 +22,14 @@ class Homepage extends Component {
         return (
             <div className={classes.Homepage}>
                 <div className={classes.CardContainer}>
-                    <HomepageCard style={{ backgroundColor: "#9D354B"}} class="fcard" >
-                        <Logo style={{fontSize: 40}} />
-                        <Infos />
+                    <HomepageCard style={{ backgroundColor: "#9D354B", order: 2}} >
+                        <Fragment>
+                            <Logo style={{fontSize: 40}} />
+                            <Infos />
+                        </Fragment>
                     </HomepageCard>
 
-                    <HomepageCard style={{ backgroundColor: "#2D4571"}} class="Card" >
+                    <HomepageCard style={{ backgroundColor: "#2D4571", order: 1}} >
                         {this.props.token ? (
                             <Fragment>
                                 <p className={classes.LoggedIn}>
@@ -74,7 +76,7 @@ class Homepage extends Component {
                         )}
                     </HomepageCard>
 
-                    <HomepageCard style={{ backgroundColor: "#2D4571"}} class="fcard" >
+                    <HomepageCard style={{ backgroundColor: "#2D4571", order: 3}}  >
                         <div className={classes.PeopleTitle}>The People</div>
                         <div className={classes.PeopleHolder}>
                             <PeopleCard
@@ -94,8 +96,8 @@ class Homepage extends Component {
                             
                         </div>
                     </HomepageCard>
-                    <HomepageCard style={{ backgroundColor: "#9D354B"}} class="Card" >
-                        <div className={classes.CommunityTitle}>The Communities</div>
+                    <HomepageCard style={{ backgroundColor: "#9D354B", order: 4}}  >
+                        <div className={classes.CommunityTitle}>Communities</div>
                         <div className={classes.CommunityContainer}>
                             <CommunityCard
                                 link="/dating"

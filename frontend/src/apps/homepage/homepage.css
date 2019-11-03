@@ -32,6 +32,7 @@
     color: white;
     font-size: 40px;
     margin-bottom: 0px;
+    text-align: center;
 }
 
 .CommunityContainer {
@@ -44,9 +45,12 @@
 }
 
 
+
+
 .AboutContainer {
     width: 100%;
     padding: 10px;
+    padding-right: 20px;
     background-color: rgb(56, 56, 54);
     letter-spacing: 2px;
     font-size: 20px;
@@ -70,4 +74,24 @@
     margin-bottom: 0px;
     text-align: center;
     line-height: 40px;
+}
+
+@media screen and (max-width: 576px) {
+    .CardContainer {
+        flex-direction: column;
+    }
+
+    .CommunityTitle {
+        margin-top: 50px;
+    }
+
+    .CommunityContainer {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .AboutContainer {
+        font-size: 18px;
+        width: 95%;
+    }
 }

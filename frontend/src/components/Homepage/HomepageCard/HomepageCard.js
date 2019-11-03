@@ -3,13 +3,12 @@ import React from 'react';
 import classes from './HomepageCard.css';
 
 const HomepageCard = props => {
-    let clsname = "Card";
-    if(props.class){
-        clsname=props.class;
+    let styles = {...props.style};
+    if (window.innerWidth > 576) {
+        styles.order = 0;
     }
-
     return (
-        <div className={classes[clsname]} style={{...props.style}}>
+        <div className={classes.Card} style={styles}>
             {props.children}
         </div>
     );

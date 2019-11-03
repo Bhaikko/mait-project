@@ -1,5 +1,6 @@
 .Card{
     
+    width: 50%;
     height: 100vh;
     display: inline-flex;
     justify-content: center;
@@ -9,48 +10,15 @@
     margin: 0;
     padding: 0;
     position: relative;
-    flex: 0 1 100%;
-    /* background-color: #9D354B; */
-}
-.fcard{
-    height: 100vh;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    flex: 0 1 100%;
-    /* background-color: #9D354B; */
+
 }
 
-
-@media screen and (min-width: 40em) {
-    .Card{
-    height: 100vh;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    flex: 0 1 50%
-    }
-    .fcard{
-        height: 100vh;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        position: relative;
-        flex: 0 1 50%;
-        /* background-color: #9D354B; */
+@media screen and (max-width: 576px) {
+    .Card {
+        height: auto;
+        min-height: 50vh;
+        display: flex;
+        width: 100%;
     }
 }
+

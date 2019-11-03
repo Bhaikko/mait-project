@@ -2,9 +2,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 50%;
-    transform: translateX(-20%);
-
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    
 }
 
 .InfoImage {
