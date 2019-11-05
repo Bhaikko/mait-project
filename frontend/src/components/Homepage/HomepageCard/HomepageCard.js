@@ -8,7 +8,7 @@ const HomepageCard = props => {
         styles.order = 0;
     }
     return (
-        <div className={classes.Card} style={styles}>
+        <div className={classes.Card} style={styles} ref={props.refprop}>
             {props.children}
         </div>
     );

@@ -1,9 +1,9 @@
 .SignupForm {
-    width: 80%;
     border-radius: 50px;
     padding-top: 20px;
     padding-left: 35px;
     padding-right: 35px;
+    
     /* padding: 35px; */
 }
 
@@ -21,4 +21,14 @@
     color: white;
     font-size: 40px;
     margin-bottom: 20px;
+}
+
+@media (max-width : 540px){
+    .SignupForm{
+        border-radius: 50px;
+        padding-top: 20px;
+        padding-left: 35px;
+        padding-right: 35px;
+        margin-bottom: 200px;
+    }
 }
