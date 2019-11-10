@@ -54,6 +54,9 @@ const DatingProfiles = database.define("datingProfiles", {
     },
     age: {
         type: Sequelize.INTEGER,
+    },
+    collegeName: {
+        type: Sequelize.STRING
     }
 });
 

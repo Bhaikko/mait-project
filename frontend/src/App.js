@@ -10,13 +10,16 @@ import HomepageApp from './apps/homepage/index';
 import MarketPlaceApp from './apps/marketplace/Marketplace';
 import NotesApp from './apps/notes/Notes';
 import AuthPage from './apps/homepage/auth/Auth';
+import ProfilePage from './apps/homepage/profile/Profile';
+import MePage from './apps/homepage/Me/Me';
 
 import * as authActions from './store/actions/index';
 
 
 class App extends Component {
 
-  componentDidMount () {
+  constructor (props) {
+    super(props);
     const token = localStorage.getItem("token");
     if (token) {
       const userId = localStorage.getItem("userId");
@@ -26,6 +29,7 @@ class App extends Component {
   }
 
   render () {
+
     let routes = (
       <Switch>
         <Route path="/admin" component={AdminApp} />
@@ -33,16 +37,18 @@ class App extends Component {
         <Route path="/feed" component={FeedApp} />
         <Route path="/marketplace" component={MarketPlaceApp} />
         <Route path="/notes" component={NotesApp} />
-        <Route path="/" component={HomepageApp} />
+        <Route path="/profile/:username" component={ProfilePage} />
+        <Route path="/me" component={MePage} />
+        <Route path="/" exact component={HomepageApp} />
         <Redirect to="/" />
       </Switch>
     );
 
-    if (!this.props.token) {
+    if (!localStorage.getItem("token")) {
       routes = (
         <Switch>
-          <Route path="/" exact component={HomepageApp} />
           <Route path="/auth" component={AuthPage} />
+          <Route path="/" exact component={HomepageApp} />
           <Redirect to="/auth" />
         </Switch>
       );

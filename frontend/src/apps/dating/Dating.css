@@ -1,0 +1,79 @@
+.Dating {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.Main {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 20px;
+}
+
+.Header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.Name {
+    font-weight: bolder;
+    position: relative;
+}
+
+.Age {
+    margin-left: 50px;
+}
+
+
+.Age:after {
+    content: "\2022";
+    position: absolute;
+    font-size: 19px;
+    float: right;
+    text-align: right;
+}
+
+.CollegeName {
+    margin-left: 15px;
+}
+
+
+.CollegeName:after {
+    content: "\2022";
+    position: absolute;
+    font-size: 19px;
+    float: right;
+    text-align: right;
+}
+
+.Matchbox {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25px;
+}
+
+.ViewProfile {
+    text-decoration: none;
+    color: blue;
+    margin-right: 20%;
+    margin-left: 5px;
+}
+
+.ViewProfile:visited {
+    color: blue;
+}
+
+.ImageContainer {
+    display: flex;
+}
+
+.Image {
+    border-radius: 2px;
+    margin: 2px;
+}
