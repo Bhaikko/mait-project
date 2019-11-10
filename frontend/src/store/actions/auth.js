@@ -26,6 +26,7 @@ export const login = (formdata) => {
                 });
             })
             .catch(err => {
+                console.log(err.response.data.message);
                 dispatch({
                     type: actionTypes.AUTH_FAILED,
                     error: err.response.data.message
@@ -62,7 +63,7 @@ export const signup = (formdata) => {
                     });
             })
             .catch(err => {
-                console.log(err);
+                console.log(err.response.data.message);
                 dispatch({
                     type: actionTypes.SIGNUP_FAILED,
                     error: err.response.data.message

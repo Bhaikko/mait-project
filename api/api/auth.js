@@ -20,15 +20,15 @@ router.post("/signup", (req, res, next) => {
             throw err;
         }
 
-        databaseHandler.addUser(req.body.name, req.body.email, password)
+        databaseHandler.addUser(req.body.name, req.body.username, req.body.email, password)
             .then(user => res.status(200).send({
                 user: user 
             }))
             .catch(err => {
                 res.status(400).send({
-                    message: "Email Already Exists" 
+                    message: err.errors[0].message
                 });
-                throw err;
+                // throw err;
             });
     });
 });

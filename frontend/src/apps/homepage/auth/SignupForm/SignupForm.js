@@ -21,6 +21,19 @@ class LoginForm extends Component {
                     valid: false,
                     touched: false
                 },
+                username: {
+                    elementType: "input",
+                    elementConfig: {
+                        type: "text",
+                        placeholder: "Your Username",
+                    },
+                    value: "",
+                    validation: {
+                        required: true
+                    },
+                    valid: false,
+                    touched: false
+                },
                 email: {
                     elementType: "input",
                     elementConfig: {

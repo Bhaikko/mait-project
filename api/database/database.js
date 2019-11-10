@@ -15,13 +15,19 @@ const Users = database.define("users", {
     },
     username: {
         type: Sequelize.STRING,
-        unique: true,
+        unique: {
+            args: true,
+            msg: "Username Already Exists"
+        },
         allowNull: false
     },
     email: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true
+        unique: {
+            args: true,
+            msg: "Email Already Exists"
+        }
     },
     password: {
         type: Sequelize.STRING,
