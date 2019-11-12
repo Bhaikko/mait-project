@@ -1,6 +1,7 @@
 .Dating {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-around;
 }
 
@@ -14,6 +15,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    justify-content: space-around;
 }
 
 .Name {
@@ -76,4 +78,44 @@
 .Image {
     border-radius: 2px;
     margin: 2px;
+}
+
+.MainFooter {
+    margin-top: 10px;
+}
+
+.AboutSection {
+    width: 63%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+}
+
+.SelfSummaryBox {
+    width: 50%;
+}
+
+.SelfSummaryBoxHeader {
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: 10px;
+}
+
+.SelfSummaryBoxContent {
+    letter-spacing: 2px;
+    margin: 10px;
+    line-height: 30px;
+}
+
+.AboutBox {
+    padding: 10px;
+    letter-spacing: 2px;
+    line-height: 30px;
+    width: 50%;
+}
+
+.AboutKey {
+    font-weight: bold; 
 }
