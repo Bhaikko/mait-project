@@ -82,6 +82,7 @@
 
 .MainFooter {
     margin-top: 10px;
+    letter-spacing: 2px;
 }
 
 .AboutSection {
@@ -118,4 +119,68 @@
 
 .AboutKey {
     font-weight: bold; 
+}
+
+@media screen and (max-width: 768px) {
+    .MobileLayout {
+        padding-bottom: 100px;
+    }
+    .Dating {
+        overflow-x: hidden;
+        position: relative;
+        display: inline-block;
+    }
+    .MainMobile {
+        width: 100vw;
+        padding: 10px;
+        /* padding-left: 50px; */
+        line-height: 30px;
+        letter-spacing: 2px;
+        position: relative;
+    }
+    .ImageContainer {
+        display: inline-block;
+        width: 100vw;
+    }
+    .Image {
+        width: 101.5vw;
+    }
+    .Name {
+        font-weight: bold;
+    }
+    .Age {
+        font-weight: bold;
+        margin-left: 0;
+    }
+    .Age::after {
+        content: "";
+    }
+    .CollegeName {
+        margin-left: 0;
+    }
+    .CollegeName:after {
+        content: "";
+    }
+
+    .Matchbox {
+        position: absolute;
+        top: 0;
+        right: 5%;
+    }
+
+    .ViewProfile {
+        width: 100%;
+        display: inline-flex;
+        justify-content: center;
+    }
+
+    .AboutSection {
+        display: block;
+        margin-top: 10px;
+    }
+
+    .FullWidth { 
+        width: 100%;
+    }
+
 }
