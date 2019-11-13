@@ -5,10 +5,9 @@ import classes from './Dating.css';
 
 import Button from './../../components/UI/Button/Button';
 
-import HeartIcon from './../../assets/icons/Heart.png'
 
 
-class Homepage extends Component {
+class ExplorePage extends Component {
 
     constructor (props) {
         super(props);
@@ -62,14 +61,28 @@ class Homepage extends Component {
                             My Self-Summary
                         </div>
                         <div className={classes.SelfSummaryBoxContent}>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
                         </div>
                     </div>
-                    <div className={classes.AboutBox}>
-                        <div className={classes.About}><span className={classes.AboutKey}>I'm Currently</span> Single</div>
-                        <div className={classes.About}><span className={classes.AboutKey}>Intrested In</span> Men</div>
-                        <div className={classes.About}><span className={classes.AboutKey}>Graduation From</span> Maharaja Agrasen Institute of Technology</div>
+                    <div className={classes.RightSection}>
+                        <div className={classes.AboutBox}>
+                            <div className={classes.About}><span className={classes.AboutKey}>I'm Currently</span> Single</div>
+                            <div className={classes.About}><span className={classes.AboutKey}>Intrested In</span> Men</div>
+                            <div className={classes.About}><span className={classes.AboutKey}>Graduation From</span> Maharaja Agrasen Institute of Technology</div>
+                        </div>
+                        <hr />
+                        <div className={classes.TagsContainer}>
+                            <div className={classes.TagHeading}>Here's what you too have in common</div>
+                            <div className={classes.Tags}>
+                                <div className={classes.Tag}>Tag 1</div>
+                                <div className={classes.Tag}>Tag 2</div>
+                                <div className={classes.Tag}>Tag 3</div>
+                                <div className={classes.Tag}>Tag 4</div>
+                                <div className={classes.Tag}>Tag 5</div>
+                            </div>
+                        </div>
                     </div>
+                    
                 </div>
 
             </div>
@@ -132,7 +145,18 @@ class Homepage extends Component {
                                 My Self-Summary
                             </div>
                             <div className={[classes.SelfSummaryBoxContent, classes.FullWidth].join(" ")}>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            </div>
+                        </div>
+                        <hr />
+                        <div className={classes.TagsContainer}>
+                            <div className={classes.TagHeading}>Here's what you too have in common</div>
+                            <div className={classes.Tags}>
+                                <div className={classes.Tag}>Tag 1</div>
+                                <div className={classes.Tag}>Tag 2</div>
+                                <div className={classes.Tag}>Tag 3</div>
+                                <div className={classes.Tag}>Tag 4</div>
+                                <div className={classes.Tag}>Tag 5</div>
                             </div>
                         </div>
                     </div>
@@ -151,4 +175,4 @@ class Homepage extends Component {
     }
 }
 
-export default Homepage;
+export default ExplorePage;

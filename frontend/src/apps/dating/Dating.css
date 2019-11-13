@@ -95,7 +95,7 @@
 }
 
 .SelfSummaryBox {
-    width: 50%;
+    width: 70%;
 }
 
 .SelfSummaryBoxHeader {
@@ -110,15 +110,48 @@
     line-height: 30px;
 }
 
+.RightSection {
+    width: 50%;
+}
+
 .AboutBox {
     padding: 10px;
     letter-spacing: 2px;
     line-height: 30px;
-    width: 50%;
+    width: 100%;
 }
 
 .AboutKey {
     font-weight: bold; 
+}
+
+.TagsContainer {
+    width: 100%;
+    padding: 10px;
+}
+
+.TagHeading {
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.Tags {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.Tag {
+    width: 75px;
+    height: 50px;
+    border-radius: 25%;
+    background-color: #ccc;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 @media screen and (max-width: 768px) {
