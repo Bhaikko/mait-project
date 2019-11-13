@@ -14,7 +14,7 @@
     background-color: rgba(255,255,255,0.8);
 
 }
-@media (max-width : 540px){
+@media (max-width : 768px){
     .SignUpLink{
         box-sizing: border-box;
         height : 80px;

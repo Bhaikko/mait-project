@@ -24,7 +24,7 @@ Button:disabled {
     background-color: #FFFFFF;
 }
 
-@media all and (max-width:30em){
+@media all and (max-width: 768px){
     Button {
         display: block;
         margin: 0.4em auto;

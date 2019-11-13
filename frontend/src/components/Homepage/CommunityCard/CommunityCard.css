@@ -24,7 +24,7 @@
 }
 
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
     .CommunityCard {
         width: 15rem;
         height: 16rem;

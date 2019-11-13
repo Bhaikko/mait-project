@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import classes from './Inbox.css';
+// import classes from './Inbox.css';
 
 class Inbox extends Component {
     render () {

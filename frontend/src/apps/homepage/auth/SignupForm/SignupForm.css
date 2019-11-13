@@ -23,7 +23,7 @@
     margin-bottom: 20px;
 }
 
-@media (max-width : 540px){
+@media (max-width : 768px){
     .SignupForm{
         border-radius: 50px;
         padding-top: 20px;
