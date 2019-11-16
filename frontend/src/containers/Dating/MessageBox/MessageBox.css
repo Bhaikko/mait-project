@@ -6,11 +6,9 @@
 }
 
 .Header {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     padding: 11.5px;
+    box-sizing: border-box;
     background-color: white;
     display: flex;
     align-items: center;
@@ -27,9 +25,8 @@
 }
 
 .MessagesBox {
-    margin-top: 100px;
-    height: 100%;
-    overflow: none;
+    height: 80%;
+    overflow: auto;
 }
 
 .MessageContent {
@@ -67,15 +64,14 @@
 }
 
 .SendContainer {
-    position: absolute;
     width: 100%;
     background-color: white;
-    bottom: 0;
-    left: 0;
     display: flex;
     align-items: center;
     padding-top: 10px;
     padding-bottom: 10px;
+    position: absolute;
+    bottom: 0;
 
 }
 

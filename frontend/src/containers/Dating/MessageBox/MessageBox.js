@@ -51,6 +51,294 @@ class MessageBox extends Component {
                     message: "Hello World Hello World 5 ",
                     seen: false 
                 },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
+                {
+                    id: 5,
+                    senderId: 1,
+                    recieverId: 2,
+                    time: new Date(),
+                    message: "Hello World Hello World 5 ",
+                    seen: false 
+                },
             ]
         }
     }
