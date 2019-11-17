@@ -4,21 +4,49 @@ import classes from './Inbox.css';
 import SearchIcon from './../../../assets/icons/Search.png';
 import MessageBox from './../../../containers/Dating/MessageBox/MessageBox';
 import ProfileImage from './../../../components/ProfileImage/ProfileImage';
-import ProfileName from './../../../components/ProfileName/ProfileName';
+import Contacts from './../../../components/Dating/Contacts/Contacts';
 
 class Inbox extends Component {
     constructor (props) {
         super(props);
 
         this.state = {
-            currentContact: 1 
+            currentContact: null,
+            contacts: [
+                {
+                    id: 1,
+                    name: "Firstname Lastname",
+                    profileImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX"
+                },
+                {
+                    id: 2,
+                    name: "Firstname Lastname",
+                    profileImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX"
+                },
+                {
+                    id: 3,
+                    name: "Firstname Lastname",
+                    profileImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX"
+                },
+                {
+                    id: 4,
+                    name: "Firstname Lastname",
+                    profileImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX"
+                },
+                {
+                    id: 5,
+                    name: "Firstname Lastname",
+                    profileImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX"
+                },
+
+            ]
         }
     }
 
-    contactClickHandler = () => {
+    contactClickHandler = contactId => {
         this.setState({
-            currentContact: 1
-        })
+            currentContact: contactId
+        });
     }
 
     render () {
@@ -28,24 +56,19 @@ class Inbox extends Component {
                     <div className={classes.ContactsContainer}>
                         <div className={classes.ContactHeader}>
                             <ProfileImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX" alt="..." />
+                            <div className={classes.ProfileName} style={{marginLeft: 50, fontSize: 30}}>{localStorage.getItem("username")}</div>
                         </div>
                         <div className={classes.SearchContainer}>
                             <img src={SearchIcon} alt="..." className={classes.SearchIcon} />
                             <input type="text" placeholder="Search or start new chat" className={classes.SearchBar} />
                         </div>
 
-                        <div className={classes.Contacts}>
-                            <div className={classes.Contact} onClick={this.contactClickHandler}>
-                                <ProfileImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX" alt="..." />
-                                <div className={classes.Info1}>
-                                    <ProfileName>FirstName LastName</ProfileName>
-                                    <div className={classes.LastMessage}>Hello World!</div>
-                                </div>
-                                {/* <div className={classes.Time}>14:45</div> */}
-                            
-                            </div>
-                        </div>
+                        <Contacts 
+                            contacts={this.state.contacts} 
+                            contactClickHandler={this.contactClickHandler}
+                        />
                     </div>
+
                     <div className={classes.MessageBoxContainer}>
                         {!this.state.currentContact ? (
                             <div className={classes.EmptyBox}>

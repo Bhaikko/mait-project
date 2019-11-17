@@ -1,0 +1,17 @@
+.Contact {
+    padding: 10px;
+    width: 100%;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    cursor: pointer;
+}
+
+
+.Info1 {
+    display: flex;
+    flex-direction: column;
+}
