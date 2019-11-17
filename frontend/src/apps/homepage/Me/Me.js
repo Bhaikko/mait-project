@@ -1,16 +1,29 @@
-import React, { Component } from 'react';
+import React, { Component,Fragment } from 'react';
 import classes from './Me.css';
 import ProfileImage from './../../../components/ProfileImage/ProfileImage';
 import editIcon from './../../../assets/icons/edit.png';
 import mailIcon from './../../../assets/icons/mail.png';
 import gradIcon from './../../../assets/icons/grad-cap.png';
 import greyheartIcon from './../../../assets/icons/heartgrey.png';
+import Layout from './../../../containers/Layout/Layout';
+import NavigationItem from './../../../components/Navigation/NavigationItems/NavigationItem/NavigationItem';
+
+
 
 
 
 class Me extends Component {
     render () {
+        let navigationItems = (
+            <Fragment>
+                <NavigationItem link="/dating">Explore</NavigationItem>
+                <NavigationItem link="/dating/inbox">Inbox</NavigationItem>
+                <NavigationItem link="/me">Profile</NavigationItem>
+                <NavigationItem link="/logout">Logout</NavigationItem>
+            </Fragment>
+        );
         return (
+            <Layout navigationItems={navigationItems}>
             <div className={classes.container}>
                 <div className={classes.Lcontainer}>
                     <div className={classes.profileImage}>
@@ -64,6 +77,7 @@ class Me extends Component {
                 </div>
                 
             </div>
+            </Layout>
         );
     }
 }
