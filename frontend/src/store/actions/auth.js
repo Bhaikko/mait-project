@@ -14,9 +14,12 @@ export const login = (formdata) => {
 
         axios.post("/auth/login", object)
             .then(response => {
-                localStorage.setItem("token", response.data.token);
-                localStorage.setItem("userId", response.data.userId);
-                localStorage.setItem("username", response.data.username);
+                const userdata = {
+                    token: response.data.token,
+                    userId: response.data.userId,
+                    username: response.data.username 
+                }
+                localStorage.setItem("userdata", JSON.stringify(userdata));
 
                 dispatch({
                     type: actionTypes.AUTH_SUCCESS,
@@ -50,9 +53,12 @@ export const signup = (formdata) => {
                 axios.post("/auth/login", object)
                     .then(response => {
                         
-                        localStorage.setItem("token", response.data.token);
-                        localStorage.setItem("userId", response.data.userId);
-                        localStorage.setItem("username", response.data.username);
+                        const userdata = {
+                            token: response.data.token,
+                            userId: response.data.userId,
+                            username: response.data.username 
+                        }
+                        localStorage.setItem("userdata", JSON.stringify(userdata));
 
                         dispatch({
                             type: actionTypes.AUTH_SUCCESS,
@@ -83,9 +89,7 @@ export const autoLogin = (token, userId, username) => {
 }
 
 export const logout = () => {
-    localStorage.clear("token");
-    localStorage.clear("username");
-    localStorage.clear("userId");
+    localStorage.clear("userdata");
     return {
         type: actionTypes.LOGOUT
     }

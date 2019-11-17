@@ -56,7 +56,7 @@ class MessageBox extends Component {
     }
 
     render () {
-        const userId = parseInt(localStorage.getItem("userId"));
+        const userId = parseInt(JSON.parse(localStorage.getItem("userdata")).userId);
         return (
             <div className={classes.MessageBox}>
                 <div className={classes.Header}>
