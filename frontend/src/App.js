@@ -20,11 +20,9 @@ class App extends Component {
 
   constructor (props) {
     super(props);
-    const token = localStorage.getItem("token");
-    if (token) {
-      const userId = localStorage.getItem("userId");
-      const username = localStorage.getItem("username");
-      this.props.onAutoLogin(token, userId, username);
+    const userdata = JSON.parse(localStorage.getItem("userdata"));
+    if (userdata) {      
+      this.props.onAutoLogin(userdata.token, userdata.userId, userdata.username);
     }
   }
 
@@ -44,7 +42,7 @@ class App extends Component {
       </Switch>
     );
 
-    if (!localStorage.getItem("token")) {
+    if (!localStorage.getItem("userdata")) {
       routes = (
         <Switch>
           <Route path="/auth" component={AuthPage} />
