@@ -25,7 +25,8 @@
 }
 
 .MessagesBox {
-    height: 80%;
+    /* height: 80%; */
+    height: calc(90vh - 5cm);
     overflow: auto;
 }
 
@@ -47,10 +48,10 @@
 }
 
 .OtherMessage {
+    max-width: 20vw;
     text-align: left;
     padding: 10px;
     background-color: white;
-    max-width: 20vw;
     border-radius: 30px 30px 30px 30px;
     position: relative;
     display: flex;
@@ -70,8 +71,8 @@
     align-items: center;
     padding-top: 10px;
     padding-bottom: 10px;
-    position: absolute;
-    bottom: 0;
+    /* position: absolute;
+    bottom: 0; */
 
 }
 
@@ -88,5 +89,17 @@
     background-color: #ccc;
     width: 90%;
     padding: 10px;
+
+}
+
+@media screen and (max-width: 768px) {
+    .MyMessage {
+        max-width: 60vw;
+    }
+
+    .OtherMessage {
+        max-width: 60vw;
+    }
+    
 
 }

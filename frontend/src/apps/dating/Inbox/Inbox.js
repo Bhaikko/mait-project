@@ -49,12 +49,13 @@ class Inbox extends Component {
         });
     }
 
+
     render () {
         return (
             <div className={classes.Container}>
                 <div className={classes.Inbox}>
                     <div className={classes.ContactsContainer}>
-                        <div className={classes.ContactHeader}>
+                        <div className={classes.ProfileHeader}>
                             <ProfileImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX" alt="..." />
                             <div className={classes.ProfileName} style={{marginLeft: 50, fontSize: 30}}>{localStorage.getItem("username")}</div>
                         </div>
@@ -66,6 +67,7 @@ class Inbox extends Component {
                         <Contacts 
                             contacts={this.state.contacts} 
                             contactClickHandler={this.contactClickHandler}
+                            currentContact={this.state.currentContact}
                         />
                     </div>
 
@@ -74,7 +76,12 @@ class Inbox extends Component {
                             <div className={classes.EmptyBox}>
                                 <ProfileImage style={{height: 300, width: 300}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX" alt="..." />
                                 <div className={classes.ProfileName}>Hi {localStorage.getItem("username")}</div>
-                                <div className={classes.EmptyBoxMessage}>Please select one of the contacts to get started</div>
+                                <div className={classes.EmptyBoxMessage}>
+                                    Please select one of the contacts to get started.
+                                    <div className={classes.ExtraEmptyBoxMessage}>
+                                        Using the button on top right.
+                                    </div>
+                                </div>
                             </div>
                         ) : (
                             <MessageBox />  

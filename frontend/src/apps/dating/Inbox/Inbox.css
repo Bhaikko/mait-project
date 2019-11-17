@@ -24,7 +24,7 @@
     border-right: 1px solid #ccc;
 }
 
-.ContactHeader {
+.ProfileHeader {
     padding: 10px;
     background-color: white;
     width: 100%;
@@ -48,15 +48,11 @@
     width: 10%;
 }
 
-
-
 .SearchBar {
     margin-left: 10px;
     outline: none;
     border: none;
 }
-
-
 
 .MessageBoxContainer {
     width: 75%;
@@ -82,4 +78,53 @@
 .EmptyBoxMessage {
     font-size: 20px;
     margin-top: 20px;
+}
+
+.ExtraEmptyBoxMessage {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+
+    .Container {
+        overflow: hidden;
+    }
+
+    .Inbox {
+        flex-wrap: wrap;
+        width: 100%;
+        height: auto;
+        margin-top: -10px;
+        height: 92vh;
+    }
+
+    .ContactsContainer {
+        width: 100%;
+        height: auto;
+    }
+
+    .DropDownButton {
+        display: inline-block;
+        font-size: 50px;
+    }
+
+    .ProfileHeader {
+        display: none;
+    }
+
+    .MessageBoxContainer {
+        width: 100vw;
+        height: 83vh;
+    }
+
+    .SearchContainer {
+        width: 85%;
+    }
+
+    .ExtraEmptyBoxMessage {
+        display: block;
+        text-align: center;
+    }
+
+
 }

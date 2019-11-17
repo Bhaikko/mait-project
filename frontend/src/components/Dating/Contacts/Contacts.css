@@ -6,3 +6,27 @@
     width: 100%;
     margin-bottom: 10px;
 }
+
+.DropDownButton {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .Contacts {
+        height: 0; 
+        transition: height 1s;
+    }
+    
+    .Expand {
+        border-bottom: 1px solid #ccc;
+        height: calc(100vh - 5.2cm);
+    }
+
+    .DropDownButton {
+        display: inline;
+        position: absolute;
+        top: 5px;
+        right: 0;
+        font-size: 50px;
+    }
+}
