@@ -38,6 +38,21 @@ class Inbox extends Component {
                     name: "Firstname Lastname",
                     profileImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX"
                 },
+                {
+                    id: 6,
+                    name: "Firstname Lastname",
+                    profileImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX"
+                },
+                {
+                    id: 7,
+                    name: "Firstname Lastname",
+                    profileImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX"
+                },
+                {
+                    id: 8,
+                    name: "Firstname Lastname",
+                    profileImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX"
+                },
 
             ]
         }

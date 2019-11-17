@@ -8,6 +8,7 @@ const ProfileImage = props => {
             {...props}
             className={classes.ProfilePhoto}
             alt={props.alt}
+            style={props.style}
         />
     );
 }
