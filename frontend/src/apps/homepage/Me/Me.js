@@ -30,7 +30,7 @@ class Me extends Component {
                         <ProfileImage src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="..." style={{"height" : "100%", "width" : "100%"}}/>
                     </div>
                     <div className={classes.profileName}>
-                        <span>{localStorage.getItem("username")}</span>
+                        <span>{JSON.parse(localStorage.getItem("userdata")).username}</span>
                         <img src={editIcon} className={classes.icon}/>
                     </div>
                     <div className={classes.mailcontainer}>
