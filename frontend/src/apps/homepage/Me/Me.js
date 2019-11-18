@@ -23,6 +23,7 @@ class Me extends Component {
             </Fragment>
         );
         return (
+
             <Layout navigationItems={navigationItems}>
             <div className={classes.container}>
                 <div className={classes.Lcontainer}>
