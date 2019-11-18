@@ -1,0 +1,8 @@
+.Tags {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 95%;
+}

@@ -4,13 +4,36 @@ import { Link } from 'react-router-dom';
 import classes from './Layout.css';
 
 import Button from './../../../../components/UI/Button/Button';
+import Tags from '../../../../components/Tags/Tags';
 
 class MobileLayout extends Component {
     constructor (props) {
         super(props);
 
         this.state = {
-            profileLink: "asd"
+            profileLink: "asd",
+            tags: [
+                {
+                    id: 1,
+                    tag: "Tag 1"
+                },
+                {
+                    id: 2,
+                    tag: "Tag 2"
+                },
+                {
+                    id: 3,
+                    tag: "Tag 3"
+                },
+                {
+                    id: 4,
+                    tag: "Tag 4"
+                },
+                {
+                    id: 5,
+                    tag: "Tag 5"
+                },
+            ]
         }
     }
 
@@ -76,13 +99,7 @@ class MobileLayout extends Component {
                     <hr />
                     <div className={classes.TagsContainer}>
                         <div className={classes.TagHeading}>Here's what you too have in common</div>
-                        <div className={classes.Tags}>
-                            <div className={classes.Tag}>Tag 1</div>
-                            <div className={classes.Tag}>Tag 2</div>
-                            <div className={classes.Tag}>Tag 3</div>
-                            <div className={classes.Tag}>Tag 4</div>
-                            <div className={classes.Tag}>Tag 5</div>
-                        </div>
+                        <Tags tags={this.state.tags} />
                     </div>
                 </div>
             </div>
