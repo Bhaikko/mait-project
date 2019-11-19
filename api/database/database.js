@@ -33,27 +33,35 @@ const Users = database.define("users", {
         type: Sequelize.STRING,
         allowNull: false 
     },
-    // will be added when verification is added
-    // isVerified: {
-    //     type: Sequelize.STRING,
-    //     allowNull: false
-    // }
+    isVerified: {
+        type: Sequelize.STRING,
+        allowNull: false
+    }
 });
 
 const DatingProfiles = database.define("datingProfiles", {
     about: {
-        type: Sequelize.TEXT,
+        type: Sequelize.TEXT
     },
     relationshipStatus: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        defaultValue: "Single",
+        validate: {
+            isIn: [['Single', 'Taken']],
+        }
     },
     intrestedIn: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        defaultValue: "Men"
     },
     age: {
         type: Sequelize.INTEGER,
+        defaultValue: 18,
+        validate: {
+            min: 16
+        }
     },
     collegeName: {
         type: Sequelize.STRING
@@ -99,6 +107,10 @@ const Messages = database.define("messages", {
     message: {
         type: Sequelize.TEXT,
         allowNull: false
+    },
+    seen: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
     }
 });
 

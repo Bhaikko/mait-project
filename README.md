@@ -53,7 +53,7 @@ After logging in, run the following commands
   CREATE USER "maitTalksAdmin" IDENTIFIED BY "123456";
   USE maitTalks;
   GRANT ALL PRIVILEGES ON maitTalks.* TO maitTalksAdmin;
-  FLUSH ALL PRIVILEGES;
+  FLUSH PRIVILEGES;
   UPDATE mysql.user SET host = "localhost" WHERE user = "maitTalksAdmin";
 ```
 
