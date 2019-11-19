@@ -1,0 +1,256 @@
+.container{
+    display: flex;
+    align-items: flex-start;
+    width:90vw;
+    height: 100%;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0;
+}
+.container>*:first-child{
+    align-self: stretch;
+}
+
+.Lcontainer{
+    width:22%;
+    display: flex;
+    flex-direction: column;
+    background-color: #F5F5F5;
+    border-radius: 5px;
+    margin-left: auto;
+    height:100vh;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.Rcontainer{
+    align-self: stretch;
+    width:65%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.RcontainerTop{
+    width:90%;
+    display: flex;
+    flex-direction: column;
+    height:auto;
+    background-color: #F5F5F5;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    margin-left: 10px;
+}
+.RcontainerBottom{
+    width:90%;
+    display: flex;
+    flex-direction: column;
+    height:auto;
+    background-color: #F5F5F5;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-top: 10px;
+    padding-bottom: 20px;
+}
+.Rcontainerpics{
+    width:90%;
+    display: flex;
+    /* flex-direction: row; */
+    flex-wrap: wrap;
+    height:auto;
+    background-color: #F5F5F5;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-top: 10px;
+    padding-bottom: 20px;
+}
+
+.profileImage{
+    margin-top: 10px;
+    width: 90%;
+    height: 35%;
+    align-self: center;
+}
+.profileName{
+    align-self: center;
+    height : 25px;
+    width : 90%;
+    /* padding-left: 10px; */
+    /* padding-right: 100px; */
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+.mailcontainer{
+    align-self: center;
+    height : 25px;
+    width : 90%;
+    /* padding-left: 10px; */
+    /* padding-right: 100px; */
+    margin-top: 30px;
+}
+.mailcontainer>*:first-child{
+    margin-left: 30px;
+    margin-right: 10px;
+}
+.mailcontainer>*:last-child{
+    line-height: 25px;
+    color:grey;
+    float:right;
+    margin-right: 30px;
+    width: 60%;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.mailcontainer>*:last-child:hover{
+   
+    overflow: visible;
+    
+}
+.gradcontainer{
+    align-self: center;
+    height : 25px;
+    width : 90%;
+    /* padding-left: 10px; */
+    /* padding-right: 100px; */
+    margin-top: 30px;
+}
+.gradcontainer>*:first-child{
+    margin-left: 30px;
+    margin-right: 10px;
+    height: 24px;
+    width: 24px;
+}
+.gradcontainer>*:last-child{
+    line-height: 25px;
+    color:grey;
+    /* float:left; */
+    margin-right: 30px;
+    float :right;
+    width: 60%;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    /* size: 16px; */
+}
+.gradcontainer>*:last-child:hover{
+   
+    overflow: visible;
+    
+}
+
+.relationcontainer{
+    align-self: center;
+    height : 25px;
+    width : 90%;
+    /* padding-left: 10px; */
+    /* padding-right: 100px; */
+    margin-top: 30px;
+}
+.relationcontainer>*:first-child{
+    margin-left: 30px;
+    margin-right: 10px;
+    height: 24px;
+    width: 24px;
+}
+.relationcontainer>*:last-child{
+    line-height: 25px;
+    color:grey;
+    /* float:left; */
+    margin-right: 30px;
+    float :right;
+    overflow: hidden;
+    width:60%;
+    /* size: 16px; */
+}
+.fieldHeading{
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 10px;
+    display: block;
+    width:100%;
+    margin-bottom: 25px;
+    /* height: 10%; */
+}
+.summarycontent{
+    /* font-style: italic; */
+    margin-left: 10px;
+    margin-bottom: 20px;
+    padding-right: 50px;
+    /* margin-top: 10%; */
+}
+.Tags {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 95%;
+}
+
+.Tag {
+    width: 150px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: rgba(160, 159, 159, 0.781);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+.image{
+    margin: 10px;
+    margin-right: 40px;
+    height:250px;
+    width:300px;
+    object-fit: cover;
+}
+
+@media (max-width:768px){
+   
+    .container{
+        flex-direction: column;
+        width: 100%;
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+
+    }
+    .Lcontainer{
+        width:100%;
+        height:100vh;
+        margin:0;
+        box-sizing: border-box;
+
+    }
+    .profileImage{
+        height:50%;
+        width:80%;
+        box-sizing: border-box;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+    .Rcontainer{
+        width:100%;
+        margin:0;
+        margin-top: 10px;
+        box-sizing: border-box;
+        flex-direction: column;
+
+    }
+    .RcontainerBottom{
+        width:100%;
+    }
+    .RcontainerTop{
+        width: 100%;
+    }
+    .Rcontainerpics{
+        width: 100%;
+    }
+}

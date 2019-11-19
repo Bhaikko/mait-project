@@ -57,7 +57,9 @@ class Me extends Component {
             </Fragment>
         );
         return (
+
             <Layout navigationItems={navigationItems}>
+<<<<<<< HEAD
                 <div className={classes.container}>
                     <div className={classes.Lcontainer}>
                         <div className={classes.profileImage}>
@@ -84,6 +86,28 @@ class Me extends Component {
                         <ProfileInfo infoimage={HeartIcon}>Single</ProfileInfo>
                         <ProfileInfo infoimage={AgeIcon}>18</ProfileInfo>
 
+=======
+            <div className={classes.container}>
+                <div className={classes.Lcontainer}>
+                    <div className={classes.profileImage}>
+                        <ProfileImage src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="..." style={{"height" : "100%", "width" : "100%"}}/>
+                    </div>
+                    <div className={classes.profileName}>
+                        <span>{JSON.parse(localStorage.getItem("userdata")).username}</span>
+                        <img src={editIcon} className={classes.icon}/>
+                    </div>
+                    <div className={classes.mailcontainer}>
+                        <img src={mailIcon}/>
+                        <span>example@gamil.com</span>
+                    </div>
+                    <div className={classes.gradcontainer}>
+                        <img src={gradIcon} />
+                        <span>Maharja Agrasen Institute Of Technology</span>
+                    </div>
+                    <div className={classes.relationcontainer}>
+                        <img src={greyheartIcon} />
+                        <span>Single</span>
+>>>>>>> 3c5860962a304576a7b3e0649731e901b93057cb
                     </div>
                     <div className={classes.Rcontainer}>
                         
