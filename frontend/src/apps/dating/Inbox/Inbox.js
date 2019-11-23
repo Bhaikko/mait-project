@@ -6,6 +6,7 @@ import MessageBox from './../../../containers/Dating/MessageBox/MessageBox';
 import ProfileImage from './../../../components/ProfileImage/ProfileImage';
 import Contacts from './../../../components/Dating/Contacts/Contacts';
 import CenterContainer from '../../../components/UI/CenterContainer/CenterContainer';
+import ProfileName from '../../../components/ProfileName/ProfileName';
 
 class Inbox extends Component {
     constructor (props) {
@@ -72,8 +73,22 @@ class Inbox extends Component {
                 <div className={classes.Inbox}>
                     <div className={classes.ContactsContainer}>
                         <div className={classes.ProfileHeader}>
-                            <ProfileImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX" alt="..." />
-                            <div className={classes.ProfileName} style={{marginLeft: 50, fontSize: 30}}>{JSON.parse(localStorage.getItem("userdata")).username}</div>
+                            <ProfileImage 
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX" 
+                                alt="..." 
+                                style={{
+                                    height: 50,
+                                    width: 50
+                                }}
+                                borderRadius="50%"    
+                            />
+                            <ProfileName
+                                style={{
+                                    marginLeft: 50
+                                }}    
+                            >
+                                {JSON.parse(localStorage.getItem("userdata")).username}
+                            </ProfileName>
                         </div>
                         <div className={classes.SearchContainer}>
                             <img src={SearchIcon} alt="..." className={classes.SearchIcon} />
@@ -90,7 +105,15 @@ class Inbox extends Component {
                     <div className={classes.MessageBoxContainer}>
                         {!this.state.currentContact ? (
                             <div className={classes.EmptyBox}>
-                                <ProfileImage style={{height: 300, width: 300}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX" alt="..." />
+                                <ProfileImage 
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX" 
+                                    alt="..." 
+                                    style={{
+                                        height: 300,
+                                        width: 300
+                                    }}
+                                    borderRadius="50%"    
+                                />
                                 <div className={classes.ProfileName}>Hi {JSON.parse(localStorage.getItem("userdata")).username}</div>
                                 <div className={classes.EmptyBoxMessage}>
                                     Please select one of the contacts to get started.

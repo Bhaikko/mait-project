@@ -16,7 +16,11 @@ const Tag = props => {
                 {props.children}
             </div>
 
-            <CrossIcon />
+            {props.editable ? (
+                <CrossIcon />
+            ) : (
+                null
+            )}
         </div>
         
     );

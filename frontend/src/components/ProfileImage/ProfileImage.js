@@ -14,19 +14,22 @@ const ProfileImage = props => {
                 src={props.src}
                 className={classes.ProfilePhoto}
                 alt={props.alt}
+                style={{
+                    borderRadius: props.borderRadius
+                }}
             />
             {props.editable ? (
                 <React.Fragment>
                     <CrossIcon
                         style={{
-                            right: -40,
+                            right: -45,
                             width: 40
                         }}
                     />
                     <HeartIcon
                         style={{
                             top: 40,
-                            right: -40,
+                            right: -45,
                             width: 40
                         }}
                         fill={props.main.toString()}

@@ -32,10 +32,10 @@ const ProfilePhotos = props => {
                     height : "100%", 
                     width : "25%"
                 }}
-                editable
+                editable={props.editable}
                 main={photo.main}
             />))}
-            {emptyPhotosObject.map(x => x)}
+            {props.editable ? emptyPhotosObject.map(x => x) : null}
         </div>
     );
 }

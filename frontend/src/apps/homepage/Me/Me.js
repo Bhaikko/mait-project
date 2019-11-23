@@ -18,6 +18,8 @@ import ContentTitle from './../../../components/UI/ContentTitle/ContentTitle';
 import ContentContainer from './../../../components/UI/ContentContainer/ContentContainer';
 import ProfilePhotos from './../../../components/ProfilePhotos/ProfilePhotos';
 
+import Modal from './../../../components/UI/Modal/Modal';
+
 class Me extends Component {
 
     constructor (props) {
@@ -86,7 +88,8 @@ class Me extends Component {
                             alt="..." 
                             style={{
                                 marginTop: "10px",
-                                height : "30%", 
+                                minHeight : "350px", 
+                                height: "30%", 
                                 width : "60%",
                                 borderRadius: "50%"
                             }}
@@ -129,7 +132,7 @@ class Me extends Component {
                             }}
                         >
                             <ContentTitle>Interests</ContentTitle>
-                            <Tags tags={this.state.tags} />
+                            <Tags tags={this.state.tags} editable/>
 
                         </ContentContainer>
 
@@ -143,12 +146,15 @@ class Me extends Component {
                             }}
                         >
                             <ContentTitle>Photos</ContentTitle>
-                            <ProfilePhotos photos={this.state.photos} />
+                            <ProfilePhotos photos={this.state.photos} editable/>
                             
                         </ContentContainer>
                         
                     </div>
                 </CenterContainer>
+                {/* <Modal show >
+                    asdasdasd
+                </Modal> */}
             </Layout>
         );
     }

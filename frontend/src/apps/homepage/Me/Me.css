@@ -16,22 +16,7 @@
 
 }
 
-.image{
-    margin: 10px;
-    margin-right: 20px;
-    height:250px;
-    max-width:400px;
-    object-fit: cover;
-    padding:1px;
-    border:1px solid #2D4571;
-    background-color:#9D354B;
-}
 
-.fieldHeading {
-    float : right;
-    padding-right: 50px;
-    margin-top:10px;
-}
 
 @media (max-width:768px){
    

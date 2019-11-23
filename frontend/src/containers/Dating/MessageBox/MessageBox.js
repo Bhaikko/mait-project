@@ -60,7 +60,15 @@ class MessageBox extends Component {
         return (
             <div className={classes.MessageBox}>
                 <div className={classes.Header}>
-                    <ProfileImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX" alt="..." />
+                    <ProfileImage 
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX" 
+                        alt="..." 
+                        style={{
+                            height: 50,
+                            width: 50
+                        }}
+                        borderRadius="50%"    
+                    />
                     <div className={classes.Status}>
                         <ProfileName>Firstname Lastname</ProfileName>
                         <div>Lastseen: {new Date().toDateString()}</div>
