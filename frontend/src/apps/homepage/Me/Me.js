@@ -4,7 +4,6 @@ import classes from './Me.css';
 
 // Icons
 import AgeIcon from './../../../assets/icons/Age.png';
-import MailIcon from './../../../assets/icons/mail.png';
 import GradIcon from './../../../assets/icons/grad-cap.png';
 import HeartIcon from './../../../assets/icons/heartgrey.png';
 
@@ -17,6 +16,7 @@ import ProfileImage from './../../../components/ProfileImage/ProfileImage';
 import CenterContainer from './../../../components/UI/CenterContainer/CenterContainer';
 import ContentTitle from './../../../components/UI/ContentTitle/ContentTitle';
 import ContentContainer from './../../../components/UI/ContentContainer/ContentContainer';
+import ProfilePhotos from './../../../components/ProfilePhotos/ProfilePhotos';
 
 class Me extends Component {
 
@@ -35,14 +35,28 @@ class Me extends Component {
                 {
                     id: 3,
                     tag: "Tag 3"
+                }
+            ],
+            photos: [
+                {
+                    id: 1,
+                    imageUrl: "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+                    main: false
+                },
+                {
+                    id: 2,
+                    imageUrl: "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+                    main: false
+                },
+                {
+                    id: 3,
+                    imageUrl: "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+                    main: true
                 },
                 {
                     id: 4,
-                    tag: "Tag 4"
-                },
-                {
-                    id: 5,
-                    tag: "Tag 5"
+                    imageUrl: "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+                    main: false
                 },
             ]
         }
@@ -73,7 +87,8 @@ class Me extends Component {
                             style={{
                                 marginTop: "10px",
                                 height : "30%", 
-                                width : "60%"
+                                width : "60%",
+                                borderRadius: "50%"
                             }}
                         />
                     
@@ -87,7 +102,6 @@ class Me extends Component {
                             {JSON.parse(localStorage.getItem("userdata")).username}
                         </ProfileName>
                      
-                        <ProfileInfo infoimage={MailIcon}>example@gamil.com</ProfileInfo>
                         <ProfileInfo infoimage={GradIcon}>Maharaja Agrasen Institute of Technology</ProfileInfo>
                         <ProfileInfo infoimage={HeartIcon}>Single</ProfileInfo>
                         <ProfileInfo infoimage={AgeIcon}>18</ProfileInfo>
@@ -129,10 +143,8 @@ class Me extends Component {
                             }}
                         >
                             <ContentTitle>Photos</ContentTitle>
-                            <img className={classes.image} src="https://images.unsplash.com/photo-1558981420-87aa9dad1c89?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Profile " />
-                            <img className={classes.image} src="https://images.unsplash.com/photo-1558981420-87aa9dad1c89?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Profile "  />
-
-                            <img className={classes.image} src="https://images.unsplash.com/photo-1558981420-87aa9dad1c89?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Profile "  />
+                            <ProfilePhotos photos={this.state.photos} />
+                            
                         </ContentContainer>
                         
                     </div>

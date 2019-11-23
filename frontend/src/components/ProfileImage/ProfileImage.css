@@ -1,6 +1,10 @@
+.ProfileImageContainer {
+    position: relative;
+    display: inline-block;
+}
+
 .ProfilePhoto {
     object-fit: cover;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+    height: 100%;
+    width: 100%;
 }

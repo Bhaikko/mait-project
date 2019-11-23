@@ -1,15 +1,42 @@
 import React from 'react';
 
 import classes from './ProfileImage.css';
+import CrossIcon from './../UI/CrossIcon/CrossIcon';
+import HeartIcon from './../UI/HeartIcon/HeartIcon';
 
 const ProfileImage = props => {
     return (
-        <img 
-            {...props}
-            className={classes.ProfilePhoto}
-            alt={props.alt}
+        <div 
+            className={classes.ProfileImageContainer}
             style={props.style}
-        />
+        >
+            <img 
+                src={props.src}
+                className={classes.ProfilePhoto}
+                alt={props.alt}
+            />
+            {props.editable ? (
+                <React.Fragment>
+                    <CrossIcon
+                        style={{
+                            right: -40,
+                            width: 40
+                        }}
+                    />
+                    <HeartIcon
+                        style={{
+                            top: 40,
+                            right: -40,
+                            width: 40
+                        }}
+                        fill={props.main.toString()}
+                    />
+                </React.Fragment>
+
+            ) : (
+                null
+            )}
+        </div>
     );
 }
 
