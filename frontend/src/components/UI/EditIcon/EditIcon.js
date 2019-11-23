@@ -6,7 +6,11 @@ import editIcon from './../../../assets/icons/Edit.png';
 
 const EditIcon = props => {
     return (
-        <img src={editIcon} className={classes.Icon} alt="EditIcon" />
+        <img 
+            src={editIcon} 
+            className={classes.Icon} 
+            alt="EditIcon" 
+        />
     );
 }
 

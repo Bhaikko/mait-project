@@ -1,10 +1,3 @@
-.Container {
-    display: flex;
-    justify-content: space-around;
-    padding: 0;
-    margin: 0;
-}
-
 .Inbox {
     height: 87vh;
     width: 70vw;

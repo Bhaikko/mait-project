@@ -5,6 +5,7 @@ import SearchIcon from './../../../assets/icons/Search.png';
 import MessageBox from './../../../containers/Dating/MessageBox/MessageBox';
 import ProfileImage from './../../../components/ProfileImage/ProfileImage';
 import Contacts from './../../../components/Dating/Contacts/Contacts';
+import CenterContainer from '../../../components/UI/CenterContainer/CenterContainer';
 
 class Inbox extends Component {
     constructor (props) {
@@ -67,7 +68,7 @@ class Inbox extends Component {
 
     render () {
         return (
-            <div className={classes.Container}>
+            <CenterContainer>
                 <div className={classes.Inbox}>
                     <div className={classes.ContactsContainer}>
                         <div className={classes.ProfileHeader}>
@@ -103,7 +104,7 @@ class Inbox extends Component {
                         )}
                     </div>
                 </div>
-            </div>
+            </CenterContainer>
         );
     }
 }

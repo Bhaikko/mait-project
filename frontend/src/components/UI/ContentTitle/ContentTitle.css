@@ -1,0 +1,23 @@
+.ContentTitleContainer {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    width:100%;
+    padding: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.ContentTitleContainer::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 93%;
+    border: 1px solid gray;
+}
+
+.ContentTitle {
+    margin-left: 5px;
+}

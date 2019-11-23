@@ -1,6 +1,5 @@
 .Icon {
-    float : right;
-    padding-right: 50px;
-    margin-top:10px;
     cursor: pointer;
+    position: absolute;
+    right: 0.7cm;
 }

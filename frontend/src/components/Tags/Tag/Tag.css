@@ -1,10 +1,20 @@
+.Container {
+    position: relative;
+    color: white;
+}
+
 .Tag {
     width: 100px;
-    height: 50px;
     border-radius: 25%;
-    background-color: #ccc;
     display: inline-flex;
     justify-content: center;
     align-items: center;
     margin: 10px;
+}
+
+.TagName {
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
