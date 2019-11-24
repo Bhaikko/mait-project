@@ -1,8 +1,8 @@
 import React from 'react';
 
 import classes from './ProfileImage.css';
-import CrossIcon from './../UI/CrossIcon/CrossIcon';
-import HeartIcon from './../UI/HeartIcon/HeartIcon';
+import CrossIcon from './../../UI/CrossIcon/CrossIcon';
+import HeartIcon from './../../UI/HeartIcon/HeartIcon';
 
 const ProfileImage = props => {
     return (

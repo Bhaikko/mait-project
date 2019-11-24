@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import classes from './Inbox.css';
 import SearchIcon from './../../../assets/icons/Search.png';
 import MessageBox from './../../../containers/Dating/MessageBox/MessageBox';
-import ProfileImage from './../../../components/ProfileImage/ProfileImage';
+import ProfileImage from './../../../components/ProfilePhotos/ProfileImage/ProfileImage';
 import Contacts from './../../../components/Dating/Contacts/Contacts';
 import CenterContainer from '../../../components/UI/CenterContainer/CenterContainer';
 import ProfileName from '../../../components/ProfileName/ProfileName';

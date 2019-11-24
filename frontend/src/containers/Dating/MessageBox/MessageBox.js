@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import classes from './MessageBox.css';
 
-import ProfileImage from './../../../components/ProfileImage/ProfileImage';
+import ProfileImage from './../../../components/ProfilePhotos/ProfileImage/ProfileImage';
 import ProfileName from './../../../components/ProfileName/ProfileName';
 import SendIcon from './../../../assets/icons/Send.png'
 

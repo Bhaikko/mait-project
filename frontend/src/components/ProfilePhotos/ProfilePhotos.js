@@ -1,7 +1,7 @@
 import React from 'react';
 
 import classes from './ProfilePhotos.css';
-import ProfileImage from './../ProfileImage/ProfileImage';
+import ProfileImage from './ProfileImage/ProfileImage';
 import AddNew from './../UI/AddNew/AddNew';
 
 const ProfilePhotos = props => {
@@ -11,14 +11,7 @@ const ProfilePhotos = props => {
     let emptyPhotosObject = [];
 
     for (let i = 1; i <= emptyPhotos; i++) {
-        emptyPhotosObject.push(<AddNew 
-            key={i} 
-            style={{
-                margin: "10px",
-                height : "100%", 
-                width : "25%"
-            }}    
-        />);
+        emptyPhotosObject.push(<AddNew key={i} />);
     }
 
     return (

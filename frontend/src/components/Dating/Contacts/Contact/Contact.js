@@ -3,7 +3,7 @@ import React from 'react';
 import classes from './Contact.css';
 
 import ProfileName from './../../../../components/ProfileName/ProfileName';
-import ProfileImage from './../../../../components/ProfileImage/ProfileImage';
+import ProfileImage from './../../../../components/ProfilePhotos/ProfileImage/ProfileImage';
 
 const Contact = props => {
     return (
