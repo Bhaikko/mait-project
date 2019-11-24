@@ -65,20 +65,12 @@ class UserProfile extends Component {
         return (
             <Fragment>
                 <CenterContainer>
-                    <ContentContainer
-                        style={{
-                            width: "22%"
-                        }}
-                    >
+                    <ContentContainer classes={classes.ProfileContainer}>
                         <ContentTitle editable={this.props.editable}>Profile</ContentTitle>
                         <ProfileImage 
                             src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" 
                             alt="..." 
-                            style={{
-                                marginTop: "10px",
-                                height: "300px", 
-                                width : "300px",   
-                            }}
+                            classname={classes.ProfileImage}
                             borderRadius="50%"
                         />
                     
@@ -108,12 +100,7 @@ class UserProfile extends Component {
 
                     </ContentContainer>
                     <div className={classes.Rcontainer}>                        
-                        <ContentContainer
-                            style={{
-                                width: "90%",
-                                marginLeft: 10
-                            }}
-                        >
+                        <ContentContainer classes={classes.BioContainer}>
                             <ContentTitle editable={this.props.editable}>Bio</ContentTitle>
                             <div className={classes.SummaryContent}>
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
@@ -121,28 +108,13 @@ class UserProfile extends Component {
 
                         </ContentContainer>
 
-                        <ContentContainer
-                            style={{
-                                width: "90%",
-                                marginLeft: 10,
-                                marginTop: 10
-                            }}
-                        >
+                        <ContentContainer classes={classes.InterestContainer}>
                             <ContentTitle>Interests</ContentTitle>
                             <Tags tags={this.state.tags} editable={this.props.editable}/>
 
                         </ContentContainer>
 
-                        <ContentContainer
-                            style={{
-                                width: "90%",
-                                marginLeft: 10,
-                                marginTop: 10,
-                                flexDirection: "row",
-                                flexWrap: "wrap",
-                                paddingRight: "5%"
-                            }}
-                        >
+                        <ContentContainer classes={classes.PhotosContainer}>
                             <ContentTitle>Photos</ContentTitle>
                             <ProfilePhotos photos={this.state.photos} editable={this.props.editable}/>
                             

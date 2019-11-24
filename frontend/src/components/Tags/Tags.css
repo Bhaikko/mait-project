@@ -7,3 +7,9 @@
     flex-wrap: wrap;
     width: 95%;
 }
+
+@media screen and (max-width: 768px) {
+    .Tags {
+        flex-direction: row;
+    }
+}

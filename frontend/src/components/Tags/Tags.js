@@ -6,12 +6,6 @@ import AddNew from './../UI/AddNew/AddNew';
 
 const Tags = props => {
     const tagsLength = props.tags.length;
-    const emptyTags = 10 - tagsLength;
-    let emptyTagsObjects = [];
-
-    for (let i = 1; i <= emptyTags; i++) {
-        emptyTagsObjects.push(<AddNew key={i} />);
-    }
 
     return (
         <div className={classes.Tags}>
@@ -21,7 +15,7 @@ const Tags = props => {
             >
                 {tag.tag}
             </Tag>)}
-            {props.editable ? emptyTagsObjects.map(x => x) : null}
+            {tagsLength < 10 ? <AddNew /> : null}
         </div>
     );
 }

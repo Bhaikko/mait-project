@@ -5,7 +5,7 @@ import classes from './ContentContainer.css';
 const ContentContainer = props => {
     return (
         <div 
-            className={classes.ContentContainer}
+            className={[classes.ContentContainer, props.classes].join(" ")}
             {...props}
         >
             {props.children}

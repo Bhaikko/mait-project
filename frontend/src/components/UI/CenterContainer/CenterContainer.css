@@ -2,6 +2,12 @@
     display: flex;
     justify-content: space-around;
     padding: 0;
-    margin: 0;
-    
+    margin: 0;   
+}
+
+@media (max-width:768px){
+   .CenterContainer {
+       flex-direction: column;
+       width: 100vw;
+   }
 }

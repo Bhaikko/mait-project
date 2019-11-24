@@ -7,7 +7,7 @@ import HeartIcon from './../../UI/HeartIcon/HeartIcon';
 const ProfileImage = props => {
     return (
         <div 
-            className={classes.ProfileImageContainer}
+            className={[classes.ProfileImageContainer, props.classname].join(" ")}
             style={props.style}
         >
             <img 
