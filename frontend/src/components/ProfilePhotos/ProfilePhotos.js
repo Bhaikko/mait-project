@@ -2,7 +2,7 @@ import React from 'react';
 
 import classes from './ProfilePhotos.css';
 import ProfileImage from './ProfileImage/ProfileImage';
-import AddNew from './../UI/AddNew/AddNew';
+import AddNewPhoto from '../UI/AddNewPhoto/AddNewPhoto';
 
 const ProfilePhotos = props => {
     const photosLength = props.photos.length;
@@ -21,7 +21,7 @@ const ProfilePhotos = props => {
                 editable={props.editable}
                 main={photo.main}
             />))}
-            {photosLength < 5 ? <AddNew /> : null}
+            {photosLength < 5 ? <AddNewPhoto /> : null}
         </div>
     );
 }
