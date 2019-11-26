@@ -7,7 +7,7 @@
 
 @media (max-width:768px){
    .CenterContainer {
-       flex-direction: column;
+       display: inline-block;
        width: 100vw;
    }
 }

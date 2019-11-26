@@ -7,7 +7,7 @@ import Button from './../../components/UI/Button/Button';
 import Tags from './../../components/Tags/Tags';
 import CenterContainer from './../../components/UI/CenterContainer/CenterContainer';
 import ContentContainer from './../../components/UI/ContentContainer/ContentContainer';
-import ImageCrousal from './../../components/ImageCrousal/ImageCrousal';
+import ProfileImage from './../../components/ProfilePhotos/ProfileImage/ProfileImage';
 
 class ExplorePage extends Component {
 
@@ -37,6 +37,28 @@ class ExplorePage extends Component {
                     id: 5,
                     tag: "Tag 5"
                 },
+            ],
+            photos: [
+                {
+                    id: 1,
+                    imageUrl: "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+                    main: false
+                },
+                {
+                    id: 2,
+                    imageUrl: "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+                    main: false
+                },
+                // {
+                //     id: 3,
+                //     imageUrl: "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+                //     main: true
+                // },
+                // {
+                //     id: 4,
+                //     imageUrl: "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+                //     main: false
+                // },
             ]
         }
     }
@@ -47,17 +69,18 @@ class ExplorePage extends Component {
             <CenterContainer>
                 <ContentContainer
                     style={{
-                        width: "95%",
                         marginBottom: 50,
                         marginLeft: 0
                     }}    
                 >
                     <div className={classes.ProfileSection}>
-                        <span className={classes.Name}>Manu</span>
-                        <span className={classes.Age}>20</span>
+                        <div className={classes.NameAge}>
+                            <span className={classes.Name}>Manu, </span>
+                            <span className={classes.Age}>20</span>
+                        </div>
                         <span className={classes.CollegeName}>Maharaja Agrasen Institute of Technology</span>
                         <span className={classes.Matchbox}>86%</span>
-                        <Link to={"/profile/" + this.state.profileLink} className={classes.ViewProfile}>View Profile > </Link>
+                        <Link to={"/profile/" + this.state.profileLink} className={classes.ViewProfile}>Visit Profile </Link>
                         <Button 
                             style={{
                                 backgroundColor: "#fa8575",
@@ -77,13 +100,35 @@ class ExplorePage extends Component {
                             &#x2764; <span>Like</span>
                         </Button>
                     </div>
-                    <div className={classes.ImageContainer}>
-                        <img className={classes.Image} src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX" alt="..." />
-                        <img className={classes.Image} src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX" alt="..." />
-                        <img className={classes.Image} src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX" alt="..." />
+
+                    <div className={classes.DesktopPhotos}>
+                        {this.state.photos.map((photo, index) => (
+                            index < 3 ? (
+                                <ProfileImage 
+                                    src={photo.imageUrl}
+                                    style={{
+                                        width: 300,
+                                        height: 300,
+                                        margin: 10
+                                    }}
+                                    key={photo.id}
+                                />
+                            ) : null
+                        ))}
+                    </div>
+                    <div className={classes.MainFooter}>If you like each other, we'll let you know!</div>
+
+                    <div className={classes.MobilePhoto}>
+                        <ProfileImage 
+                            src={this.state.photos[0].imageUrl}
+                            style={{
+                                width: "75%",
+                                height: "50%"
+                            }}
+                        />
+                    
                     </div>
 
-                    <div className={classes.MainFooter}>If you like each other, we'll let you know!</div>
 
                 <div className={classes.AboutSection}>
                     <div className={classes.SelfSummaryBox}>
@@ -109,7 +154,6 @@ class ExplorePage extends Component {
                     
                 </div>
 
-                <ImageCrousal />
                 </ContentContainer>
 
             </CenterContainer>

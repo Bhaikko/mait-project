@@ -59,14 +59,15 @@
     color: blue;
 }
 
-.ImageContainer {
+.DesktopPhotos {
     display: flex;
+    width: 100%;
 }
 
-.Image {
-    border-radius: 2px;
-    margin: 2px;
+.MobilePhoto {
+    display: none;
 }
+
 
 .MainFooter {
     margin-top: 10px;
@@ -129,23 +130,33 @@
     font-size: 25px;
 }
 
-@media screen and (max-width: 768px) {
-    .ImageContainer {
-        display: inline-block;
-        width: 100vw;
-    }
+.NameAge {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
 
-    .Image {
-        width: 101.5vw;
+@media screen and (max-width: 768px) {
+    .ProfileSection {
+        order: 2;
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        box-sizing: border-box;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     .Name {
         font-weight: bold;
+        font-size: 30px;
     }
 
     .Age {
         font-weight: bold;
-        margin-left: 0;
+        margin-left: 5;
+        font-size: 20px;
     }
 
     .Age::after {
@@ -153,7 +164,7 @@
     }
 
     .CollegeName {
-        margin-left: 0;
+        margin-left: 5;
     }
     
     .CollegeName:after {
@@ -161,13 +172,18 @@
     }
 
     .Matchbox {
-        position: absolute;
-        top: 0;
-        right: 5%;
+        /* position: absolute; */
+        /* top: 0; */
+        /* right: 5%; */
+        order: 4;
+    }
+
+    .MainFooter {
+        display: none;
     }
 
     .ViewProfile {
-        width: 100%;
+        /* width: 100%; */
         display: inline-flex;
         justify-content: center;
     }
@@ -175,12 +191,9 @@
     .AboutSection {
         display: block;
         margin-top: 10px;
+        order: 3;
     }
     
-
-    .FullWidth { 
-        width: 99%;
-    }
 
     .Button {
         font-size: 25px;
@@ -189,11 +202,22 @@
         height: 70px;
         position: fixed;
         bottom: 15px;
-        padding: 0
+        padding: 0;
+        z-index: 2;
     }
 
     .Button>span {
         display: none;
+    }
+
+    .DesktopPhotos {
+        display: none;
+    }
+
+    .MobilePhoto {
+        display: inline-block;
+        text-align: center;
+        order: 1;
     }
 
     

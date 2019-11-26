@@ -7,14 +7,15 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     align-items: center;
     box-sizing: border-box;
+    width: 95%;
 }
 
 @media (max-width:768px){
    .ContentContainer {
        margin: 0;
-       width: 101vw;
+       width: 100vw;
        box-shadow: none;
-       margin-top: 10px;
        padding-bottom: 20px;
+       margin-right: 0;
    }
 }
