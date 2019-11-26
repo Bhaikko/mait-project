@@ -6,13 +6,6 @@ import AddNew from './../UI/AddNew/AddNew';
 
 const ProfilePhotos = props => {
     const photosLength = props.photos.length;
-    const emptyPhotos = 5 - photosLength;
-
-    let emptyPhotosObject = [];
-
-    for (let i = 1; i <= emptyPhotos; i++) {
-        emptyPhotosObject.push(<AddNew key={i} />);
-    }
 
     return (
         <div className={classes.Photos}>
@@ -28,7 +21,7 @@ const ProfilePhotos = props => {
                 editable={props.editable}
                 main={photo.main}
             />))}
-            {props.editable ? emptyPhotosObject.map(x => x) : null}
+            {photosLength < 5 ? <AddNew /> : null}
         </div>
     );
 }

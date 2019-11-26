@@ -1,11 +1,12 @@
 .Container {
     position: relative;
     color: white;
+    padding: 0;
+    margin: 0;
 }
 
 .Tag {
     width: 100px;
-    border-radius: 25%;
     display: inline-flex;
     justify-content: center;
     align-items: center;

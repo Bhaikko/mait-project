@@ -15,7 +15,7 @@ const Tags = props => {
             >
                 {tag.tag}
             </Tag>)}
-            {tagsLength < 10 ? <AddNew /> : null}
+            {tagsLength < 10 && props.editable ? <AddNew /> : null}
         </div>
     );
 }

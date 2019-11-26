@@ -1,0 +1,201 @@
+.ProfileSection {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content: space-around;
+    width: 90%;
+    margin-top: 10px;
+}
+
+.Name {
+    font-weight: bolder;
+}
+
+.Age {
+    margin-left: 10px;
+}
+
+
+.Age:after {
+    content: "\2022";
+    position: absolute;
+    font-size: 19px;
+    float: right;
+    text-align: right;
+}
+
+.CollegeName {
+    margin-left: 15px;
+}
+
+
+.CollegeName:after {
+    content: "\2022";
+    position: absolute;
+    font-size: 19px;
+    float: right;
+    text-align: right;
+}
+
+.Matchbox {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25px;
+}
+
+.ViewProfile {
+    text-decoration: none;
+    color: blue;
+    margin-right: 20%;
+    margin-left: 5px;
+}
+
+.ViewProfile:visited {
+    color: blue;
+}
+
+.ImageContainer {
+    display: flex;
+}
+
+.Image {
+    border-radius: 2px;
+    margin: 2px;
+}
+
+.MainFooter {
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
+
+.AboutSection {
+    width: 90%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+}
+
+.SelfSummaryBox {
+    width: 70%;
+}
+
+.SelfSummaryBoxHeader {
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: 10px;
+}
+
+.SelfSummaryBoxContent {
+    letter-spacing: 2px;
+    margin: 10px;
+    line-height: 30px;
+}
+
+.RightSection {
+    width: 50%;
+}
+
+.AboutBox {
+    padding: 10px;
+    letter-spacing: 2px;
+    line-height: 30px;
+    width: 100%;
+}
+
+.AboutKey {
+    font-weight: bold; 
+}
+
+.TagsContainer {
+    width: 100%;
+    padding: 10px;
+}
+
+.TagHeading {
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.Button {
+    width: 13%;
+    border-radius: 50px;
+    font-size: 25px;
+}
+
+@media screen and (max-width: 768px) {
+    .ImageContainer {
+        display: inline-block;
+        width: 100vw;
+    }
+
+    .Image {
+        width: 101.5vw;
+    }
+
+    .Name {
+        font-weight: bold;
+    }
+
+    .Age {
+        font-weight: bold;
+        margin-left: 0;
+    }
+
+    .Age::after {
+        content: "";
+    }
+
+    .CollegeName {
+        margin-left: 0;
+    }
+    
+    .CollegeName:after {
+        content: "";
+    }
+
+    .Matchbox {
+        position: absolute;
+        top: 0;
+        right: 5%;
+    }
+
+    .ViewProfile {
+        width: 100%;
+        display: inline-flex;
+        justify-content: center;
+    }
+
+    .AboutSection {
+        display: block;
+        margin-top: 10px;
+    }
+    
+
+    .FullWidth { 
+        width: 99%;
+    }
+
+    .Button {
+        font-size: 25px;
+        border-radius: 50%;
+        width: 70px;
+        height: 70px;
+        position: fixed;
+        bottom: 15px;
+        padding: 0
+    }
+
+    .Button>span {
+        display: none;
+    }
+
+    
+
+}
