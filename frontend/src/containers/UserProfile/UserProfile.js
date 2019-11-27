@@ -64,7 +64,9 @@ class UserProfile extends Component {
     render () {
         return (
             <Fragment>
-                <CenterContainer>
+                <CenterContainer style={{
+                    paddingBottom: 30
+                }}>
                     <ContentContainer classes={classes.ProfileContainer}>
                         <ContentTitle editable={this.props.editable}>Profile</ContentTitle>
                         <ProfileImage 
@@ -125,7 +127,7 @@ class UserProfile extends Component {
                 {/* <Modal show >
                     asdasdasd
                 </Modal> */}
-                );
+                
             </Fragment>
         )
     }

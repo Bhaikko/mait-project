@@ -5,6 +5,7 @@
     justify-content: space-around;
     width: 90%;
     margin-top: 10px;
+    position: relative;
 }
 
 .Name {
@@ -130,7 +131,12 @@
     font-size: 25px;
 }
 
-.NameAge {
+.InfoContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+.AgeContainer {
     display: flex;
     flex-direction: row;
     align-items: flex-end;
@@ -148,6 +154,13 @@
         justify-content: center;
     }
 
+    .ProfileSection::after {
+        content: "";
+        border: 0.5px solid grey;
+        width: 100%;
+        margin-top: 5px;
+    }
+
     .Name {
         font-weight: bold;
         font-size: 30px;
@@ -155,16 +168,13 @@
 
     .Age {
         font-weight: bold;
-        margin-left: 5;
+        margin-left: 0;
         font-size: 20px;
     }
 
-    .Age::after {
-        content: "";
-    }
 
     .CollegeName {
-        margin-left: 5;
+        margin-left: 10;
     }
     
     .CollegeName:after {
@@ -172,9 +182,6 @@
     }
 
     .Matchbox {
-        /* position: absolute; */
-        /* top: 0; */
-        /* right: 5%; */
         order: 4;
     }
 
@@ -183,15 +190,19 @@
     }
 
     .ViewProfile {
-        /* width: 100%; */
+        width: 100%;
         display: inline-flex;
         justify-content: center;
+        margin-right: 0;
+        margin-top: 10px;
     }
 
     .AboutSection {
         display: block;
         margin-top: 10px;
         order: 3;
+        width: 100%;
+        padding-left: 5%;
     }
     
 
@@ -220,6 +231,31 @@
         order: 1;
     }
 
-    
+    .InfoContainer {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        padding-left: 5%;
+    }
+
+    .AgeContainer {
+        flex-direction: row;
+    }
+
+    .Matchbox {
+        position: absolute;
+        top: 0;
+        right: 10%;
+    }
+
+
+    .SelfSummaryBox {
+        width: 100%;
+    }
+
+    .RightSection {
+        width: 95%;
+    }
+
 
 }

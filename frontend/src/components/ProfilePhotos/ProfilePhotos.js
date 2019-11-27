@@ -21,7 +21,7 @@ const ProfilePhotos = props => {
                 editable={props.editable}
                 main={photo.main}
             />))}
-            {photosLength < 5 ? <AddNew /> : null}
+            {photosLength < 5 && props.editable ? <AddNew /> : null}
         </div>
     );
 }

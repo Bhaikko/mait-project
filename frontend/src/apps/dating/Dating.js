@@ -49,16 +49,16 @@ class ExplorePage extends Component {
                     imageUrl: "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
                     main: false
                 },
-                // {
-                //     id: 3,
-                //     imageUrl: "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-                //     main: true
-                // },
-                // {
-                //     id: 4,
-                //     imageUrl: "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-                //     main: false
-                // },
+                {
+                    id: 3,
+                    imageUrl: "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+                    main: true
+                },
+                {
+                    id: 4,
+                    imageUrl: "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+                    main: false
+                },
             ]
         }
     }
@@ -74,13 +74,15 @@ class ExplorePage extends Component {
                     }}    
                 >
                     <div className={classes.ProfileSection}>
-                        <div className={classes.NameAge}>
-                            <span className={classes.Name}>Manu, </span>
-                            <span className={classes.Age}>20</span>
+                        <div className={classes.InfoContainer}>
+                            <span className={classes.Name}>Manu,</span>
+                            <div className={classes.AgeContainer}>
+                                <span className={classes.Age}>20</span>
+                                <span className={classes.CollegeName}>Maharaja Agrasen Institute of Technology</span>
+                            </div>
                         </div>
-                        <span className={classes.CollegeName}>Maharaja Agrasen Institute of Technology</span>
                         <span className={classes.Matchbox}>86%</span>
-                        <Link to={"/profile/" + this.state.profileLink} className={classes.ViewProfile}>Visit Profile </Link>
+                        <Link to={"/profile/" + this.state.profileLink} className={classes.ViewProfile}>Visit Profile</Link>
                         <Button 
                             style={{
                                 backgroundColor: "#fa8575",
@@ -103,7 +105,7 @@ class ExplorePage extends Component {
 
                     <div className={classes.DesktopPhotos}>
                         {this.state.photos.map((photo, index) => (
-                            index < 3 ? (
+                            index < 4 ? (
                                 <ProfileImage 
                                     src={photo.imageUrl}
                                     style={{
@@ -122,7 +124,7 @@ class ExplorePage extends Component {
                         <ProfileImage 
                             src={this.state.photos[0].imageUrl}
                             style={{
-                                width: "75%",
+                                width: "60%",
                                 height: "50%"
                             }}
                         />
