@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-
 import AdminApp from './apps/admin/Admin';
 import DatingApp from './apps/dating/index';
 import FeedApp from './apps/feed/Feed';

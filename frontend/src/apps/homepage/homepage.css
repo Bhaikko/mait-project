@@ -21,6 +21,24 @@
     margin-bottom: 20px;
 }
 
+.Logo {
+    font-size: 40px;
+}
+
+.LoginContainer {
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.SignupContainer {
+    font-size: 20px;
+    color: white;
+    margin-top: 20px;
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+}
 
 
 .CommunityTitle {
@@ -30,9 +48,11 @@
     display: inline-block;
     box-sizing: border-box;
     color: white;
-    font-size: 40px;
+    font-size: 2em;
     margin-bottom: 0px;
     text-align: center;
+    margin-top: 20px;
+
 }
 
 .CommunityContainer {
@@ -41,14 +61,13 @@
     flex-wrap: wrap;
     margin-top: 20px;
     width: 600px;
-    align-content: center;
+    align-items: center;
+    justify-content: center;
+
 }
 
-
-
-
 .AboutContainer {
-    width: 100%;
+    width: 100vw;
     padding: 10px;
     padding-right: 20px;
     background-color: rgb(56, 56, 54);
@@ -92,6 +111,9 @@
 
     .AboutContainer {
         font-size: 18px;
-        width: 95%;
+    }
+
+    .Logo {
+        font-size: 20px;
     }
 }

@@ -22,21 +22,26 @@ class Homepage extends Component {
         return (
             <div className={classes.Homepage}>
                 <div className={classes.CardContainer}>
-                    <HomepageCard style={{ backgroundColor: "#9D354B", order: 2}} >
+                    <HomepageCard >
                         <Fragment>
                             <Logo style={{fontSize: 40}} />
                             <Infos />
                         </Fragment>
                     </HomepageCard>
 
-                    <HomepageCard style={{ backgroundColor: "#2D4571", order: 1}} >
+                    <HomepageCard >
                         {this.props.token ? (
                             <Fragment>
                                 <p className={classes.LoggedIn}>
-                                    <span style={{fontSize: 40}}>Hi {this.props.username}</span>, <br /> 
-                                    Thank You Joining Us.   <br />
-                                    Get Started by choosing one of the Communities Below.   <br />
-                                    Have Fun.
+                                    <span style={{ fontSize: "2em" }}>Hi {this.props.username}</span>, <br /> 
+                                    <div style={{
+                                        fontSize: "0.7em"
+                                    }}
+                                    >
+                                        Thank You Joining Us.   <br />
+                                        Get Started by choosing one of the Communities Below.   <br />
+                                        Have Fun.
+                                    </div>
                                 </p>
                                 <Button
                                     style={{
@@ -51,8 +56,8 @@ class Homepage extends Component {
                             </Fragment>
                         ) : (
                             <Fragment>
-                                <div>
-                                    <Logo style={{fontSize: 40}} />
+                                <div className={classes.LoginContainer}>
+                                    <Logo classes={classes.Logo} />
                                     <Link
                                         to="/auth"
                                     >
@@ -64,7 +69,7 @@ class Homepage extends Component {
                                     community-based discussions <br />
                                     with like-minded people. <br />
                                 </div>
-                                <div style={{fontSize: 20, color: "white", marginTop: 20}}>
+                                <div className={classes.SignupContainer}>
                                     Join Mait Talks today.
                                     <Link 
                                         to="/auth"
@@ -76,7 +81,7 @@ class Homepage extends Component {
                         )}
                     </HomepageCard>
 
-                    <HomepageCard style={{ backgroundColor: "#2D4571", order: 3}}  >
+                    <HomepageCard >
                         <div className={classes.PeopleTitle}>The People</div>
                         <div className={classes.PeopleHolder}>
                             <PeopleCard
@@ -96,32 +101,35 @@ class Homepage extends Component {
                             
                         </div>
                     </HomepageCard>
-                    <HomepageCard style={{ backgroundColor: "#9D354B", order: 4}}  >
+                    <HomepageCard >
                         <div className={classes.CommunityTitle}>Communities</div>
                         <div className={classes.CommunityContainer}>
                             <CommunityCard
                                 link="/dating"
-                                heading="Dating"
                                 backgroundImage={DatingBackground}
-                            />
-
+                            >
+                                Dating
+                            </CommunityCard>
                             <CommunityCard
                                 link="/feed"
-                                heading="Feed"
                                 backgroundImage={FeedBackground}
-                            />
+                            >
+                                Feed
+                            </CommunityCard>
 
                             <CommunityCard
                                 link="/marketplace"
-                                heading="Marketplace"
                                 backgroundImage={MarketplaceBackground}
-                            />
+                            >
+                                Marketplace
+                            </CommunityCard>
 
                             <CommunityCard
                                 link="/notes"
-                                heading="Notes"
                                 backgroundImage={MarketplaceBackground}
-                            />
+                            >
+                                Notes
+                            </CommunityCard>
 
                         </div>
                     </HomepageCard>

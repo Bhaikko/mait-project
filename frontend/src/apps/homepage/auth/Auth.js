@@ -13,8 +13,8 @@ const Auth = props => {
     return (
         <div className={classes.Auth}>
             <HomepageCard style={{ 
-                backgroundColor: "#9D354B",
-                padding: 10
+                padding: 20,
+                paddingBottom: 0
             }}>
                 <LoginForm />
                 
@@ -25,8 +25,7 @@ const Auth = props => {
             
             <HomepageCard 
                 style={{ 
-                    backgroundColor: "#2D4571",
-                    padding: 10
+                    padding: 20
                 }} 
                 refprop={myRef}
             >

@@ -1,11 +1,11 @@
 .CommunityCard {
-    width: 15rem;
-    height: 16rem;
+    width: 10rem;
+    height: 11rem;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
     padding: 5px;
-    font-size: 30px;
+    font-size: 1rem;
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
@@ -15,7 +15,7 @@
     background-position: -200px 0px;
     transition: transform 0.5s;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin: 20px;
+    margin: 30px;
     overflow: hidden;
 }
 
@@ -26,7 +26,7 @@
 
 @media screen and (max-width: 768px) {
     .CommunityCard {
-        width: 15rem;
-        height: 16rem;
+        width: 13rem;
+        height: 14rem;
     }
 }

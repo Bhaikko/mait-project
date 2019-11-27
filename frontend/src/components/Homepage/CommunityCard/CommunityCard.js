@@ -10,7 +10,7 @@ const communityCard = props => {
             style={{ textDecoration: "none" }}
         >
             <div className={classes.CommunityCard} style={{backgroundImage: `url(${props.backgroundImage})`}}>
-                {props.heading}
+                {props.children}
             </div>
         </Link>
     );

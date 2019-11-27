@@ -4,12 +4,9 @@ import classes from './HomepageCard.css';
 
 const HomepageCard = props => {
     let styles = {...props.style};
-    if (window.innerWidth > 576) {
-        styles.order = 0;
-    }
 
     return (
-        <div className={classes.Card} style={styles} ref={props.refprop}>
+        <div className={[classes.Card, props.classes].join(" ")} style={styles} ref={props.refprop} {...props}>
             {props.children}
         </div>
     );
