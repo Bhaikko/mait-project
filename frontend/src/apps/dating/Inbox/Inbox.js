@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 
 import classes from './Inbox.css';
 import SearchIcon from './../../../assets/icons/Search.png';
-import MessageBox from './../../../containers/Dating/MessageBox/MessageBox';
+import MessageBox from './../../../containers/MessageBox/MessageBox';
 import ProfileImage from './../../../components/ProfilePhotos/ProfileImage/ProfileImage';
 import Contacts from './../../../components/Dating/Contacts/Contacts';
 import CenterContainer from '../../../components/UI/CenterContainer/CenterContainer';
+import ContentContainer from './../../../components/UI/ContentContainer/ContentContainer';
 import ProfileName from '../../../components/ProfileName/ProfileName';
 
 class Inbox extends Component {
@@ -70,7 +71,7 @@ class Inbox extends Component {
     render () {
         return (
             <CenterContainer>
-                <div className={classes.Inbox}>
+                <ContentContainer classes={classes.Inbox}>
                     <div className={classes.ContactsContainer}>
                         <div className={classes.ProfileHeader}>
                             <ProfileImage 
@@ -112,7 +113,8 @@ class Inbox extends Component {
                                         height: 300,
                                         width: 300
                                     }}
-                                    borderRadius="50%"    
+                                    borderRadius="50%" 
+                                    classname={classes.ProfileImage}   
                                 />
                                 <div className={classes.ProfileName}>Hi {JSON.parse(localStorage.getItem("userdata")).username}</div>
                                 <div className={classes.EmptyBoxMessage}>
@@ -126,7 +128,7 @@ class Inbox extends Component {
                             <MessageBox />  
                         )}
                     </div>
-                </div>
+                </ContentContainer>
             </CenterContainer>
         );
     }

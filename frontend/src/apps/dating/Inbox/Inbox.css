@@ -1,12 +1,8 @@
 .Inbox {
-    height: 87vh;
-    width: 70vw;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    background-color: #F5F5F5;
-    display: flex;
+    height: 90vh;
+    width: 90vw;
     flex-direction: row;
-    overflow-x: hidden;
+    margin-bottom: 50px;
 }
 
 .ContactsContainer {
@@ -71,6 +67,7 @@
 .EmptyBoxMessage {
     font-size: 20px;
     margin-top: 20px;
+    text-align: center;
 }
 
 .ExtraEmptyBoxMessage {
@@ -79,16 +76,12 @@
 
 @media screen and (max-width: 768px) {
 
-    .Container {
-        overflow: hidden;
-    }
-
     .Inbox {
         flex-wrap: wrap;
         width: 100%;
         height: auto;
         margin-top: -10px;
-        height: 92vh;
+        height: 90vh;
     }
 
     .ContactsContainer {
@@ -97,28 +90,44 @@
         margin-top: 5px;
     }
 
-    .DropDownButton {
-        display: inline-block;
-        font-size: 50px;
-    }
-
     .ProfileHeader {
         display: none;
     }
 
     .MessageBoxContainer {
         width: 100vw;
-        height: 83vh;
+        padding-top: 0;
+        height: 70vh;
     }
 
     .SearchContainer {
         width: 85%;
+        height: 2%;
     }
 
-    .ExtraEmptyBoxMessage {
+    .ExtraEmptyBoxMessage { 
         display: block;
         text-align: center;
     }
+
+    .Inbox {
+        padding: 0;
+        margin: 0;
+    }
+
+    .ProfileName {
+        order: 1;
+        margin-bottom: 60px;
+    }
+
+    .ProfileImage {
+        order: 2;
+    }
+
+    .EmptyBoxMessage {
+        order: 3;
+    }
+
 
 
 }

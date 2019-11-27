@@ -19,14 +19,15 @@
     
     .Expand {
         border-bottom: 1px solid #ccc;
-        height: calc(100vh - 5.2cm);
+        height: 68vh
     }
 
     .DropDownButton {
         display: inline;
         position: absolute;
-        top: 5px;
-        right: 0;
+        top: 10px;
+        right: 10px;
         font-size: 50px;
+        z-index: 2;
     }
 }

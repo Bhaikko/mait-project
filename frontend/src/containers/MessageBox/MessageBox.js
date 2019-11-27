@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 import classes from './MessageBox.css';
 
-import ProfileImage from './../../../components/ProfilePhotos/ProfileImage/ProfileImage';
-import ProfileName from './../../../components/ProfileName/ProfileName';
-import SendIcon from './../../../assets/icons/Send.png'
+import ProfileImage from './../../components/ProfilePhotos/ProfileImage/ProfileImage';
+import ProfileName from '../../components/ProfileName/ProfileName';
+import SendIcon from './../../assets/icons/Send.png'
 
 class MessageBox extends Component {
     constructor (props) {
@@ -13,7 +13,7 @@ class MessageBox extends Component {
             messages: [
                 {
                     id: 1,
-                    senderId: 1,
+                    senderId: parseInt(JSON.parse(localStorage.getItem("userdata")).userId),
                     recieverId: 2,
                     time: new Date(),
                     message: "Hello Worldaaaaaaaaaaaaaaaaaaaaaaaaaa 1 s",
@@ -21,7 +21,7 @@ class MessageBox extends Component {
                 },
                 {
                     id: 2,
-                    senderId: 1,
+                    senderId: parseInt(JSON.parse(localStorage.getItem("userdata")).userId),
                     recieverId: 2,
                     time: new Date(),
                     message: "Hello World 2 ",
@@ -30,7 +30,7 @@ class MessageBox extends Component {
                 {
                     id: 3,
                     senderId: 2,
-                    recieverId: 1,
+                    recieverId: parseInt(JSON.parse(localStorage.getItem("userdata")).userId),
                     time: new Date(),
                     message: "Hello World 3ssssssssssssssssssssssssssss ssssssssssssss ",
                     seen: false 
@@ -38,14 +38,14 @@ class MessageBox extends Component {
                 {
                     id: 4,
                     senderId: 2,
-                    recieverId: 1,
+                    recieverId: parseInt(JSON.parse(localStorage.getItem("userdata")).userId),
                     time: new Date(),
                     message: "Hello 4 ",
                     seen: false 
                 },
                 {
                     id: 5,
-                    senderId: 1,
+                    senderId: parseInt(JSON.parse(localStorage.getItem("userdata")).userId),
                     recieverId: 2,
                     time: new Date(),
                     message: "Hello World Hello World 5 ",
