@@ -3,6 +3,7 @@
     height:100%;
     display: flex;
     flex-direction: column;
+    margin-right: 4%;
 }
 
 
@@ -19,7 +20,8 @@
 .ProfileContainer {
     width: 35%;
     margin-left: 5%;
-    padding-bottom: 5%;
+    padding-bottom: 3%;
+
 }
 
 .ProfileImage {
@@ -41,37 +43,34 @@
 
 .PhotosContainer {
     width: 90%;
-    margin-left: 10px; 
+
+    margin-left: 10px;
     margin-top: 10px;
     flex-direction: row;
     flex-wrap: wrap;
-    padding-right: 5%;
-    padding-bottom: 10%;
+    /* padding-right: 5%; */
 }
 
 @media (max-width:768px){
-   .ProfileContainer {
-       width: 90%;
-       margin-top: 10px;
+   .ProfileContainer{
+       width : 100%;
+       margin:0;
+   }
+   .Rcontainer{
+       width : 100%;
+       margin:0;
+   }
+   .BioContainer{
+       width : 100%;
+       margin:0;
+   }
+   .InterestContainer{
+       width : 100%;
+       margin:0;
+   }
+   .PhotosContainer{
+       width : 100%;
+       margin:0;
    }
 
-   .Rcontainer {
-       width: 90%;
-       margin-top: 10px;
-   }
-
-   .InterestContainer {
-        width: 100%;
-        margin-left: 5.5%;
-   }
-
-   .BioContainer {
-       width: 100%;
-       margin-left: 5.5%;
-   }
-
-   .PhotosContainer {
-       width: 100%;
-       margin-left: 5.5%;
-   }
 }
