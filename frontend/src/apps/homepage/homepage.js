@@ -15,9 +15,20 @@ import MarketplaceBackground from './../../assets/images/marketplace.jpeg';
 import PeopleCard from './../../components/Homepage/PeopleCard/PeopleCard';
 import CommunityCard from './../../components/Homepage/CommunityCard/CommunityCard';
 
+import Alertify from 'alertifyjs';
+
 import * as authActions from './../../store/actions/index';
 
+
+
+
 class Homepage extends Component {
+
+    componentDidMount () {
+        console.log(Alertify);
+        Alertify.confirm("ASDASDASD");
+    }
+
     render () {
         return (
             <div className={classes.Homepage}>
@@ -32,17 +43,17 @@ class Homepage extends Component {
                     <HomepageCard >
                         {this.props.token ? (
                             <Fragment>
-                                <p className={classes.LoggedIn}>
+                                <div className={classes.LoggedIn}>
                                     <span style={{ fontSize: "2em" }}>Hi {this.props.username}</span>, <br /> 
-                                    <div style={{
+                                    <p style={{
                                         fontSize: "0.7em"
                                     }}
                                     >
                                         Thank You Joining Us.   <br />
                                         Get Started by choosing one of the Communities Below.   <br />
                                         Have Fun.
-                                    </div>
-                                </p>
+                                    </p>
+                                </div>
                                 <Button
                                     style={{
                                         position: "absolute",

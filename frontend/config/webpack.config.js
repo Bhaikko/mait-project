@@ -27,6 +27,11 @@ const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpack
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const eslint = require('eslint');
 
+const ALERTIFY_APTH = path.resolve(
+  __dirname,
+  "./../node_modules/alertifyjs/build/css/alertify.min.css"
+);
+
 const postcssNormalize = require('postcss-normalize');
 
 const appPackageJson = require(paths.appPackageJson);
@@ -438,6 +443,21 @@ module.exports = function(webpackEnv) {
             // to a file, but in development "style" loader enables hot editing
             // of CSS.
             // By default we support CSS Modules with the extension .module.css
+            {
+              test: /\.(scss|css)$/,
+              include: [ALERTIFY_APTH],
+              use: [
+                  {
+                      // loader: "style-loader"
+                      loader: require.resolve('style-loader')
+                  },
+                  {
+                      // loader: "css-loader",
+                      loader: require.resolve('css-loader')
+
+                  },
+              ]
+            },
             {
               test: cssRegex,
               exclude: cssModuleRegex,
