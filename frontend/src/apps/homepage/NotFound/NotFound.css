@@ -1,0 +1,44 @@
+.CenterContainer {
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+}
+
+.ErrorMessage {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+.ErrorCode {
+    font-size: 3rem;
+    font-weight: bolder;
+}
+
+.Links {
+    display: flex;
+    flex-direction: row;
+}
+
+.Link {
+    margin: 10px;
+    text-decoration: none;
+    color: #ccc;
+}
+
+
+
+.Link:visited {
+    color: #ccc;
+}
+
+@media screen and (max-width: 768px) {
+    .CenterContainer {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        justify-content: center;
+    }
+}

@@ -10,8 +10,7 @@ import App from './App';
 
 import authReducer from './store/reducers/auth';
 
-import yo from 'alertifyjs/build/css/alertify.min.css';
-console.log(yo);
+import 'alertifyjs/build/css/alertify.min.css';
 
 const rootReducer = combineReducers({
     auth: authReducer

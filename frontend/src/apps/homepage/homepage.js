@@ -26,7 +26,7 @@ class Homepage extends Component {
 
     componentDidMount () {
         console.log(Alertify);
-        Alertify.confirm("ASDASDASD");
+        // Alertify.confirm("ASDASDASD");
     }
 
     render () {
