@@ -6,7 +6,7 @@ const CenterContainer = props => {
     return (
         <div 
             {...props}
-            className={classes.CenterContainer}
+            className={[classes.CenterContainer, props.classes].join(" ")}
             style={props.style}
         >
             {props.children}

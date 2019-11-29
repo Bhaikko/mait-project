@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Dating from './Dating';
 import Inbox from './Inbox/Inbox';
+import Explore from './Explore/Explore';
 import Layout from './../../containers/Layout/Layout';
 import NavigationItem from './../../components/Navigation/NavigationItems/NavigationItem/NavigationItem';
 
@@ -12,7 +13,7 @@ class DatingRoute extends Component {
     render () {
         let navigationItems = (
             <Fragment>
-                <NavigationItem link="/dating">Explore</NavigationItem>
+                <NavigationItem link="/dating/explore">Explore</NavigationItem>
                 <NavigationItem link="/dating/inbox">Inbox</NavigationItem>
                 <NavigationItem link="/me">Profile</NavigationItem>
                 <NavigationItem link="/logout">Logout</NavigationItem>
@@ -21,6 +22,7 @@ class DatingRoute extends Component {
         
         let routes = (
             <Switch>
+                <Route path="/dating/explore" component={Explore} />
                 <Route path="/dating/inbox" component={Inbox} />
                 <Route path="/dating" component={Dating} />
             </Switch>

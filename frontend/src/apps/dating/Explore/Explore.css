@@ -1,0 +1,261 @@
+.ProfileSection {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content: space-around;
+    width: 90%;
+    margin-top: 10px;
+    position: relative;
+}
+
+.Name {
+    font-weight: bolder;
+}
+
+.Age {
+    margin-left: 10px;
+}
+
+
+.Age:after {
+    content: "\2022";
+    position: absolute;
+    font-size: 19px;
+    float: right;
+    text-align: right;
+}
+
+.CollegeName {
+    margin-left: 15px;
+}
+
+
+.CollegeName:after {
+    content: "\2022";
+    position: absolute;
+    font-size: 19px;
+    float: right;
+    text-align: right;
+}
+
+.Matchbox {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25px;
+}
+
+.ViewProfile {
+    text-decoration: none;
+    color: blue;
+    margin-right: 20%;
+    margin-left: 5px;
+}
+
+.ViewProfile:visited {
+    color: blue;
+}
+
+.DesktopPhotos {
+    display: flex;
+    width: 100%;
+}
+
+.MobilePhoto {
+    display: none;
+}
+
+
+.MainFooter {
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
+
+.AboutSection {
+    width: 90%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+}
+
+.SelfSummaryBox {
+    width: 70%;
+}
+
+.SelfSummaryBoxHeader {
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: 10px;
+}
+
+.SelfSummaryBoxContent {
+    letter-spacing: 2px;
+    margin: 10px;
+    line-height: 30px;
+}
+
+.RightSection {
+    width: 50%;
+}
+
+.AboutBox {
+    padding: 10px;
+    letter-spacing: 2px;
+    line-height: 30px;
+    width: 100%;
+}
+
+.AboutKey {
+    font-weight: bold; 
+}
+
+.TagsContainer {
+    width: 100%;
+    padding: 10px;
+}
+
+.TagHeading {
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.Button {
+    width: 13%;
+    border-radius: 50px;
+    font-size: 25px;
+}
+
+.InfoContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+.AgeContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+@media screen and (max-width: 768px) {
+    .ProfileSection {
+        order: 2;
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        box-sizing: border-box;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .ProfileSection::after {
+        content: "";
+        border: 0.5px solid grey;
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .Name {
+        font-weight: bold;
+        font-size: 30px;
+    }
+
+    .Age {
+        font-weight: bold;
+        margin-left: 0;
+        font-size: 20px;
+    }
+
+
+    .CollegeName {
+        margin-left: 10;
+    }
+    
+    .CollegeName:after {
+        content: "";
+    }
+
+    .Matchbox {
+        order: 4;
+    }
+
+    .MainFooter {
+        display: none;
+    }
+
+    .ViewProfile {
+        width: 100%;
+        display: inline-flex;
+        justify-content: center;
+        margin-right: 0;
+        margin-top: 10px;
+    }
+
+    .AboutSection {
+        display: block;
+        margin-top: 10px;
+        order: 3;
+        width: 100%;
+        padding-left: 5%;
+    }
+    
+
+    .Button {
+        font-size: 25px;
+        border-radius: 50%;
+        width: 70px;
+        height: 70px;
+        position: fixed;
+        bottom: 15px;
+        padding: 0;
+        z-index: 2;
+    }
+
+    .Button>span {
+        display: none;
+    }
+
+    .DesktopPhotos {
+        display: none;
+    }
+
+    .MobilePhoto {
+        display: inline-block;
+        text-align: center;
+        order: 1;
+    }
+
+    .InfoContainer {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        padding-left: 5%;
+    }
+
+    .AgeContainer {
+        flex-direction: row;
+    }
+
+    .Matchbox {
+        position: absolute;
+        top: 0;
+        right: 10%;
+    }
+
+
+    .SelfSummaryBox {
+        width: 100%;
+    }
+
+    .RightSection {
+        width: 95%;
+    }
+
+
+}
