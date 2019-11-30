@@ -42,9 +42,10 @@ class ExplorePage extends Component {
                         <Link 
                             to="/me"
                             style={{
-                                // width: "100%",
+                                width: "30%",
                                 textAlign: "center",
-                                display: "inline-block"
+                                display: "inline-block",
+                                textDecoration: "none"
                             }}    
                         >
                             <Button 
@@ -59,7 +60,15 @@ class ExplorePage extends Component {
 
                         </Link>
 
-                        <Link to="/dating/explore">
+                        <Link 
+                            to="/dating/explore"
+                            style={{
+                                width: "30%",
+                                textAlign: "center",
+                                display: "inline-block",
+                                textDecoration: "none"
+                            }}  
+                        >
                             <Button 
                                 style={{
                                     backgroundColor: "#2D4571"

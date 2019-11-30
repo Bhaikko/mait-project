@@ -20,8 +20,8 @@
 .ProfileContainer {
     width: 35%;
     margin-left: 5%;
-    padding-bottom: 3%;
-
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .ProfileImage {
@@ -48,7 +48,6 @@
     margin-top: 10px;
     flex-direction: row;
     flex-wrap: wrap;
-    /* padding-right: 5%; */
 }
 
 @media (max-width:768px){

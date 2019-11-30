@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import Backdrop from './../Backdrop/Backdrop';
 import classes from './Modal.css';
 
+import CrossIcon from './../CrossIcon/CrossIcon';
+
 
 class Modal extends Component {
     shouldComponentUpdate (nextProps, nextState) {
@@ -17,11 +19,20 @@ class Modal extends Component {
                     style={{
                         transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
                         opacity: this.props.show ? '1' : '0'
-                    }} >
+                    }} 
+                >
+                    <CrossIcon 
+                        style={{
+                            top: "5%",
+                            right: "5%"
+                        }}
+                        onClick={this.props.modalClosed}
+                    />
+
                     {this.props.children}
+                    
                 </div>
             </Fragment>
-            
         );
     }
 }

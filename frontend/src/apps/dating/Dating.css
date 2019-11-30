@@ -34,7 +34,7 @@
 .Button {
     border-radius: 35px 35px 35px 35px;
     padding: 10%;
-    width: 150%;
+    width: 100%;
     height: 100%;
 }
 
@@ -47,4 +47,31 @@
 
 .LandingpageImage {
     width: 150%;
+}
+
+@media screen and (max-width: 768px) {
+    .CenterContainer {
+        display: flex !important;
+        height: auto;
+        align-items: center;
+        flex-direction: column;
+
+    }
+    .LeftContainer {
+        margin-top: 5%;
+        order: 2;
+        width: 100vw;
+        align-items: center;
+        padding: 5%;
+    }
+
+    .RightContainer {
+        order: 1;
+        width: 100vw;
+    }
+
+    .Button {
+        padding: 5%;
+    }
+
 }

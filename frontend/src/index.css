@@ -16,3 +16,10 @@ code {
 * {
   box-sizing: border-box;
 }
+a {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 768) {
+}
+

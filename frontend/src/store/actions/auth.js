@@ -1,7 +1,6 @@
 import * as actionTypes from './actionTypes';
 import axios from './../../axios';
-
-
+import Alertify from './../../utilities/Aleretify/Alertify';
 
 export const login = (formdata) => {
     return dispatch => {
@@ -27,13 +26,15 @@ export const login = (formdata) => {
                     userId: response.data.userId,
                     username: response.data.username
                 });
+
+                Alertify.success("Login Successful.");
             })
             .catch(err => {
-                console.log(err.response.data.message);
                 dispatch({
                     type: actionTypes.AUTH_FAILED,
                     error: err.response.data.message
                 });
+                Alertify.error(err.response.data.message);
             });
 
     }
@@ -66,6 +67,7 @@ export const signup = (formdata) => {
                             userId: response.data.userId,
                             username: response.data.username
                         });
+                        Alertify.success("Login Successful.");
                     });
             })
             .catch(err => {
@@ -74,6 +76,7 @@ export const signup = (formdata) => {
                     type: actionTypes.SIGNUP_FAILED,
                     error: err.response.data.message
                 });
+                Alertify.error(err.response.data.message);
             });
 
     }

@@ -1,6 +1,7 @@
 .ProfileImageContainer {
     position: relative;
     display: inline-block;
+    margin-right: 10px;
 }
 
 .ProfilePhoto {

@@ -62,11 +62,30 @@ const input = (props) => {
                     <Button inline="true" style={{fontSize: "10px"}} onClick={fileHandler}>{props.elementConfig.uploadinfo}</Button>
                 </div>
             );
-                
+            break;
+
+        case "select":
+            inputElement = (
+                <select 
+                    className={inputClasses.join(" ")}
+                    {...props.elementConfig}
+                    value={props.value}
+                    onChange={props.changed}
+                >
+                    {props.elementConfig.options.map((option, index) => (
+                        <option 
+                            key={index}
+                            value={option}
+                        >
+                            {option}
+                        </option>
+                    ))}
+                </select>
+            
+            );
 
             break;
 
-            
         default: 
             inputElement = <input
                 className={inputClasses.join(" ")}

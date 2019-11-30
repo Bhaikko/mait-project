@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
+
 import Input from './../../components/UI/Input/Input';
 import Button from './../../components/UI/Button/Button';
 import Spinner from './../../components/UI/Spinner/Spinner';
@@ -17,6 +18,10 @@ class Form extends Component {
             form: this.props.formConfig,
             formIsValid: false,
         }
+    }
+
+    componentDidUpdate () {
+        
     }
 
     checkValidity = (value, rules) => {
@@ -70,9 +75,13 @@ class Form extends Component {
                 break;
         }
 
+        
+
         this.setState({
-            form: this.props.formConfig
+            form: this.props.formConfig,
+            formIsValid: false
         });
+
     }
 
     inputChangeHandler = (event, inputIdentifier) => {
@@ -111,6 +120,8 @@ class Form extends Component {
     }
 
     render () {
+
+        
         const formElementsArray = [];
 
         // eslint-disable-next-line
@@ -134,9 +145,10 @@ class Form extends Component {
                         changed={(event) => this.inputChangeHandler(event, formElement.id)} 
                         invalid={!formElement.config.valid}
                         shouldValidate={formElement.config.validation}
-                        touched={formElement.config.touched} />
+                        touched={formElement.config.touched} 
+                    />
                 ))}
-                {this.props.error ? <div>{this.props.error}</div> : null}
+                
                 <Button 
                     disabled={!this.state.formIsValid} 
                     onClick={this.formSubmitHandler} 
@@ -151,27 +163,24 @@ class Form extends Component {
             </form>
         );
         
-        let classesArray = [classes.Form, this.props.className].join(" ");
-
         if (this.props.loading) {
             return (
                 <Spinner />
             );
         }
 
-        if (this.props.token) {
+        if (this.props.token && (this.props.url === "/auth/login" || this.props.url === "this.props.signin")) {
             return (
                 <Redirect to="/" />
             )
         }
 
-        let FormNameClasses =[classes.FormName , this.props.FormNameClass].join(" ");
+        let FormNameClasses = [classes.FormName , this.props.FormNameClass].join(" ");
 
         return (
-            <div className={classesArray}>
+            <div className={[classes.Form, this.props.classes].join(" ")}>
                 <div className={FormNameClasses}>{this.props.formName}</div>
                 {form}
-                
             </div>
         );
     }

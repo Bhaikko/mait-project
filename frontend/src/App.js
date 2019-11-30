@@ -38,7 +38,7 @@ class App extends Component {
         <Route path="/profile/:username" component={ProfilePage} />
         <Route path="/me" component={MePage} />
         <Route path="/notfound" component={NotFoundPage} />
-        <Route path="/" exact component={HomepageApp} />
+        <Route path="/" component={HomepageApp} />
         <Redirect to="/notfound" />
       </Switch>
     );
@@ -46,9 +46,8 @@ class App extends Component {
     if (!localStorage.getItem("userdata")) {
       routes = (
         <Switch>
-          <Route path="/notfound" component={NotFoundPage} />
           <Route path="/auth" component={AuthPage} />
-          <Route path="/" exact component={HomepageApp} />
+          <Route path="/" component={HomepageApp} />
           <Redirect to="/auth" />
         </Switch>
       );

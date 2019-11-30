@@ -9,7 +9,7 @@ const ContentTitle = props => {
         <div className={classes.ContentTitleContainer}>
             <span className={classes.ContentTitle}>{props.children}</span>
             {props.editable ? (
-                <EditIcon />
+                <EditIcon form={props.form}/>
             ) : (
                 null
             )}

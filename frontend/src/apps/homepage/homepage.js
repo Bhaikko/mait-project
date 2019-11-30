@@ -44,7 +44,7 @@ class Homepage extends Component {
                         {this.props.token ? (
                             <Fragment>
                                 <div className={classes.LoggedIn}>
-                                    <span style={{ fontSize: "2em" }}>Hi {this.props.username}</span>, <br /> 
+                                    <span className={classes.GreetingMessage}>Hi {this.props.username}</span>, <br /> 
                                     <p style={{
                                         fontSize: "0.7em"
                                     }}
@@ -55,11 +55,7 @@ class Homepage extends Component {
                                     </p>
                                 </div>
                                 <Button
-                                    style={{
-                                        position: "absolute",
-                                        right: 20,
-                                        top: 20
-                                    }}
+                                    classes={classes.LogoutButton}
                                     onClick={this.props.onLogout}
                                 >
                                     Log-out

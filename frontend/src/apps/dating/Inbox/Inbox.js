@@ -71,7 +71,7 @@ class Inbox extends Component {
     render () {
         return (
             <CenterContainer>
-                <ContentContainer classes={classes.Inbox}>
+                <ContentContainer classes={classes.Inbox} style={{flexDirection: "row"}}>
                     <div className={classes.ContactsContainer}>
                         <div className={classes.ProfileHeader}>
                             <ProfileImage 

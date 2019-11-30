@@ -1,4 +1,4 @@
-Button {
+.Button {
     display: inline-block;
     padding: 0.35em 1.2em;
     border: 0.1em solid #FFFFFF;
@@ -13,20 +13,20 @@ Button {
     transition: all 0.2s;
     background-color: transparent;
 }
-Button:hover{
+.Button:hover{
     color: #000000;
     background-color: #FFFFFF;
     cursor: pointer;
 }
 
-Button:disabled {
+.Button:disabled {
     cursor: not-allowed;
     color: #ccc;
     background-color: #FFFFFF;
 }
 
 @media all and (max-width: 768px){
-    Button {
+    .Button {
         display: block;
         margin: 0.4em auto;
     }

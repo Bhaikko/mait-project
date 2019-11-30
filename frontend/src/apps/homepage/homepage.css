@@ -25,6 +25,10 @@
     font-size: 40px;
 }
 
+.GreetingMessage {
+    font-size: 2em;
+}
+
 .LoginContainer {
     display: inline-flex;
     justify-content: space-around;
@@ -38,6 +42,12 @@
     display: inline-flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.LogoutButton {
+    position: absolute;
+    right: 20px;
+    top: 20px;
 }
 
 
@@ -115,5 +125,14 @@
 
     .Logo {
         font-size: 20px;
+    }
+
+    .GreetingMessage {
+        font-size: 1em;
+        font-weight: bold;
+    }
+
+    .LogoutButton {
+        top: 10px;
     }
 }

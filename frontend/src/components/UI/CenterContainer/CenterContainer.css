@@ -5,7 +5,7 @@
     margin: auto;   
 }
 
-@media (max-width:768px){
+@media screen and (max-width:768px){
    .CenterContainer {
        display: inline-block;
        width: 100vw;

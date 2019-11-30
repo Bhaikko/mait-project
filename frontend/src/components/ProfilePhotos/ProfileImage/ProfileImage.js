@@ -22,14 +22,14 @@ const ProfileImage = props => {
                 <React.Fragment>
                     <CrossIcon
                         style={{
-                            right: -45,
+                            top: -45,
                             width: 40
                         }}
                     />
                     <HeartIcon
                         style={{
-                            top: 40,
-                            right: -45,
+                            top: -45,
+                            right: 45,
                             width: 40
                         }}
                         fill={props.main.toString()}

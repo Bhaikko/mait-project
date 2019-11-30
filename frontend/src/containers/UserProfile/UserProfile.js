@@ -18,6 +18,8 @@ import UsernameIcon from './../../assets/icons/Username.png';
 import MailIcon from './../../assets/icons/mail.png';
 import InterestIcon from './../../assets/icons/Interest.png';
 
+import EditProfileForm from './../../apps/dating/EditProfile/EditProfileForm';
+
 class UserProfile extends Component {
     constructor (props) {
         super(props);
@@ -68,7 +70,7 @@ class UserProfile extends Component {
                     paddingBottom: 30
                 }}>
                     <ContentContainer classes={classes.ProfileContainer}>
-                        <ContentTitle editable={this.props.editable}>Profile</ContentTitle>
+                        <ContentTitle editable={this.props.editable} form={<EditProfileForm />}>Profile</ContentTitle>
                         <ProfileImage 
                             src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" 
                             alt="..." 

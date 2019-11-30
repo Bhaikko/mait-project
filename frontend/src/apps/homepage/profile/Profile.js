@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from 'react';
 
-// import classes from './Profile.css';
-
 import UserProfile from './../../../containers/UserProfile/UserProfile';
 import NavigationItem from './../../../components/Navigation/NavigationItems/NavigationItem/NavigationItem';
 import Layout from './../../../containers/Layout/Layout';

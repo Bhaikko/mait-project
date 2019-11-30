@@ -16,7 +16,7 @@ const ProfilePhotos = props => {
                 style={{
                     margin: "10px",
                     height : "100%", 
-                    width : "25%"
+                    width : "30%"
                 }}
                 editable={props.editable}
                 main={photo.main}
