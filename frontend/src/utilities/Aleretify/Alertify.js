@@ -10,6 +10,10 @@ class Alertify {
         alertify.success(message);
     }
 
+    static message(message) {
+        alertify.message(message);
+    }
+
 }
 
 export default Alertify;

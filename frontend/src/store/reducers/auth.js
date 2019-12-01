@@ -44,7 +44,6 @@ const reducer = (state = initialState, action) => {
             }
 
         case actionTypes.LOGOUT:
-            window.location = "/";
             return initialState;
 
         default: 

@@ -9,7 +9,9 @@ const navigationItem = (props) => (
             activeClassName={classes.Active}
             exact
             to={props.link} 
-        >{props.children}</NavLink>
+        >
+            {props.children}
+        </NavLink>
     </li>
 );
 

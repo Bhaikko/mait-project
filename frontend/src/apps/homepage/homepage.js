@@ -15,7 +15,6 @@ import MarketplaceBackground from './../../assets/images/marketplace.jpeg';
 import PeopleCard from './../../components/Homepage/PeopleCard/PeopleCard';
 import CommunityCard from './../../components/Homepage/CommunityCard/CommunityCard';
 
-import Alertify from 'alertifyjs';
 
 import * as authActions from './../../store/actions/index';
 
@@ -24,10 +23,6 @@ import * as authActions from './../../store/actions/index';
 
 class Homepage extends Component {
 
-    componentDidMount () {
-        console.log(Alertify);
-        // Alertify.confirm("ASDASDASD");
-    }
 
     render () {
         return (

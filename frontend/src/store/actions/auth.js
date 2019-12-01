@@ -93,6 +93,10 @@ export const autoLogin = (token, userId, username) => {
 
 export const logout = () => {
     localStorage.clear("userdata");
+    
+    Alertify.success("Logged out succesfully");
+    Alertify.success("Bye, Take Care :)");
+
     return {
         type: actionTypes.LOGOUT
     }
