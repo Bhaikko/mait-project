@@ -18,9 +18,24 @@
     
 }
 
+.Button {
+    background-color: black;
+    padding: 10px;
+    border-radius: 35px 35px 35px 35px;
+    width: 100%;
+    font-size: 25px;
+}
+
+.Button:disabled {
+    background-color: grey;
+}
+
 @media (min-width: 768px) {
     .Form {
         width: 60%;
+    }
 
+    .FormName {
+        font-size: 30px;
     }
 }

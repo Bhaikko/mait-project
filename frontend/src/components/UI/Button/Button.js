@@ -9,7 +9,10 @@ const Button = props => {
             className={[classes.Button, props.classes].join(" ")}
             style={{...props.style}}
             onClick={props.onClick}
-        >{props.children}</button>
+
+        >
+            {props.children}
+        </button>
     );
 }
 

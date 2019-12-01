@@ -14,7 +14,6 @@ class EditIcon extends Component {
     }
 
     clickHandler = () => {
-        console.log("asd")
         this.setState({
             showForm: true
         });

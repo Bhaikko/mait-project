@@ -13,6 +13,10 @@
     background-color: lightgray;
 }
 
+.PhotoUpload {
+    display: none;
+}
+
 .AddNewIcon {
     width: 50px;
     height: 50px;

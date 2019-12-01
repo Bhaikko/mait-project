@@ -150,13 +150,9 @@ class Form extends Component {
                 ))}
                 
                 <Button 
+                    classes={classes.Button}
                     disabled={!this.state.formIsValid} 
                     onClick={this.formSubmitHandler} 
-                    style={{
-                        marginTop: 50,
-                        width: 150,
-                        height: 25
-                    }}
                 >
                     {this.props.buttonName}
                 </Button>
@@ -175,11 +171,9 @@ class Form extends Component {
             )
         }
 
-        let FormNameClasses = [classes.FormName , this.props.FormNameClass].join(" ");
-
         return (
             <div className={[classes.Form, this.props.classes].join(" ")}>
-                <div className={FormNameClasses}>{this.props.formName}</div>
+                <div className={[classes.FormName , this.props.headerclass].join(" ")}>{this.props.formName}</div>
                 {form}
             </div>
         );

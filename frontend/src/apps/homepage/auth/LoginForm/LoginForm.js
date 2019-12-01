@@ -46,7 +46,7 @@ class LoginForm extends Component {
         return (
             <Fragment>
                 <div className={classes.Header}>
-                    Hello Friend.
+                    Hello Friend
                 </div>
                 <Form 
                     className={classes.LoginForm}

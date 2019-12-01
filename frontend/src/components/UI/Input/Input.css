@@ -5,10 +5,10 @@
 }
 
 .Label {
-    /* font-weight: bold; */
-    display: inline-block;
+    display: block;
     margin-bottom: 8px;
-    text-align: left;
+    text-align: left !important;
+    text-decoration: underline;
 }
 
 .InputElement {
