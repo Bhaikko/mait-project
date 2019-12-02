@@ -1,0 +1,22 @@
+
+.SearchContainer {
+    margin-top: 10px;
+    margin-left: 10px;
+    background-color: white;
+    padding: 5px;
+    width: 95%;
+    height: 30px;
+    border-radius: 30px 30px 30px 30px;
+    display: flex;
+    align-items: center;
+}
+
+.SearchIcon {
+    width: 10%;
+}
+
+.SearchBar {
+    margin-left: 10px;
+    outline: none;
+    border: none;
+}

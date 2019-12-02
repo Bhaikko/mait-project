@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
 import classes from './Inbox.css';
-import SearchIcon from './../../../assets/icons/Search.png';
 import MessageBox from './../../../containers/MessageBox/MessageBox';
 import ProfileImage from './../../../components/ProfilePhotos/ProfileImage/ProfileImage';
 import Contacts from './../../../components/Dating/Contacts/Contacts';
 import CenterContainer from '../../../components/UI/CenterContainer/CenterContainer';
 import ContentContainer from './../../../components/UI/ContentContainer/ContentContainer';
 import ProfileName from '../../../components/ProfileName/ProfileName';
+import FilterContainer from './../../../containers/FilterContainer/FilterContainer';
 
 class Inbox extends Component {
     constructor (props) {
@@ -18,46 +18,46 @@ class Inbox extends Component {
             contacts: [
                 {
                     id: 1,
-                    name: "Firstname Lastname",
+                    name: "Name 1",
                     profileImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX"
                 },
                 {
                     id: 2,
-                    name: "Firstname Lastname",
+                    name: "Name 2",
                     profileImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX"
                 },
                 {
                     id: 3,
-                    name: "Firstname Lastname",
+                    name: "Name 3",
                     profileImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX"
                 },
                 {
                     id: 4,
-                    name: "Firstname Lastname",
+                    name: "Name 4",
                     profileImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX"
                 },
                 {
                     id: 5,
-                    name: "Firstname Lastname",
+                    name: "Name 5",
                     profileImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX"
                 },
                 {
                     id: 6,
-                    name: "Firstname Lastname",
+                    name: "Name 6",
                     profileImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX"
                 },
                 {
                     id: 7,
-                    name: "Firstname Lastname",
+                    name: "Name 7",
                     profileImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX"
                 },
                 {
                     id: 8,
-                    name: "Firstname Lastname",
+                    name: "Name 8",
                     profileImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX"
-                },
-
-            ]
+                }
+            ],
+            filteredContacts: null
         }
     }
 
@@ -67,6 +67,11 @@ class Inbox extends Component {
         });
     }
 
+    setFilterContacts = contacts => {
+        this.setState({
+            filteredContacts: contacts 
+        });
+    }
 
     render () {
         return (
@@ -91,13 +96,15 @@ class Inbox extends Component {
                                 {JSON.parse(localStorage.getItem("userdata")).username}
                             </ProfileName>
                         </div>
-                        <div className={classes.SearchContainer}>
-                            <img src={SearchIcon} alt="..." className={classes.SearchIcon} />
-                            <input type="text" placeholder="Search or start new chat" className={classes.SearchBar} />
-                        </div>
+
+                        <FilterContainer
+                            content={this.state.contacts}
+                            attribute={'name'}
+                            filterAssigner={this.setFilterContacts}
+                        />
 
                         <Contacts 
-                            contacts={this.state.contacts} 
+                            contacts={this.state.filteredContacts === null ? this.state.contacts : this.state.filteredContacts} 
                             contactClickHandler={this.contactClickHandler}
                             currentContact={this.state.currentContact}
                         />

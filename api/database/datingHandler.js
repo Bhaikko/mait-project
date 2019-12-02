@@ -95,6 +95,10 @@ const addTag = tag => {
     });
 }
 
+const getTags = () => {
+    return Tags.findAll();
+}
+
 // const getContacts = userId => {
 //     return Matches.findAll({
 //         where: {
@@ -114,5 +118,6 @@ module.exports = {
     getUserTags,
     addMatch,
     getMatch,
-    addTag
+    addTag,
+    getTags
 }
