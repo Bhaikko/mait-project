@@ -9,10 +9,11 @@ class LoginForm extends Component {
         this.state = {
             formConfig: {
                 email: {
+                    // label: "Email: ",
                     elementType: "input",
                     elementConfig: {
                         type: "email",
-                        placeholder: "Email",
+                        placeholder: "Enter Your Email",
                     },
                     value: "",
                     validation: {
@@ -23,10 +24,11 @@ class LoginForm extends Component {
                     touched: false
                 },
                 password: {
+                    // label: "Password: ",
                     elementType: "input",
                     elementConfig: {
                         type: "password",
-                        placeholder: "Password"
+                        placeholder: "Enter Your Password"
                     },
                     value: "",
                     validation: {

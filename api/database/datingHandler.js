@@ -1,4 +1,4 @@
-const { DatingProfiles, ProfilePhotos, UserTags, Matches } = require('./database');
+const { DatingProfiles, ProfilePhotos, UserTags, Matches, Tags } = require('./database');
 
 const updateDatingProfile = (userId, about, relationshipStatus, intrestedIn, age, collegeName) => {
     return DatingProfiles.update(
@@ -89,6 +89,12 @@ const getMatch = (userId1, userId2) => {
     });
 }
 
+const addTag = tag => {
+    return Tags.create({
+        tag
+    });
+}
+
 // const getContacts = userId => {
 //     return Matches.findAll({
 //         where: {
@@ -107,5 +113,6 @@ module.exports = {
     deleteUserTag,
     getUserTags,
     addMatch,
-    getMatch
+    getMatch,
+    addTag
 }

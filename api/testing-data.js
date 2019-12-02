@@ -1,5 +1,5 @@
 const { addUser } = require('./database/authHandler');
-const { updateDatingProfile, addProfilePhoto, addUserTag } = require('./database/datingHandler');
+const { updateDatingProfile, addProfilePhoto, addUserTag, addTag } = require('./database/datingHandler');
 
 const bcrypt = require('bcrypt');
 
@@ -447,851 +447,591 @@ const datingProfiles = [
 const profilePhotos = [
     {
         userId: 1,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 1,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 1,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 1,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 1,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 2,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 2,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 2,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 3,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 4,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 4,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 4,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 4,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 5,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 5,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 5,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 5,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 5,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 6,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 6,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 7,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 7,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 7,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 8,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 8,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 8,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 8,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 9,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 9,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 10,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 11,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 11,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 11,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 11,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 11,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 12,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 12,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 13,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 13,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 13,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 14,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 14,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 15,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 15,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 15,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 16,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 17,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 17,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 17,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 18,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 18,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 18,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 18,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 19,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 20,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 20,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 20,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 20,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 20,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 21,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 21,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 21,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 22,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 22,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 23,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 23,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 23,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 24,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 25,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 25,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 25,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 25,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 25,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 26,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 26,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 27,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 27,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 28,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 28,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 28,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 29,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 29,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 30,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
     {
         userId: 30,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 30,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 30,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 31,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: false
     },
     {
         userId: 31,
-        imageUrl: "https://via.placeholder.com/600/771796"
+        imageUrl: "https://picsum.photos/id/24/600/600",
+        main: true
     },
 ]
 
-const userTags = [
+const tags = [
     {
-        userId: 1,
-        tag: "Tag 1"
+        tag: "Sitcoms"
     },
     {
-        userId: 1,
-        tag: "Tag 2"
+        tag: "TV Shows"
     },
     {
-        userId: 1,
-        tag: "Tag 3"
+        tag: "Hollywood"
     },
     {
-        userId: 1,
-        tag: "Tag 4"
+        tag: "Bollywood"
     },
     {
-        userId: 2,
-        tag: "Tag 1"
+        tag: "Feminism"
     },
     {
-        userId: 2,
-        tag: "Tag 3"
+        tag: "Left Wing"
     },
     {
-        userId: 2,
-        tag: "Tag 5"
+        tag: "Foodie"
     },
     {
-        userId: 2,
-        tag: "Tag 9"
+        tag: "Geek"
     },
     {
-        userId: 2,
-        tag: "Tag 10"
+        tag: "Nerd"
     },
     {
-        userId: 2,
-        tag: "Tag 8"
+        tag: "Travel"
     },
     {
-        userId: 3,
-        tag: "Tag 1"
+        tag: "Adventure"
     },
     {
-        userId: 3,
-        tag: "Tag 2"
+        tag: "Sports"
     },
     {
-        userId: 4,
-        tag: "Tag 3"
+        tag: "Coding"
     },
     {
-        userId: 4,
-        tag: "Tag 4"
+        tag: "Electronics"
     },
     {
-        userId: 4,
-        tag: "Tag 5"
+        tag: "Cars"
     },
     {
-        userId: 4,
-        tag: "Tag 7"
+        tag: "Robotics"
     },
     {
-        userId: 5,
-        tag: "Tag 2"
+        tag: "Fashion"
     },
     {
-        userId: 5,
-        tag: "Tag 3"
+        tag: "Make up"
     },
     {
-        userId: 5,
-        tag: "Tag 4"
+        tag: "Introvert"
     },
     {
-        userId: 5,
-        tag: "Tag 5"
+        tag: "Extrovert"
     },
     {
-        userId: 5,
-        tag: "Tag 8"
+        tag: "Ambivert"
     },
     {
-        userId: 6,
-        tag: "Tag 3"
+        tag: "Reader"
     },
     {
-        userId: 6,
-        tag: "Tag 4"
+        tag: "Gamer"
     },
     {
-        userId: 6,
-        tag: "Tag 5"
+        tag: "Memes"
     },
     {
-        userId: 6,
-        tag: "Tag 6"
+        tag: "Active Drinker"
     },
     {
-        userId: 6,
-        tag: "Tag 7"
+        tag: "Ocassional Drinker"
     },
     {
-        userId: 7,
-        tag: "Tag 4"
+        tag: "Active Smoker"
     },
     {
-        userId: 7,
-        tag: "Tag 5"
+        tag: "Tea over Coffee"
     },
     {
-        userId: 7,
-        tag: "Tag 6"
+        tag: "Coffee over Tea"
     },
     {
-        userId: 7,
-        tag: "Tag 8"
+        tag: "Dance"
     },
     {
-        userId: 7,
-        tag: "Tag 9"
+        tag: "Music"
     },
     {
-        userId: 8,
-        tag: "Tag 5"
+        tag: "Dogs"
     },
     {
-        userId: 8,
-        tag: "Tag 6"
+        tag: "Birds"
     },
     {
-        userId: 8,
-        tag: "Tag 7"
+        tag: "Cats"
     },
     {
-        userId: 8,
-        tag: "Tag 8"
+        tag: "Nature"
     },
     {
-        userId: 9,
-        tag: "Tag 6"
+        tag: "Home"
     },
     {
-        userId: 9,
-        tag: "Tag 7"
+        tag: "Hostel Life"
     },
     {
-        userId: 9,
-        tag: "Tag 8"
+        tag: "Front Bencher"
     },
     {
-        userId: 9,
-        tag: "Tag 9"
+        tag: "Back Bencher"
     },
     {
-        userId: 9,
-        tag: "Tag 10"
+        tag: "Organised"
     },
     {
-        userId: 10,
-        tag: "Tag 7"
+        tag: "Messy"
     },
     {
-        userId: 10,
-        tag: "Tag 8"
+        tag: "Morning Person"
     },
     {
-        userId: 10,
-        tag: "Tag 9"
+        tag: "Casual"
     },
     {
-        userId: 10,
-        tag: "Tag 10"
+        tag: "Gym"
     },
     {
-        userId: 10,
-        tag: "Tag 1"
+        tag: "Tik Tok"
     },
     {
-        userId: 11,
-        tag: "Tag 8"
+        tag: "Anime"
     },
     {
-        userId: 11,
-        tag: "Tag 9"
+        tag: "Photography"
     },
     {
-        userId: 11,
-        tag: "Tag 10"
-    },
-    {
-        userId: 11,
-        tag: "Tag 1"
-    },
-    {
-        userId: 11,
-        tag: "Tag 2"
-    },
-    {
-        userId: 12,
-        tag: "Tag 9"
-    },
-    {
-        userId: 12,
-        tag: "Tag 10"
-    },
-    {
-        userId: 12,
-        tag: "Tag 1"
-    },
-    {
-        userId: 12,
-        tag: "Tag 2"
-    },
-    {
-        userId: 12,
-        tag: "Tag 3"
-    },
-    {
-        userId: 13,
-        tag: "Tag 10"
-    },
-    {
-        userId: 13,
-        tag: "Tag 1"
-    },
-    {
-        userId: 13,
-        tag: "Tag 2"
-    },
-    {
-        userId: 13,
-        tag: "Tag 3"
-    },
-    {
-        userId: 13,
-        tag: "Tag 4"
-    },
-    {
-        userId: 13,
-        tag: "Tag 5"
-    },
-    {
-        userId: 14,
-        tag: "Tag 1"
-    },
-    {
-        userId: 14,
-        tag: "Tag 2"
-    },
-    {
-        userId: 14,
-        tag: "Tag 3"
-    },
-    {
-        userId: 14,
-        tag: "Tag 4"
-    },
-    {
-        userId: 14,
-        tag: "Tag 5"
-    },
-    {
-        userId: 15,
-        tag: "Tag 2"
-    },
-    {
-        userId: 15,
-        tag: "Tag 3"
-    },
-    {
-        userId: 15,
-        tag: "Tag 4"
-    },
-    {
-        userId: 16,
-        tag: "Tag 3"
-    },
-    {
-        userId: 16,
-        tag: "Tag 4"
-    },
-    {
-        userId: 16,
-        tag: "Tag 5"
-    },
-    {
-        userId: 16,
-        tag: "Tag 7"
-    },
-    {
-        userId: 17,
-        tag: "Tag 4"
-    },
-    {
-        userId: 17,
-        tag: "Tag 5"
-    },
-    {
-        userId: 17,
-        tag: "Tag 6"
-    },
-    {
-        userId: 18,
-        tag: "Tag 5"
-    },
-    {
-        userId: 18,
-        tag: "Tag 6"
-    },
-    {
-        userId: 18,
-        tag: "Tag 7"
-    },
-    {
-        userId: 18,
-        tag: "Tag 8"
-    },
-    {
-        userId: 19,
-        tag: "Tag 6"
-    },
-    {
-        userId: 19,
-        tag: "Tag 7"
-    },
-    {
-        userId: 19,
-        tag: "Tag 8"
-    },
-    {
-        userId: 20,
-        tag: "Tag 7"
-    },
-    {
-        userId: 20,
-        tag: "Tag 8"
-    },
-    {
-        userId: 20,
-        tag: "Tag 9"
-    },
-    {
-        userId: 21,
-        tag: "Tag 8"
-    },
-    {
-        userId: 22,
-        tag: "Tag 9"
-    },
-    {
-        userId: 22,
-        tag: "Tag 10"
-    },
-    {
-        userId: 22,
-        tag: "Tag 1"
-    },
-    {
-        userId: 22,
-        tag: "Tag 2"
-    },
-    {
-        userId: 23,
-        tag: "Tag 10"
-    },
-    {
-        userId: 23,
-        tag: "Tag 1"
-    },
-    {
-        userId: 23,
-        tag: "Tag 2"
-    },
-    {
-        userId: 23,
-        tag: "Tag 3"
-    },
-    {
-        userId: 24,
-        tag: "Tag 4"
-    },
-    {
-        userId: 25,
-        tag: "Tag 5"
-    },
-    {
-        userId: 25,
-        tag: "Tag 6"
-    },
-    {
-        userId: 25,
-        tag: "Tag 7"
-    },
-    {
-        userId: 25,
-        tag: "Tag 9"
-    },
-    {
-        userId: 25,
-        tag: "Tag 8"
-    },
-    {
-        userId: 25,
-        tag: "Tag 10"
-    },
-    {
-        userId: 26,
-        tag: "Tag 1"
-    },
-    {
-        userId: 27,
-        tag: "Tag 2"
-    },
-    {
-        userId: 27,
-        tag: "Tag 2"
-    },
-    {
-        userId: 27,
-        tag: "Tag 3"
-    },
-    {
-        userId: 28,
-        tag: "Tag 4"
-    },
-    {
-        userId: 28,
-        tag: "Tag 5"
-    },
-    {
-        userId: 28,
-        tag: "Tag 6"
-    },
-    {
-        userId: 28,
-        tag: "Tag 7"
-    },
-    {
-        userId: 28,
-        tag: "Tag 8"
-    },
-    {
-        userId: 29,
-        tag: "Tag 9"
-    },
-    {
-        userId: 29,
-        tag: "Tag 10"
-    },
-    {
-        userId: 29,
-        tag: "Tag 1"
-    },
-    {
-        userId: 30,
-        tag: "Tag 2"
-    },
-    {
-        userId: 30,
-        tag: "Tag 3"
-    },
-    {
-        userId: 30,
-        tag: "Tag 4"
-    },
-    {
-        userId: 30,
-        tag: "Tag 5"
-    },
-    {
-        userId: 30,
-        tag: "Tag 6"
-    },
-    {
-        userId: 31,
-        tag: "Tag 7"
-    },
-    {
-        userId: 31,
-        tag: "Tag 8"
-    },
-    {
-        userId: 31,
-        tag: "Tag 9"
-    },
-    {
-        userId: 31,
-        tag: "Tag 10"
-    },
+        tag: "Reading"
+    }
 ]
 
 const hashPassword = password => {
@@ -1325,8 +1065,8 @@ Promise.all(
             .then(() => console.log("[+] Profile Photos Added"))
             .catch(err => { throw err; });
 
-        await Promise.all(userTags.map(tag => addUserTag(tag.userId, tag.tag)))
-            .then(() => console.log("[+] User Tags Added"))
+        await Promise.all(tags.map(tag => addTag(tag.tag)))
+            .then(() => console.log("[+] Tags Added"))
             .catch(err => { throw err; });
 
         console.log("[+] Test Data Initialised");

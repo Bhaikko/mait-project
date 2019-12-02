@@ -48,19 +48,25 @@ const DatingProfiles = database.define("datingProfiles", {
         allowNull: false,
         defaultValue: "Single",
         validate: {
-            isIn: [['Single', 'Taken']],
+            isIn: [['Single', 'Taken']]
         }
     },
     intrestedIn: {
         type: Sequelize.STRING,
         allowNull: false,
-        defaultValue: "Men"
+        defaultValue: "Men",
+        validate: {
+            isIn: [['Men', 'Women']]
+        }
     },
     age: {
         type: Sequelize.INTEGER,
         defaultValue: 18,
         validate: {
-            min: 16
+            min: {
+                args: 18,
+                msg: "Minimum Age Should Be 18"
+            }
         }
     },
     collegeName: {
@@ -75,6 +81,9 @@ const ProfilePhotos = database.define("profilePhotos", {
     imageUrl: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+    main: {
+        type: Sequelize.BOOLEAN
     }
 });
 
@@ -126,6 +135,11 @@ const Matches = database.define("matches", {
     }
 });
 
+const Tags = database.define("tags", {
+    tag: {
+        type: Sequelize.STRING 
+    }
+});
 
 module.exports = {
     database,
@@ -134,5 +148,6 @@ module.exports = {
     ProfilePhotos,
     UserTags,
     Messages,
-    Matches
+    Matches,
+    Tags
 }

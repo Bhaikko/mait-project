@@ -1,6 +1,15 @@
 const { Users, DatingProfiles } = require("./database");
 
 const addUser = (name, username, email, password) => {
+    username = username.trim();
+    username = username.toLowerCase();
+    username = username.split(" ");
+    username = username.join("");
+
+    email = email.trim();
+    email = email.split(" ");
+    email = email.join("");
+
     return Users.create({
         name,
         email,
@@ -11,8 +20,7 @@ const addUser = (name, username, email, password) => {
         .then(response => {
             return DatingProfiles.create({
                 userId: response.id 
-            })
-                // .then(response => response);
+            });
         })
         .catch(err => { throw err });    
 }
