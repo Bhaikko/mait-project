@@ -36,7 +36,7 @@ passport.use("jwt", new JWTStrategy({
 }, (jwtPayload, done) => {
     return Users.findOne({
         where: {
-            id: jwtPayload.id 
+            id: jwtPayload.data.id 
         }
     })
         .then(user => done(null, user))

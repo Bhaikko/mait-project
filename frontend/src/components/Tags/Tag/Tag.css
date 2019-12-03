@@ -3,10 +3,12 @@
     color: white;
     padding: 0;
     margin: 0;
+    text-align: center;
+    color: black;
 }
 
 .Tag {
-    width: 100px;
+    width: 150px;
     display: inline-flex;
     justify-content: center;
     align-items: center;

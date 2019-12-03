@@ -10,6 +10,7 @@
     top: 5vh;
     box-sizing: border-box;
     transition: all 0.3s ease-out;
+    height: 90vh;
     max-height: 90vh;
     overflow: auto;
 }

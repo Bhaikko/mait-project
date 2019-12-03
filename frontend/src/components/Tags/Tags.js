@@ -2,7 +2,7 @@ import React from 'react';
 
 import classes from './Tags.css';
 import Tag from './Tag/Tag';
-import AddNew from './../UI/AddNew/AddNew';
+import AddNewTag from './../UI/AddNewTag/AddNewTag';
 
 const Tags = props => {
     const tagsLength = props.tags.length;
@@ -15,7 +15,7 @@ const Tags = props => {
             >
                 {tag.tag}
             </Tag>)}
-            {tagsLength < 10 && props.editable ? <AddNew /> : null}
+            {tagsLength < 10 && props.editable ? <AddNewTag /> : null}
         </div>
     );
 }

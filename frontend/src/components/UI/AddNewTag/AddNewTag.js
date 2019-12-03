@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
-import classes from './AddNew.css';
+import classes from './AddNewTag.css';
 import AddIcon from './../../../assets/icons/Add.png';
+import EditTags from './../../../apps/dating/EditTags/EditTags';
 
-import Modal from './../Modal/Modal';
+import Modal from '../Modal/Modal';
 
 class AddNew extends Component {
 
@@ -38,7 +39,7 @@ class AddNew extends Component {
                 />
 
                 <Modal show={this.state.showForm} modalClosed={this.closeForm}>
-                    {this.props.form}
+                    <EditTags />
                     
                 </Modal>
     
