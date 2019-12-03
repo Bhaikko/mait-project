@@ -39,7 +39,7 @@ class AddNew extends Component {
                 />
 
                 <Modal show={this.state.showForm} modalClosed={this.closeForm}>
-                    <EditTags />
+                    <EditTags closeModal={this.closeForm} />
                     
                 </Modal>
     

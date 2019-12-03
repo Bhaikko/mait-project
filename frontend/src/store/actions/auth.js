@@ -32,9 +32,8 @@ export const login = (formdata) => {
             .catch(err => {
                 dispatch({
                     type: actionTypes.AUTH_FAILED,
-                    error: err.response.data.message
+                    // error: err.response.data.message
                 });
-                Alertify.error(err.response.data.message);
             });
 
     }
@@ -74,9 +73,8 @@ export const signup = (formdata) => {
                 console.log(err.response.data.message);
                 dispatch({
                     type: actionTypes.SIGNUP_FAILED,
-                    error: err.response.data.message
+                    // error: err.response.data.message
                 });
-                Alertify.error(err.response.data.message);
             });
 
     }

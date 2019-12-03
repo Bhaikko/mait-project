@@ -1,6 +1,6 @@
 const { DatingProfiles, ProfilePhotos, UserTags, Matches, Tags } = require('./database');
 
-const updateDatingProfile = (userId, about, relationshipStatus, intrestedIn, age, collegeName) => {
+module.exports.updateDatingProfile = (userId, about, relationshipStatus, intrestedIn, age, collegeName) => {
     return DatingProfiles.update(
         {
             about,
@@ -17,7 +17,7 @@ const updateDatingProfile = (userId, about, relationshipStatus, intrestedIn, age
     );
 }
 
-const getDatingProfile = userId => {
+module.exports.getDatingProfile = userId => {
     return DatingProfiles.findOne({
         where: {
             userId 
@@ -25,14 +25,14 @@ const getDatingProfile = userId => {
     });
 }
 
-const addProfilePhoto = (userId, imageUrl) => {
+module.exports.addProfilePhoto = (userId, imageUrl) => {
     return ProfilePhotos.create({
         userId,
         imageUrl
     });
 }
 
-const deleteProfilePhoto = (userId, id) => {
+module.exports.deleteProfilePhoto = (userId, id) => {
     return ProfilePhotos.destroy({
         where: {
             userId,
@@ -41,7 +41,7 @@ const deleteProfilePhoto = (userId, id) => {
     });
 }
 
-const getProfilePhotos = userId => {
+module.exports.getProfilePhotos = userId => {
     return ProfilePhotos.findAll({
         where: {
             userId 
@@ -49,14 +49,16 @@ const getProfilePhotos = userId => {
     });
 }
 
-const addUserTag = (userId, tag) => {
-    return UserTags.create({
-        userId,
-        tag 
+module.exports.addUserTag = (userId, tag) => {
+    return UserTags.findOrCreate({
+        where: {
+            userId,
+            tag 
+        }
     });
 }
 
-const deleteUserTag = (userId, id) => {
+module.exports.deleteUserTag = (userId, id) => {
     return UserTags.destroy({
         where: {
             userId,
@@ -65,22 +67,23 @@ const deleteUserTag = (userId, id) => {
     });
 }
 
-const getUserTags = userId => {
+module.exports.getUserTags = userId => {
     return UserTags.findAll({
         where: {
             userId 
-        }
+        },
+        attributes: ['id', 'tag']
     });
 }
 
-const addMatch = (userId1, userId2) => {
+module.exports.addMatch = (userId1, userId2) => {
     return Matches.create({
         userId1,
         userId2
     });
 }
 
-const getMatch = (userId1, userId2) => {
+module.exports.getMatch = (userId1, userId2) => {
     return Matches.findOne({
         where: {
             userId1,
@@ -89,35 +92,22 @@ const getMatch = (userId1, userId2) => {
     });
 }
 
-const addTag = tag => {
+module.exports.addTag = tag => {
     return Tags.create({
         tag
     });
 }
 
-const getTags = () => {
-    return Tags.findAll();
+module.exports.getTags = () => {
+    return Tags.findAll({
+        attributes: ['id', 'tag']
+    });
 }
 
-// const getContacts = userId => {
+// module.exports.getContacts = userId => {
 //     return Matches.findAll({
 //         where: {
 //             userId1: userI
 //         }
 //     })
 // }
-
-module.exports = {
-    updateDatingProfile,
-    getDatingProfile,
-    addProfilePhoto,
-    deleteProfilePhoto,
-    getProfilePhotos,
-    addUserTag,
-    deleteUserTag,
-    getUserTags,
-    addMatch,
-    getMatch,
-    addTag,
-    getTags
-}

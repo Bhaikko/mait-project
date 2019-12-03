@@ -1,6 +1,6 @@
 const { Users, DatingProfiles } = require("./database");
 
-const addUser = (name, username, email, password) => {
+module.exports.addUser = (name, username, email, password) => {
     username = username.trim();
     username = username.toLowerCase();
     username = username.split(" ");
@@ -25,13 +25,8 @@ const addUser = (name, username, email, password) => {
         .catch(err => { throw err });    
 }
 
-const getUser = email => {
+module.exports.getUser = email => {
     return Users.findOne({
         email 
     });
-}
-
-module.exports = {
-    getUser,
-    addUser
 }

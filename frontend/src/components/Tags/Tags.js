@@ -12,9 +12,11 @@ const Tags = props => {
             {props.tags.map(tag => <Tag 
                 key={tag.id}
                 editable={props.editable}
+                clickHandler={props.clickHandler ? () => props.clickHandler(tag) : () => {}}
             >
                 {tag.tag}
             </Tag>)}
+
             {tagsLength < 10 && props.editable ? <AddNewTag /> : null}
         </div>
     );

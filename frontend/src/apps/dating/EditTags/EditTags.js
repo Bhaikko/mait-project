@@ -24,10 +24,7 @@ class EditTags extends Component {
                 });
             })
             .catch(err => {
-                if (err.response.data.message) {
-                    Alertify.error(err.response.data.message);
-                }                
-                Alertify.error("Try Refreshing The Page");
+                console.log(err);
                 
             });
     }
@@ -36,6 +33,17 @@ class EditTags extends Component {
         this.setState({
             filteredTags: tags
         });
+    }
+
+    addTag = tag => {
+        axios.post("/dating/usertag", tag)
+            .then(response => {
+                this.props.closeModal();
+                Alertify.success(response.data.message);
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
 
     render () {
@@ -48,7 +56,8 @@ class EditTags extends Component {
                 />
                 {this.state.tags ? (
                     <Tags 
-                        tags={this.state.filteredTags === null ? this.state.tags : this.state.filteredTags}     
+                        tags={this.state.filteredTags === null ? this.state.tags : this.state.filteredTags}
+                        clickHandler={this.addTag}     
                     />
                 ) : (
                     null

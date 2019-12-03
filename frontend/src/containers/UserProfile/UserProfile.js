@@ -20,6 +20,8 @@ import InterestIcon from './../../assets/icons/Interest.png';
 
 import EditProfileForm from './../../apps/dating/EditProfile/EditProfileForm';
 
+import axios from './../../axios';
+
 class UserProfile extends Component {
     constructor (props) {
         super(props);
@@ -59,8 +61,26 @@ class UserProfile extends Component {
                 //     imageUrl: "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
                 //     main: false
                 // },
-            ]
+            ],
+            loading: true 
         }
+    }
+
+    componentDidMount () {
+        this.setState({
+            loading: true 
+        });
+
+        axios.get("/dating/usertag")
+            .then(response => {
+                this.setState({
+                    tags: response.data,
+                    loading: false
+                });
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
 
     render () {
