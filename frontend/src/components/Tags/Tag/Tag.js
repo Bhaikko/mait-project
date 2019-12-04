@@ -17,7 +17,7 @@ const Tag = props => {
             </div>
 
             {props.editable ? (
-                <CrossIcon />
+                <CrossIcon clickhandler={props.deleteTagHandler}/>
             ) : (
                 null
             )}

@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 
 import classes from './UserProfile.css';
 
@@ -20,26 +21,13 @@ import InterestIcon from './../../assets/icons/Interest.png';
 
 import EditProfileForm from './../../apps/dating/EditProfile/EditProfileForm';
 
-import axios from './../../axios';
+import * as actions from './../../store/actions/index';
+import Spinner from '../../components/UI/Spinner/Spinner';
 
 class UserProfile extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            tags: [
-                {
-                    id: 1,
-                    tag: "Tag 1"
-                },
-                {
-                    id: 2,
-                    tag: "Tag 2"
-                },
-                {
-                    id: 3,
-                    tag: "Tag 3"
-                }
-            ],
             photos: [
                 {
                     id: 1,
@@ -62,26 +50,13 @@ class UserProfile extends Component {
                 //     main: false
                 // },
             ],
-            loading: true 
         }
     }
 
     componentDidMount () {
-        this.setState({
-            loading: true 
-        });
-
-        axios.get("/dating/usertag")
-            .then(response => {
-                this.setState({
-                    tags: response.data,
-                    loading: false
-                });
-            })
-            .catch(err => {
-                console.log(err);
-            });
+        this.props.onGetTags();
     }
+
 
     render () {
         return (
@@ -134,7 +109,15 @@ class UserProfile extends Component {
 
                         <ContentContainer classes={classes.InterestContainer}>
                             <ContentTitle>Interests</ContentTitle>
-                            <Tags tags={this.state.tags} editable={this.props.editable}/>
+                            {this.props.loading ? (
+                                <Spinner />
+                            ) : (
+                                <Tags 
+                                    tags={this.props.tags} 
+                                    editable={this.props.editable}
+                                    deleteTagHandler={this.props.onDeleteTag}    
+                                />
+                            )}
 
                         </ContentContainer>
 
@@ -146,9 +129,6 @@ class UserProfile extends Component {
                         
                     </div>
                 </CenterContainer>
-                {/* <Modal show >
-                    asdasdasd
-                </Modal> */}
                 
             </Fragment>
         )
@@ -156,4 +136,19 @@ class UserProfile extends Component {
 
 }
 
-export default UserProfile;
+const mapStateToProps = state => {
+    return {
+        loading: state.dating.loading,
+        tags: state.dating.tags,
+        photos: state.dating.photos
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onGetTags: userid => dispatch(actions.getTags(userid)),
+        onDeleteTag: tag => dispatch(actions.deleteTag(tag))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);

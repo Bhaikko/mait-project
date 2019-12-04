@@ -13,6 +13,7 @@ const Tags = props => {
                 key={tag.id}
                 editable={props.editable}
                 clickHandler={props.clickHandler ? () => props.clickHandler(tag) : () => {}}
+                deleteTagHandler={props.deleteTagHandler ? () => props.deleteTagHandler(tag) : () => {}}
             >
                 {tag.tag}
             </Tag>)}

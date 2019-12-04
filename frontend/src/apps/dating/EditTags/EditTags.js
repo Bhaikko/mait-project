@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 // import classes from './EditTags.css';
 import FilterContainer from './../../../containers/FilterContainer/FilterContainer';
 import axios from './../../../axios';
-import Alertify from './../../../utilities/Aleretify/Alertify';
 import Tags from './../../../components/Tags/Tags';
+import * as actions from './../../../store/actions/index';
 
 class EditTags extends Component {
     constructor (props) {
@@ -14,18 +15,22 @@ class EditTags extends Component {
             tags: [],
             filteredTags: null
         }
+
+        this._isMounted = false;
     }
 
     componentDidMount () {
+        this._isMounted = true;
         axios.get("/dating/tags")
             .then(response => {
-                this.setState({
-                    tags: response.data
-                });
+                if (this._isMounted) {
+                    this.setState({
+                        tags: response.data
+                    });
+                }
             })
             .catch(err => {
-                console.log(err);
-                
+                console.log(err); 
             });
     }
 
@@ -36,14 +41,8 @@ class EditTags extends Component {
     }
 
     addTag = tag => {
-        axios.post("/dating/usertag", tag)
-            .then(response => {
-                this.props.closeModal();
-                Alertify.success(response.data.message);
-            })
-            .catch(err => {
-                console.log(err);
-            });
+        this.props.onAddTag(tag);
+        this.props.closeModal();
     }
 
     render () {
@@ -65,8 +64,16 @@ class EditTags extends Component {
             </React.Fragment>
         );
     }
-    
 
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
 }
 
-export default EditTags;
+const mapDispatchToProps = dispatch => {
+    return {
+        onAddTag: tag => dispatch(actions.addTag(tag))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(EditTags);

@@ -9,11 +9,13 @@ import './index.css';
 import App from './App';
 
 import authReducer from './store/reducers/auth';
+import datingReducer from './store/reducers/dating';
 
 import 'alertifyjs/build/css/alertify.min.css';
 
 const rootReducer = combineReducers({
-    auth: authReducer
+    auth: authReducer,
+    dating: datingReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

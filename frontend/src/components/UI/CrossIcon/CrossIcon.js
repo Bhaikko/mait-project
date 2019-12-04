@@ -5,13 +5,13 @@ import Cross from './../../../assets/icons/Cross.png';
 
 const CrossIcon = props => {
     return (
-        <img
-            {...props}
-            src={Cross} 
-            alt="..." 
-            className={classes.CrossIcon}
-            
-        />
+        <div onClick={props.clickhandler}>
+            <img
+                src={Cross} 
+                alt="..." 
+                className={classes.CrossIcon}
+            />
+        </div>
     );
 }
 

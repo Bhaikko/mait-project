@@ -24,7 +24,6 @@ router.get("/tags", (req, res, next) => {
 });
 
 router.post("/usertag", (req, res, next) => {
-    // console.log(req.user.id, req.body);
     if (!req.user) {
         res.status(401).json({
             message: "Unauthorized"
@@ -45,14 +44,14 @@ router.post("/usertag", (req, res, next) => {
         });
 });
 
-router.get("/usertag", (req, res, next) => {
+router.get("/usertag/:id", (req, res, next) => {
     if (!req.user) {
         res.status(401).json({
             message: "Unauthorized"
         });
     }
 
-    databaseHandler.getUserTags(req.user.id)
+    databaseHandler.getUserTags(req.params.id)
         .then(tags => {
             tags = databaseParser(tags);
             res.status(200).send(tags);
@@ -62,6 +61,24 @@ router.get("/usertag", (req, res, next) => {
             res.status(500).json({
                 message: "Something Went Wrong"
             });
+        });
+});
+
+router.delete("/usertag", (req, res, next) => {
+    if (!req.user) {
+        res.status(401).json({
+            message: "Unauthorized"
+        });
+    }
+    databaseHandler.deleteUserTag(req.user.id, req.body.tag.id)
+        .then(response => {
+            res.sendStatus(200);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                message: "Something Went Wrong"
+            })
         });
 })
 

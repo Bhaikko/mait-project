@@ -4,3 +4,9 @@ export {
     autoLogin,
     logout
 } from './auth';
+
+export {
+    getTags,
+    addTag,
+    deleteTag
+} from './dating';
