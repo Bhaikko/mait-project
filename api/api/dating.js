@@ -1,19 +1,28 @@
 const express = require("express");
 const multer = require("multer");
+const fs = require('fs');
 
 const databaseHandler = require("./../database/index");
 const { databaseParser } = require('./utility');
-// const { SERVER_URL } = require('./../enviroments');
+
+
 
 const router = express.Router();
 const upload = multer({
-    dest: 'uploads/dating'
+    dest: 'uploads/dating'  // if changing this, make sure to make changes in in unLinkFile() in router.delete('/profilephoto') 
 });
 
 
 router.get("/", (req, res, next) => {
     res.send("Dating Router Working");
 });
+
+const errorHandler = (error, res, message = "Something Went wrong") => {
+    console.log(error);
+    res.status(500).json({
+        message: message
+    });
+}
 
 router.get("/tags", (req, res, next) => {
     databaseHandler.getTags()
@@ -22,11 +31,8 @@ router.get("/tags", (req, res, next) => {
             res.status(200).send(tags);
         })
         .catch(err => {
-            console.log(err);
-            res.status(500).json({
-                message: "Something Went wrong."
-            });
-        })
+            errorHandler(err, res);
+        });
 });
 
 router.post("/usertag", (req, res, next) => {
@@ -42,10 +48,7 @@ router.post("/usertag", (req, res, next) => {
                 });
             })
             .catch(err => {
-                console.log(err);
-                res.status(500).json({
-                    message: "Something Went Wrong"
-                });
+                errorHandler(err, res);
             });
     }
 
@@ -64,10 +67,7 @@ router.get("/usertag/:id", (req, res, next) => {
                 res.status(200).send(tags);
             })
             .catch(err => {
-                console.log(err);
-                res.status(500).json({
-                    message: "Something Went Wrong"
-                });
+                errorHandler(err, res);
             });
     }
 
@@ -86,10 +86,7 @@ router.delete("/usertag", (req, res, next) => {
                 });
             })
             .catch(err => {
-                console.log(err);
-                res.status(500).json({
-                    message: "Something Went Wrong"
-                })
+                errorHandler(err, res);
             });
     }
 });
@@ -113,10 +110,7 @@ router.post('/profilephoto', upload.single('profilePhoto'), (req, res, next) => 
                     })
             })
             .catch(err => {
-                console.log(err);
-                res.status(500).json({
-                    message: "Something Went Wrong"
-                });
+                errorHandler(err, res);
             });
     }
 });
@@ -128,11 +122,27 @@ router.get('/profilephoto/:id', (req, res, next) => {
             res.status(200).send(photos);
         })
         .catch(err => {
-            console.log(err);
-            res.status(500).json({
-                message: "Something Went Wrong"
-            });
+            errorHandler(err, res);
         });
+});
+
+
+router.delete('/profilephoto', (req, res, next) => {
+    databaseHandler.deleteProfilePhoto(req.user.id, req.body.photo.id)
+        .then(response => {
+            try {
+                fs.unlinkSync(__dirname + "/../" + req.body.photo.imageUrl);
+            } finally {
+                
+                res.status(200).json({
+                    message: "Profile Photo Deleted Successfully"
+                });
+            }
+        })
+        .catch(err => {
+            errorHandler(err, res);
+        });
+
 });
 
 module.exports = {

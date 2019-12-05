@@ -32,8 +32,9 @@ const ProfileImage = props => {
                         style={{
                             top: -45,
                             width: 40,
-                            position: "absolute"
+                            // position: "absolute"
                         }}
+                        clickhandler={props.photoDeleteHandler}
                     />
                     <HeartIcon
                         style={{

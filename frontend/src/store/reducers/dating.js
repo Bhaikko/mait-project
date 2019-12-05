@@ -55,6 +55,13 @@ const reducer = (state = initialState, action) => {
                 loading: false,
                 photos: action.photos
             }
+
+        case actionTypes.DELETE_PROFILEPHOTO_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                photos: [...state.photos].filter(photo => photo.id !== action.photo.id)
+            }
        
         default:
             return state;

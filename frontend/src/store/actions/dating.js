@@ -139,3 +139,33 @@ export const getProfilePhotos = (userid = getUserId()) => {
             });
     }
 }
+
+export const deleteProfilePhoto = photo => {
+    return dispatch => {
+        dispatch({
+            type: actionTypes.DATING_REQUEST_START
+        });
+
+        console.log(photo);
+
+        axios.delete('/dating/profilephoto', {
+            data: {
+                photo: photo 
+            }
+        })
+            .then(response => {
+                dispatch({
+                    type: actionTypes.DELETE_PROFILEPHOTO_SUCCESS,
+                    photo: photo 
+                });
+
+                Alertify.success(response.data.message);
+            })
+            .catch(err => {
+                console.log(err);
+                dispatch({
+                    type: actionTypes.DATING_REQUEST_FAILED
+                });
+            });
+    }
+}

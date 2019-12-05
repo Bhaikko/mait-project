@@ -124,11 +124,16 @@ class UserProfile extends Component {
 
                         <ContentContainer classes={classes.PhotosContainer}>
                             <ContentTitle>Photos</ContentTitle>
-                            <ProfilePhotos 
-                                photos={this.props.photos} 
-                                editable={this.props.editable}
-                                addPhotoHandler={this.props.onAddPhoto}
-                            />
+                            {this.props.loading ? (
+                                <Spinner />
+                            ) : (
+                                <ProfilePhotos 
+                                    photos={this.props.photos} 
+                                    editable={this.props.editable}
+                                    addPhotoHandler={this.props.onAddPhoto}
+                                    deletePhotoHandler={this.props.onDeletePhoto}
+                                />
+                            )}
                             
                         </ContentContainer>
                         
@@ -154,7 +159,8 @@ const mapDispatchToProps = dispatch => {
         onGetTags: userid => dispatch(actions.getTags(userid)),
         onDeleteTag: tag => dispatch(actions.deleteTag(tag)),
         onAddPhoto: photo => dispatch(actions.addProfilePhoto(photo)),
-        onGetPhotos: userid => dispatch(actions.getProfilePhotos(userid))
+        onGetPhotos: userid => dispatch(actions.getProfilePhotos(userid)),
+        onDeletePhoto: photo => dispatch(actions.deleteProfilePhoto(photo))
     }
 }
 

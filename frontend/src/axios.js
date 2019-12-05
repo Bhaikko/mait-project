@@ -1,8 +1,9 @@
 import axios from 'axios';
 import Alertify from './utilities/Aleretify/Alertify';
+import { SERVER_URL } from './environments';
 
 const instance = axios.create({
-    baseURL: "http://127.0.0.1:4000/api",
+    baseURL: SERVER_URL + "/api",
     
 });
 
