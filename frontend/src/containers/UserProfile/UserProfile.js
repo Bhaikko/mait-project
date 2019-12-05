@@ -55,6 +55,7 @@ class UserProfile extends Component {
 
     componentDidMount () {
         this.props.onGetTags();
+        this.props.onGetPhotos();
     }
 
 
@@ -123,7 +124,11 @@ class UserProfile extends Component {
 
                         <ContentContainer classes={classes.PhotosContainer}>
                             <ContentTitle>Photos</ContentTitle>
-                            <ProfilePhotos photos={this.state.photos} editable={this.props.editable}/>
+                            <ProfilePhotos 
+                                photos={this.props.photos} 
+                                editable={this.props.editable}
+                                addPhotoHandler={this.props.onAddPhoto}
+                            />
                             
                         </ContentContainer>
                         
@@ -147,7 +152,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onGetTags: userid => dispatch(actions.getTags(userid)),
-        onDeleteTag: tag => dispatch(actions.deleteTag(tag))
+        onDeleteTag: tag => dispatch(actions.deleteTag(tag)),
+        onAddPhoto: photo => dispatch(actions.addProfilePhoto(photo)),
+        onGetPhotos: userid => dispatch(actions.getProfilePhotos(userid))
     }
 }
 

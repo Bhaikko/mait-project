@@ -6,7 +6,7 @@ const passportJWT = require("passport-jwt");
 const JWTStrategy = passportJWT.Strategy;
 const ExtractJWT = passportJWT.ExtractJwt;
 const { Users } = require("./database/database");
-const { TOKEN_SECRET_KEY } = require("./constants");
+const { TOKEN_SECRET_KEY } = require("./enviroments");
 
 passport.use("user", new LocalStrategy({ usernameField: "email", passwordField: "password" }, (username, password, done) => {
     Users.findOne({

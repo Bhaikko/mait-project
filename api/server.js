@@ -4,7 +4,7 @@ const cors = require("cors");
 
 const { database } = require("./database/database");
 const router = require("./api/index").router;
-const { SESSION_SECRET_KEY } = require("./constants");
+const { SESSION_SECRET_KEY, PORT, SERVER_URL } = require("./enviroments");
 
 const app = express();
 
@@ -22,7 +22,6 @@ app.use(sessionMiddleware);
 
 app.use("/api", router);
 
-const PORT = 4000;
 database.sync()
-    .then(() => app.listen(PORT, () => console.log(`Database Synced \nServer Up and Running on http://127.0.0.1:${PORT}`)))
+    .then(() => app.listen(PORT, () => console.log(`Database Synced \nServer Up and Running on ${SERVER_URL}`)))
     .catch(err => { throw err });

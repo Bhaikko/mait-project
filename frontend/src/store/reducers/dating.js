@@ -66,6 +66,25 @@ const reducer = (state = initialState, action) => {
                 loading: false 
             }
 
+        case actionTypes.ADD_PROFILEPHOTO_START:
+            return {
+                ...state,
+                loading: true 
+            }
+
+        case actionTypes.ADD_PROFILEPHOTO_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                photos: action.photos 
+            }
+
+        case actionTypes.ADD_PROFILEPHOTO_FAILED:
+            return {
+                ...state,
+                loading: false
+            }
+
         default:
             return state;
     }

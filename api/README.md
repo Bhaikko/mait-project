@@ -32,7 +32,7 @@ For reviewing mysql database using CLI,
   mysql -u maitTalksAdmin -p
 ```
 
-*Note: If you want to have your own database name, password, etc. Edit the constants.js in api/*
+*Note: If you want to have your own database name, password, etc. Edit the environments.js in api/*
 
 
 If all the above steps are followed correctly, the development mode should be up and running. :)

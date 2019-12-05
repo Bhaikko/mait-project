@@ -8,5 +8,7 @@ export {
 export {
     getTags,
     addTag,
-    deleteTag
+    deleteTag,
+    addProfilePhoto,
+    getProfilePhotos
 } from './dating';

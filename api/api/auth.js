@@ -6,7 +6,7 @@ const saltRounds = 10;
 
 const databaseHandler = require("./../database/index");
 const passport = require("./../passport").passport;
-const { TOKEN_SECRET_KEY } = require("./../constants");
+const { TOKEN_SECRET_KEY } = require("./../enviroments");
 
 const router = express.Router();
 

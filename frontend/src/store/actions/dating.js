@@ -80,12 +80,62 @@ export const deleteTag = tag => {
                     tag: tag 
                 });
 
-                Alertify.success("Tag Deleted Succesfully");
+                Alertify.success(response.data.message);
             })
             .catch(err => {
                 console.log(err);
                 dispatch({
                     type: actionTypes.DELETE_TAG_FAILED
+                });
+            });
+    }
+}
+
+export const addProfilePhoto = photo => {
+    return dispatch => {
+        dispatch({
+            type: actionTypes.ADD_PROFILEPHOTO_START
+        });
+
+        axios.post('/dating/profilephoto', photo)
+            .then(response => {
+                console.log(response);
+                dispatch({
+                    type: actionTypes.ADD_PROFILEPHOTO_SUCCESS,
+                    photos: response.data.photos
+                });
+
+                Alertify.success(response.data.message);
+
+            })
+            .catch(err => {
+                console.log(err);
+                dispatch({
+                    type: actionTypes.ADD_PROFILEPHOTO_FAILED
+                });
+            });
+    }
+}
+
+export const getProfilePhotos = (userid = getUserId()) => {
+    return dispatch => {
+        dispatch({
+            type: actionTypes.GET_PROFILEPHOTOS_START
+        });
+
+        axios.get('/dating/profilephoto/' + userid)
+            .then(response => {
+                console.log(response);
+
+                dispatch({
+                    type: actionTypes.GET_PROFILEPHOTOS_SUCCESS,
+                    photos: response.data
+                });
+            })
+            .catch(err => {
+                console.log(err);
+                dispatch({
+                    type: actionTypes.GET_PROFILEPHOTOS_FAILED
                 });
             });
     }

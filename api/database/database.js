@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 
-const { DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD } = require("./../constants");
+const { DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD } = require("../enviroments");
 
 const database = new Sequelize(DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD, {
     host: "localhost",

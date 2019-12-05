@@ -13,7 +13,13 @@ const AddNewPhoto = props => {
     }
 
     const fileHandler = event => {
-        console.log(event.target.files);
+        
+        if (event.target.files) {
+            // console.log(event.target.files);
+            let photo = new FormData();
+            photo.append('profilePhoto', event.target.files[0]);
+            props.addPhotoHandler(photo);
+        }
 
         // post request to upload photo
     }
@@ -21,7 +27,7 @@ const AddNewPhoto = props => {
     return (
         <div 
             className={classes.AddNewContainer}
-            {...props}
+            // {...props}
         >
             <img 
                 className={classes.AddNewIcon} 
