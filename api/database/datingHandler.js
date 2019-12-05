@@ -45,7 +45,8 @@ module.exports.getProfilePhotos = userId => {
     return ProfilePhotos.findAll({
         where: {
             userId 
-        }
+        },
+        attributes: ['id', 'imageUrl', 'main', 'userId']
     });
 }
 

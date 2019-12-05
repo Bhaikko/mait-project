@@ -21,6 +21,7 @@ const sessionMiddleware = session({
 app.use(sessionMiddleware);
 
 app.use("/api", router);
+app.use("/uploads", express.static('./uploads'));
 
 database.sync()
     .then(() => app.listen(PORT, () => console.log(`Database Synced \nServer Up and Running on ${SERVER_URL}`)))

@@ -4,14 +4,22 @@ import classes from './ProfileImage.css';
 import CrossIcon from './../../UI/CrossIcon/CrossIcon';
 import HeartIcon from './../../UI/HeartIcon/HeartIcon';
 
+import { SERVER_URL } from './../../../environments';
+
 const ProfileImage = props => {
+    let imageSrc = props.src;
+
+    if (!imageSrc.includes('https://')) {
+        imageSrc = SERVER_URL + "/" + props.src;
+    } 
+
     return (
         <div 
             className={[classes.ProfileImageContainer, props.classname].join(" ")}
             style={props.style}
         >
             <img 
-                src={props.src}
+                src={imageSrc}
                 className={classes.ProfilePhoto}
                 alt={props.alt}
                 style={{
@@ -23,7 +31,8 @@ const ProfileImage = props => {
                     <CrossIcon
                         style={{
                             top: -45,
-                            width: 40
+                            width: 40,
+                            position: "absolute"
                         }}
                     />
                     <HeartIcon

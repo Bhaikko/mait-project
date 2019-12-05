@@ -7,6 +7,7 @@ const CrossIcon = props => {
     return (
         <div onClick={props.clickhandler}>
             <img
+                style={{...props.style}}
                 src={Cross} 
                 alt="..." 
                 className={classes.CrossIcon}

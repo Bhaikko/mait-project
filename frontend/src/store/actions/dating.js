@@ -10,7 +10,7 @@ const getUserId = () => {
 export const getTags = (userid = getUserId()) => {
     return dispatch => {
         dispatch({
-            type: actionTypes.GET_TAGS_START
+            type: actionTypes.DATING_REQUEST_START
         });
 
         axios.get('/dating/usertag/' + userid)
@@ -24,7 +24,7 @@ export const getTags = (userid = getUserId()) => {
             .catch(err => {
                 console.log(err);
                 dispatch({
-                    type: actionTypes.GET_TAGS_FAILED
+                    type: actionTypes.DATING_REQUEST_FAILED
                 });
             });
     }
@@ -33,7 +33,7 @@ export const getTags = (userid = getUserId()) => {
 export const addTag = tag => {
     return (dispatch, getState) => {
         dispatch({
-            type: actionTypes.ADD_TAG_START
+            type: actionTypes.DATING_REQUEST_START
         });
 
        const currentTags = getState().dating.tags;
@@ -41,7 +41,7 @@ export const addTag = tag => {
        if (currentTags.find(tagEl => tagEl.id === tag.id)) {
            Alertify.error("Tag Already Exist");
             dispatch({
-                type: actionTypes.ADD_TAG_FAILED
+                type: actionTypes.DATING_REQUEST_FAILED
             });
        } else {
            axios.post("/dating/usertag", tag)
@@ -55,7 +55,7 @@ export const addTag = tag => {
                .catch(err => {
                    console.log(err);
                    dispatch({
-                       type: actionTypes.ADD_TAG_FAILED
+                       type: actionTypes.DATING_REQUEST_FAILED
                    });
                });
        }
@@ -66,7 +66,7 @@ export const addTag = tag => {
 export const deleteTag = tag => {
     return dispatch => {
         dispatch({
-            type: actionTypes.DELETE_TAG_START
+            type: actionTypes.DATING_REQUEST_START
         });
 
         axios.delete('/dating/usertag', {
@@ -85,7 +85,7 @@ export const deleteTag = tag => {
             .catch(err => {
                 console.log(err);
                 dispatch({
-                    type: actionTypes.DELETE_TAG_FAILED
+                    type: actionTypes.DATING_REQUEST_FAILED
                 });
             });
     }
@@ -94,7 +94,7 @@ export const deleteTag = tag => {
 export const addProfilePhoto = photo => {
     return dispatch => {
         dispatch({
-            type: actionTypes.ADD_PROFILEPHOTO_START
+            type: actionTypes.DATING_REQUEST_START
         });
 
         axios.post('/dating/profilephoto', photo)
@@ -111,7 +111,7 @@ export const addProfilePhoto = photo => {
             .catch(err => {
                 console.log(err);
                 dispatch({
-                    type: actionTypes.ADD_PROFILEPHOTO_FAILED
+                    type: actionTypes.DATING_REQUEST_FAILED
                 });
             });
     }
@@ -120,12 +120,11 @@ export const addProfilePhoto = photo => {
 export const getProfilePhotos = (userid = getUserId()) => {
     return dispatch => {
         dispatch({
-            type: actionTypes.GET_PROFILEPHOTOS_START
+            type: actionTypes.DATING_REQUEST_START
         });
 
         axios.get('/dating/profilephoto/' + userid)
             .then(response => {
-                console.log(response);
 
                 dispatch({
                     type: actionTypes.GET_PROFILEPHOTOS_SUCCESS,
@@ -135,7 +134,7 @@ export const getProfilePhotos = (userid = getUserId()) => {
             .catch(err => {
                 console.log(err);
                 dispatch({
-                    type: actionTypes.GET_PROFILEPHOTOS_FAILED
+                    type: actionTypes.DATING_REQUEST_FAILED
                 });
             });
     }
