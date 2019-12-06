@@ -145,6 +145,18 @@ router.delete('/profilephoto', (req, res, next) => {
 
 });
 
+router.put('/profilephoto', (req, res, next) => {
+    databaseHandler.setMainProfilePhoto(req.user.id, req.body.id)
+        .then(response => {
+            res.status(200).json({
+               message: "Profile Photo Changed Successfully" 
+            });
+        })
+        .catch(err => {
+            errorHandler(err, res);
+        });
+});
+
 module.exports = {
     router
 }

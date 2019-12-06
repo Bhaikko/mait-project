@@ -105,6 +105,34 @@ module.exports.getTags = () => {
     });
 }
 
+module.exports.setMainProfilePhoto = (userId, photoId) => {
+    return ProfilePhotos.update(
+        {
+            main: false 
+        },
+        {
+            where: {
+                userId 
+            }
+        }
+    )
+        .then(response => {
+            return ProfilePhotos.update(
+                {
+                    main: true 
+                },
+                {
+                    where: {
+                        userId,
+                        id: photoId 
+                    }
+                }
+            )
+            
+        });
+        
+}
+
 // module.exports.getContacts = userId => {
 //     return Matches.findAll({
 //         where: {

@@ -27,30 +27,9 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 class UserProfile extends Component {
     constructor (props) {
         super(props);
-        this.state = {
-            photos: [
-                {
-                    id: 1,
-                    imageUrl: "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-                    main: false
-                },
-                {
-                    id: 2,
-                    imageUrl: "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-                    main: false
-                },
-                // {
-                //     id: 3,
-                //     imageUrl: "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-                //     main: true
-                // },
-                // {
-                //     id: 4,
-                //     imageUrl: "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-                //     main: false
-                // },
-            ],
-        }
+        // this.state = {
+            
+        // }
     }
 
     componentDidMount () {
@@ -132,6 +111,7 @@ class UserProfile extends Component {
                                     editable={this.props.editable}
                                     addPhotoHandler={this.props.onAddPhoto}
                                     deletePhotoHandler={this.props.onDeletePhoto}
+                                    setMainProfilePhotoHandler={this.props.onSetMainProfilePhoto}
                                 />
                             )}
                             
@@ -160,7 +140,8 @@ const mapDispatchToProps = dispatch => {
         onDeleteTag: tag => dispatch(actions.deleteTag(tag)),
         onAddPhoto: photo => dispatch(actions.addProfilePhoto(photo)),
         onGetPhotos: userid => dispatch(actions.getProfilePhotos(userid)),
-        onDeletePhoto: photo => dispatch(actions.deleteProfilePhoto(photo))
+        onDeletePhoto: photo => dispatch(actions.deleteProfilePhoto(photo)),
+        onSetMainProfilePhoto: photo => dispatch(actions.setMainProfilePhoto(photo))
     }
 }
 

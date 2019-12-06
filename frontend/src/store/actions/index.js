@@ -11,5 +11,6 @@ export {
     deleteTag,
     addProfilePhoto,
     getProfilePhotos,
-    deleteProfilePhoto
+    deleteProfilePhoto,
+    setMainProfilePhoto
 } from './dating';

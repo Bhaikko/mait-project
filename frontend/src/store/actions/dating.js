@@ -146,8 +146,6 @@ export const deleteProfilePhoto = photo => {
             type: actionTypes.DATING_REQUEST_START
         });
 
-        console.log(photo);
-
         axios.delete('/dating/profilephoto', {
             data: {
                 photo: photo 
@@ -157,6 +155,31 @@ export const deleteProfilePhoto = photo => {
                 dispatch({
                     type: actionTypes.DELETE_PROFILEPHOTO_SUCCESS,
                     photo: photo 
+                });
+
+                Alertify.success(response.data.message);
+            })
+            .catch(err => {
+                console.log(err);
+                dispatch({
+                    type: actionTypes.DATING_REQUEST_FAILED
+                });
+            });
+    }
+}
+
+export const setMainProfilePhoto = photo => {
+    return dispatch => {
+        dispatch({
+            type: actionTypes.DATING_REQUEST_START
+        });
+
+
+        axios.put('/dating/profilephoto', photo)
+            .then(response => {
+                dispatch({
+                    type: actionTypes.SET_MAIN_PROFILEPHOTO_SUCCESS,
+                    photo: photo
                 });
 
                 Alertify.success(response.data.message);

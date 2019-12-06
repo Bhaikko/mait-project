@@ -20,6 +20,7 @@ const ProfilePhotos = props => {
                 editable={props.editable}
                 main={photo.main}
                 photoDeleteHandler={() => props.deletePhotoHandler(photo)}
+                setMainProfilePhotoHandler={() => props.setMainProfilePhotoHandler(photo)}
             />))}
 
             {photosLength < 5 && props.editable ? 

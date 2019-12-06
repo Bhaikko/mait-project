@@ -11,15 +11,16 @@ const HeartIcon = props => {
                 <img 
                     src={HeartIconFilled} 
                     className={classes.HeartIcon} 
-                    {...props}
+                    style={{...props.style}}
                     alt="..."
                 />
             ) : (
                 <img 
                     src={HeartIconUnfilled} 
                     className={classes.HeartIcon} 
-                    {...props}
+                    style={{...props.style}}
                     alt="..."
+                    onClick={props.clickHandler}
                 />
                     
             )}

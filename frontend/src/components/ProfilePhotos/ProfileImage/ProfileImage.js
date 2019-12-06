@@ -32,7 +32,6 @@ const ProfileImage = props => {
                         style={{
                             top: -45,
                             width: 40,
-                            // position: "absolute"
                         }}
                         clickhandler={props.photoDeleteHandler}
                     />
@@ -43,6 +42,7 @@ const ProfileImage = props => {
                             width: 40
                         }}
                         fill={props.main.toString()}
+                        clickHandler={props.setMainProfilePhotoHandler}
                     />
                 </React.Fragment>
 

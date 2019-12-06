@@ -3,7 +3,8 @@ import * as actionTypes from './../actions/actionTypes';
 const initialState = {
     loading: false,
     tags: [],
-    photos: [] 
+    photos: [],
+    main: null
 }
 
 const reducer = (state = initialState, action) => {
@@ -53,7 +54,8 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                photos: action.photos
+                photos: action.photos,
+                main: action.photos.find(photo => photo.main === true)
             }
 
         case actionTypes.DELETE_PROFILEPHOTO_SUCCESS:
@@ -61,6 +63,13 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 photos: [...state.photos].filter(photo => photo.id !== action.photo.id)
+            }
+
+        case actionTypes.SET_MAIN_PROFILEPHOTO_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                main: action.photo
             }
        
         default:
