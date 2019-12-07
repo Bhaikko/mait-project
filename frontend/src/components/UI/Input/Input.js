@@ -4,6 +4,7 @@ import classes from './Input.css';
 import Button from './../Button/Button';
 
 const input = (props) => {
+    
     let inputElement = null;
     const inputClasses = [classes.InputElement];
 
@@ -23,27 +24,30 @@ const input = (props) => {
     switch (props.elementType) {
         case "input":
             inputElement = <input
-                className={inputClasses.join(" ")}
-                {...props.elementConfig}
-                value={props.value}
-                onChange={props.changed} />;
+                    className={inputClasses.join(" ")}
+                    {...props.elementConfig}
+                    value={props.value}
+                    onChange={props.changed} 
+                />;
             break;
             
         case "textarea":
             inputElement = <textarea
-                className={inputClasses.join(" ")}
-                {...props.elementConfig}
-                value={props.value}
-                onChange={props.changed}
-                style={{height: "200px"}} />;
+                    className={inputClasses.join(" ")}
+                    {...props.elementConfig}
+                    value={props.value}
+                    onChange={props.changed}
+                    style={{height: "200px"}} 
+                />;
             break;
 
         case "date":
             inputElement = <input 
-                className={inputClasses.join(" ")}
-                {...props.elementConfig}
-                value={props.value}
-                onChange={props.changed} />;
+                    className={inputClasses.join(" ")}
+                    {...props.elementConfig}
+                    value={props.value}
+                    onChange={props.changed} 
+                />;
 
             break;
         
@@ -59,7 +63,17 @@ const input = (props) => {
                             onChange={props.changed}
                         />
                     </div>
-                    <Button inline="true" style={{fontSize: "10px"}} onClick={fileHandler}>{props.elementConfig.uploadinfo}</Button>
+                    <Button 
+                        inline="true" 
+                        style={{
+                            fontSize: "10px"
+                        }} 
+                        onClick={
+                            fileHandler
+                        }
+                    >
+                        {props.elementConfig.uploadinfo}
+                    </Button>
                 </div>
             );
             break;
@@ -91,7 +105,8 @@ const input = (props) => {
                 className={inputClasses.join(" ")}
                 {...props.elementConfig} 
                 value={props.value} 
-                onChange={props.changed} />
+                onChange={props.changed} 
+            />
 
     }
 

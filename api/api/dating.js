@@ -165,6 +165,12 @@ router.get('/datingprofile/:id', (req, res, next) => {
         .catch(err => {
             errorHandler(err, res);
         });
+});
+
+router.put('/datingprofile', (req, res, next) => {
+    console.log(req.body);
+
+    res.send(200);
 })
 
 module.exports = {

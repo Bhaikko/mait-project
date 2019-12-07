@@ -20,9 +20,7 @@ class Form extends Component {
         }
     }
 
-    componentDidUpdate () {
-        
-    }
+    
 
     checkValidity = (value, rules) => {
         if(!rules) {
@@ -141,7 +139,7 @@ class Form extends Component {
                         key={formElement.id}
                         elementType={formElement.config.elementType}
                         elementConfig={formElement.config.elementConfig}
-                        value={formElement.config.value}
+                        value={formElement.config.value || ""}
                         changed={(event) => this.inputChangeHandler(event, formElement.id)} 
                         invalid={!formElement.config.valid}
                         shouldValidate={formElement.config.validation}

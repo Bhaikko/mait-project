@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 
 import Form from './../../../containers/Form/Form';
 import classes from './EditProfileForm.css';
-// import axios from './../../../axios';
+import axios from './../../../axios';
+
+import UserDetail from './../../../utilities/UserDetail';
 
 class EditProfileForm extends Component {
     constructor (props) {
         super(props);
         this.state = {
+            loading: true,
             formConfig: {
                 about: {
                     label: "Enter Your Bio",
@@ -67,27 +70,71 @@ class EditProfileForm extends Component {
                     valid: true,
                     touched: false 
                 }
-
-            },
+            }
         }
+
+        this._isMounted = false;
     }
 
     componentDidMount() {
-
+        this._isMounted = true;
+        axios.get('/dating/datingprofile/' + UserDetail.get_userId())
+            .then(response => {
+                if (this._isMounted) {
+                    this.setState({
+                        formConfig: {
+                            about: {
+                                ...this.state.formConfig.about,
+                                value: response.data.about
+                            },
+                            relationStatus: {
+                                ...this.state.formConfig.relationStatus,
+                                value: response.data.relationshipStatus
+                            },
+                            intrestedIn: {
+                                ...this.state.formConfig.intrestedIn ,
+                                value: response.data.intrestedIn
+                            },
+                            collegeName: {
+                                ...this.state.formConfig.collegeName,
+                                value: response.data.collegeName
+                            },
+                            age: {
+                                ...this.state.formConfig.age,
+                                value: response.data.age
+                            }
+                        },
+                        loading: false
+                    });
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            });
         
     }
 
     render () {
         return (
-                <Form 
-                    classes={classes.EditProfileForm}
-                    headerclass={classes.Header}
-                    formConfig={this.state.formConfig} 
-                    formName="Update Profile" 
-                    // url="/auth/login" 
-                    buttonName="Save"
-                />
+            <React.Fragment>
+                {this.state.loading ? 
+                    null : 
+                    <Form 
+                        classes={classes.EditProfileForm}
+                        headerclass={classes.Header}
+                        formConfig={this.state.formConfig} 
+                        formName="Update Profile" 
+                        url="/dating/update" 
+                        buttonName="Save"
+                    />
+                }
+            </React.Fragment>
+                
         );
+    }
+
+     componentWillUnmount() {
+        this._isMounted = false;
     }
 }
 

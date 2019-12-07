@@ -208,7 +208,6 @@ export const getDatingProfile = (userid = getUserId()) => {
 
         axios.get('/dating/datingprofile/' + userid)
             .then(response => {
-                console.log(response);
                 dispatch({
                     type: actionTypes.GET_DATINGPROFILE_SUCCESS,
                     profile: response.data
