@@ -157,6 +157,16 @@ router.put('/profilephoto', (req, res, next) => {
         });
 });
 
+router.get('/datingprofile/:id', (req, res, next) => {
+    databaseHandler.getDatingProfile(req.params.id)
+        .then(response => {
+            res.send(response.get());
+        })
+        .catch(err => {
+            errorHandler(err, res);
+        });
+})
+
 module.exports = {
     router
 }

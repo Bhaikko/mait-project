@@ -21,7 +21,8 @@ module.exports.getDatingProfile = userId => {
     return DatingProfiles.findOne({
         where: {
             userId 
-        }
+        },
+        attributes: ['id', 'about', 'relationshipStatus', 'intrestedIn', 'age', 'collegeName']
     });
 }
 
@@ -132,6 +133,7 @@ module.exports.setMainProfilePhoto = (userId, photoId) => {
         });
         
 }
+
 
 // module.exports.getContacts = userId => {
 //     return Matches.findAll({

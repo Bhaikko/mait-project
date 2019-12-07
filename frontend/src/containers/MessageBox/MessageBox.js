@@ -4,7 +4,9 @@ import classes from './MessageBox.css';
 
 import ProfileImage from './../../components/ProfilePhotos/ProfileImage/ProfileImage';
 import ProfileName from '../../components/ProfileName/ProfileName';
-import SendIcon from './../../assets/icons/Send.png'
+import SendIcon from './../../assets/icons/Send.png';
+
+import UserDetail from './../../utilities/UserDetail';
 
 class MessageBox extends Component {
     constructor (props) {
@@ -56,7 +58,7 @@ class MessageBox extends Component {
     }
 
     render () {
-        const userId = parseInt(JSON.parse(localStorage.getItem("userdata")).userId);
+        const userId = parseInt(UserDetail.get_userId());
         return (
             <div className={classes.MessageBox}>
                 <div className={classes.Header}>

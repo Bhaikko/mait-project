@@ -9,6 +9,8 @@ import ContentContainer from './../../../components/UI/ContentContainer/ContentC
 import ProfileName from '../../../components/ProfileName/ProfileName';
 import FilterContainer from './../../../containers/FilterContainer/FilterContainer';
 
+import UserDetail from './../../../utilities/UserDetail';
+
 class Inbox extends Component {
     constructor (props) {
         super(props);
@@ -93,7 +95,7 @@ class Inbox extends Component {
                                     marginLeft: 50
                                 }}    
                             >
-                                {JSON.parse(localStorage.getItem("userdata")).username}
+                                {UserDetail.get_username()}
                             </ProfileName>
                         </div>
 
@@ -123,7 +125,7 @@ class Inbox extends Component {
                                     borderRadius="50%" 
                                     classname={classes.ProfileImage}   
                                 />
-                                <div className={classes.ProfileName}>Hi {JSON.parse(localStorage.getItem("userdata")).username}</div>
+                                <div className={classes.ProfileName}>Hi {UserDetail.get_username()}</div>
                                 <div className={classes.EmptyBoxMessage}>
                                     Please select one of the contacts to get started.
                                     <div className={classes.ExtraEmptyBoxMessage}>

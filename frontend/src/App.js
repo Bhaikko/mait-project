@@ -16,12 +16,13 @@ import LogoutPage from './containers/Logout/Logout';
 
 import * as authActions from './store/actions/index';
 
+import UserDetail from './utilities/UserDetail';
 
 class App extends Component {
 
   constructor (props) {
     super(props);
-    const userdata = JSON.parse(localStorage.getItem("userdata"));
+    const userdata = UserDetail.get_token();
     if (userdata) {      
       this.props.onAutoLogin(userdata.token, userdata.userId, userdata.username);
     }

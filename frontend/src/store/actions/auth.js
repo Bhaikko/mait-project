@@ -2,6 +2,23 @@ import * as actionTypes from './actionTypes';
 import axios from './../../axios';
 import Alertify from './../../utilities/Aleretify/Alertify';
 
+const _login = (response, dispatch) => {
+    const userdata = {
+        token: response.data.token,
+        userId: response.data.userId,
+        username: response.data.username,
+        email: response.data.email
+    }
+    localStorage.setItem("userdata", JSON.stringify(userdata));
+
+    dispatch({
+        type: actionTypes.AUTH_SUCCESS,
+        token: response.data.token
+    });
+
+    Alertify.success("Login Successful.");
+}
+
 export const login = (formdata) => {
     return dispatch => {
         dispatch({
@@ -13,26 +30,11 @@ export const login = (formdata) => {
 
         axios.post("/auth/login", object)
             .then(response => {
-                const userdata = {
-                    token: response.data.token,
-                    userId: response.data.userId,
-                    username: response.data.username 
-                }
-                localStorage.setItem("userdata", JSON.stringify(userdata));
-
-                dispatch({
-                    type: actionTypes.AUTH_SUCCESS,
-                    token: response.data.token,
-                    userId: response.data.userId,
-                    username: response.data.username
-                });
-
-                Alertify.success("Login Successful.");
+                _login(response, dispatch);
             })
             .catch(err => {
                 dispatch({
                     type: actionTypes.AUTH_FAILED,
-                    // error: err.response.data.message
                 });
             });
 
@@ -52,28 +54,13 @@ export const signup = (formdata) => {
             .then(response => {
                 axios.post("/auth/login", object)
                     .then(response => {
-                        
-                        const userdata = {
-                            token: response.data.token,
-                            userId: response.data.userId,
-                            username: response.data.username 
-                        }
-                        localStorage.setItem("userdata", JSON.stringify(userdata));
-
-                        dispatch({
-                            type: actionTypes.AUTH_SUCCESS,
-                            token: response.data.token,
-                            userId: response.data.userId,
-                            username: response.data.username
-                        });
-                        Alertify.success("Login Successful.");
+                        _login(response, dispatch);
                     });
             })
             .catch(err => {
                 console.log(err.response.data.message);
                 dispatch({
                     type: actionTypes.SIGNUP_FAILED,
-                    // error: err.response.data.message
                 });
             });
 

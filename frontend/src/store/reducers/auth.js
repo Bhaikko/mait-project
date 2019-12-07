@@ -2,10 +2,7 @@ import * as actionTypes from './../actions/actionTypes';
 
 const initialState = {
     loading: false,
-    token: null,
-    userId: null,
-    username: null,
-    error: null    
+    token: null
 }
 
 const reducer = (state = initialState, action) => {
@@ -20,15 +17,11 @@ const reducer = (state = initialState, action) => {
             return {
                 loading: false,
                 token: action.token,
-                userId: action.userId,
-                username: action.username,
-                error: null
             }
 
         case actionTypes.AUTH_FAILED:
             return {
                 ...initialState,
-                error: action.error 
             }
 
         case actionTypes.SIGNUP_START:
@@ -40,7 +33,6 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SIGNUP_FAILED:
             return {
                 ...initialState,
-                error: action.error
             }
 
         case actionTypes.LOGOUT:

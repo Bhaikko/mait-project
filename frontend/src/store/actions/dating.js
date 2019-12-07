@@ -1,11 +1,11 @@
 import * as actionTypes from './actionTypes';
 import axios from './../../axios';
 import Alertify from './../../utilities/Aleretify/Alertify';
+import UserDetail from './../../utilities/UserDetail';
 
 
 const getUserId = () => {
-    const token = JSON.parse(localStorage.getItem("userdata"));
-    return token.userId;
+    return UserDetail.get_userId();
 }
 
 export const getTags = (userid = getUserId()) => {
@@ -190,6 +190,29 @@ export const setMainProfilePhoto = photo => {
                 });
 
                 Alertify.success(response.data.message);
+            })
+            .catch(err => {
+                console.log(err);
+                dispatch({
+                    type: actionTypes.DATING_REQUEST_FAILED
+                });
+            });
+    }
+}
+
+export const getDatingProfile = (userid = getUserId()) => {
+    return dispatch => {
+        dispatch({
+            type: actionTypes.DATING_REQUEST_START
+        });
+
+        axios.get('/dating/datingprofile/' + userid)
+            .then(response => {
+                console.log(response);
+                dispatch({
+                    type: actionTypes.GET_DATINGPROFILE_SUCCESS,
+                    profile: response.data
+                });
             })
             .catch(err => {
                 console.log(err);

@@ -4,7 +4,8 @@ const initialState = {
     loading: false,
     tags: [],
     photos: [],
-    mainProfilePhoto: null
+    mainProfilePhoto: null,
+    profile: {}
 }
 
 const reducer = (state = initialState, action) => {
@@ -71,6 +72,13 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 mainProfilePhoto: action.photo
+            }
+
+        case actionTypes.GET_DATINGPROFILE_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                profile: action.profile
             }
        
         default:

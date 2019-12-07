@@ -18,7 +18,7 @@ import CommunityCard from './../../components/Homepage/CommunityCard/CommunityCa
 
 import * as authActions from './../../store/actions/index';
 
-
+import UserDetail from './../../utilities/UserDetail';
 
 
 class Homepage extends Component {
@@ -39,7 +39,7 @@ class Homepage extends Component {
                         {this.props.token ? (
                             <Fragment>
                                 <div className={classes.LoggedIn}>
-                                    <span className={classes.GreetingMessage}>Hi {this.props.username}</span>, <br /> 
+                                    <span className={classes.GreetingMessage}>Hi {UserDetail.get_username()}</span>, <br /> 
                                     <p style={{
                                         fontSize: "0.7em"
                                     }}
@@ -150,7 +150,6 @@ class Homepage extends Component {
 const mapStateToProps = state => {
     return {
         token: state.auth.token,
-        username: state.auth.username
     }
 }
 
