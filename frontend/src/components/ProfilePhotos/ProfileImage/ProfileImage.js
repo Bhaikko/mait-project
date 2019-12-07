@@ -3,13 +3,16 @@ import React from 'react';
 import classes from './ProfileImage.css';
 import CrossIcon from './../../UI/CrossIcon/CrossIcon';
 import HeartIcon from './../../UI/HeartIcon/HeartIcon';
+import DefaultPhoto from './../../../assets/icons/Username.png';
 
 import { SERVER_URL } from './../../../environments';
 
 const ProfileImage = props => {
     let imageSrc = props.src;
 
-    if (!imageSrc.includes('https://')) {
+    if (!imageSrc) {
+        imageSrc = DefaultPhoto;
+    } else if (!imageSrc.includes('https://')) {
         imageSrc = SERVER_URL + "/" + props.src;
     } 
 
@@ -41,7 +44,7 @@ const ProfileImage = props => {
                             right: 45,
                             width: 40
                         }}
-                        fill={props.main.toString()}
+                        main={props.main} 
                         clickHandler={props.setMainProfilePhotoHandler}
                     />
                 </React.Fragment>

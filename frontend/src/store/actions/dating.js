@@ -2,6 +2,7 @@ import * as actionTypes from './actionTypes';
 import axios from './../../axios';
 import Alertify from './../../utilities/Aleretify/Alertify';
 
+
 const getUserId = () => {
     const token = JSON.parse(localStorage.getItem("userdata"));
     return token.userId;
@@ -99,7 +100,6 @@ export const addProfilePhoto = photo => {
 
         axios.post('/dating/profilephoto', photo)
             .then(response => {
-                console.log(response);
                 dispatch({
                     type: actionTypes.ADD_PROFILEPHOTO_SUCCESS,
                     photos: response.data.photos
@@ -126,9 +126,16 @@ export const getProfilePhotos = (userid = getUserId()) => {
         axios.get('/dating/profilephoto/' + userid)
             .then(response => {
 
+                const defaultPhoto = {
+                    id: 1,
+                    imageUrl: "",
+                    main: true
+                }
+                
                 dispatch({
                     type: actionTypes.GET_PROFILEPHOTOS_SUCCESS,
-                    photos: response.data
+                    photos: response.data,
+                    mainProfilePhoto: response.data.find(photo => photo.main === true) || defaultPhoto
                 });
             })
             .catch(err => {
@@ -154,7 +161,7 @@ export const deleteProfilePhoto = photo => {
             .then(response => {
                 dispatch({
                     type: actionTypes.DELETE_PROFILEPHOTO_SUCCESS,
-                    photo: photo 
+                    photo: photo
                 });
 
                 Alertify.success(response.data.message);

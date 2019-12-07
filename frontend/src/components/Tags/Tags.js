@@ -14,6 +14,7 @@ const Tags = props => {
                 editable={props.editable}
                 clickHandler={props.clickHandler ? () => props.clickHandler(tag) : () => {}}
                 deleteTagHandler={props.deleteTagHandler ? () => props.deleteTagHandler(tag) : () => {}}
+                hoverable={props.clickHandler ? true : false}
             >
                 {tag.tag}
             </Tag>)}

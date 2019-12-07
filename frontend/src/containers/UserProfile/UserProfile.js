@@ -24,13 +24,8 @@ import EditProfileForm from './../../apps/dating/EditProfile/EditProfileForm';
 import * as actions from './../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
+
 class UserProfile extends Component {
-    constructor (props) {
-        super(props);
-        // this.state = {
-            
-        // }
-    }
 
     componentDidMount () {
         this.props.onGetTags();
@@ -46,12 +41,17 @@ class UserProfile extends Component {
                 }}>
                     <ContentContainer classes={classes.ProfileContainer}>
                         <ContentTitle editable={this.props.editable} form={<EditProfileForm />}>Profile</ContentTitle>
-                        <ProfileImage 
-                            src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" 
-                            alt="..." 
-                            classname={classes.ProfileImage}
-                            borderRadius="50%"
-                        />
+                        
+                        {this.props.loading || !this.props.mainProfilePhoto ? (
+                            <Spinner />
+                        ) : (
+                            <ProfileImage 
+                                src={this.props.mainProfilePhoto.imageUrl}
+                                alt="..." 
+                                classname={classes.ProfileImage}
+                                borderRadius="50%"
+                            />
+                        )}
                     
                         <ProfileName
                             style={{
@@ -103,7 +103,7 @@ class UserProfile extends Component {
 
                         <ContentContainer classes={classes.PhotosContainer}>
                             <ContentTitle>Photos</ContentTitle>
-                            {this.props.loading ? (
+                            {this.props.loading || !this.props.mainProfilePhoto ? (
                                 <Spinner />
                             ) : (
                                 <ProfilePhotos 
@@ -112,6 +112,7 @@ class UserProfile extends Component {
                                     addPhotoHandler={this.props.onAddPhoto}
                                     deletePhotoHandler={this.props.onDeletePhoto}
                                     setMainProfilePhotoHandler={this.props.onSetMainProfilePhoto}
+                                    mainPhotoId={this.props.mainProfilePhoto.id}
                                 />
                             )}
                             
@@ -130,7 +131,8 @@ const mapStateToProps = state => {
     return {
         loading: state.dating.loading,
         tags: state.dating.tags,
-        photos: state.dating.photos
+        photos: state.dating.photos,
+        mainProfilePhoto: state.dating.mainProfilePhoto
     }
 }
 

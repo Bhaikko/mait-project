@@ -21,3 +21,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.Pointer {
+    cursor: pointer;
+}

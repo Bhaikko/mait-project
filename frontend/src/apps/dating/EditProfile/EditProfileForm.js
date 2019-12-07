@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Form from './../../../containers/Form/Form';
 import classes from './EditProfileForm.css';
-import axios from './../../../axios';
+// import axios from './../../../axios';
 
 class EditProfileForm extends Component {
     constructor (props) {

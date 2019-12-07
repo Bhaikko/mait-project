@@ -7,7 +7,7 @@ import HeartIconUnfilled from './../../../assets/icons/Heart_Unfilled.png';
 const HeartIcon = props => {
     return (
         <React.Fragment>
-            {props.fill === "true" ? (
+            {props.main ? (
                 <img 
                     src={HeartIconFilled} 
                     className={classes.HeartIcon} 

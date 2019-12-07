@@ -6,7 +6,7 @@ import CrossIcon from './../../UI/CrossIcon/CrossIcon';
 
 const Tag = props => {
     return (
-        <div className={classes.Container} onClick={props.clickHandler}>
+        <div className={[classes.Container, props.hoverable ? classes.Pointer : ""].join(" ")} onClick={props.clickHandler}>
             <img 
                 className={classes.Tag}
                 src={TagImage}

@@ -4,7 +4,7 @@ const initialState = {
     loading: false,
     tags: [],
     photos: [],
-    main: null
+    mainProfilePhoto: null
 }
 
 const reducer = (state = initialState, action) => {
@@ -55,21 +55,22 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 photos: action.photos,
-                main: action.photos.find(photo => photo.main === true)
+                mainProfilePhoto: action.mainProfilePhoto
             }
 
         case actionTypes.DELETE_PROFILEPHOTO_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                photos: [...state.photos].filter(photo => photo.id !== action.photo.id)
+                photos: [...state.photos].filter(photo => photo.id !== action.photo.id),
+                mainProfilePhoto: {}
             }
 
         case actionTypes.SET_MAIN_PROFILEPHOTO_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                main: action.photo
+                mainProfilePhoto: action.photo
             }
        
         default:
