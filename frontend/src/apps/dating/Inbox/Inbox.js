@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import classes from './Inbox.css';
 import MessageBox from './../../../containers/MessageBox/MessageBox';
 import ProfileImage from './../../../components/ProfilePhotos/ProfileImage/ProfileImage';
@@ -9,9 +8,12 @@ import ContentContainer from './../../../components/UI/ContentContainer/ContentC
 import ProfileName from '../../../components/ProfileName/ProfileName';
 import FilterContainer from './../../../containers/FilterContainer/FilterContainer';
 
+
 class Inbox extends Component {
     constructor (props) {
         super(props);
+
+        this.myRef1 = React.createRef()
 
         this.state = {
             currentContact: null,
@@ -72,8 +74,10 @@ class Inbox extends Component {
             filteredContacts: contacts 
         });
     }
+    
 
     render () {
+        
         return (
             <CenterContainer>
                 <ContentContainer classes={classes.Inbox} style={{flexDirection: "row"}}>
@@ -107,10 +111,13 @@ class Inbox extends Component {
                             contacts={this.state.filteredContacts === null ? this.state.contacts : this.state.filteredContacts} 
                             contactClickHandler={this.contactClickHandler}
                             currentContact={this.state.currentContact}
+                            downClickHandler={() => {
+                                this.myRef1.current.classList.toggle(classes.Expand);
+                            }}
                         />
                     </div>
 
-                    <div className={classes.MessageBoxContainer}>
+                    <div className={classes.MessageBoxContainer} ref={this.myRef1}>
                         {!this.state.currentContact ? (
                             <div className={classes.EmptyBox}>
                                 <ProfileImage 

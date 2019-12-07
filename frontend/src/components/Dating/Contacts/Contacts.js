@@ -2,18 +2,20 @@ import React, { useRef } from 'react';
 
 import Contact from './Contact/Contact';
 import classes from './Contacts.css';
+import downarrow from './../../../assets/icons/dropdown-arrow.png';
 
 const Contacts = props => {
 
     const dropdownHandler = () => {
         myRef.current.classList.toggle(classes.Expand);
+        props.downClickHandler();
     }
 
     const myRef = useRef(null);
 
     return (
         <React.Fragment>
-            <div className={classes.DropDownButton} onClick={dropdownHandler}>&#10225;</div>
+            <div className={classes.DropDownButton} onClick={dropdownHandler}><img className={classes.Downarrow} src={downarrow} alt="dropdown" /></div>
                 
             <div className={classes.Contacts} ref={myRef}>
                 {props.contacts.map(contact => <Contact 
@@ -23,6 +25,7 @@ const Contacts = props => {
                     contactClickHandler={() => {
                         props.contactClickHandler(contact);
                         myRef.current.classList.remove(classes.Expand);
+                        props.downClickHandler();
                     }}
                 />)}
             </div>
