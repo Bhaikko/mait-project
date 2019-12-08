@@ -5,7 +5,7 @@ import Cross from './../../../assets/icons/Cross.png';
 
 const CrossIcon = props => {
     return (
-        <div onClick={props.clickhandler}>
+        <div onClick={props.onClick}>
             <img
                 style={{...props.style}}
                 src={Cross} 

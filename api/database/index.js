@@ -17,7 +17,7 @@ const {
     getTags,
     getUserTags,
     updateDatingProfile,
-    setMainProfilePhoto
+    setMainProfilePhoto,
 } = require("./datingHandler");
 
 module.exports = {

@@ -7,7 +7,7 @@ import Input from './../../components/UI/Input/Input';
 import Button from './../../components/UI/Button/Button';
 import Spinner from './../../components/UI/Spinner/Spinner';
 
-import * as authActions from './../../store/actions/index';
+import * as actions from './../../store/actions/index';
 
 import classes from './Form.css';
 
@@ -52,13 +52,18 @@ class Form extends Component {
     formSubmitHandler = event => {
         event.preventDefault();
 
-        const formData = new FormData();
+        // const formData = new FormData();
+        const formData = {};
 
         // eslint-disable-next-line
         for(let formElementIdentifier in this.state.form) {
-            formData.append(formElementIdentifier, this.state.form[formElementIdentifier].value);
-            // formData[formElementIdentifier] = this.state.form[formElementIdentifier].value;
+            // formData.append(formElementIdentifier, this.state.form[formElementIdentifier].value);
+            formData[formElementIdentifier] = this.state.form[formElementIdentifier].value;
         }
+
+        // for (var pair of formData.entries()) {
+        //     console.log(pair[0]+ ', ' + pair[1]); 
+        // }
 
         switch (this.props.url) {
             case "/auth/login":
@@ -68,8 +73,13 @@ class Form extends Component {
             case "/auth/signup":
                 this.props.onSignUp(formData);
                 break;
+
+            case "/dating/updateDatingProfile":
+                this.props.onUpdateDatingProfile(formData);
+                break;
             
             default:
+                console.log("No Url Assigned for Form");
                 break;
         }
 
@@ -118,8 +128,6 @@ class Form extends Component {
     }
 
     render () {
-
-        
         const formElementsArray = [];
 
         // eslint-disable-next-line
@@ -188,8 +196,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onLogin: formData => dispatch(authActions.login(formData)),
-        onSignUp: formData => dispatch(authActions.signup(formData))
+        onLogin: formData => dispatch(actions.login(formData)),
+        onSignUp: formData => dispatch(actions.signup(formData)),
+        onUpdateDatingProfile: formData => dispatch(actions.updateDatingProfile(formData))
     }
 }
 

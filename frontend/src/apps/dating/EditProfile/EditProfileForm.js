@@ -124,7 +124,7 @@ class EditProfileForm extends Component {
                         headerclass={classes.Header}
                         formConfig={this.state.formConfig} 
                         formName="Update Profile" 
-                        url="/dating/update" 
+                        url="/dating/updateDatingProfile" 
                         buttonName="Save"
                     />
                 }

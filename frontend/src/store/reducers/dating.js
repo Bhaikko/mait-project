@@ -80,6 +80,13 @@ const reducer = (state = initialState, action) => {
                 loading: false,
                 profile: action.profile
             }
+
+        case actionTypes.UPDATE_DATINGPROFILE_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                profile: action.profile
+            }
        
         default:
             return state;

@@ -25,10 +25,11 @@ export const login = (formdata) => {
             type: actionTypes.AUTH_START
         });
 
-        const object = {};
-        formdata.forEach((value, key) => {object[key] = value});
 
-        axios.post("/auth/login", object)
+        // const object = {};
+        // formdata.forEach((value, key) => {object[key] = value});
+
+        axios.post("/auth/login", formdata)
             .then(response => {
                 _login(response, dispatch);
             })
@@ -47,12 +48,12 @@ export const signup = (formdata) => {
             type: actionTypes.SIGNUP_START
         });
 
-        const object = {};
-        formdata.forEach((value, key) => {object[key] = value});
+        // const object = {};
+        // formdata.forEach((value, key) => {object[key] = value});
 
-        axios.post("/auth/signup", object)
+        axios.post("/auth/signup", formdata)
             .then(response => {
-                axios.post("/auth/login", object)
+                axios.post("/auth/login", formdata)
                     .then(response => {
                         _login(response, dispatch);
                     });

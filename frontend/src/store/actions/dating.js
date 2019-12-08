@@ -221,3 +221,32 @@ export const getDatingProfile = (userid = getUserId()) => {
             });
     }
 }
+
+export const updateDatingProfile = datingProfile => {
+    return dispatch => {
+        dispatch({
+            type: actionTypes.DATING_REQUEST_START
+        });
+
+
+        axios.put('/dating/datingprofile', datingProfile)
+            .then(response => {
+
+                dispatch({
+                    type: actionTypes.UPDATE_DATINGPROFILE_SUCCESS,
+                    profile: datingProfile
+                });
+
+                Alertify.success(response.data.message);
+            })
+            .catch(err => {
+                console.log(err);
+
+                dispatch({
+                    type: actionTypes.DATING_REQUEST_FAILED
+                });
+            });
+
+        
+    }
+}

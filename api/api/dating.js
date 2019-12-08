@@ -168,11 +168,27 @@ router.get('/datingprofile/:id', (req, res, next) => {
 });
 
 router.put('/datingprofile', (req, res, next) => {
-    console.log(req.body);
 
-    res.send(200);
+    if (!req.user) {
+        res.status(401).json({
+            message: 'Unauthorized'
+        });
+    } else {
+
+        databaseHandler.updateDatingProfile(req.user.id, req.body.about, req.body.relationStatus, req.body.intrestedIn, req.body.age, req.body.collegeName)
+            .then(response => {
+                res.status(200).json({
+                    message: "Dating Profile updated successfully"
+                });
+            })
+            .catch(err => {
+                errorHandler(err, res);
+            });
+    }
+
 })
 
 module.exports = {
     router
 }
+
