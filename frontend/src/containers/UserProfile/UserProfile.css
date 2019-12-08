@@ -26,8 +26,8 @@
 
 .ProfileImage {
     margin-top: 10px;
-    height: 220px; 
-    width: 17vw;  
+    height: 250px; 
+    width: 250px;  
 }
 
 .InterestContainer {
@@ -76,5 +76,6 @@
        height: 300px;
        width: 300px;
    }
+
 
 }

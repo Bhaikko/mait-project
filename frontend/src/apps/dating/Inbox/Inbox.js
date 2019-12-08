@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import classes from './Inbox.css';
 import MessageBox from './../../../containers/MessageBox/MessageBox';
-import ProfileImage from './../../../components/ProfilePhotos/ProfileImage/ProfileImage';
-import Contacts from './../../../components/Dating/Contacts/Contacts';
+import ProfilePhoto from './../../../components/ProfilePhotos/ProfilePhoto/ProfilePhoto';
+import Contacts from './../../../components/Contacts/Contacts';
 import CenterContainer from '../../../components/UI/CenterContainer/CenterContainer';
 import ContentContainer from './../../../components/UI/ContentContainer/ContentContainer';
 import ProfileName from '../../../components/ProfileName/ProfileName';
@@ -85,7 +85,7 @@ class Inbox extends Component {
                 <ContentContainer classes={classes.Inbox} style={{flexDirection: "row"}}>
                     <div className={classes.ContactsContainer}>
                         <div className={classes.ProfileHeader}>
-                            <ProfileImage 
+                            <ProfilePhoto 
                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX" 
                                 alt="..." 
                                 style={{
@@ -122,7 +122,7 @@ class Inbox extends Component {
                     <div className={classes.MessageBoxContainer} ref={this.myRef1}>
                         {!this.state.currentContact ? (
                             <div className={classes.EmptyBox}>
-                                <ProfileImage 
+                                <ProfilePhoto 
                                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX" 
                                     alt="..." 
                                     style={{
@@ -130,7 +130,7 @@ class Inbox extends Component {
                                         width: 300
                                     }}
                                     borderRadius="50%" 
-                                    classname={classes.ProfileImage}   
+                                    classname={classes.ProfilePhoto}   
                                 />
                                 <div className={classes.ProfileName}>Hi {UserDetail.get_username()}</div>
                                 <div className={classes.EmptyBoxMessage}>

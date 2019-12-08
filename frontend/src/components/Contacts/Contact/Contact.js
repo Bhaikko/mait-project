@@ -2,13 +2,13 @@ import React from 'react';
 
 import classes from './Contact.css';
 
-import ProfileName from './../../../../components/ProfileName/ProfileName';
-import ProfileImage from './../../../../components/ProfilePhotos/ProfileImage/ProfileImage';
+import ProfileName from '../../ProfileName/ProfileName';
+import ProfilePhoto from '../../ProfilePhotos/ProfilePhoto/ProfilePhoto';
 
 const Contact = props => {
     return (
         <div className={classes.Contact} onClick={props.contactClickHandler}>
-            <ProfileImage 
+            <ProfilePhoto 
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX" 
                 alt="..." 
                 style={{

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-
 
 import Input from './../../components/UI/Input/Input';
 import Button from './../../components/UI/Button/Button';
@@ -19,8 +17,6 @@ class Form extends Component {
             formIsValid: false,
         }
     }
-
-    
 
     checkValidity = (value, rules) => {
         if(!rules) {
@@ -171,12 +167,6 @@ class Form extends Component {
             );
         }
 
-        if (this.props.token && (this.props.url === "/auth/login" || this.props.url === "this.props.signin")) {
-            return (
-                <Redirect to="/" />
-            )
-        }
-
         return (
             <div className={[classes.Form, this.props.classes].join(" ")}>
                 <div className={[classes.FormName , this.props.headerclass].join(" ")}>{this.props.formName}</div>
@@ -189,7 +179,6 @@ class Form extends Component {
 const mapStateToProps = state => {
     return {
         loading: state.auth.loading, 
-        error: state.auth.error,
         token: state.auth.token
     }
 }

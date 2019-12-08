@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import Form from './../../../containers/Form/Form';
+import Form from '../../../Form/Form';
 import classes from './EditProfileForm.css';
-import axios from './../../../axios';
+import axios from '../../../../axios';
 
-import UserDetail from './../../../utilities/UserDetail';
+import UserDetail from '../../../../utilities/UserDetail';
 
 class EditProfileForm extends Component {
     constructor (props) {
@@ -22,7 +22,7 @@ class EditProfileForm extends Component {
                     valid: true,
                     touched: false
                 },
-                relationStatus: {
+                relationshipStatus: {
                     label: "Your Relationship Status",
                     elementType: "select",
                     elementConfig: {
@@ -87,8 +87,8 @@ class EditProfileForm extends Component {
                                 ...this.state.formConfig.about,
                                 value: response.data.about
                             },
-                            relationStatus: {
-                                ...this.state.formConfig.relationStatus,
+                            relationshipStatus: {
+                                ...this.state.formConfig.relationshipStatus,
                                 value: response.data.relationshipStatus
                             },
                             intrestedIn: {

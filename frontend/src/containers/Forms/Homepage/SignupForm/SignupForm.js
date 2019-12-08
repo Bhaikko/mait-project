@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-import Form from '../../../../containers/Form/Form';
+import Form from '../../../Form/Form';
 import classes from './SignupForm.css';
 
 class LoginForm extends Component {

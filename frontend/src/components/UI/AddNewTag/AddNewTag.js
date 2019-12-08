@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import classes from './AddNewTag.css';
 import AddIcon from './../../../assets/icons/Add.png';
-import EditTags from './../../../apps/dating/EditTags/EditTags';
+import EditTags from './../../../containers/Forms/Dating/EditTags/EditTags';
 
 import Modal from '../Modal/Modal';
 

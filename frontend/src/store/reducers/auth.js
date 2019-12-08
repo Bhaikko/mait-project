@@ -22,6 +22,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.AUTH_FAILED:
             return {
                 ...initialState,
+                loading: false
             }
 
         case actionTypes.SIGNUP_START:
@@ -33,6 +34,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SIGNUP_FAILED:
             return {
                 ...initialState,
+                loading: false
             }
 
         case actionTypes.LOGOUT:

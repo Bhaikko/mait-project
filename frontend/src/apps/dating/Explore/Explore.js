@@ -7,7 +7,7 @@ import Button from './../../../components/UI/Button/Button';
 import Tags from './../../../components/Tags/Tags';
 import CenterContainer from './../../../components/UI/CenterContainer/CenterContainer';
 import ContentContainer from './../../../components/UI/ContentContainer/ContentContainer';
-import ProfileImage from './../../../components/ProfilePhotos/ProfileImage/ProfileImage';
+import ProfilePhoto from './../../../components/ProfilePhotos/ProfilePhoto/ProfilePhoto';
 
 class ExplorePage extends Component {
 
@@ -106,7 +106,7 @@ class ExplorePage extends Component {
                     <div className={classes.DesktopPhotos}>
                         {this.state.photos.map((photo, index) => (
                             index < 4 ? (
-                                <ProfileImage 
+                                <ProfilePhoto 
                                     src={photo.imageUrl}
                                     style={{
                                         width: 300,
@@ -121,7 +121,7 @@ class ExplorePage extends Component {
                     <div className={classes.MainFooter}>If you like each other, we'll let you know!</div>
 
                     <div className={classes.MobilePhoto}>
-                        <ProfileImage 
+                        <ProfilePhoto 
                             src={this.state.photos[0].imageUrl}
                             style={{
                                 width: "60%",

@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 
 import Contact from './Contact/Contact';
 import classes from './Contacts.css';
-import downarrow from './../../../assets/icons/dropdown-arrow.png';
+import downarrow from './../../assets/icons/dropdown-arrow.png';
 
 const Contacts = props => {
 
@@ -15,7 +15,16 @@ const Contacts = props => {
 
     return (
         <React.Fragment>
-            <div className={classes.DropDownButton} onClick={dropdownHandler}><img className={classes.Downarrow} src={downarrow} alt="dropdown" /></div>
+            <div 
+                className={classes.DropDownButton} 
+                onClick={dropdownHandler}
+            >
+                <img 
+                    className={classes.Downarrow} 
+                    src={downarrow} 
+                    alt="dropdown" 
+                />
+            </div>
                 
             <div className={classes.Contacts} ref={myRef}>
                 {props.contacts.map(contact => <Contact 

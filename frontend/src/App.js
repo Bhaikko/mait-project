@@ -37,11 +37,12 @@ class App extends Component {
         <Route path="/feed" component={FeedApp} />
         <Route path="/marketplace" component={MarketPlaceApp} />
         <Route path="/notes" component={NotesApp} />
-        <Route path="/profile/:username" component={ProfilePage} />
+        <Route path="/profile/:id" component={ProfilePage} />
         <Route path="/me" component={MePage} />
-        <Route path="/notfound" component={NotFoundPage} />
         <Route path="/logout" component={LogoutPage} />
-        <Route path="/" component={HomepageApp} />
+        <Route path="/auth" component={AuthPage} />
+        <Route path="/" exact component={HomepageApp} />
+        <Route path="/notfound" component={NotFoundPage} />
         <Redirect to="/notfound" />
       </Switch>
     );

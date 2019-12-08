@@ -10,6 +10,7 @@ module.exports.getDatingProfile = userId => {
 }
 
 module.exports.updateDatingProfile = (userId, about, relationshipStatus, intrestedIn, age, collegeName) => {
+    console.log(relationshipStatus);
     return DatingProfiles.update(
         {
             about,

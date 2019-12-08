@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import classes from './MessageBox.css';
 
-import ProfileImage from './../../components/ProfilePhotos/ProfileImage/ProfileImage';
+import ProfilePhoto from './../../components/ProfilePhotos/ProfilePhoto/ProfilePhoto';
 import ProfileName from '../../components/ProfileName/ProfileName';
 import SendIcon from './../../assets/icons/Send.png';
 
@@ -62,7 +62,7 @@ class MessageBox extends Component {
         return (
             <div className={classes.MessageBox}>
                 <div className={classes.Header}>
-                    <ProfileImage 
+                    <ProfilePhoto 
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX" 
                         alt="..." 
                         style={{

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import classes from './ProfilePhotos.css';
-import ProfileImage from './ProfileImage/ProfileImage';
+import ProfilePhoto from './ProfilePhoto/ProfilePhoto';
 import AddNewPhoto from '../UI/AddNewPhoto/AddNewPhoto';
 
 const ProfilePhotos = props => {
@@ -9,7 +9,7 @@ const ProfilePhotos = props => {
 
     return (
         <div className={classes.Photos}>
-            {props.photos.map(photo => (<ProfileImage
+            {props.photos.map(photo => (<ProfilePhoto
                 id={photo.id}
                 src={photo.imageUrl}
                 key={photo.id}

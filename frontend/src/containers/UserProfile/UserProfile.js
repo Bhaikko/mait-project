@@ -6,7 +6,7 @@ import classes from './UserProfile.css';
 import CenterContainer from './../../components/UI/CenterContainer/CenterContainer';
 import ContentContainer from './../../components/UI/ContentContainer/ContentContainer';
 import ContentTitle from './../../components/UI/ContentTitle/ContentTitle';
-import ProfileImage from './../../components/ProfilePhotos/ProfileImage/ProfileImage';
+import ProfilePhoto from './../../components/ProfilePhotos/ProfilePhoto/ProfilePhoto';
 import ProfileInfo from './../../components/ProfileInfo/ProfileInfo';
 import ProfileName from './../../components/ProfileName/ProfileName';
 import Tags from './../../components/Tags/Tags';
@@ -19,7 +19,7 @@ import UsernameIcon from './../../assets/icons/Username.png';
 import MailIcon from './../../assets/icons/mail.png';
 import InterestIcon from './../../assets/icons/Interest.png';
 
-import EditProfileForm from './../../apps/dating/EditProfile/EditProfileForm';
+import EditProfileForm from './../../containers/Forms/Dating/EditProfile/EditProfileForm';
 
 import * as actions from './../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner';
@@ -52,10 +52,10 @@ class UserProfile extends Component {
                                 {this.props.loading || !this.props.mainProfilePhoto ? (
                                     <Spinner />
                                 ) : (
-                                    <ProfileImage 
+                                    <ProfilePhoto 
                                         src={this.props.mainProfilePhoto.imageUrl}
                                         alt="..." 
-                                        classname={classes.ProfileImage}
+                                        classname={classes.ProfilePhoto}
                                         borderRadius="50%"
                                     />
                                 )}

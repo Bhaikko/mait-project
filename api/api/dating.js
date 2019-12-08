@@ -174,8 +174,7 @@ router.put('/datingprofile', (req, res, next) => {
             message: 'Unauthorized'
         });
     } else {
-
-        databaseHandler.updateDatingProfile(req.user.id, req.body.about, req.body.relationStatus, req.body.intrestedIn, req.body.age, req.body.collegeName)
+        databaseHandler.updateDatingProfile(req.user.id, req.body.about, req.body.relationshipStatus, req.body.intrestedIn, req.body.age, req.body.collegeName)
             .then(response => {
                 res.status(200).json({
                     message: "Dating Profile updated successfully"

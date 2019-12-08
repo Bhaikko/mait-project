@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 // import classes from './EditTags.css';
-import FilterContainer from './../../../containers/FilterContainer/FilterContainer';
-import axios from './../../../axios';
-import Tags from './../../../components/Tags/Tags';
-import * as actions from './../../../store/actions/index';
+import FilterContainer from '../../../FilterContainer/FilterContainer';
+import axios from '../../../../axios';
+import Tags from '../../../../components/Tags/Tags';
+import * as actions from '../../../../store/actions/index';
 
 class EditTags extends Component {
     constructor (props) {
