@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Dating from './Dating';
 import Inbox from './Inbox/Inbox';
@@ -26,7 +26,8 @@ class DatingRoute extends Component {
             <Switch>
                 <Route path="/dating/explore" component={Explore} />
                 <Route path="/dating/inbox" component={Inbox} />
-                <Route path="/dating" component={Dating} />
+                <Route path="/dating" exact component={Dating} />
+                <Redirect to="/notfound" />
             </Switch>
         );
 

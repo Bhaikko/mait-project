@@ -9,10 +9,6 @@ import HomepageApp from './apps/homepage/index';
 import MarketPlaceApp from './apps/marketplace/Marketplace';
 import NotesApp from './apps/notes/Notes';
 import AuthPage from './apps/homepage/auth/Auth';
-import ProfilePage from './apps/homepage/profile/Profile';
-import MePage from './apps/homepage/Me/Me';
-import NotFoundPage from './apps/homepage/NotFound/NotFound';
-import LogoutPage from './containers/Logout/Logout';
 
 import * as authActions from './store/actions/index';
 
@@ -37,12 +33,7 @@ class App extends Component {
         <Route path="/feed" component={FeedApp} />
         <Route path="/marketplace" component={MarketPlaceApp} />
         <Route path="/notes" component={NotesApp} />
-        <Route path="/profile/:id" component={ProfilePage} />
-        <Route path="/me" component={MePage} />
-        <Route path="/logout" component={LogoutPage} />
-        <Route path="/auth" component={AuthPage} />
-        <Route path="/" exact component={HomepageApp} />
-        <Route path="/notfound" component={NotFoundPage} />
+        <Route path="/" component={HomepageApp} />
         <Redirect to="/notfound" />
       </Switch>
     );
