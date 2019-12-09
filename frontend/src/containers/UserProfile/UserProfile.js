@@ -25,15 +25,14 @@ import EditProfileForm from './../../containers/Forms/Dating/EditProfile/EditPro
 import * as actions from './../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
-import UserDetail from './../../utilities/UserDetail';
 import ChangePassword from './../../containers/ChangePassword/ChangePassword';
 
 class UserProfile extends Component {
 
     componentDidMount () {
-        this.props.onGetDatingProfile();
-        this.props.onGetTags();
-        this.props.onGetPhotos();
+        // this.props.onGetDatingProfile();
+        // this.props.onGetTags();
+        // this.props.onGetPhotos();
     }
 
 
@@ -69,22 +68,22 @@ class UserProfile extends Component {
                                         fontSize: 20
                                     }}
                                 >
-                                    {UserDetail.get_username()}
+                                    {this.props.profile.name}
                                 </ProfileName>
                             
+                                <ProfileInfo infoimage={UsernameIcon}>{this.props.profile.username}</ProfileInfo>
                                 {this.props.editable ? (
                                     <Fragment>
-                                        <ProfileInfo infoimage={UsernameIcon}>{UserDetail.get_username()}</ProfileInfo>
-                                        <ProfileInfo infoimage={MailIcon}>{UserDetail.get_email()}</ProfileInfo>
+                                        <ProfileInfo infoimage={MailIcon}>{this.props.profile.email}</ProfileInfo>
         
                                     </Fragment>
                                 ) : (
                                     null
                                 )}
-                                <ProfileInfo infoimage={GradIcon}>{this.props.profile.collegeName || "-"}</ProfileInfo>
-                                <ProfileInfo infoimage={HeartIcon}>{this.props.profile.relationshipStatus || "-"}</ProfileInfo>
-                                <ProfileInfo infoimage={AgeIcon}>{this.props.profile.age || "-"}</ProfileInfo>
-                                <ProfileInfo infoimage={InterestIcon}>{this.props.profile.intrestedIn || "-"}</ProfileInfo>
+                                <ProfileInfo infoimage={GradIcon}>{this.props.datingProfile.collegeName || "-"}</ProfileInfo>
+                                <ProfileInfo infoimage={HeartIcon}>{this.props.datingProfile.relationshipStatus || "-"}</ProfileInfo>
+                                <ProfileInfo infoimage={AgeIcon}>{this.props.datingProfile.age || "-"}</ProfileInfo>
+                                <ProfileInfo infoimage={InterestIcon}>{this.props.datingProfile.intrestedIn || "-"}</ProfileInfo>
 
 
                                 <div className={classes.ProfileButtonsContainer}>
@@ -103,7 +102,7 @@ class UserProfile extends Component {
                                 <ContentContainer classes={classes.BioContainer}>
                                     <ContentTitle >Bio</ContentTitle>
                                     <div className={classes.SummaryContent}>
-                                        {this.props.profile.about || "-"}
+                                        {this.props.datingProfile.about || "-"}
                                     </div>
         
                                 </ContentContainer>
@@ -128,7 +127,7 @@ class UserProfile extends Component {
                                         <Spinner />
                                     ) : (
                                         <ProfilePhotos 
-                                            photos={this.props.photos} 
+                                            photos={this.props.profilePhotos} 
                                             editable={this.props.editable}
                                             addPhotoHandler={this.props.onAddPhoto}
                                             deletePhotoHandler={this.props.onDeletePhoto}
@@ -151,11 +150,11 @@ class UserProfile extends Component {
 
 const mapStateToProps = state => {
     return {
-        loading: state.dating.loading,
-        tags: state.dating.tags,
-        photos: state.dating.photos,
-        mainProfilePhoto: state.dating.mainProfilePhoto,
-        profile: state.dating.profile
+        // loading: state.dating.loading,
+        // tags: state.dating.tags,
+        // photos: state.dating.photos,
+        // mainProfilePhoto: state.dating.mainProfilePhoto,
+        // profile: state.dating.profile
     }
 }
 

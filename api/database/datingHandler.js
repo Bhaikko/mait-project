@@ -1,4 +1,4 @@
-const { DatingProfiles, ProfilePhotos, UserTags, Matches, Tags } = require('./database');
+const { DatingProfiles, ProfilePhotos, UserTags, Matches, Tags, Users } = require('./database');
 
 module.exports.getDatingProfile = userId => {
     return DatingProfiles.findOne({
@@ -131,8 +131,30 @@ module.exports.setMainProfilePhoto = (userId, photoId) => {
                 }
             )
             
-        });
-        
+        });  
+}
+
+module.exports.getCompleteProfile = userId => {
+    return Users.findOne({
+        where: {
+            id: userId 
+        },
+        attributes: ['id', 'name', 'username'],
+        include: [
+            {
+                model: DatingProfiles,
+                attributes: ['id', 'about', 'relationshipStatus', 'intrestedIn', 'age', 'collegeName']
+            },
+            {
+                model: UserTags,
+                attributes: ['id', 'tag']
+            },
+            {
+                model: ProfilePhotos,
+                attributes: ['id', 'imageUrl']
+            }
+        ]
+    });
 }
 
 

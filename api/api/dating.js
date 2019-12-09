@@ -185,7 +185,18 @@ router.put('/datingprofile', (req, res, next) => {
             });
     }
 
-})
+});
+
+router.get('/profile/:id', (req, res, next) => {
+
+    databaseHandler.getCompleteProfile(req.params.id)
+        .then(profile => {
+            res.send(profile.get());
+        })
+        .catch(err => {
+            errorHandler(err, res);
+        });
+});
 
 module.exports = {
     router
