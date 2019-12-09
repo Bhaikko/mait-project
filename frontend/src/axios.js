@@ -30,7 +30,7 @@ instance.interceptors.response.use(
     error => {
         Alertify.error(error.response.data.message);
         // console.log(error.response);
-        if (!error.response.config.url.includes("/auth/login")) {
+        if (!error.response.config.url.includes("/auth")) {
             Alertify.error("Try Refreshing The Page");
         }
 

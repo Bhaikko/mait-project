@@ -15,7 +15,7 @@ module.exports.addUser = (name, username, email, password) => {
         email,
         password,
         username,
-        isVerified: true 
+        isVerified: true // this is for development build only
     })
         .then(response => {
             return DatingProfiles.create({
@@ -23,6 +23,28 @@ module.exports.addUser = (name, username, email, password) => {
             });
         })
         .catch(err => { throw err });    
+}
+
+module.exports.updatePassword = (id, password) => {
+    return Users.update(
+        {
+            password 
+        },
+        {
+            where: {
+                id 
+            }
+        }
+    );
+}
+
+module.exports.getPasswordHash = id => {
+    return Users.findOne({
+        where: {
+            id
+        },
+        attributes: ['password']
+    });
 }
 
 module.exports.getUser = email => {

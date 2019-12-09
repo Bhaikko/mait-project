@@ -1,6 +1,8 @@
 const {
     getUser,
-    addUser
+    addUser,
+    updatePassword,
+    getPasswordHash
 } = require("./authHandler");
 
 
@@ -35,5 +37,7 @@ module.exports = {
     getTags,
     getUserTags,
     updateDatingProfile,
-    setMainProfilePhoto
+    setMainProfilePhoto,
+    updatePassword,
+    getPasswordHash
 }

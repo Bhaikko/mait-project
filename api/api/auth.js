@@ -67,6 +67,55 @@ router.post("/login", (req, res, next) => {
     })(req, res, next);
 });
 
+router.put('/updatePassword', (req, res, next) => {
+
+    const {
+        oldPassword,
+        newPassword,
+        confirmPassword,
+        id
+    } = req.body;
+
+
+    databaseHandler.getPasswordHash(id)
+        .then(password => {
+            password = password.get().password;
+            bcrypt.compare(oldPassword, password, function(err, response) {
+                if (response) {
+                    // change password
+                    if (newPassword !== confirmPassword) {
+                        res.status(400).json({
+                            message: "New Password and Confirm Password do not match"
+                        });
+                    } else {
+                        bcrypt.hash(newPassword, saltRounds, function(err, hashedPassword) {
+                            if (err) {
+                                throw err;
+                            }
+                            
+                            databaseHandler.updatePassword(id, hashedPassword)
+                                .then(response => {
+                                    res.status(200).json({
+                                        message: "Password Changed Successfully"
+                                    });
+                                });
+                            
+                        });
+                    }
+                } else {
+                    res.status(400).json({
+                        message: "Old password does not match"
+                    });
+                }
+            });
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: "Password Changed Successfully"
+            });
+        });
+});
+
 router.get("/logout", (req, res, next) => {
     res.logout();
     res.sendStatus(200);

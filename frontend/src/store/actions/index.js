@@ -2,6 +2,7 @@ export {
     login,
     signup,
     autoLogin,
+    updatePassword,
     logout
 } from './auth';
 

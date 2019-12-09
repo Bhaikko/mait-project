@@ -11,6 +11,7 @@ import ProfileInfo from './../../components/ProfileInfo/ProfileInfo';
 import ProfileName from './../../components/ProfileName/ProfileName';
 import Tags from './../../components/Tags/Tags';
 import ProfilePhotos from './../../components/ProfilePhotos/ProfilePhotos';
+import Button from './../../components/UI/Button/Button';
 
 import GradIcon from './../../assets/icons/grad-cap.png';
 import HeartIcon from './../../assets/icons/Heart.png';
@@ -25,6 +26,7 @@ import * as actions from './../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
 import UserDetail from './../../utilities/UserDetail';
+import ChangePassword from './../../containers/ChangePassword/ChangePassword';
 
 class UserProfile extends Component {
 
@@ -83,6 +85,18 @@ class UserProfile extends Component {
                                 <ProfileInfo infoimage={HeartIcon}>{this.props.profile.relationshipStatus || "-"}</ProfileInfo>
                                 <ProfileInfo infoimage={AgeIcon}>{this.props.profile.age || "-"}</ProfileInfo>
                                 <ProfileInfo infoimage={InterestIcon}>{this.props.profile.intrestedIn || "-"}</ProfileInfo>
+
+
+                                <div className={classes.ProfileButtonsContainer}>
+                                    {this.props.editable ? (
+                                        <ChangePassword />
+                                    ) : (
+                                        <Fragment>
+                                            <Button classes={classes.LikeButton}>Like</Button>
+                                            <Button classes={classes.ReportButton}>Report</Button>
+                                        </Fragment>
+                                    )}
+                                </div>
         
                             </ContentContainer>
                             <div className={classes.Rcontainer}>                        

@@ -1,6 +1,7 @@
 import * as actionTypes from './actionTypes';
 import axios from './../../axios';
 import Alertify from './../../utilities/Aleretify/Alertify';
+import UserDetails from './../../utilities/UserDetail';
 
 const _login = (response, dispatch) => {
     const userdata = {
@@ -45,7 +46,7 @@ export const login = (formdata) => {
 export const signup = (formdata) => {
     return dispatch => {
         dispatch({
-            type: actionTypes.SIGNUP_START
+            type: actionTypes.AUTH_START
         });
 
         // const object = {};
@@ -61,10 +62,39 @@ export const signup = (formdata) => {
             .catch(err => {
                 console.log(err.response.data.message);
                 dispatch({
-                    type: actionTypes.SIGNUP_FAILED,
+                    type: actionTypes.AUTH_FAILED,
                 });
             });
 
+    }
+}
+
+
+export const updatePassword = (formdata) => {
+    return dispatch => {
+        dispatch({
+            type: actionTypes.UPDATE_PASSWORD_START
+        });
+
+        formdata = {
+            ...formdata,
+            id: UserDetails.get_userId()
+        }
+
+        axios.put('/auth/updatePassword', formdata)
+            .then(response => {
+                dispatch({
+                    type: actionTypes.UPDATE_PASSWORD_END
+                });
+
+                Alertify.success(response.data.message);
+            })
+            .catch(err => {
+                console.log(err);
+                dispatch({
+                    type: actionTypes.UPDATE_PASSWORD_END
+                });
+            });
     }
 }
 
@@ -76,6 +106,7 @@ export const autoLogin = (token, userId, username) => {
         username: username
     }
 }
+
 
 export const logout = () => {
     localStorage.clear("userdata");

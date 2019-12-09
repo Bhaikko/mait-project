@@ -25,20 +25,20 @@ const reducer = (state = initialState, action) => {
                 loading: false
             }
 
-        case actionTypes.SIGNUP_START:
-            return {
-                ...initialState,
-                loading: true
-            }
-
-        case actionTypes.SIGNUP_FAILED:
-            return {
-                ...initialState,
-                loading: false
-            }
-
         case actionTypes.LOGOUT:
             return initialState;
+
+        case actionTypes.UPDATE_PASSWORD_START:
+            return {
+                ...state,
+                loading: true,
+            }
+
+        case actionTypes.UPDATE_PASSWORD_END:
+            return {
+                ...state,
+                loading: false
+            }
 
         default: 
             return state;
