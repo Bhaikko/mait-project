@@ -7,13 +7,11 @@ export {
 } from './auth';
 
 export {
-    getTags,
     addTag,
     deleteTag,
     addProfilePhoto,
-    getProfilePhotos,
     deleteProfilePhoto,
     setMainProfilePhoto,
-    getDatingProfile,
-    updateDatingProfile
+    updateDatingProfile,
+    getProfile
 } from './dating';

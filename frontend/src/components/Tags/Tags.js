@@ -6,7 +6,6 @@ import AddNewTag from './../UI/AddNewTag/AddNewTag';
 
 const Tags = props => {
     const tagsLength = props.tags.length;
-
     return (
         <div className={classes.Tags}>
             {props.tags.map(tag => <Tag 

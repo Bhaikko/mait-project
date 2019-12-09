@@ -151,7 +151,7 @@ module.exports.getCompleteProfile = userId => {
             },
             {
                 model: ProfilePhotos,
-                attributes: ['id', 'imageUrl']
+                attributes: ['id', 'imageUrl', 'main']
             }
         ]
     });

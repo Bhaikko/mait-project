@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
 
 import classes from './UserProfile.css';
 
@@ -22,19 +21,11 @@ import InterestIcon from './../../assets/icons/Interest.png';
 
 import EditProfileForm from './../../containers/Forms/Dating/EditProfile/EditProfileForm';
 
-import * as actions from './../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
 import ChangePassword from './../../containers/ChangePassword/ChangePassword';
 
 class UserProfile extends Component {
-
-    componentDidMount () {
-        // this.props.onGetDatingProfile();
-        // this.props.onGetTags();
-        // this.props.onGetPhotos();
-    }
-
 
     render () {
         return (
@@ -132,7 +123,7 @@ class UserProfile extends Component {
                                             addPhotoHandler={this.props.onAddPhoto}
                                             deletePhotoHandler={this.props.onDeletePhoto}
                                             setMainProfilePhotoHandler={this.props.onSetMainProfilePhoto}
-                                            mainPhotoId={this.props.mainProfilePhoto.id}
+                                            mainPhotoId={this.props.mainPhotoId}
                                         />
                                     )}
                                     
@@ -148,26 +139,6 @@ class UserProfile extends Component {
 
 }
 
-const mapStateToProps = state => {
-    return {
-        // loading: state.dating.loading,
-        // tags: state.dating.tags,
-        // photos: state.dating.photos,
-        // mainProfilePhoto: state.dating.mainProfilePhoto,
-        // profile: state.dating.profile
-    }
-}
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onGetTags: userid => dispatch(actions.getTags(userid)),
-        onDeleteTag: tag => dispatch(actions.deleteTag(tag)),
-        onAddPhoto: photo => dispatch(actions.addProfilePhoto(photo)),
-        onGetPhotos: userid => dispatch(actions.getProfilePhotos(userid)),
-        onDeletePhoto: photo => dispatch(actions.deleteProfilePhoto(photo)),
-        onSetMainProfilePhoto: photo => dispatch(actions.setMainProfilePhoto(photo)),
-        onGetDatingProfile: userid => dispatch(actions.getDatingProfile(userid))
-    }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
+export default UserProfile;

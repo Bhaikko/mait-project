@@ -3,9 +3,10 @@ import * as actionTypes from './../actions/actionTypes';
 const initialState = {
     loading: false,
     tags: [],
-    photos: [],
+    profilePhotos: [],
     mainProfilePhoto: null,
-    profile: {}
+    profile: {},
+    datingProfile: {}
 }
 
 const reducer = (state = initialState, action) => {
@@ -23,12 +24,6 @@ const reducer = (state = initialState, action) => {
                 loading: false
             }
 
-        case actionTypes.GET_TAGS_SUCCESS:
-            return {
-                ...state,
-                loading: false,
-                tags: action.tags
-            }
 
         case actionTypes.ADD_TAG_SUCCESS:
             return {
@@ -48,22 +43,15 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                photos: action.photos 
+                profilePhotos: action.photos 
             }
 
-        case actionTypes.GET_PROFILEPHOTOS_SUCCESS:
-            return {
-                ...state,
-                loading: false,
-                photos: action.photos,
-                mainProfilePhoto: action.mainProfilePhoto
-            }
 
         case actionTypes.DELETE_PROFILEPHOTO_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                photos: [...state.photos].filter(photo => photo.id !== action.photo.id),
+                profilePhotos: [...state.profilePhotos].filter(photo => photo.id !== action.photo.id),
                 mainProfilePhoto: {}
             }
 
@@ -78,15 +66,20 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                profile: action.profile
+                datingProfile: action.datingProfile,
+                mainProfilePhoto: action.mainProfilePhoto,
+                profile: action.profile,
+                profilePhotos: action.profilePhotos,
+                tags: action.tags 
             }
 
         case actionTypes.UPDATE_DATINGPROFILE_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                profile: action.profile
+                datingProfile: action.datingProfile
             }
+
        
         default:
             return state;

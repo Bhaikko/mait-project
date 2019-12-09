@@ -42,6 +42,10 @@ class Form extends Component {
             isValid = value.length === 10 && isValid
         }
 
+        if (rules.min) {
+            isValid = value >= rules.min && isValid
+        }
+
         return isValid;
     }
 

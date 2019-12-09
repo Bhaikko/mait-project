@@ -41,8 +41,7 @@ class EditProfileForm extends Component {
                     elementConfig: {
                         options: [
                             "Men",
-                            "Women",
-                            "Both"
+                            "Women"
                         ]
                     },
                     value: "Men",
@@ -65,6 +64,9 @@ class EditProfileForm extends Component {
                     elementConfig: {
                         placeholder: "Your Age",
                         type: "number"
+                    },
+                    validation: {
+                        min: 18
                     },
                     value: 18,
                     valid: true,

@@ -4,32 +4,6 @@ import Alertify from './../../utilities/Aleretify/Alertify';
 import UserDetail from './../../utilities/UserDetail';
 
 
-const getUserId = () => {
-    return UserDetail.get_userId();
-}
-
-export const getTags = (userid = getUserId()) => {
-    return dispatch => {
-        dispatch({
-            type: actionTypes.DATING_REQUEST_START
-        });
-
-        axios.get('/dating/usertag/' + userid)
-            .then(response => {
-                // console.log(response);
-                dispatch({
-                    type: actionTypes.GET_TAGS_SUCCESS,
-                    tags: response.data 
-                });
-            })
-            .catch(err => {
-                console.log(err);
-                dispatch({
-                    type: actionTypes.DATING_REQUEST_FAILED
-                });
-            });
-    }
-}
 
 export const addTag = tag => {
     return (dispatch, getState) => {
@@ -69,7 +43,6 @@ export const deleteTag = tag => {
         dispatch({
             type: actionTypes.DATING_REQUEST_START
         });
-
         axios.delete('/dating/usertag', {
             data: {
                 tag: tag 
@@ -107,36 +80,6 @@ export const addProfilePhoto = photo => {
 
                 Alertify.success(response.data.message);
 
-            })
-            .catch(err => {
-                console.log(err);
-                dispatch({
-                    type: actionTypes.DATING_REQUEST_FAILED
-                });
-            });
-    }
-}
-
-export const getProfilePhotos = (userid = getUserId()) => {
-    return dispatch => {
-        dispatch({
-            type: actionTypes.DATING_REQUEST_START
-        });
-
-        axios.get('/dating/profilephoto/' + userid)
-            .then(response => {
-
-                const defaultPhoto = {
-                    id: 1,
-                    imageUrl: "",
-                    main: true
-                }
-                
-                dispatch({
-                    type: actionTypes.GET_PROFILEPHOTOS_SUCCESS,
-                    photos: response.data,
-                    mainProfilePhoto: response.data.find(photo => photo.main === true) || defaultPhoto
-                });
             })
             .catch(err => {
                 console.log(err);
@@ -200,27 +143,6 @@ export const setMainProfilePhoto = photo => {
     }
 }
 
-export const getDatingProfile = (userid = getUserId()) => {
-    return dispatch => {
-        dispatch({
-            type: actionTypes.DATING_REQUEST_START
-        });
-
-        axios.get('/dating/datingprofile/' + userid)
-            .then(response => {
-                dispatch({
-                    type: actionTypes.GET_DATINGPROFILE_SUCCESS,
-                    profile: response.data
-                });
-            })
-            .catch(err => {
-                console.log(err);
-                dispatch({
-                    type: actionTypes.DATING_REQUEST_FAILED
-                });
-            });
-    }
-}
 
 export const updateDatingProfile = datingProfile => {
     return dispatch => {
@@ -231,10 +153,9 @@ export const updateDatingProfile = datingProfile => {
 
         axios.put('/dating/datingprofile', datingProfile)
             .then(response => {
-
                 dispatch({
                     type: actionTypes.UPDATE_DATINGPROFILE_SUCCESS,
-                    profile: datingProfile
+                    datingProfile: datingProfile
                 });
 
                 Alertify.success(response.data.message);
@@ -248,5 +169,41 @@ export const updateDatingProfile = datingProfile => {
             });
 
         
+    }
+}
+
+export const getProfile = () => {
+    return dispatch => {
+        axios.get('/dating/profile/' + UserDetail.get_userId())
+            .then(response => {
+                const userdata = response.data;
+                const defaultPhoto = {
+                    id: 1,
+                    imageUrl: "",
+                    main: true
+                }
+
+                dispatch({
+                    type: actionTypes.GET_DATINGPROFILE_SUCCESS,
+                    profile: {
+                        name: userdata.name,
+                        username: userdata.username,
+                        email: UserDetail.get_email() 
+                    },
+                    tags: userdata.userTags || [],
+                    profilePhotos: userdata.profilePhotos || [],
+                    datingProfile: userdata.datingProfile || {},
+                    mainProfilePhoto: userdata.profilePhotos.find(photo => photo.main === true) || defaultPhoto
+                });
+               
+    
+            })
+            .catch(err => {
+                console.log(err);
+    
+                dispatch({
+                    type: actionTypes.DATING_REQUEST_FAILED
+                });
+            });
     }
 }
