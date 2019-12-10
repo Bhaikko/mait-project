@@ -174,6 +174,10 @@ export const updateDatingProfile = datingProfile => {
 
 export const getProfile = () => {
     return dispatch => {
+        dispatch({
+            type: actionTypes.DATING_REQUEST_START
+        });
+
         axios.get('/dating/profile/' + UserDetail.get_userId())
             .then(response => {
                 const userdata = response.data;
@@ -201,6 +205,30 @@ export const getProfile = () => {
             .catch(err => {
                 console.log(err);
     
+                dispatch({
+                    type: actionTypes.DATING_REQUEST_FAILED
+                });
+            });
+    }
+}
+
+export const submitReport = report => {
+    return dispatch => {
+
+        dispatch({
+            type: actionTypes.DATING_REQUEST_START
+        });
+
+        axios.post('/dating/report', report)
+            .then(response => {
+                dispatch({
+                    type: actionTypes.SUBMIT_REPORT_SUCCESS
+                });
+
+                Alertify.success(response.data.message);
+            })
+            .catch(err => {
+                console.log(err);
                 dispatch({
                     type: actionTypes.DATING_REQUEST_FAILED
                 });

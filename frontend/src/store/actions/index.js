@@ -13,5 +13,6 @@ export {
     deleteProfilePhoto,
     setMainProfilePhoto,
     updateDatingProfile,
-    getProfile
+    getProfile,
+    submitReport
 } from './dating';

@@ -80,6 +80,11 @@ const reducer = (state = initialState, action) => {
                 datingProfile: action.datingProfile
             }
 
+        case actionTypes.SUBMIT_REPORT_SUCCESS:
+            return {
+                ...state,
+                loading: false 
+            }
        
         default:
             return state;

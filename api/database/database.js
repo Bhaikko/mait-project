@@ -143,6 +143,21 @@ const Tags = database.define("tags", {
     }
 });
 
+const Reports = database.define("reports", {
+    report: {
+        type: Sequelize.TEXT,
+        allowNull: false 
+    },
+    submittedById: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    reportForId: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    }
+});
+
 module.exports = {
     database,
     Users,
@@ -151,5 +166,6 @@ module.exports = {
     UserTags,
     Messages,
     Matches,
-    Tags
+    Tags,
+    Reports
 }

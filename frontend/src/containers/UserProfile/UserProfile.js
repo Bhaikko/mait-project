@@ -11,6 +11,7 @@ import ProfileName from './../../components/ProfileName/ProfileName';
 import Tags from './../../components/Tags/Tags';
 import ProfilePhotos from './../../components/ProfilePhotos/ProfilePhotos';
 import Button from './../../components/UI/Button/Button';
+import SubmitReport from './../SubmitReport/SubmitReport';
 
 import GradIcon from './../../assets/icons/grad-cap.png';
 import HeartIcon from './../../assets/icons/Heart.png';
@@ -82,8 +83,8 @@ class UserProfile extends Component {
                                         <ChangePassword />
                                     ) : (
                                         <Fragment>
-                                            <Button classes={classes.LikeButton}>Like</Button>
-                                            <Button classes={classes.ReportButton}>Report</Button>
+                                            <Button classes={classes.LikeButton}>Like</Button>  
+                                            <SubmitReport />
                                         </Fragment>
                                     )}
                                 </div>

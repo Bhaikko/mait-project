@@ -81,6 +81,12 @@ class Form extends Component {
             case "/auth/changePassword":
                 this.props.onUpdatePassword(formData);
                 break;
+
+            case "/dating/report":
+                const reportForId = window.location.href.split("/").pop();
+                formData.reportForId = reportForId;
+                this.props.onSubmitReport(formData);
+                break;
             
             default:
                 console.log("No Url Assigned for Form");
@@ -196,7 +202,8 @@ const mapDispatchToProps = dispatch => {
         onLogin: formData => dispatch(actions.login(formData)),
         onSignUp: formData => dispatch(actions.signup(formData)),
         onUpdateDatingProfile: formData => dispatch(actions.updateDatingProfile(formData)),
-        onUpdatePassword: formData => dispatch(actions.updatePassword(formData))
+        onUpdatePassword: formData => dispatch(actions.updatePassword(formData)),
+        onSubmitReport: formData => dispatch(actions.submitReport(formData))
     }
 }
 

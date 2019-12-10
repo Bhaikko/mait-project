@@ -198,6 +198,26 @@ router.get('/profile/:id', (req, res, next) => {
         });
 });
 
+router.post('/report', (req, res, next) => {
+    if (!req.user) {
+        res.status(401).json({
+            message: "Unauthorized"
+        });
+    } else {
+
+        console.log(req.body);
+        databaseHandler.addReport(req.body.report, req.user.id, req.body.reportForId)
+            .then(response => {
+                res.status(201).json({
+                    message: "Thank you for submitting report"
+                });
+            })
+            .catch(err => {
+                errorHandler(err, res);
+            });
+    }
+});
+
 module.exports = {
     router
 }

@@ -1,4 +1,12 @@
-const { DatingProfiles, ProfilePhotos, UserTags, Matches, Tags, Users } = require('./database');
+const { 
+    DatingProfiles, 
+    ProfilePhotos, 
+    UserTags, 
+    Matches, 
+    Tags, 
+    Users,
+    Reports 
+} = require('./database');
 
 module.exports.getDatingProfile = userId => {
     return DatingProfiles.findOne({
@@ -157,11 +165,21 @@ module.exports.getCompleteProfile = userId => {
     });
 }
 
-
-// module.exports.getContacts = userId => {
-//     return Matches.findAll({
-//         where: {
-//             userId1: userI
-//         }
-//     })
-// }
+module.exports.addReport = (report, submittedById, reportForId) => {
+    return Reports.findOne({
+        where: {
+            submittedById,
+            reportForId
+        }
+    })
+        .then(data => {
+            if (data) {
+                return null;
+            }
+            return Reports.create({
+                submittedById,
+                reportForId,
+                report 
+            });
+        });
+}
