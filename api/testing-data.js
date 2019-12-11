@@ -417,7 +417,7 @@ const datingProfiles = [
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
         userId: 25,
-        gender: "Female"
+        gender: "Male"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -1070,7 +1070,8 @@ const getRandomNumber = max => {
 }
 
 const assignTags = userId => {
-    for (let i = 0; i < getRandomNumber(10); i++) {
+    const maxTags = getRandomNumber(10);
+    for (let i = 0; i < maxTags; i++) {
         addUserTag(userId, tags[getRandomNumber(tags.length)].tag);
     }
 }

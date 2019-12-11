@@ -35,6 +35,19 @@ class EditProfileForm extends Component {
                     valid: true,
                     touched: false 
                 },
+                gender: {
+                    label: "Your Gender",
+                    elementType: "select",
+                    elementConfig: {
+                        options: [
+                            "Male",
+                            "Female"
+                        ]
+                    },
+                    value: "Male",
+                    valid: true,
+                    touched: false 
+                },
                 intrestedIn: {
                     label: "Your Interest",
                     elementType: "select",
@@ -104,6 +117,10 @@ class EditProfileForm extends Component {
                             age: {
                                 ...this.state.formConfig.age,
                                 value: response.data.age
+                            },
+                            gender: {
+                                ...this.state.formConfig.gender,
+                                value: response.data.gender
                             }
                         },
                         loading: false

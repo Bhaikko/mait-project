@@ -171,7 +171,7 @@ module.exports.getAllUsers = () => {
         include: [
             {
                 model: DatingProfiles,
-                attributes: ['id', 'about', 'relationshipStatus', 'intrestedIn', 'age', 'collegeName']
+                attributes: ['id', 'about', 'relationshipStatus', 'intrestedIn', 'age', 'collegeName', 'gender']
             },
             {
                 model: UserTags,
@@ -181,6 +181,9 @@ module.exports.getAllUsers = () => {
                 model: ProfilePhotos,
                 attributes: ['id', 'imageUrl', 'main']
             }
+        ],
+        order: [
+            ['id', 'ASC']
         ]
     });
 }

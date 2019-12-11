@@ -174,7 +174,7 @@ router.put('/datingprofile', (req, res, next) => {
             message: 'Unauthorized'
         });
     } else {
-        databaseHandler.updateDatingProfile(req.user.id, req.body.about, req.body.relationshipStatus, req.body.intrestedIn, req.body.age, req.body.collegeName)
+        databaseHandler.updateDatingProfile(req.user.id, req.body.about, req.body.relationshipStatus, req.body.intrestedIn, req.body.age, req.body.collegeName, req.body.gender)
             .then(response => {
                 res.status(200).json({
                     message: "Dating Profile updated successfully"
@@ -217,11 +217,17 @@ router.post('/report', (req, res, next) => {
     }
 });
 
+// Explore Algorithm
+
+const getRandomInt = (max) => {
+    return Math.floor(Math.random() * Math.floor(max)) + 1;
+}
+
 const searchUser = (users, userId) => {
     let start = 0;
     let end = users.length - 1;
 
-    while (start < end) {
+    while (start <= end) {
         let mid = (end + start) / 2;
         if (users[mid].id === userId) {
             return users[mid];
@@ -234,7 +240,39 @@ const searchUser = (users, userId) => {
 }
 
 const getRandomuser = (users, currentUser) => {
-    
+    const randomId = getRandomInt(users.length) % users.length;
+
+    const selectedUser = searchUser(users, randomId);
+    if (!selectedUser) {
+        return getRandomuser(users, currentUser);
+    }
+    const selecteduserGender = selectedUser.datingProfile.get().gender === "Male" ? "Men" : "Women";
+
+
+    if (currentUser.datingProfile.get().intrestedIn === selecteduserGender) {
+        return selectedUser;
+    } else {
+        return getRandomuser(users, currentUser);
+    }
+}
+
+const calculateTagPercentage = (selectedUserTags, currentUserTags) => {
+    selectedUserTags = databaseParser(selectedUserTags);
+    currentUserTags = databaseParser(currentUserTags);
+
+    let matchesCount = 0;
+    for (let i = 0; i < selectedUserTags.length; i++) {
+        for (let j = 0; j < currentUserTags.length; j++) {
+            if (selectedUserTags[i].tag === currentUserTags[j].tag) {
+                matchesCount++;
+                break;
+            }
+        }
+    }
+
+    const percentage = Math.ceil((matchesCount / selectedUserTags.length) * 100);
+
+    return percentage >= 100 ? 100 : percentage;
 }
 
 
@@ -244,9 +282,13 @@ router.get("/explore", (req, res, next) => {
             users = databaseParser(users);
             
             const currentUser = searchUser(users, req.user.id);
+            const selectedUser = getRandomuser(users, currentUser);
 
-
-            res.send(users);
+            const percentage = calculateTagPercentage(selectedUser.userTags, currentUser.userTags);
+            res.status(200).json({
+                selectedUser,
+                percentage
+            });
         })
         .catch(err => {
             errorHandler(err, res);
