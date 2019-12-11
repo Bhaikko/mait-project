@@ -35,11 +35,12 @@ class Profile extends Component {
                         name: userdata.name,
                         username: userdata.username 
                     },
-                    tags: userdata.tags || [],
+                    tags: userdata.userTags || [],
                     profilePhotos: userdata.profilePhotos || [],
                     datingProfile: userdata.datingProfile || {},
                     mainProfilePhoto: userdata.profilePhotos.find(photo => photo.main === true) || defaultPhoto
                 });
+
 
             })
             .catch(err => {

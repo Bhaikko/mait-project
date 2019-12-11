@@ -15,7 +15,7 @@ class HomepageRoute extends Component {
                 <Route path="/auth" component={AuthPage} />
                 <Route path="/me" component={MePage} />
                 <Route path="/notfound" component={NotFoundPage} />
-                <Route path="/profile/:id" component={ProfilePage} />
+                <Route path="/profile/:id" exact component={ProfilePage} />
                 <Route path="/logout" component={LogoutPage} />
                 <Route path="/" exact component={Homepage} />
                 <Redirect to="/notfound" />

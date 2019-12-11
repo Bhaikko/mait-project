@@ -19,6 +19,7 @@ import AgeIcon from './../../assets/icons/Age.png';
 import UsernameIcon from './../../assets/icons/Username.png';
 import MailIcon from './../../assets/icons/mail.png';
 import InterestIcon from './../../assets/icons/Interest.png';
+import GenderIcon from './../../assets/icons/Gender.png';
 
 import EditProfileForm from './../../containers/Forms/Dating/EditProfile/EditProfileForm';
 
@@ -75,6 +76,7 @@ class UserProfile extends Component {
                                 <ProfileInfo infoimage={GradIcon}>{this.props.datingProfile.collegeName || "-"}</ProfileInfo>
                                 <ProfileInfo infoimage={HeartIcon}>{this.props.datingProfile.relationshipStatus || "-"}</ProfileInfo>
                                 <ProfileInfo infoimage={AgeIcon}>{this.props.datingProfile.age || "-"}</ProfileInfo>
+                                <ProfileInfo infoimage={GenderIcon}>{this.props.datingProfile.gender || "-"}</ProfileInfo>
                                 <ProfileInfo infoimage={InterestIcon}>{this.props.datingProfile.intrestedIn || "-"}</ProfileInfo>
 
 

@@ -51,8 +51,6 @@ router.post("/usertag", (req, res, next) => {
                 errorHandler(err, res);
             });
     }
-
-
 });
 
 router.get("/usertag/:id", (req, res, next) => {
@@ -132,6 +130,8 @@ router.delete('/profilephoto', (req, res, next) => {
         .then(response => {
             try {
                 fs.unlinkSync(__dirname + "/../" + req.body.photo.imageUrl);
+            } catch(err) {
+                console.log("File not found");
             } finally {
                 
                 res.status(200).json({
@@ -205,7 +205,6 @@ router.post('/report', (req, res, next) => {
         });
     } else {
 
-        console.log(req.body);
         databaseHandler.addReport(req.body.report, req.user.id, req.body.reportForId)
             .then(response => {
                 res.status(201).json({
@@ -216,6 +215,42 @@ router.post('/report', (req, res, next) => {
                 errorHandler(err, res);
             });
     }
+});
+
+const searchUser = (users, userId) => {
+    let start = 0;
+    let end = users.length - 1;
+
+    while (start < end) {
+        let mid = (end + start) / 2;
+        if (users[mid].id === userId) {
+            return users[mid];
+        } else if (userId <= users[mid].id) {
+            end = mid - 1; 
+        } else {
+            start = mid + 1;
+        }
+    }
+}
+
+const getRandomuser = (users, currentUser) => {
+    
+}
+
+
+router.get("/explore", (req, res, next) => {
+    databaseHandler.getAllUsers()
+        .then(users => {
+            users = databaseParser(users);
+            
+            const currentUser = searchUser(users, req.user.id);
+
+
+            res.send(users);
+        })
+        .catch(err => {
+            errorHandler(err, res);
+        });
 });
 
 module.exports = {

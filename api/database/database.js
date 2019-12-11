@@ -54,7 +54,7 @@ const DatingProfiles = database.define("datingProfiles", {
     intrestedIn: {
         type: Sequelize.STRING,
         allowNull: false,
-        defaultValue: "Men",
+        defaultValue: "Women",
         validate: {
             isIn: [['Men', 'Women']]
         }
@@ -71,6 +71,11 @@ const DatingProfiles = database.define("datingProfiles", {
     },
     collegeName: {
         type: Sequelize.STRING
+    },
+    gender: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultValue: "Male"
     }
 });
 

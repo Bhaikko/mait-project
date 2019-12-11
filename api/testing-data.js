@@ -200,7 +200,8 @@ const datingProfiles = [
         intrestedIn: "Men",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 1
+        userId: 1,
+        gender: "Female"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -208,7 +209,8 @@ const datingProfiles = [
         intrestedIn: "Women",
         age: 19,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 2
+        userId: 2,
+        gender: "Male"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -216,7 +218,8 @@ const datingProfiles = [
         intrestedIn: "Men",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 3
+        userId: 3,
+        gender: "Female"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -224,7 +227,8 @@ const datingProfiles = [
         intrestedIn: "Women",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 4
+        userId: 4,
+        gender: "Male"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -232,7 +236,8 @@ const datingProfiles = [
         intrestedIn: "Women",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 5
+        userId: 5,
+        gender: "Male"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -240,7 +245,8 @@ const datingProfiles = [
         intrestedIn: "Women",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 6
+        userId: 6,
+        gender: "Male"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -248,7 +254,8 @@ const datingProfiles = [
         intrestedIn: "Men",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 7
+        userId: 7,
+        gender: "Female"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -256,7 +263,8 @@ const datingProfiles = [
         intrestedIn: "Men",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 8
+        userId: 8,
+        gender: "Female"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -264,7 +272,8 @@ const datingProfiles = [
         intrestedIn: "Women",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 9
+        userId: 9,
+        gender: "Male"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -272,7 +281,8 @@ const datingProfiles = [
         intrestedIn: "Men",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 10
+        userId: 10,
+        gender: "Female"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -280,7 +290,8 @@ const datingProfiles = [
         intrestedIn: "Women",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 11
+        userId: 11,
+        gender: "Male"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -288,7 +299,8 @@ const datingProfiles = [
         intrestedIn: "Women",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 12
+        userId: 12,
+        gender: "Male"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -296,7 +308,8 @@ const datingProfiles = [
         intrestedIn: "Women",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 13
+        userId: 13,
+        gender: "Male"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -304,7 +317,8 @@ const datingProfiles = [
         intrestedIn: "Men",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 14
+        userId: 14,
+        gender: "Female"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -312,7 +326,8 @@ const datingProfiles = [
         intrestedIn: "Women",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 15
+        userId: 15,
+        gender: "Male"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -320,7 +335,8 @@ const datingProfiles = [
         intrestedIn: "Men",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 16
+        userId: 16,
+        gender: "Female"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -328,7 +344,8 @@ const datingProfiles = [
         intrestedIn: "Men",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 17
+        userId: 17,
+        gender: "Female"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -336,7 +353,8 @@ const datingProfiles = [
         intrestedIn: "Women",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 18
+        userId: 18,
+        gender: "Male"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -344,7 +362,8 @@ const datingProfiles = [
         intrestedIn: "Women",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 19
+        userId: 19,
+        gender: "Male"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -352,7 +371,8 @@ const datingProfiles = [
         intrestedIn: "Women",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 20
+        userId: 20,
+        gender: "Male"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -360,7 +380,8 @@ const datingProfiles = [
         intrestedIn: "Men",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 21
+        userId: 21,
+        gender: "Female"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -368,7 +389,8 @@ const datingProfiles = [
         intrestedIn: "Men",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 22
+        userId: 22,
+        gender: "Female"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -376,7 +398,8 @@ const datingProfiles = [
         intrestedIn: "Men",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 23
+        userId: 23,
+        gender: "Female"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -384,7 +407,8 @@ const datingProfiles = [
         intrestedIn: "Women",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 24
+        userId: 24,
+        gender: "Male"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -392,7 +416,8 @@ const datingProfiles = [
         intrestedIn: "Women",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 25
+        userId: 25,
+        gender: "Female"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -400,7 +425,8 @@ const datingProfiles = [
         intrestedIn: "Men",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 26
+        userId: 26,
+        gender: "Female"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -408,7 +434,8 @@ const datingProfiles = [
         intrestedIn: "Women",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 27
+        userId: 27,
+        gender: "Male"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -416,7 +443,8 @@ const datingProfiles = [
         intrestedIn: "Men",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 28
+        userId: 28,
+        gender: "Female"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -424,7 +452,8 @@ const datingProfiles = [
         intrestedIn: "Women",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 29
+        userId: 29,
+        gender: "Male"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -432,7 +461,8 @@ const datingProfiles = [
         intrestedIn: "Women",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 30
+        userId: 30,
+        gender: "Male"
     },
     {
         about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -440,7 +470,8 @@ const datingProfiles = [
         intrestedIn: "Men",
         age: 18,
         collegeName: "Maharaja Agrasen Institute of Technology",
-        userId: 31
+        userId: 31,
+        gender: "Female"
     },
 ]
 
@@ -1034,6 +1065,16 @@ const profilePhotos = [
     },
 ]
 
+const getRandomNumber = max => {
+    return Math.floor(Math.random() * max);
+}
+
+const assignTags = userId => {
+    for (let i = 0; i < getRandomNumber(10); i++) {
+        addUserTag(userId, tags[getRandomNumber(tags.length)].tag);
+    }
+}
+
 
 const hashPassword = password => {
     return new Promise((resolve, reject) => {
@@ -1058,7 +1099,11 @@ Promise.all(
     .then(async () => {
         console.log("[+] Users added");
 
-        await Promise.all(datingProfiles.map(profile => updateDatingProfile(profile.userId, profile.about, profile.relationshipStatus, profile.intrestedIn, profile.age)))
+        await Promise.all(tags.map(tag => addTag(tag.tag)))
+            .then(() => console.log("[+] Tags Added"))
+            .catch(err => { throw err; });
+
+        await Promise.all(datingProfiles.map(profile => updateDatingProfile(profile.userId, profile.about, profile.relationshipStatus, profile.intrestedIn, profile.age, profile.collegeName, profile.gender)))
             .then(() => console.log("[+] Profile updated"))
             .catch(err => { throw err; });
         
@@ -1066,9 +1111,10 @@ Promise.all(
             .then(() => console.log("[+] Profile Photos Added"))
             .catch(err => { throw err; });
 
-        await Promise.all(tags.map(tag => addTag(tag.tag)))
-            .then(() => console.log("[+] Tags Added"))
-            .catch(err => { throw err; });
+        await Promise.all(datingProfiles.map(profile => assignTags(profile.userId)))
+            .then(() => console.log("[+] Usertags Assigned"))
+            .catch(err => console.log(err));
+
 
         console.log("[+] Test Data Initialised");
         console.log("[+] Please wait while the execution of this file terminates");

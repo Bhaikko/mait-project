@@ -17,15 +17,15 @@ module.exports.getDatingProfile = userId => {
     });
 }
 
-module.exports.updateDatingProfile = (userId, about, relationshipStatus, intrestedIn, age, collegeName) => {
-    console.log(relationshipStatus);
+module.exports.updateDatingProfile = (userId, about, relationshipStatus, intrestedIn, age, collegeName, gender) => {
     return DatingProfiles.update(
         {
             about,
             relationshipStatus,
             intrestedIn,
             age,
-            collegeName
+            collegeName,
+            gender
         },
         {
             where: {
@@ -147,6 +147,26 @@ module.exports.getCompleteProfile = userId => {
         where: {
             id: userId 
         },
+        attributes: ['id', 'name', 'username'],
+        include: [
+            {
+                model: DatingProfiles,
+                attributes: ['id', 'about', 'relationshipStatus', 'intrestedIn', 'age', 'collegeName', 'gender']
+            },
+            {
+                model: UserTags,
+                attributes: ['id', 'tag']
+            },
+            {
+                model: ProfilePhotos,
+                attributes: ['id', 'imageUrl', 'main']
+            }
+        ]
+    });
+}
+
+module.exports.getAllUsers = () => {
+    return Users.findAll({
         attributes: ['id', 'name', 'username'],
         include: [
             {
