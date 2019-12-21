@@ -14,18 +14,83 @@ router.get("/", (req, res, next) => {
     res.send("Auth Router Working");
 });
 
+const validatePassword = (password, res) => {
+    if (process.env.MODE === "Production") {
+        // strict validation for password
+        if (password.length < 8) {
+            res.status(400).json({
+                message: "Password Length Must Be Greater Than 8"
+            });
+        } else {
+            const checkList = {
+                hasUpperCaseLetter: false,
+                hasLowerCaseLetter: false,
+                hasNumber: false
+            }
+
+            for (let i = 0; i < password.length; i++) {
+                if (!checkList.hasLowerCaseLetter) {
+                    if (password[i] >= 'a' && password <= 'z') {
+                        checkList.hasLowerCaseLetter = true;
+                    }
+                }
+
+                if (!checkList.hasUpperCaseLetter) {
+                    if (password[i] >= 'A' && password[i] <= 'Z') {
+                        checkList.hasUpperCaseLetter = true;
+                    }
+                }
+
+                if (!checkList.hasNumber) {
+                    if (password[i] <= '9' && password[i] >= '0') {
+                        checkList.hasNumber = true;
+                    }
+                }
+            }
+
+            if (!checkList.hasUpperCaseLetter) {
+                res.status(400).json({
+                    message: "Password Must Have Atleast One Uppercase Letter"
+                });
+                return false;
+            }
+            if (!checkList.hasLowerCaseLetter) {
+                res.status(400).json({
+                    message: "Password Must Have Atleast One Lowercase Letter"
+                });
+                return false;
+            }
+            if (!checkList.hasNumber) {
+                res.status(400).json({
+                    message: "Password Must Have Atleast One Number"
+                });
+                
+                return false;
+            }
+
+            return true;
+        }
+    } else {
+        // no need to validate testing passwords
+        return true;
+    }
+}
+
 router.post("/signup", (req, res, next) => {
+    if (!validatePassword(req.body.password, res)) {
+        return;
+    }
     bcrypt.hash(req.body.password, saltRounds, function(err, password) {
         if (err) {
             throw err;
         }
 
         databaseHandler.addUser(req.body.name, req.body.username, req.body.email, password)
-            .then(user => res.status(200).send({
+            .then(user => res.status(201).json({
                 user: user 
             }))
             .catch(err => {
-                res.status(400).send({
+                res.status(400).json({
                     message: err.errors[0].message
                 });
                 // throw err;
@@ -36,7 +101,7 @@ router.post("/signup", (req, res, next) => {
 router.post("/login", (req, res, next) => {
     passport.authenticate("user", { session: false }, (err, user, info) => {
         if (err || !user) {
-            return res.status(400).send({
+            return res.status(400).json({
                 message: "Invalid Email or Password"
             });
         }
@@ -44,7 +109,7 @@ router.post("/login", (req, res, next) => {
         req.login(user, { session: false }, err => {
             if (err) {
                 // res.json(err);
-                res.status(400).send({
+                res.status(400).json({
                     message: "Invalid Email or Password"
                 });
             }
@@ -56,7 +121,7 @@ router.post("/login", (req, res, next) => {
                 exp: expirationTime
             }, TOKEN_SECRET_KEY);
 
-            return res.send({
+            return res.json({
                 userId: user.id,
                 username: user.name,
                 email: user.email,

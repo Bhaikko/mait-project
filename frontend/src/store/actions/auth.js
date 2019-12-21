@@ -54,13 +54,19 @@ export const signup = (formdata) => {
 
         axios.post("/auth/signup", formdata)
             .then(response => {
-                axios.post("/auth/login", formdata)
-                    .then(response => {
-                        _login(response, dispatch);
+                if (response.status === 201) {
+                    axios.post("/auth/login", formdata)
+                        .then(response => {
+                            _login(response, dispatch);
+                        });
+                } else {
+                    dispatch({
+                        type: actionTypes.AUTH_FAILED,
                     });
+                }
             })
             .catch(err => {
-                console.log(err.response.data.message);
+                console.log(err);
                 dispatch({
                     type: actionTypes.AUTH_FAILED,
                 });

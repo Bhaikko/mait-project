@@ -47,6 +47,14 @@ const Users = database.define("users", {
     isVerified: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+    role: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultValue: "Member",
+        validate: {
+            isIn: [["Member", "VIP", "Moderator", "Admin"]]
+        }
     }
 });
 
