@@ -261,18 +261,22 @@ const calculateTagPercentage = (selectedUserTags, currentUserTags) => {
     currentUserTags = databaseParser(currentUserTags);
 
     let matchesCount = 0;
+    const matchedTags = [];
     for (let i = 0; i < selectedUserTags.length; i++) {
         for (let j = 0; j < currentUserTags.length; j++) {
             if (selectedUserTags[i].tag === currentUserTags[j].tag) {
                 matchesCount++;
+                matchedTags.push(selectedUserTags[i]);
                 break;
             }
         }
     }
+    const result = {
+        percentage: Math.ceil((matchesCount / selectedUserTags.length) * 100),
+        matchedTags
+    }
 
-    const percentage = Math.ceil((matchesCount / selectedUserTags.length) * 100);
-
-    return percentage >= 100 ? 100 : percentage;
+    return result;
 }
 
 
@@ -284,10 +288,24 @@ router.get("/explore", (req, res, next) => {
             const currentUser = searchUser(users, req.user.id);
             const selectedUser = getRandomuser(users, currentUser);
 
-            const percentage = calculateTagPercentage(selectedUser.userTags, currentUser.userTags);
+            const result = calculateTagPercentage(selectedUser.userTags, currentUser.userTags);
             res.status(200).json({
                 selectedUser,
-                percentage
+                matchedResult: result
+            });
+        })
+        .catch(err => {
+            errorHandler(err, res);
+        });
+});
+
+router.post("/addMatch", (req, res, next) => {
+    console.log(req.body);
+
+    databaseHandler.addMatch(req.user.id, req.body.userId)
+        .then(response => {
+            res.status(201).json({
+                message: "You Liked"
             });
         })
         .catch(err => {

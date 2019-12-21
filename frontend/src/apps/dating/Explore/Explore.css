@@ -142,6 +142,13 @@
     align-items: flex-end;
 }
 
+.DesktopPhotos {
+    display: flex;
+    flex-wrap: wrap;
+    width: 95%;
+    justify-content: space-around;
+}
+
 @media screen and (max-width: 768px) {
     .ProfileSection {
         order: 2;
