@@ -1,12 +1,23 @@
 const Sequelize = require("sequelize");
 
-const { DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD } = require("../enviroments");
+const { DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD, MODE } = require("../enviroments");
 
-const database = new Sequelize(DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD, {
-    host: "localhost",
-    dialect: "mysql",
-    logging: false 
-});
+let database = {};
+
+if (process.env.MODE === "Production") {
+    database = new Sequelize(DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD, {
+        host: "localhost",
+        dialect: "mysql",
+        logging: false 
+    });
+} else {
+    database = new Sequelize({
+        dialect: 'sqlite',
+        storage: './database.sqlite',
+        logging: false
+    });
+}
+
 
 const Users = database.define("users", {
     name: {

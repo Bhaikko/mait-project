@@ -4,3 +4,7 @@
 # uploads folder
 /uploads
 
+# Sqlite Database File
+*.db
+*.sqlite
+
