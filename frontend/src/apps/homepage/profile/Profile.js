@@ -32,6 +32,7 @@ class Profile extends Component {
                 this.setState({
                     loading: false,
                     profile: {
+                        id: userdata.id,
                         name: userdata.name,
                         username: userdata.username 
                     },

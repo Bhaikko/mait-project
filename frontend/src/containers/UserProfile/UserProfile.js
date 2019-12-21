@@ -26,8 +26,22 @@ import EditProfileForm from './../../containers/Forms/Dating/EditProfile/EditPro
 import Spinner from '../../components/UI/Spinner/Spinner';
 
 import ChangePassword from './../../containers/ChangePassword/ChangePassword';
+import Alertify from '../../utilities/Aleretify/Alertify';
+import axios from './../../axios';
 
 class UserProfile extends Component {
+
+    likeHandler = () => {
+        axios.post('dating/addMatch', {
+            userId: this.props.profile.id 
+        })
+            .then(response => {
+                Alertify.success(response.data.message + " " + this.props.profile.name + "!");
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
 
     render () {
         return (
@@ -39,7 +53,6 @@ class UserProfile extends Component {
                         <Spinner />
                     ) : (
                         <Fragment>
-
                             <ContentContainer classes={classes.ProfileContainer}>
                                 <ContentTitle editable={this.props.editable} form={<EditProfileForm />}>Profile</ContentTitle>
                                 
@@ -68,7 +81,6 @@ class UserProfile extends Component {
                                 {this.props.editable ? (
                                     <Fragment>
                                         <ProfileInfo infoimage={MailIcon}>{this.props.profile.email}</ProfileInfo>
-        
                                     </Fragment>
                                 ) : (
                                     null
@@ -85,7 +97,10 @@ class UserProfile extends Component {
                                         <ChangePassword />
                                     ) : (
                                         <Fragment>
-                                            <Button classes={classes.LikeButton}>Like</Button>  
+                                            <Button 
+                                                classes={classes.LikeButton}
+                                                onClick={this.likeHandler}
+                                            >Like</Button>  
                                             <SubmitReport />
                                         </Fragment>
                                     )}
