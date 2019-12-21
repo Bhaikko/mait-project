@@ -52,7 +52,7 @@
 .ViewProfile {
     text-decoration: none;
     color: blue;
-    margin-right: 20%;
+    margin-right: 10%;
     margin-left: 5px;
 }
 
@@ -126,15 +126,19 @@
 }
 
 .Button {
-    width: 13%;
+    width: 12%;
     border-radius: 50px;
     font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .InfoContainer {
     display: flex;
     flex-direction: row;
     align-items: flex-end;
+    width: 50%;
 }
 .AgeContainer {
     display: flex;
@@ -147,6 +151,12 @@
     flex-wrap: wrap;
     width: 95%;
     justify-content: space-around;
+}
+
+.ContentContainer {
+    width: 90%;
+    margin-bottom: 50px;
+    font-size: 14px;
 }
 
 @media screen and (max-width: 768px) {
@@ -264,5 +274,8 @@
         width: 95%;
     }
 
+    .ContentContainer { 
+        width: 100%;
+    }
 
 }

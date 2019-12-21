@@ -77,12 +77,7 @@ class ExplorePage extends Component {
                     <Spinner />
                 ) : (
 
-                    <ContentContainer
-                        style={{
-                            marginBottom: 50,
-                            marginLeft: 0
-                        }}    
-                    >
+                    <ContentContainer classes={classes.ContentContainer}>
                         <div className={classes.ProfileSection}>
                             <div className={classes.InfoContainer}>
                                 <span className={classes.Name}>{this.state.selectedUser.name},</span>
@@ -96,12 +91,12 @@ class ExplorePage extends Component {
                             <Button 
                                 style={{
                                     backgroundColor: "#fa8575",
-                                    left: "30%"
+                                    left: "30%"                                    
                                 }}
                                 classes={classes.Button}
                                 onClick={this.passHandler}
                             >
-                                &#10005; <span>Pass</span>
+                                &#10005; <span style={{fontSize: "14px"}}>Pass</span>
                             </Button>
                             <Button
                                 style={{
@@ -111,7 +106,7 @@ class ExplorePage extends Component {
                                 classes={classes.Button}
                                 onClick={this.likeHandler}
                             >
-                                &#x2764; <span>Like</span>
+                                &#x2764; <span style={{fontSize: "14px"}}>Like</span>
                             </Button>
                         </div>
 

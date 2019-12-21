@@ -272,7 +272,7 @@ const calculateTagPercentage = (selectedUserTags, currentUserTags) => {
         }
     }
     const result = {
-        percentage: Math.ceil((matchesCount / selectedUserTags.length) * 100),
+        percentage: Math.ceil((matchesCount / selectedUserTags.length) * 100) || 0,
         matchedTags
     }
 
@@ -300,8 +300,6 @@ router.get("/explore", (req, res, next) => {
 });
 
 router.post("/addMatch", (req, res, next) => {
-    console.log(req.body);
-
     databaseHandler.addMatch(req.user.id, req.body.userId)
         .then(response => {
             res.status(201).json({
