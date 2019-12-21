@@ -5,6 +5,7 @@ const cors = require("cors");
 const { database } = require("./database/database");
 const router = require("./api/index").router;
 const { SESSION_SECRET_KEY, PORT, SERVER_URL } = require("./enviroments");
+const { seedData } = require('./testing-data');
 
 const app = express();
 
@@ -24,5 +25,10 @@ app.use("/api", router);
 app.use("/uploads", express.static('./uploads'));
 
 database.sync()
-    .then(() => app.listen(PORT, () => console.log(`Database Synced \nServer Up and Running on ${SERVER_URL}`)))
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`Database Synced \nServer Up and Running on ${SERVER_URL}`);
+            // seedData(); // uncomment to seed data to database
+        })
+    })
     .catch(err => { throw err });

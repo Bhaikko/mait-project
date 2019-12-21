@@ -8,187 +8,187 @@ const users = [
         name: "Leanne Graham1",
         username: "Bret1",
         email: "test1@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham2",
         username: "Bret2",
         email: "test2@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham3",
         username: "Bret3",
         email: "test3@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham4",
         username: "Bret4",
         email: "test4@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham5",
         username: "Bret5",
         email: "test5@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham6",
         username: "Bret6",
         email: "test6@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham7",
         username: "Bret7",
         email: "test7@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham8",
         username: "Bret8",
         email: "test8@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham9",
         username: "Bret9",
         email: "test9@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham10",
         username: "Bret10",
         email: "test10@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham11",
         username: "Bret11",
         email: "test11@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham12",
         username: "Bret12",
         email: "test12@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham13",
         username: "Bret13",
         email: "test13@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham14",
         username: "Bret14",
         email: "test14@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham15",
         username: "Bret15",
         email: "test15@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham16",
         username: "Bret16",
         email: "test16@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham17",
         username: "Bret17",
         email: "test17@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham18",
         username: "Bret18",
         email: "test18@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham19",
         username: "Bret19",
         email: "test19@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham20",
         username: "Bret20",
         email: "test20@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham21",
         username: "Bret21",
         email: "test21@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham22",
         username: "Bret22",
         email: "test22@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham23",
         username: "Bret23",
         email: "test23@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham24",
         username: "Bret24",
         email: "test24@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham25",
         username: "Bret",
         email: "test25@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham26",
         username: "Bret26",
         email: "test26@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham27",
         username: "Bret27",
         email: "test27@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham28",
         username: "Bret28",
         email: "test28@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham29",
         username: "Bret29",
         email: "test29@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham30",
         username: "Bret30",
         email: "test30@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     {
         name: "Leanne Graham31",
         username: "Bret31",
         email: "test31@gmail.com",
-        password: "123456789"        
+        password: "password"        
     },
     
 ]
@@ -1069,55 +1069,71 @@ const getRandomNumber = max => {
     return Math.floor(Math.random() * max);
 }
 
-const assignTags = userId => {
-    const maxTags = getRandomNumber(10);
-    for (let i = 0; i < maxTags; i++) {
-        addUserTag(userId, tags[getRandomNumber(tags.length)].tag);
-    }
-}
-
-
 const hashPassword = password => {
     return new Promise((resolve, reject) => {
         bcrypt.hash(password, 10, function(err, password) {
             if (err) {
                 reject(err);
             }
-
             resolve(password);
         });
     });
 }
 
+module.exports.seedData = async () => {
 
-Promise.all(
-    users.map(user => {
-        return hashPassword(user.password)
-            .then(password => addUser(user.name, user.username, user.email, password))
-            .catch(err => { throw err });
-    })
-)
-    .then(async () => {
-        console.log("[+] Users added");
+    console.log("[+] Initializing Database......");
+    const hashedPassword = await hashPassword("password");
 
-        await Promise.all(tags.map(tag => addTag(tag.tag)))
-            .then(() => console.log("[+] Tags Added"))
-            .catch(err => { throw err; });
+    console.log("[+] Adding Users......");
+    await Promise.all(
+        users.map(async (user) => {
+            await addUser(user.name, user.username, user.email, hashedPassword);
+        })
+    );
+    console.log("[+] Users Added");
 
-        await Promise.all(datingProfiles.map(profile => updateDatingProfile(profile.userId, profile.about, profile.relationshipStatus, profile.intrestedIn, profile.age, profile.collegeName, profile.gender)))
-            .then(() => console.log("[+] Profile updated"))
-            .catch(err => { throw err; });
+    console.log("[+] Adding Tags......");
+    await Promise.all(
+        tags.map(async (tag) => {
+            await addTag(tag.tag);
+        })
+    );
+    console.log("[+] Tags Added");
+
+    console.log("[+] Updating Dating Profiles......");
+    await Promise.all(
+        datingProfiles.map(async (profile) => {
+            await updateDatingProfile(profile.userId, profile.about, profile.relationshipStatus, profile.intrestedIn, profile.age, profile.collegeName, profile.gender);
+        })
+    );
+    console.log("[+] Dating Profiles Updated");
+
+    console.log("[+] Updating Profile Photos.......");
+    await Promise.all(
+        profilePhotos.map(async (photo) => {
+            await addProfilePhoto(photo.userId, photo.imageUrl);
+        })
+    );
+    console.log("[+] Profile Photos Updated");
+
+    console.log("[+] Assigning Tags......");
+
+    await Promise.all(
+        datingProfiles.map(async (profile) => {
+            await addUserTag(profile.userId, tags[getRandomNumber(tags.length)].tag);
+            await addUserTag(profile.userId, tags[getRandomNumber(tags.length)].tag);
+            await addUserTag(profile.userId, tags[getRandomNumber(tags.length)].tag);
+            await addUserTag(profile.userId, tags[getRandomNumber(tags.length)].tag);
+            await addUserTag(profile.userId, tags[getRandomNumber(tags.length)].tag);
+            await addUserTag(profile.userId, tags[getRandomNumber(tags.length)].tag);
+            await addUserTag(profile.userId, tags[getRandomNumber(tags.length)].tag);
+            await addUserTag(profile.userId, tags[getRandomNumber(tags.length)].tag);
+            
+        })
+    );
+
+    console.log("[+] Tags Assigned");
+    console.log("[+] Database Initialized");
         
-        await Promise.all(profilePhotos.map(photo => addProfilePhoto(photo.userId, photo.imageUrl)))
-            .then(() => console.log("[+] Profile Photos Added"))
-            .catch(err => { throw err; });
-
-        await Promise.all(datingProfiles.map(profile => assignTags(profile.userId)))
-            .then(() => console.log("[+] Usertags Assigned"))
-            .catch(err => console.log(err));
-
-
-        console.log("[+] Test Data Initialised");
-        console.log("[+] Please wait while the execution of this file terminates");
-    })
-    .catch(err => { throw err; });
+}

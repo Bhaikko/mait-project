@@ -32,8 +32,7 @@ class LoginForm extends Component {
                     },
                     value: "",
                     validation: {
-                        required: true,
-                        minLength: 8 
+                        required: true
                     },
                     valid: false,
                     touched: false 
