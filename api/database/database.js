@@ -151,11 +151,11 @@ const Messages = database.define("messages", {
 
 
 const Matches = database.define("matches", {
-    userId1: {
+    likerId: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    userId2: {
+    likeeId: {
         type: Sequelize.STRING,
         allowNull: false
     }

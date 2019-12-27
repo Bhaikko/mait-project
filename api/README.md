@@ -34,8 +34,12 @@ For reviewing mysql database using CLI,
 
 *Note: If you want to have your own database name, password, etc. Edit the environments.js in api/*
 
-
 If all the above steps are followed correctly, the development mode should be up and running. :)
+
+## Database Architecture
+To edit and make changes in architecture diagram, read 
+
+**/api/database/architecture/databaseDiagramCode.txt**
 
 ## Testing Data
 Testing data can be initialised using the *testing-data.js* 

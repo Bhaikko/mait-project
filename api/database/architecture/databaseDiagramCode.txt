@@ -1,0 +1,89 @@
+// This code can be pasted on 
+// https://dbdiagram.io/d
+// To get the same architecture dbdiagram
+// or visit the readonly diagram here
+// https://dbdiagram.io/d/5e05b4a7edf08a25543f708b
+
+Table Users as U {
+  id int [pk, increment] // auto-increment
+  name varchar
+  username varchar
+  email varchar
+  password varchar
+  isVerified boolean
+  role varchar
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Table UserTags {
+  id int [pk, increment]
+  tag varchar
+  createdAt timestamp
+  updatedAt timestamp
+  userId int [ref: > U.id]
+}
+
+Table Tags {
+  id int [pk, increment]
+  tag varchar
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Table Reports {
+  id int [pk, increment]
+  report text
+  submittedById int [ref: > U.id]
+  reportForId int [ref: > U.id]
+}
+
+Table ProfilePhotos {
+  id int [pk, increment]
+  imageUrl varchar
+  main boolean
+  createdAt timestamp
+  updatedAt timestamp
+  userId int [ref: > U.id]
+}
+
+Table Messages {
+  id int [pk, increment]
+  time timestamp
+  message text 
+  seen boolean
+  senderId int [ref: > U.id]
+  recieverId int [ref: > U.id]
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Table Matches {
+  id int [pk, increment]
+  likerId int [ref: > U.id]
+  likeeId int [ref: > U.id]
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Table DatingProfiles {
+  id int [pk, increment]
+  about text
+  relationshipStatus varchar
+  intrestedIn varchar
+  age int
+  collegeName varchar 
+  gender varchar 
+  userId int [ref: - U.id]
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+
+// Creating references
+// You can also define relaionship separately
+// > many-to-one; < one-to-many; - one-to-one
+// Ref: U.country_code > countries.code  
+// Ref: merchants.country_code > countries.code
+
+
