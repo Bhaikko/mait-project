@@ -85,21 +85,24 @@ module.exports.getUserTags = userId => {
     });
 }
 
-module.exports.addMatch = (userId1, userId2) => {
-    return Matches.create({
-        userId1,
-        userId2
-    });
-}
-
-module.exports.getMatch = (userId1, userId2) => {
-    return Matches.findOne({
+module.exports.addMatch = (likerId, likeeId) => {
+    return Matches.findOrCreate({
         where: {
-            userId1,
-            userId2 
+            likerId,
+            likeeId
         }
     });
 }
+
+module.exports.getMatch = (likerId, likeeId) => {
+    return Matches.findOne({
+        where: {
+            likerId,
+            likeeId 
+        }
+    });
+}
+
 
 module.exports.addTag = tag => {
     return Tags.create({

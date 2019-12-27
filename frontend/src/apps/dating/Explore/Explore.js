@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import axios from './../../../axios';
 
@@ -10,6 +10,7 @@ import CenterContainer from './../../../components/UI/CenterContainer/CenterCont
 import ContentContainer from './../../../components/UI/ContentContainer/ContentContainer';
 import ProfilePhoto from './../../../components/ProfilePhotos/ProfilePhoto/ProfilePhoto';
 import Alertify from '../../../utilities/Aleretify/Alertify';
+import SuccessfulMatchModal from './../../../components/SuccessfulMatchModal/SuccessfulMatchModal';
 
 class ExplorePage extends Component {
 
@@ -19,6 +20,7 @@ class ExplorePage extends Component {
         this.state = {
             selectedUser: null,
             loading: true,
+            matchFound: false,
         }
     }
 
@@ -49,12 +51,27 @@ class ExplorePage extends Component {
             userId: this.state.selectedUser.id 
         })
             .then(response => {
-                Alertify.success(response.data.message + " " + this.state.selectedUser.name + "!");
+                if (response.status === 200) {
+                    Alertify.success(this.state.selectedUser.name + " " + response.data.message + "!");
+                    this.setState({
+                        matchFound: true
+                    });
+                    // Modal for navigation to contacts or keep exploring
+                } else {
+                    Alertify.success(response.data.message + " " + this.state.selectedUser.name + "!");
+                }
                 this.getNewUser();
             })
             .catch(err => {
                 console.log(err);
             });
+    }
+
+    keepExploringHandler = () => {
+        this.setState({
+            matchFound: false,
+            navigate: false
+        });
     }
 
     passHandler = () => {
@@ -70,98 +87,104 @@ class ExplorePage extends Component {
             mainPhoto = this.state.selectedUser.profilePhotos.find(photo => photo.main === true);
         }
         
-        
         return (
             <CenterContainer>
                 {this.state.loading ? (
                     <Spinner />
                 ) : (
-
-                    <ContentContainer classes={classes.ContentContainer}>
-                        <div className={classes.ProfileSection}>
-                            <div className={classes.InfoContainer}>
-                                <span className={classes.Name}>{this.state.selectedUser.name},</span>
-                                <div className={classes.AgeContainer}>
-                                    <span className={classes.Age}>{this.state.selectedUser.datingProfile.age || "-"}</span>
-                                    <span className={classes.CollegeName}>{this.state.selectedUser.datingProfile.collegeName || "-"}</span>
+                    <Fragment>
+                        <ContentContainer classes={classes.ContentContainer}>
+                            <div className={classes.ProfileSection}>
+                                <div className={classes.InfoContainer}>
+                                    <span className={classes.Name}>{this.state.selectedUser.name},</span>
+                                    <div className={classes.AgeContainer}>
+                                        <span className={classes.Age}>{this.state.selectedUser.datingProfile.age || "-"}</span>
+                                        <span className={classes.CollegeName}>{this.state.selectedUser.datingProfile.collegeName || "-"}</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <span className={classes.Matchbox}>{this.state.percentage}%</span>
-                            <Link to={"/profile/" + this.state.selectedUser.id} className={classes.ViewProfile}>Visit Profile</Link>
-                            <Button 
-                                style={{
-                                    backgroundColor: "#fa8575",
-                                    left: "30%"                                    
-                                }}
-                                classes={classes.Button}
-                                onClick={this.passHandler}
-                            >
-                                &#10005; <span style={{fontSize: "14px"}}>Pass</span>
-                            </Button>
-                            <Button
-                                style={{
-                                    backgroundColor: "#ffbe25",
-                                    left: "60%"
-                                }}
-                                classes={classes.Button}
-                                onClick={this.likeHandler}
-                            >
-                                &#x2764; <span style={{fontSize: "14px"}}>Like</span>
-                            </Button>
-                        </div>
-
-                        <div className={classes.DesktopPhotos}>
-                            {this.state.selectedUser.profilePhotos.map((photo, index) => (
-                                <ProfilePhoto 
-                                    src={photo.imageUrl}
+                                <span className={classes.Matchbox}>{this.state.percentage}%</span>
+                                <Link to={"/profile/" + this.state.selectedUser.id} className={classes.ViewProfile}>Visit Profile</Link>
+                                <Button 
                                     style={{
-                                        width: 250,
-                                        height: 300,
-                                        margin: 10
+                                        backgroundColor: "#fa8575",
+                                        left: "30%"                                    
                                     }}
-                                    key={photo.id}
+                                    classes={classes.Button}
+                                    onClick={this.passHandler}
+                                >
+                                    &#10005; <span style={{fontSize: "14px"}}>Pass</span>
+                                </Button>
+                                <Button
+                                    style={{
+                                        backgroundColor: "#ffbe25",
+                                        left: "60%"
+                                    }}
+                                    classes={classes.Button}
+                                    onClick={this.likeHandler}
+                                >
+                                    &#x2764; <span style={{fontSize: "14px"}}>Like</span>
+                                </Button>
+                            </div>
+
+                            <div className={classes.DesktopPhotos}>
+                                {this.state.selectedUser.profilePhotos.map((photo, index) => (
+                                    <ProfilePhoto 
+                                        src={photo.imageUrl}
+                                        style={{
+                                            width: 250,
+                                            height: 300,
+                                            margin: 10
+                                        }}
+                                        key={photo.id}
+                                    />
+                                ))}
+                            </div>
+                            <div className={classes.MainFooter}>If you like each other, we'll let you know!</div>
+
+                            <div className={classes.MobilePhoto}>
+                                <ProfilePhoto 
+                                    src={mainPhoto ? mainPhoto.imageUrl : ""}
+                                    style={{
+                                        width: "60%",
+                                        height: "50%"
+                                    }}
                                 />
-                            ))}
-                        </div>
-                        <div className={classes.MainFooter}>If you like each other, we'll let you know!</div>
-
-                        <div className={classes.MobilePhoto}>
-                            <ProfilePhoto 
-                                src={mainPhoto ? mainPhoto.imageUrl : ""}
-                                style={{
-                                    width: "60%",
-                                    height: "50%"
-                                }}
-                            />
-                        
-                        </div>
-
-
-                        <div className={classes.AboutSection}>
-                            <div className={classes.SelfSummaryBox}>
-                                <div className={classes.SelfSummaryBoxHeader}>
-                                    My Self-Summary
-                                </div>
-                                <div className={classes.SelfSummaryBoxContent}>
-                                    {this.state.selectedUser.datingProfile.about}
-                                </div>
-                            </div>
-                            <div className={classes.RightSection}>
-                                <div className={classes.AboutBox}>
-                                    <div className={classes.About}><span className={classes.AboutKey}>I'm Currently</span> {this.state.selectedUser.datingProfile.relationshipStatus}</div>
-                                    <div className={classes.About}><span className={classes.AboutKey}>Intrested In</span> {this.state.selectedUser.datingProfile.intrestedIn}</div>
-                                    <div className={classes.About}><span className={classes.AboutKey}>Graduation From</span> {this.state.selectedUser.datingProfile.collegeName}</div>
-                                </div>
-                                <hr />
-                                <div className={classes.TagsContainer}>
-                                    <div className={classes.TagHeading}>Here's what you too have in common</div>
-                                    <Tags tags={this.state.commonTags} />
-                                </div>
-                            </div>
                             
-                        </div>
+                            </div>
 
-                    </ContentContainer>
+
+                            <div className={classes.AboutSection}>
+                                <div className={classes.SelfSummaryBox}>
+                                    <div className={classes.SelfSummaryBoxHeader}>
+                                        My Self-Summary
+                                    </div>
+                                    <div className={classes.SelfSummaryBoxContent}>
+                                        {this.state.selectedUser.datingProfile.about}
+                                    </div>
+                                </div>
+                                <div className={classes.RightSection}>
+                                    <div className={classes.AboutBox}>
+                                        <div className={classes.About}><span className={classes.AboutKey}>I'm Currently</span> {this.state.selectedUser.datingProfile.relationshipStatus}</div>
+                                        <div className={classes.About}><span className={classes.AboutKey}>Intrested In</span> {this.state.selectedUser.datingProfile.intrestedIn}</div>
+                                        <div className={classes.About}><span className={classes.AboutKey}>Graduation From</span> {this.state.selectedUser.datingProfile.collegeName}</div>
+                                    </div>
+                                    <hr />
+                                    <div className={classes.TagsContainer}>
+                                        <div className={classes.TagHeading}>Here's what you too have in common</div>
+                                        <Tags tags={this.state.commonTags} />
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                        </ContentContainer>
+
+                        <SuccessfulMatchModal 
+                            show={this.state.matchFound}
+                            closeModalHandler={this.keepExploringHandler}
+                            likeeName={this.state.selectedUser.name}
+                        />
+                    </Fragment>
                 )}
 
             </CenterContainer>

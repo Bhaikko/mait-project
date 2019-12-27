@@ -288,6 +288,8 @@ router.get("/explore", (req, res, next) => {
             const currentUser = searchUser(users, req.user.id);
             const selectedUser = getRandomuser(users, currentUser);
 
+            // const selectedUser = users[0]; // For Successfull match test only
+
             const result = calculateTagPercentage(selectedUser.userTags, currentUser.userTags);
             res.status(200).json({
                 selectedUser,
@@ -300,15 +302,27 @@ router.get("/explore", (req, res, next) => {
 });
 
 router.post("/addMatch", (req, res, next) => {
-    databaseHandler.addMatch(req.user.id, req.body.userId)
+    databaseHandler.getMatch(req.body.userId, req.user.id)
         .then(response => {
-            res.status(201).json({
-                message: "You Liked"
-            });
+            if (!response) {
+                databaseHandler.addMatch(req.user.id, req.body.userId)
+                    .then(response => {
+                        res.status(201).json({
+                            message: "You Liked"
+                        });
+                    });
+            } else {
+                res.status(200).json({
+                    message: "Also Likes You"
+                });
+            }
         })
         .catch(err => {
             errorHandler(err, res);
         });
+
+
+    
 });
 
 module.exports = {
