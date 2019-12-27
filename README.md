@@ -19,11 +19,12 @@ We are planning to built following Web-Applications
 * [Nodejs](https://nodejs.org/en) with express
 
 *Database*
-* Mysql
+* Mysql (For Production Build)
+* Sqlite (For Development Build)
 
 ## Getting Started
 ### npm along with nodejs must be installed.
-Before you start anything, make sure to install packages using *npm install* in each folder stated below.
+Before you start anything, make sure to install packages using *npm install* in *frontend* and *api* folder.
 
 For the development server of reactjs,
 ```
@@ -32,38 +33,12 @@ For the development server of reactjs,
 ```
 This runs the frontend development server.
 
-For the backend server using express
+For the backend server using express as Development build
 ```
   cd mait-project-api/api
   node server.js
 ```
-
-For setup of Database, mysql must be installed.
-*Sequelize* as ORM is used for Database Management.
-
-Once mysql is installed and can be accessed through CLI. 
-Login as root in mysql using
-```
-  mysql -u root -p
-```
-
-After logging in, run the following commands
-```
-  CREATE DATABASE maitTalks;
-  CREATE USER "maitTalksAdmin" IDENTIFIED BY "123456";
-  USE maitTalks;
-  GRANT ALL PRIVILEGES ON maitTalks.* TO maitTalksAdmin;
-  FLUSH PRIVILEGES;
-  UPDATE mysql.user SET host = "localhost" WHERE user = "maitTalksAdmin";
-```
-
-For reviewing mysql database using CLI,
-```
-  mysql -u maitTalksAdmin -p
-```
-
-*Note: If you want to have your own database name, password, etc. Edit the constants.js in api/*
-
+### Database Setup instructions are provided in [api Readme.md](https://github.com/Bhaikko/mait-project/blob/master/api/README.md)
 
 If all the above steps are followed correctly, the development mode should be up and running. :)
 
@@ -90,7 +65,7 @@ If all the above steps are followed correctly, the development mode should be up
     │   │   ├── assets                          # images, icons, etc files used in project
     │   │   ├── components                      # stateless components
     │   │   ├── containers                      # statefull components
-    │   │   ├── hoc                             # higher order components
+    │   │   ├── utilities                       # utilities components
     │   │   ├── store                           # redux actions and reducers
     │   │   ├── app.js                          # main app file 
     │   │   ├── axios.js                        # axios configurations
