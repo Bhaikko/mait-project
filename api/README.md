@@ -50,8 +50,9 @@ For reviewing mysql database using CLI,
 If all the above steps are followed correctly, the development mode should be up and running. :)
 
 ## Database Architecture
-To edit and make changes in architecture diagram, read 
+<img src="https://github.com/Bhaikko/mait-project/blob/master/api/database/architecture/Database%20Architecture.png"/>
 
+*Note: To edit and make changes in architecture diagram, read*
 **/api/database/architecture/databaseDiagramCode.txt**
 
 ## Testing Data
