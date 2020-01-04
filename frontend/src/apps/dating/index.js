@@ -1,16 +1,21 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Dating from './Dating';
 import Inbox from './Inbox/Inbox';
 import Explore from './Explore/Explore';
-
+import * as actions from './../../store/actions/index';
 
 import Layout from './../../containers/Layout/Layout';
 import NavigationItem from './../../components/Navigation/NavigationItems/NavigationItem/NavigationItem';
 
 
 class DatingRoute extends Component {
+
+    componentDidMount () {
+        this.props.onGetProfile();
+    }
 
     render () {
         let navigationItems = (
@@ -39,4 +44,10 @@ class DatingRoute extends Component {
     }
 }
 
-export default DatingRoute;
+const mapDispatchToProps = dispatch => {
+    return {
+        onGetProfile: () => dispatch(actions.getProfile())
+    }
+}
+
+export default connect(null, mapDispatchToProps)(DatingRoute);
