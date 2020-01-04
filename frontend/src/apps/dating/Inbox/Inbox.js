@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import classes from './Inbox.css';
 import MessageBox from './../../../containers/MessageBox/MessageBox';
 import ProfilePhoto from './../../../components/ProfilePhotos/ProfilePhoto/ProfilePhoto';
@@ -10,6 +12,7 @@ import FilterContainer from './../../../containers/FilterContainer/FilterContain
 
 import UserDetail from './../../../utilities/UserDetail';
 
+import axios from './../../../axios';
 
 class Inbox extends Component {
     constructor (props) {
@@ -19,6 +22,7 @@ class Inbox extends Component {
 
         this.state = {
             currentContact: null,
+            loading: false,
             contacts: [
                 {
                     id: 1,
@@ -65,6 +69,28 @@ class Inbox extends Component {
         }
     }
 
+    componentDidMount() {
+        axios.get('/dating/getContacts')
+            .then(contacts => {
+                const defaultPhoto = {
+                    id: 1,
+                    imageUrl: "",
+                    main: true
+                }
+                const extractedContacts = contacts.data.contacts;
+                
+                extractedContacts.map(contact => {
+                    contact.profileImage = (contact.profilePhotos.find(photo => photo.main === true) || defaultPhoto).imageUrl;
+                    delete contact.profilePhotos;
+                    return "";
+                });
+
+                this.setState({
+                    contacts: extractedContacts
+                });
+            });
+    }
+
     contactClickHandler = contactId => {
         this.setState({
             currentContact: contactId
@@ -86,7 +112,7 @@ class Inbox extends Component {
                     <div className={classes.ContactsContainer}>
                         <div className={classes.ProfileHeader}>
                             <ProfilePhoto 
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX" 
+                                src={this.props.mainProfilePhoto}
                                 alt="..." 
                                 style={{
                                     height: 50,
@@ -123,7 +149,7 @@ class Inbox extends Component {
                         {!this.state.currentContact ? (
                             <div className={classes.EmptyBox}>
                                 <ProfilePhoto 
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX" 
+                                    src={this.props.mainProfilePhoto}
                                     alt="..." 
                                     style={{
                                         height: 300,
@@ -141,7 +167,7 @@ class Inbox extends Component {
                                 </div>
                             </div>
                         ) : (
-                            <MessageBox />  
+                            <MessageBox currentContact={this.state.currentContact}/>  
                         )}
                     </div>
                 </ContentContainer>
@@ -150,4 +176,10 @@ class Inbox extends Component {
     }
 }
 
-export default Inbox;
+const mapStateToProps = state => {
+    return {
+        mainProfilePhoto: state.dating.mainProfilePhoto,
+    }
+}
+
+export default connect(mapStateToProps, null)(Inbox);

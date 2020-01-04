@@ -312,17 +312,37 @@ router.post("/addMatch", (req, res, next) => {
                         });
                     });
             } else {
-                res.status(200).json({
-                    message: "Also Likes You"
-                });
+                databaseHandler.addToContact(req.user.id, req.body.userId)
+                    .then(response => {
+                        res.status(200).json({
+                            message: "Also Likes You"
+                        });
+                    });
             }
         })
         .catch(err => {
             errorHandler(err, res);
         });
+});
 
+router.get('/getContacts', (req, res, next) => {
+    databaseHandler.getContactsIds(req.user.id)
+        .then(response => {
+            const contacts = databaseParser(response);
+            const contactIds = [];
+            contacts.map(contact => contactIds.push(contact['userId1'] || contact['userId2']));
 
-    
+            databaseHandler.getContacts(contactIds)
+                .then(response => {
+                    res.status(200).json({
+                        contacts: databaseParser(response)
+                    })
+                });
+
+        })
+        .catch(err => {
+            errorHandler(err, res);
+        });
 });
 
 module.exports = {

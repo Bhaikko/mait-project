@@ -5,8 +5,10 @@ const {
     Matches, 
     Tags, 
     Users,
-    Reports 
+    Reports,
+    Contacts
 } = require('./database');
+const { Op } = require('sequelize');
 
 module.exports.getDatingProfile = userId => {
     return DatingProfiles.findOne({
@@ -206,4 +208,54 @@ module.exports.addReport = (report, submittedById, reportForId) => {
                 report 
             });
         });
+}
+
+module.exports.addToContact = (userId1, userId2) => {
+    return Contacts.findOrCreate({
+        where: {
+            userId1,
+            userId2
+        }
+    });
+}
+
+module.exports.getContactsIds = (userId) => {
+    
+    return Promise.all([
+        Contacts.findAll({
+            where: {
+                userId1: userId
+            },
+            attributes: ['userId2']
+        }),
+        Contacts.findAll({
+            where: {
+                userId2: userId
+            },
+            attributes: ['userId1']
+        })
+    ])
+        .then(response => {
+            const contactIds = [...response[0], ...response[1]];
+            return contactIds;
+        })
+}
+
+
+
+module.exports.getContacts = (userIds) => {
+    return Users.findAll({
+        where: {
+            id: {
+                [Op.in]: userIds
+            }
+        },
+        attributes: ['id', 'name'],
+        include: [
+            {
+                model: ProfilePhotos,
+                attributes: ['id', 'imageUrl', 'main']
+            }
+        ]
+    });
 }

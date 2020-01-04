@@ -182,6 +182,33 @@ const Reports = database.define("reports", {
     }
 });
 
+const Contacts = database.define("contacts", {
+    userId1: {
+        type: Sequelize.INTEGER,
+        allowNull: false 
+    },
+    userId2: {
+        type: Sequelize.INTEGER,
+        allowNull: false 
+    }
+});
+
+const Notifications = database.define("notifications", {
+    notifcation: {
+        type: Sequelize.TEXT,
+        allowNull: false 
+    },
+    time: {
+        type: Sequelize.TIME,
+        allowNull: false
+    }
+});
+
+Notifications.belongsTo(Users);
+Users.hasMany(Notifications);
+
+
+
 module.exports = {
     database,
     Users,
@@ -191,5 +218,6 @@ module.exports = {
     Messages,
     Matches,
     Tags,
-    Reports
+    Reports,
+    Contacts
 }

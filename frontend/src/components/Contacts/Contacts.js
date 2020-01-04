@@ -5,7 +5,6 @@ import classes from './Contacts.css';
 import downarrow from './../../assets/icons/dropdown-arrow.png';
 
 const Contacts = props => {
-
     const dropdownHandler = () => {
         myRef.current.classList.toggle(classes.Expand);
         props.downClickHandler();

@@ -63,7 +63,7 @@ class MessageBox extends Component {
             <div className={classes.MessageBox}>
                 <div className={classes.Header}>
                     <ProfilePhoto 
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX" 
+                        src={this.props.currentContact.profileImage}
                         alt="..." 
                         style={{
                             height: 50,
@@ -72,7 +72,7 @@ class MessageBox extends Component {
                         borderRadius="50%"    
                     />
                     <div className={classes.Status}>
-                        <ProfileName>Firstname Lastname</ProfileName>
+                        <ProfileName>{this.props.currentContact.name}</ProfileName>
                         <div>Lastseen: {new Date().toDateString()}</div>
                     </div>
                 </div>

@@ -22,7 +22,10 @@ const {
     setMainProfilePhoto,
     getCompleteProfile,
     addReport,
-    getAllUsers
+    getAllUsers,
+    addToContact,
+    getContactsIds,
+    getContacts,
 } = require("./datingHandler");
 
 module.exports = {
@@ -45,5 +48,8 @@ module.exports = {
     getPasswordHash,
     getCompleteProfile,
     addReport,
-    getAllUsers
+    getAllUsers,
+    addToContact,
+    getContactsIds,
+    getContacts,
 }

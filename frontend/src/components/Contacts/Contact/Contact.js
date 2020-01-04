@@ -9,7 +9,7 @@ const Contact = props => {
     return (
         <div className={classes.Contact} onClick={props.contactClickHandler}>
             <ProfilePhoto 
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbRsdbiLx1MSPOr3A_mN0ttXDFqH2y9vWWg-Hant_VUBcMP2oX" 
+                src={props.profileImage}
                 alt="..." 
                 style={{
                     height: 50,
