@@ -25,17 +25,29 @@ class App extends Component {
     if (userdata) {      
       this.props.onAutoLogin(userdata.token, userdata.userId, userdata.username);
     }
+    this.socket = null;
   }
 
-  componentDidMount() {
-    const socket = socketIOClient(SERVER_URL);
-    socket.on('connection', () => {
-      // console.log(data);
-      console.log("Connected");
-    });
-    
+  componentDidUpdate() {
+    if (this.props.token) {
+      this.socket = socketIOClient(SERVER_URL);
+      const data = {
+        userId: UserDetail.get_token().userId
+      }
+      console.log(this.state);
+      this.socket.emit('connectToChat', data);
+    }
   }
 
+
+  componentWillUnmount() {
+    if (this.socket) {
+      const data = {
+        userId: UserDetail.get_token().userId
+      }
+      this.socket.emit('disconnect', data);
+    }
+  }
 
   render () {
     let routes = (

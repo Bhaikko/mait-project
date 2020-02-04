@@ -1,4 +1,5 @@
 const Sequelize = require("sequelize");
+const redis = require('redis').createClient();
 
 const { DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD, MODE } = require("../enviroments");
 
@@ -211,6 +212,7 @@ Users.hasMany(Notifications);
 
 module.exports = {
     database,
+    redis,
     Users,
     DatingProfiles,
     ProfilePhotos,
