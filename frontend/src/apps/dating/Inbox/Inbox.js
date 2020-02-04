@@ -143,6 +143,11 @@ class Inbox extends Component {
 }
 
 const mapStateToProps = state => {
+    if (!state.dating.mainProfilePhoto) {
+        return {
+            mainProfilePhoto: ""
+        }
+    }
     return {
         mainProfilePhoto: state.dating.mainProfilePhoto.imageUrl,
     }

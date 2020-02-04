@@ -22,3 +22,13 @@ module.exports.getMessages = (senderId, recieverId) => {
         .then(response => databaseParser(response))
         .catch(err => { throw err; });
 }
+
+module.exports.markRead = messageId => {
+    return Messages.update(
+        {
+            where: {
+                id: messageId
+            }
+        }
+    );
+}

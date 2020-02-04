@@ -5,8 +5,6 @@ const fs = require('fs');
 const databaseHandler = require("./../database/index");
 const { databaseParser } = require('./utility');
 
-
-
 const router = express.Router();
 const upload = multer({
     dest: 'uploads/dating'  // if changing this, make sure to make changes in in unLinkFile() in router.delete('/profilephoto') 

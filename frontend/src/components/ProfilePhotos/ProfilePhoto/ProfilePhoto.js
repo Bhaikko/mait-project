@@ -10,7 +10,6 @@ import { SERVER_URL } from '../../../environments';
 const ProfileImage = props => {
     let imageSrc = props.src;
 
-    console.log(props.src);
     if (!imageSrc) {
         imageSrc = DefaultPhoto;
     } else if (!imageSrc.includes('https://')) {

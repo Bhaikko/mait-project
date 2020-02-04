@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import socketIOClient from 'socket.io-client';
 
 import AdminApp from './apps/admin/Admin';
 import DatingApp from './apps/dating/index';
@@ -13,6 +14,8 @@ import AuthPage from './apps/homepage/auth/Auth';
 import * as authActions from './store/actions/index';
 
 import UserDetail from './utilities/UserDetail';
+import { SERVER_URL } from './environments';
+
 
 class App extends Component {
 
@@ -24,8 +27,17 @@ class App extends Component {
     }
   }
 
-  render () {
+  componentDidMount() {
+    const socket = socketIOClient(SERVER_URL);
+    socket.on('connection', () => {
+      // console.log(data);
+      console.log("Connected");
+    });
+    
+  }
 
+
+  render () {
     let routes = (
       <Switch>
         <Route path="/admin" component={AdminApp} />
