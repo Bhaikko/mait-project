@@ -23,6 +23,7 @@ class Me extends Component {
                 <NavigationItem link="/logout">Logout</NavigationItem>
             </Fragment>
         );
+        
 
         return (
             <Layout navigationItems={navigationItems}>

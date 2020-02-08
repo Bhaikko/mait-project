@@ -14,6 +14,7 @@ import * as authActions from './store/actions/index';
 
 import UserDetail from './utilities/UserDetail';
 
+
 class App extends Component {
 
   constructor (props) {
@@ -23,9 +24,7 @@ class App extends Component {
       this.props.onAutoLogin(userdata.token, userdata.userId, userdata.username);
     }
   }
-
   render () {
-
     let routes = (
       <Switch>
         <Route path="/admin" component={AdminApp} />

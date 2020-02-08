@@ -10,8 +10,21 @@ import * as actions from './../../store/actions/index';
 import Layout from './../../containers/Layout/Layout';
 import NavigationItem from './../../components/Navigation/NavigationItems/NavigationItem/NavigationItem';
 
+import { SERVER_URL } from './../../environments';
+import socketIOClient from 'socket.io-client';
+import UserDetail from './../../utilities/UserDetail';
 
 class DatingRoute extends Component {
+
+    constructor (props) {
+        super(props);
+        this.socket = socketIOClient(SERVER_URL);
+        this.userId = UserDetail.get_userId();
+
+        this.socket.emit('connectToChat', {
+            userId: this.userId
+        });
+    }
 
     componentDidMount () {
         this.props.onGetProfile();
@@ -30,7 +43,8 @@ class DatingRoute extends Component {
         let routes = (
             <Switch>
                 <Route path="/dating/explore" component={Explore} />
-                <Route path="/dating/inbox" component={Inbox} />
+                {/* <Route path="/dating/inbox" component={Inbox} socket={this.socket}/> */}
+                <Route path="/dating/inbox" render={props => <Inbox {...props} socket={this.socket} />}/>
                 <Route path="/dating" exact component={Dating} />
                 <Redirect to="/notfound" />
             </Switch>
@@ -41,6 +55,12 @@ class DatingRoute extends Component {
                 {routes}
             </Layout>
         );
+    }
+
+    componentWillUnmount () {
+        this.socket.emit('disconnectMe', {
+            userId: this.userId
+        });
     }
 }
 

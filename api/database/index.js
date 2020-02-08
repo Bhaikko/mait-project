@@ -28,6 +28,12 @@ const {
     getContacts,
 } = require("./datingHandler");
 
+const {
+    addMessage,
+    getMessages,
+    markRead
+} = require('./messageHandler');
+
 module.exports = {
     getUser,
     addUser,
@@ -52,4 +58,7 @@ module.exports = {
     addToContact,
     getContactsIds,
     getContacts,
-}
+    addMessage,
+    getMessages,
+    markRead
+};
