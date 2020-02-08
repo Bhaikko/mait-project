@@ -24,8 +24,15 @@ class Inbox extends Component {
         this.state = {
             currentContact: null,
             loading: true,
-            filteredContacts: null
+            filteredContacts: null,
+            messages: null
         }
+
+        this.socket = this.props.socket;
+
+        this.socket.on('recieveMessage', data => {
+            console.log(data);
+        });
     }
 
     componentDidMount() {
@@ -53,8 +60,20 @@ class Inbox extends Component {
 
     contactClickHandler = contactId => {
         this.setState({
-            currentContact: contactId
+            currentContact: contactId,
+            loading: true
         });
+
+        axios.post('/messages/usermessages', {
+            senderId: UserDetail.get_userId(),
+            recieverId: contactId.id
+        })
+            .then(messages => {
+                this.setState({
+                    messages: messages.data.messages,
+                    loading: false
+                });
+            });
     }
 
     setFilterContacts = contacts => {
@@ -63,7 +82,6 @@ class Inbox extends Component {
         });
     }
     
-
     render () {
         
         return (
@@ -131,7 +149,11 @@ class Inbox extends Component {
                                         </div>
                                     </div>
                                 ) : (
-                                    <MessageBox currentContact={this.state.currentContact}/>  
+                                    <MessageBox 
+                                        currentContact={this.state.currentContact} 
+                                        socket={this.socket}
+                                        messages={this.state.messages}
+                                    />  
                                 )}
                             </div>
                         </React.Fragment>

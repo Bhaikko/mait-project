@@ -12,53 +12,39 @@ class MessageBox extends Component {
     constructor (props) {
         super (props);
         this.state = {
-            messages: [
-                {
-                    id: 1,
-                    senderId: parseInt(JSON.parse(localStorage.getItem("userdata")).userId),
-                    recieverId: 2,
-                    time: new Date(),
-                    message: "Hello Worldaaaaaaaaaaaaaaaaaaaaaaaaaa 1 s",
-                    seen: false 
-                },
-                {
-                    id: 2,
-                    senderId: parseInt(JSON.parse(localStorage.getItem("userdata")).userId),
-                    recieverId: 2,
-                    time: new Date(),
-                    message: "Hello World 2 ",
-                    seen: false 
-                },
-                {
-                    id: 3,
-                    senderId: 2,
-                    recieverId: parseInt(JSON.parse(localStorage.getItem("userdata")).userId),
-                    time: new Date(),
-                    message: "Hello World 3ssssssssssssssssssssssssssss ssssssssssssss ",
-                    seen: false 
-                },
-                {
-                    id: 4,
-                    senderId: 2,
-                    recieverId: parseInt(JSON.parse(localStorage.getItem("userdata")).userId),
-                    time: new Date(),
-                    message: "Hello 4 ",
-                    seen: false 
-                },
-                {
-                    id: 5,
-                    senderId: parseInt(JSON.parse(localStorage.getItem("userdata")).userId),
-                    recieverId: 2,
-                    time: new Date(),
-                    message: "Hello World Hello World 5 ",
-                    seen: false 
-                }
-            ]
+            loading: true,
+            message: ""
         }
+
+        this.socket = this.props.socket;
+    }
+
+    componentDidMount() {
+        // fetch messages
+    }
+
+
+    messageHandler = event => {
+        this.setState({
+            message: event.target.value
+        });
+    }
+
+    sendMessage = () => {
+
+        this.socket.emit('sendMessage', {
+            senderId: UserDetail.get_userId(),
+            recieverId: this.props.currentContact.id,
+            message: this.state.message
+        });
+
+        this.setState({
+            message: ""
+        });
     }
 
     render () {
-        const userId = parseInt(UserDetail.get_userId());
+        const userId = UserDetail.get_userId() + "";
         return (
             <div className={classes.MessageBox}>
                 <div className={classes.Header}>
@@ -78,16 +64,12 @@ class MessageBox extends Component {
                 </div>
 
                 <div className={classes.MessagesBox}>
-                    {this.state.messages.map(message => (
+                    {this.props.messages.map(message => (
                         <div className={classes.Message} key={message.id}>
-                            <div 
-                                className={message.senderId === userId ? classes.MyMessage : classes.OtherMessage}
-                            >
+                            <div className={message.senderId === userId ? classes.MyMessage : classes.OtherMessage}>
                                 <span className={classes.MessageContent}>{message.message}</span>   
-                                <span 
-                                    className={classes.MessageTimestamp}
-                                >
-                                    {message.time.toLocaleTimeString([], {
+                                <span className={classes.MessageTimestamp}>
+                                    {new Date(message.time).toLocaleTimeString([], {
                                         hour: "2-digit",
                                         minute: "2-digit"
                                     })}
@@ -99,8 +81,8 @@ class MessageBox extends Component {
                 </div>
 
                 <div className={classes.SendContainer}>
-                    <input type="text" placeholder="Type A Message" className={classes.SendInput} />
-                    <img src={SendIcon} alt="..." className={classes.SendIcon} />
+                    <input placeholder="Type A Message" value={this.state.message} className={classes.SendInput} onChange={this.messageHandler}/>
+                    <img src={SendIcon} alt="..." className={classes.SendIcon} onClick={this.sendMessage}/>
                 </div>
             </div>
         );

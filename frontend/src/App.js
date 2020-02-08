@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import socketIOClient from 'socket.io-client';
 
 import AdminApp from './apps/admin/Admin';
 import DatingApp from './apps/dating/index';
@@ -14,7 +13,6 @@ import AuthPage from './apps/homepage/auth/Auth';
 import * as authActions from './store/actions/index';
 
 import UserDetail from './utilities/UserDetail';
-import { SERVER_URL } from './environments';
 
 
 class App extends Component {
@@ -25,30 +23,7 @@ class App extends Component {
     if (userdata) {      
       this.props.onAutoLogin(userdata.token, userdata.userId, userdata.username);
     }
-    this.socket = null;
   }
-
-  componentDidUpdate() {
-    if (this.props.token) {
-      this.socket = socketIOClient(SERVER_URL);
-      const data = {
-        userId: UserDetail.get_token().userId
-      }
-      console.log(this.state);
-      this.socket.emit('connectToChat', data);
-    }
-  }
-
-
-  componentWillUnmount() {
-    if (this.socket) {
-      const data = {
-        userId: UserDetail.get_token().userId
-      }
-      this.socket.emit('disconnect', data);
-    }
-  }
-
   render () {
     let routes = (
       <Switch>

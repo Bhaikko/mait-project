@@ -1,5 +1,7 @@
+const { Op } = require('sequelize');
+
 const { Messages } = require('./database');
-const { databaseParser } = require('./utility');
+const { databaseParser } = require('./../api/utility');
 
 module.exports.addMessage = (senderId, recieverId, time, message) => {
     return Messages.create({
@@ -7,28 +9,26 @@ module.exports.addMessage = (senderId, recieverId, time, message) => {
         recieverId,
         time,
         message
-    })
-        .then(response => response)
-        .catch(err => { throw err; });
+    });
 }
 
 module.exports.getMessages = (senderId, recieverId) => {
     return Messages.findAll({
         where: {
-            senderId,
-            recieverId
+            senderId: {
+                [Op.or]: [senderId, recieverId]
+            },
+            recieverId: {
+                [Op.or]: [senderId, recieverId]
+            }
         }
-    })
-        .then(response => databaseParser(response))
-        .catch(err => { throw err; });
+    });
 }
 
 module.exports.markRead = messageId => {
-    return Messages.update(
-        {
-            where: {
-                id: messageId
-            }
+    return Messages.update({
+        where: {
+            id: messageId
         }
-    );
+    });
 }
