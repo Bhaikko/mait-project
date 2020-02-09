@@ -13,16 +13,30 @@ const socket = (io, redis) => {
 
         socket.on('sendMessage', data => {
             redis.get(data.recieverId, (err, recieverSocketId) => {
-                if (recieverSocketId) {
-                    io.to(recieverSocketId).emit('recieveMessage', {
-                        message: data.message,
-                        senderId: data.senderId,
-                        recieverId: data.recieverId
+                addMessage(data.senderId, data.recieverId, new Date(), data.message)
+                    .then(message => {
+                        if (recieverSocketId) {
+                            message = message.get();
+                            const newMessage = {
+                                id: message.id,
+                                message: message.message,
+                                senderId: message.senderId,
+                                recieverId: message.recieverId,
+                                time: message.time
+                            };
+                            io.to(recieverSocketId).emit('recieveMessage', newMessage);
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err);
+                        if (recieverSocketId) {
+                            io.to(recieverSocketId).emit('recieveMessage', {
+                                error: 'Something Went Wrong!!!'
+                            });
+                        }
                     });
-                }
             });
 
-            addMessage(data.senderId, data.recieverId, new Date(), data.message);
         });
 
     });

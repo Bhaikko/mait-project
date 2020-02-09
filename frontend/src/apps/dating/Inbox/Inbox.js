@@ -31,7 +31,15 @@ class Inbox extends Component {
         this.socket = this.props.socket;
 
         this.socket.on('recieveMessage', data => {
-            console.log(data);
+            let newMessages = null;
+            if (this.state.messages) {
+                newMessages = [...this.state.messages, data];
+            } else {
+                newMessages = [data];
+            }
+            this.setState({
+                messages: newMessages
+            });
         });
     }
 
@@ -74,6 +82,13 @@ class Inbox extends Component {
                     loading: false
                 });
             });
+    }
+
+    addMessageHandler = message => {
+        const currentMessages = [...this.state.messages, message];
+        this.setState({
+            messages: currentMessages
+        });
     }
 
     setFilterContacts = contacts => {
@@ -152,7 +167,8 @@ class Inbox extends Component {
                                     <MessageBox 
                                         currentContact={this.state.currentContact} 
                                         socket={this.socket}
-                                        messages={this.state.messages}
+                                        messages={[...this.state.messages]}
+                                        addMessageHandler={this.addMessageHandler}
                                     />  
                                 )}
                             </div>

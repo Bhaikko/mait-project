@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import shortid from 'shortid';
 
 import classes from './MessageBox.css';
 
@@ -17,12 +18,8 @@ class MessageBox extends Component {
         }
 
         this.socket = this.props.socket;
+        this.userId = UserDetail.get_userId();
     }
-
-    componentDidMount() {
-        // fetch messages
-    }
-
 
     messageHandler = event => {
         this.setState({
@@ -31,20 +28,30 @@ class MessageBox extends Component {
     }
 
     sendMessage = () => {
+        if (this.state.message) {
+            this.socket.emit('sendMessage', {
+                senderId: this.userId,
+                recieverId: this.props.currentContact.id,
+                message: this.state.message
+            });
+            const newMessage = {
+                id: shortid.generate(),
+                message: this.state.message,
+                senderId: Number(this.userId),
+                recieverId: this.props.currentContact.id,
+                time: new Date()
+            }
 
-        this.socket.emit('sendMessage', {
-            senderId: UserDetail.get_userId(),
-            recieverId: this.props.currentContact.id,
-            message: this.state.message
-        });
+            this.props.addMessageHandler(newMessage);
+            this.messageId++;
 
-        this.setState({
-            message: ""
-        });
+            this.setState({
+                message: ""
+            });
+        }
     }
 
     render () {
-        const userId = UserDetail.get_userId() + "";
         return (
             <div className={classes.MessageBox}>
                 <div className={classes.Header}>
@@ -66,7 +73,7 @@ class MessageBox extends Component {
                 <div className={classes.MessagesBox}>
                     {this.props.messages.map(message => (
                         <div className={classes.Message} key={message.id}>
-                            <div className={message.senderId === userId ? classes.MyMessage : classes.OtherMessage}>
+                            <div className={Number(message.senderId) === this.userId ? classes.MyMessage : classes.OtherMessage}>
                                 <span className={classes.MessageContent}>{message.message}</span>   
                                 <span className={classes.MessageTimestamp}>
                                     {new Date(message.time).toLocaleTimeString([], {
