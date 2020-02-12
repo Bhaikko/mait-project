@@ -16,9 +16,13 @@ class MessageBox extends Component {
             loading: true,
             message: ""
         }
-
+        this.messageBoxRef = React.createRef();
         this.socket = this.props.socket;
         this.userId = UserDetail.get_userId();
+    }
+
+    componentDidMount() {
+        this.scrollToBottom();
     }
 
     messageHandler = event => {
@@ -47,8 +51,14 @@ class MessageBox extends Component {
 
             this.setState({
                 message: ""
-            });
+            }, this.scrollToBottom);
         }
+        
+    }
+
+    scrollToBottom = () => {
+        const element = this.messageBoxRef.current;
+        element.scrollTop = element.scrollHeight;
     }
 
     render () {
@@ -70,7 +80,7 @@ class MessageBox extends Component {
                     </div>
                 </div>
 
-                <div className={classes.MessagesBox}>
+                <div className={classes.MessagesBox} ref={this.messageBoxRef}>
                     {this.props.messages.map(message => (
                         <div className={classes.Message} key={message.id}>
                             <div className={Number(message.senderId) === this.userId ? classes.MyMessage : classes.OtherMessage}>
@@ -81,12 +91,10 @@ class MessageBox extends Component {
                                         minute: "2-digit"
                                     })}
                                 </span>
-                            </div>
-                                    
+                            </div>           
                         </div>
                     ))}
                 </div>
-
                 <div className={classes.SendContainer}>
                     <input placeholder="Type A Message" value={this.state.message} className={classes.SendInput} onChange={this.messageHandler}/>
                     <img src={SendIcon} alt="..." className={classes.SendIcon} onClick={this.sendMessage}/>
