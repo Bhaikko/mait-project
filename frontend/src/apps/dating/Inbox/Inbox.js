@@ -27,6 +27,7 @@ class Inbox extends Component {
             filteredContacts: null,
             loading: true,
             messages: null,
+            contacts: null
         }
 
         this.socket = this.props.socket;
@@ -38,9 +39,24 @@ class Inbox extends Component {
             } else {
                 newMessages = [data];
             }
-            this.setState({
-                messages: newMessages
-            }, this.scrollToBottom);
+
+            if (this.state.currentContact && data.senderId === this.state.currentContact.id) {
+                this.setState({
+                    messages: newMessages
+                }, this.scrollToBottom);
+            } else {
+
+                const currentContacts = [...this.state.contacts];
+                currentContacts.map(contact => {
+                    if (contact.id === data.senderId) {
+                        contact.showNotification = true
+                    }
+                });
+
+                this.setState({
+                    contacts: currentContacts
+                });
+            }
         });
     }
 
@@ -56,6 +72,7 @@ class Inbox extends Component {
                 
                 extractedContacts.map(contact => {
                     contact.profileImage = (contact.profilePhotos.find(photo => photo.main === true) || defaultPhoto).imageUrl;
+                    contact.showNotification = false;
                     delete contact.profilePhotos;
                     return "";
                 });
@@ -67,18 +84,20 @@ class Inbox extends Component {
             });
     }
 
-    contactClickHandler = contactId => {
+    contactClickHandler = (contact, contactIndex) => {
+        const newContacts = [...this.state.contacts];
+        newContacts[contactIndex].showNotification = false;
         this.setState({
-            currentContact: contactId,
-            loading: true
+            currentContact: contact,
+            loading: true,
+            contacts: newContacts
         });
 
         axios.post('/messages/usermessages', {
             senderId: UserDetail.get_userId(),
-            recieverId: contactId.id
+            recieverId: contact.id
         })
             .then(messages => {
-                
                 this.setState({
                     messages: messages.data.messages,
                     loading: false
