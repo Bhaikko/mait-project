@@ -19,13 +19,14 @@ class Inbox extends Component {
     constructor (props) {
         super(props);
 
-        this.myRef1 = React.createRef()
+        this.myRef1 = React.createRef();
+        this.messageBoxRef = React.createRef();
 
         this.state = {
             currentContact: null,
-            loading: true,
             filteredContacts: null,
-            messages: null
+            loading: true,
+            messages: null,
         }
 
         this.socket = this.props.socket;
@@ -39,7 +40,7 @@ class Inbox extends Component {
             }
             this.setState({
                 messages: newMessages
-            });
+            }, this.scrollToBottom);
         });
     }
 
@@ -77,6 +78,7 @@ class Inbox extends Component {
             recieverId: contactId.id
         })
             .then(messages => {
+                
                 this.setState({
                     messages: messages.data.messages,
                     loading: false
@@ -96,9 +98,13 @@ class Inbox extends Component {
             filteredContacts: contacts 
         });
     }
+
+    scrollToBottom = () => {
+        const element = this.messageBoxRef.current;
+        element.scrollTop = element.scrollHeight;
+    }
     
     render () {
-        
         return (
             <CenterContainer>
                 <ContentContainer classes={classes.Inbox} style={{flexDirection: "row"}}>
@@ -169,6 +175,8 @@ class Inbox extends Component {
                                         socket={this.socket}
                                         messages={[...this.state.messages]}
                                         addMessageHandler={this.addMessageHandler}
+                                        refProp={this.messageBoxRef}
+                                        scrollToBottom={this.scrollToBottom}
                                     />  
                                 )}
                             </div>

@@ -24,7 +24,7 @@ class MessageBox extends Component {
     }
 
     componentDidMount() {
-        this.scrollToBottom();
+        this.props.scrollToBottom();
 
         axios.post('/dating/checkonline', {
             userId: this.props.currentContact.id
@@ -74,14 +74,8 @@ class MessageBox extends Component {
 
             this.setState({
                 message: ""
-            }, this.scrollToBottom);
+            }, this.props.scrollToBottom);
         }
-        
-    }
-
-    scrollToBottom = () => {
-        const element = this.messageBoxRef.current;
-        element.scrollTop = element.scrollHeight;
     }
 
     render () {
@@ -107,7 +101,7 @@ class MessageBox extends Component {
                     </div>
                 </div>
 
-                <div className={classes.MessagesBox} ref={this.messageBoxRef}>
+                <div className={classes.MessagesBox} ref={this.props.refProp}>
                     {this.props.messages.map(message => (
                         <div className={classes.Message} key={message.id}>
                             <div className={Number(message.senderId) === this.userId ? classes.MyMessage : classes.OtherMessage}>
