@@ -1,14 +1,28 @@
-const { addMessage, getMessages, markRead }  = require('./database/index')
+const { 
+    addMessage, 
+    getMessages, 
+    markRead,
+    makeOffline,
+    makeOnline,
+    checkOnline
+}  = require('./database/index')
 
 
 const socket = (io, redis) => {
     io.on('connection', socket => {
         socket.on('connectToChat', data => {
             redis.set(data.userId, socket.id);
+            makeOnline(data.userId);
+
+            socket.broadcast.emit(`user${data.userId}online`);
         });
 
         socket.on('disconnectMe', data => {
             redis.del(data.userId);
+            const time = new Date().toLocaleString();
+            makeOffline(time, data.userId);
+
+            socket.broadcast.emit(`user${data.userId}offline`, time);
         });
 
         socket.on('sendMessage', data => {
@@ -36,8 +50,9 @@ const socket = (io, redis) => {
                         }
                     });
             });
-
         });
+
+        
 
     });
 }

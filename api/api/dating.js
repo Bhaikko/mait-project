@@ -343,6 +343,18 @@ router.get('/getContacts', (req, res, next) => {
         });
 });
 
+router.post('/checkonline', (req, res) => {
+    databaseHandler.checkOnline(req.body.userId)
+        .then(response => {
+            res.status(200).json({
+                status: response
+            })
+        })
+        .catch(err => {
+            errorHandler(err, res);
+        });
+});
+
 module.exports = {
     router
 }

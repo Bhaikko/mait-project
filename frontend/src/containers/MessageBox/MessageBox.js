@@ -8,13 +8,15 @@ import ProfileName from '../../components/ProfileName/ProfileName';
 import SendIcon from './../../assets/icons/Send.png';
 
 import UserDetail from './../../utilities/UserDetail';
+import axios from './../../axios';
 
 class MessageBox extends Component {
     constructor (props) {
         super (props);
         this.state = {
             loading: true,
-            message: ""
+            message: "",
+            contactStatus: "offline"
         }
         this.messageBoxRef = React.createRef();
         this.socket = this.props.socket;
@@ -23,6 +25,27 @@ class MessageBox extends Component {
 
     componentDidMount() {
         this.scrollToBottom();
+
+        axios.post('/dating/checkonline', {
+            userId: this.props.currentContact.id
+        })
+            .then(response => {
+                this.setState({
+                    contactStatus: response.data.status.lastSeen
+                });
+            });
+
+        this.socket.on(`user${this.props.currentContact.id}online`, data => {
+            this.setState({
+                contactStatus: "Online"
+            });
+        });
+
+        this.socket.on(`user${this.props.currentContact.id}offline`, data => {
+            this.setState({
+                contactStatus: data
+            });
+        });
     }
 
     messageHandler = event => {
@@ -76,7 +99,11 @@ class MessageBox extends Component {
                     />
                     <div className={classes.Status}>
                         <ProfileName>{this.props.currentContact.name}</ProfileName>
-                        <div>Lastseen: {new Date().toDateString()}</div>
+                        {this.state.contactStatus === "Online" ? (
+                            <div>Online</div>
+                        ) : (
+                            <div>Lastseen: {this.state.contactStatus}</div>
+                        )}
                     </div>
                 </div>
 

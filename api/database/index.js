@@ -26,6 +26,9 @@ const {
     addToContact,
     getContactsIds,
     getContacts,
+    makeOffline,
+    makeOnline,
+    checkOnline
 } = require("./datingHandler");
 
 const {
@@ -60,5 +63,8 @@ module.exports = {
     getContacts,
     addMessage,
     getMessages,
-    markRead
+    markRead,
+    makeOffline,
+    makeOnline,
+    checkOnline
 };

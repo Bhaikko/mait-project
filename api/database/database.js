@@ -19,7 +19,6 @@ if (process.env.MODE === "Production") {
     });
 }
 
-
 const Users = database.define("users", {
     name: {
         type: Sequelize.STRING,
@@ -96,6 +95,9 @@ const DatingProfiles = database.define("datingProfiles", {
         type: Sequelize.STRING,
         allowNull: false,
         defaultValue: "Male"
+    },
+    lastSeen: {
+        type: Sequelize.STRING
     }
 });
 

@@ -259,3 +259,38 @@ module.exports.getContacts = (userIds) => {
         ]
     });
 }
+
+module.exports.makeOffline = (timestamp, userId) => {
+    return DatingProfiles.update(
+        {
+            lastSeen: timestamp
+        },
+        {
+            where: {
+                userId
+            }
+        }
+    );
+}
+
+module.exports.makeOnline = userId => {
+    return DatingProfiles.update(
+        {
+            lastSeen: "Online"
+        },
+        {
+            where: {
+                userId
+            }
+        }
+    );
+}
+
+module.exports.checkOnline = userId => {
+    return DatingProfiles.findOne({
+        where: {
+            userId
+        },
+        attributes: ['lastSeen']
+    });
+}
