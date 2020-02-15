@@ -47,7 +47,7 @@ class Inbox extends Component {
             } else {
 
                 const currentContacts = [...this.state.contacts];
-                currentContacts.map(contact => {
+                currentContacts.forEach(contact => {
                     if (contact.id === data.senderId) {
                         contact.showNotification = true
                     }
@@ -144,7 +144,7 @@ class Inbox extends Component {
                                     />
                                     <ProfileName
                                         style={{
-                                            marginLeft: 50
+                                            marginLeft: 20
                                         }}    
                                     >
                                         {UserDetail.get_username()}
@@ -182,7 +182,7 @@ class Inbox extends Component {
                                         />
                                         <div className={classes.ProfileName}>Hi {UserDetail.get_username()}</div>
                                         <div className={classes.EmptyBoxMessage}>
-                                            Please select one of the contacts to get started.
+                                            Start a conversation with one of your contact.
                                             <div className={classes.ExtraEmptyBoxMessage}>
                                                 Using the button on top right.
                                             </div>

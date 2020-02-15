@@ -1,15 +1,24 @@
 .Contact {
     padding: 10px;
     width: 100%;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+    /* border-top: 1px solid #ccc; */
+    /* border-bottom: 1px solid #ccc; */
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     align-items: center;
-    background-color: white;
+    background-color: #252b30;
     cursor: pointer;
+    color:white;
+    padding-left:20px;
 }
 
+.SIndicator:before {
+    content: ' \25CF';
+    color:green;
+  }
+.Contact:hover{
+    background-color: #474747;
+}
 
 .Info1 {
     display: flex;

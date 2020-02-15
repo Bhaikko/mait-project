@@ -1,13 +1,19 @@
 .SearchContainer {
     margin-top: 10px;
     margin-left: 10px;
-    background-color: white;
+    background-color: #252b30;
     padding: 5px;
     width: 90%;
-    height: 30px;
+    height: 50px;
     border-radius: 30px 30px 30px 30px;
     display: flex;
     align-items: center;
+    margin-bottom: 30px;
+}
+@media screen and (max-width: 768px){
+    .SearchContainer{
+        margin-bottom: 0;
+    }
 }
 
 .SearchIcon {
@@ -16,6 +22,16 @@
 
 .SearchBar {
     margin-left: 10px;
+    margin-right: 10px;
+    /* margin-bottom: 50px; */
+    border-radius: 30px 30px 30px 30px;
+    height: 95%;
     outline: none;
     border: none;
+    background-color: #474747;
+    width: 95%;
+    color:white;
+    padding-left: 20px;
+    padding-top: 1.5px;
+    font-size: 18px;
 }

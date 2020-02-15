@@ -47,6 +47,11 @@ class MessageBox extends Component {
             });
         });
     }
+    ehandler = (e) => {
+        if (e.key === 'Enter') {
+          this.sendMessage();
+        }
+    }
 
     messageHandler = event => {
         this.setState({
@@ -97,6 +102,7 @@ class MessageBox extends Component {
                             <div>Online</div>
                         ) : (
                             <div>Lastseen: {this.state.contactStatus}</div>
+                            // <div>Online</div>
                         )}
                     </div>
                 </div>
@@ -117,8 +123,8 @@ class MessageBox extends Component {
                     ))}
                 </div>
                 <div className={classes.SendContainer}>
-                    <input placeholder="Type A Message" value={this.state.message} className={classes.SendInput} onChange={this.messageHandler}/>
-                    <img src={SendIcon} alt="..." className={classes.SendIcon} onClick={this.sendMessage}/>
+                    <input placeholder="Type A Message" value={this.state.message} className={classes.SendInput} onChange={this.messageHandler} onKeyDown={this.ehandler} />
+                    <div className={classes.SendIconCont}><img src={SendIcon} alt="..." className={classes.SendIcon} onClick={this.sendMessage}/></div>
                 </div>
             </div>
         );

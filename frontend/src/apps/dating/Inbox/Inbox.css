@@ -3,22 +3,29 @@
     width: 90vw;
     flex-direction: row;
     margin-bottom: 50px;
+    background-color:#d1d1d1;
 }
 
 .ContactsContainer {
-    width: 35%;
+    width: 30%;
     height: 100%;
+    border-radius: 5px 0 0 5px;
+
     position: relative;
     overflow: hidden;
     border-right: 1px solid #ccc;
+    background-color: #252b30;
+
 }
 
 .ProfileHeader {
     padding: 10px;
-    background-color: white;
+    /* padding-left: 0; */
+    background-color: #252b30;
     width: 100%;
     display: flex;
     align-items: center;
+    color:white;
 }
 
 
@@ -28,6 +35,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color:#d1d1d1;
 }
 
 .EmptyBox {
@@ -37,6 +45,7 @@
     align-items: center;
     letter-spacing: 2px;
     font-size: 30px;
+    background-color:#d1d1d1;
 }
 
 .ProfileName {

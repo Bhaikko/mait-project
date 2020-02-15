@@ -32,6 +32,7 @@ const Contacts = props => {
                     contactClickHandler={() => {
                         props.contactClickHandler(contact, index);
                         myRef.current.classList.remove(classes.Expand);
+                        
                         props.downClickHandler();
                     }}
                     notify={contact.showNotification}
