@@ -330,13 +330,16 @@ router.get('/getContacts', (req, res, next) => {
             const contactIds = [];
             contacts.map(contact => contactIds.push(contact['userId1'] || contact['userId2']));
 
-            databaseHandler.getContacts(contactIds)
-                .then(response => {
-                    res.status(200).json({
-                        contacts: databaseParser(response)
-                    })
+            databaseHandler.getUnreadNotification(req.user.id)
+                .then(notifficationResponse => {
+                    databaseHandler.getContacts(contactIds)
+                        .then(response => {
+                            res.status(200).json({
+                                contacts: databaseParser(response),
+                                notifications: notifficationResponse
+                            });
+                        });
                 });
-
         })
         .catch(err => {
             errorHandler(err, res);

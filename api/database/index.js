@@ -34,7 +34,9 @@ const {
 const {
     addMessage,
     getMessages,
-    markRead
+    markRead,
+    getUnreadNotification,
+    updateMessages
 } = require('./messageHandler');
 
 module.exports = {
@@ -66,5 +68,7 @@ module.exports = {
     markRead,
     makeOffline,
     makeOnline,
-    checkOnline
+    checkOnline,
+    getUnreadNotification,
+    updateMessages
 };

@@ -260,10 +260,11 @@ module.exports.getContacts = (userIds) => {
     });
 }
 
-module.exports.makeOffline = (timestamp, userId) => {
+module.exports.makeOffline = userId => {
+    const time = new Date().toLocaleString();
     return DatingProfiles.update(
         {
-            lastSeen: timestamp
+            lastSeen: time
         },
         {
             where: {

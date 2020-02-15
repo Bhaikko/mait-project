@@ -19,6 +19,7 @@ const errorHandler = (error, res, message = "Something Went wrong") => {
 router.post('/usermessages', (req, res) => {
     databaseHandler.getMessages(req.body.senderId, req.body.recieverId)
         .then(messages => {
+            databaseHandler.updateMessages(req.body.senderId);
             res.status(200).json({
                 messages
             });

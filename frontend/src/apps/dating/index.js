@@ -24,6 +24,12 @@ class DatingRoute extends Component {
         this.socket.emit('connectToChat', {
             userId: this.userId
         });
+
+        window.onbeforeunload = () => {
+            this.socket.emit('disconnectMe', {
+                userId: this.userId
+            });
+        }
     }
 
     componentDidMount () {
@@ -43,7 +49,6 @@ class DatingRoute extends Component {
         let routes = (
             <Switch>
                 <Route path="/dating/explore" component={Explore} />
-                {/* <Route path="/dating/inbox" component={Inbox} socket={this.socket}/> */}
                 <Route path="/dating/inbox" render={props => <Inbox {...props} socket={this.socket} />}/>
                 <Route path="/dating" exact component={Dating} />
                 <Redirect to="/notfound" />
