@@ -62,21 +62,25 @@ class Inbox extends Component {
 
     componentDidMount() {
         axios.get('/dating/getContacts')
-            .then(contacts => {
+            .then(response => {
                 const defaultPhoto = {
                     id: 1,
                     imageUrl: "",
                     main: true
                 }
-                const extractedContacts = contacts.data.contacts;
-                
+                const extractedContacts = response.data.contacts;
+
+                const notificationContacts = {};
+                response.data.notifications.map(element => {
+                    notificationContacts[element.senderId] = element.seen;
+                });
+
                 extractedContacts.map(contact => {
                     contact.profileImage = (contact.profilePhotos.find(photo => photo.main === true) || defaultPhoto).imageUrl;
-                    contact.showNotification = false;
+                    contact.showNotification = notificationContacts[contact.id] === undefined ? false : true;
                     delete contact.profilePhotos;
                     return "";
                 });
-
                 this.setState({
                     contacts: extractedContacts,
                     loading: false
