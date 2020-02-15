@@ -1,10 +1,8 @@
 const { 
-    addMessage, 
-    getMessages, 
+    addMessage,  
     markRead,
     makeOffline,
-    makeOnline,
-    checkOnline
+    makeOnline
 }  = require('./database/index')
 
 
@@ -20,7 +18,7 @@ const socket = (io, redis) => {
         socket.on('disconnectMe', data => {
             redis.del(data.userId);
             const time = new Date().toLocaleString();
-            makeOffline(time, data.userId);
+            makeOffline(data.userId);
 
             socket.broadcast.emit(`user${data.userId}offline`, time);
         });
@@ -51,9 +49,6 @@ const socket = (io, redis) => {
                     });
             });
         });
-
-        
-
     });
 }
 

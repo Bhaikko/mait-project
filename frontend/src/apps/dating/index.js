@@ -24,6 +24,12 @@ class DatingRoute extends Component {
         this.socket.emit('connectToChat', {
             userId: this.userId
         });
+
+        window.onbeforeunload = () => {
+            this.socket.emit('disconnectMe', {
+                userId: this.userId
+            });
+        }
     }
 
     componentDidMount () {
