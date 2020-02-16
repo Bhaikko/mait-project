@@ -109,7 +109,7 @@ class MessageBox extends Component {
 
                 <div className={classes.MessagesBox} ref={this.props.refProp}>
                     {this.props.messages.map(message => (
-                        <div className={classes.Message} key={message.id}>
+                        <div className={Number(message.senderId) === this.userId ? classes.MyMessageBox : classes.OtherMessageBox} key={message.id}>
                             <div className={Number(message.senderId) === this.userId ? classes.MyMessage : classes.OtherMessage}>
                                 <span className={classes.MessageContent}>{message.message}</span>   
                                 <span className={classes.MessageTimestamp}>

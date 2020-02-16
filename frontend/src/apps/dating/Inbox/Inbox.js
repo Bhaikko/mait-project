@@ -107,6 +107,7 @@ class Inbox extends Component {
                     loading: false
                 });
             });
+        // this.myRef1.current.scrollIntoView({ behavior: 'smooth' })
     }
 
     addMessageHandler = message => {

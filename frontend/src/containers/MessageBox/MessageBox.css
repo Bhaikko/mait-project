@@ -28,11 +28,14 @@
     line-height: 25px;
 }
 
-.Message {
+.MyMessageBox{
     text-align: right;
     margin: 10px;
 }
-
+.OtherMessageBox{
+    text-align: left;
+    margin: 10px;
+}
 .MessagesBox {
     height: 80%;
     overflow: auto;
@@ -58,15 +61,16 @@
 }
 
 .OtherMessage {
-    width: auto;
+    /* width: auto; */
     /* max-width: 25vw; */
     text-align: left;
     padding: 10px;
     margin-left: 3vw;
     background-color: #1da355;
     border-radius: 10px 10px 10px 10px;
-    position: relative;
-    display: flex;
+    /* position: relative; */
+    align-self: right;
+    display: inline-block;
     justify-content: flex-start;
     max-width: 25vw;
     align-items: flex-start;
@@ -90,7 +94,8 @@
     height: 12.7%;
 }
 .SendIconCont{
-    width: 5%;
+    width: 3.5%;
+    margin-top: 1px;
     /* height: 50%; */
 }
 .SendIcon {
@@ -130,6 +135,9 @@
 	background-color: #555;
 }
 @media screen and (max-width: 768px) {
+    .MessagesBox::-webkit-scrollbar{
+        display: none;
+    }
     .MyMessage {
         max-width: 60vw;
     }
@@ -137,14 +145,14 @@
     .OtherMessage {
         max-width: 60vw;
     }
-
-    .SendContainer {
-
-
+    .SendIconCont{
+        width: 15%;
+        margin-top: 2px;
+        margin-right: 10px;
     }
 
     .MessagesBox {
-        height: 50%;
+        /* height: 50%; */
     }
 
     .MessageBox {
