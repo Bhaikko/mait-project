@@ -255,6 +255,10 @@ module.exports.getContacts = (userIds) => {
             {
                 model: ProfilePhotos,
                 attributes: ['id', 'imageUrl', 'main']
+            },
+            {
+                model: DatingProfiles,
+                attributes: ['lastSeen']
             }
         ]
     });

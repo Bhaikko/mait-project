@@ -78,9 +78,12 @@ class Inbox extends Component {
                 extractedContacts.map(contact => {
                     contact.profileImage = (contact.profilePhotos.find(photo => photo.main === true) || defaultPhoto).imageUrl;
                     contact.showNotification = notificationContacts[contact.id] === undefined ? false : true;
+                    contact.isOnline = contact.datingProfile.lastSeen === "Online" ? true : false;
+                    delete contact.datingProfile;
                     delete contact.profilePhotos;
                     return "";
                 });
+
                 this.setState({
                     contacts: extractedContacts,
                     loading: false

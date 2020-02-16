@@ -36,6 +36,7 @@ const Contacts = props => {
                         props.downClickHandler();
                     }}
                     notify={contact.showNotification}
+                    isOnline={contact.isOnline}
                 />)}
             </div>
         </React.Fragment>

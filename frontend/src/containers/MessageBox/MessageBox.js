@@ -102,7 +102,6 @@ class MessageBox extends Component {
                             <div>Online</div>
                         ) : (
                             <div>Lastseen: {this.state.contactStatus}</div>
-                            // <div>Online</div>
                         )}
                     </div>
                 </div>

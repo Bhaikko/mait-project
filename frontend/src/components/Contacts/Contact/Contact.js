@@ -9,7 +9,8 @@ const Contact = props => {
     return (
         <div 
             className={classes.Contact} style={{
-                // backgroundColor: props.notify ? "yellow" : "#252b30"
+                backgroundColor: props.notify ? "white" : "#252b30",
+                color: props.notify ? "black" : "white"
             }} 
             onClick={props.contactClickHandler}
         >
@@ -24,7 +25,11 @@ const Contact = props => {
             />
             <div className={classes.Info1}>
                 <ProfileName>{props.contactName}</ProfileName>
-                <div className={classes.SIndicator}> online</div>
+                {props.isOnline ? (
+                    <div className={classes.OnlineIndicator}> online</div>
+                ) : (    
+                    <div className={classes.OfflineIndicator}> offline</div>
+                )}
             </div>        
         </div>
     );
