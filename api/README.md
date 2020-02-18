@@ -18,10 +18,13 @@ For the backend server using express as **Production** Server
 *Note: THe production build uses MySql as Database and Development build uses Sqlite as Database.*
 
 ### Database Setup
-For setup of Database, mysql for production and sqlite for development must be installed.
+For setup of Database, **MYSQL FOR PRODUCTION**, **SQLITE FOR DEVELOPMENT**, and **REDIS FOR SESSION STORAGE** must be installed.
 *Sequelize* as ORM is used for Database Management.
 
 ***For development build, use [SQLite Db Browser](https://sqlitebrowser.org/).***
+
+***Redis Setup*** <br/>
+For redis, Redis server should be running and no setup is required.
 
 ***The below instructions are for Production build only.***
 Once mysql is installed and can be accessed through CLI. 
@@ -58,16 +61,28 @@ If all the above steps are followed correctly, the development mode should be up
 ## Testing Data
 Testing data can be initialised using the *testing-data.js* 
 uncomment the following code to initialise testing database.
+
 ```
   database.sync()
     .then(() => {
-        app.listen(PORT, () => {
-            console.log(`Database Synced \nServer Up and Running on ${SERVER_URL}`);
-            // seedData(); <-- UNCOMMENT THIS TO INITIALISE TESTING DATA IN BOTH BUILDS
-        })
+        console.log('Mysql database Up and running!!!');
+        redis.select(1, () => {
+            console.log('Redis Database Up!!!');
+            server.listen(PORT, () => {
+                console.log(`Server Up and Running on ${SERVER_URL}`);
+                socket(io, redis);
+
+                // seedData(); <-- UNCOMMENT THIS TO INITIALISE TESTING DATA IN BOTH BUILDS
+            });
+        });
+
+        redis.on('error', err => {
+            console.log(err);
+        });
     })
     .catch(err => { throw err });
 ```
+
 *Note: The backend server must be running when initialising database.*
 
 ## End note
