@@ -21,6 +21,7 @@ We are planning to built following Web-Applications
 *Database*
 * Mysql (For Production Build)
 * Sqlite (For Development Build)
+* Redis (For both Production and Development Build to store sessions on server)
 
 ## Getting Started
 ### npm along with nodejs must be installed.
