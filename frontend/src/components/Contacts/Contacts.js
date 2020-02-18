@@ -37,6 +37,15 @@ const Contacts = props => {
                     }}
                     notify={contact.showNotification}
                     isOnline={contact.isOnline}
+                    isCurrentContact={(() => {
+                        if (props.currentContact) {
+                            if (props.currentContact.id === contact.id) {
+                                return true;
+                            }
+                            return false;
+                        }
+                        return false;
+                    })()}
                 />)}
             </div>
         </React.Fragment>

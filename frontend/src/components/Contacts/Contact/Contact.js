@@ -8,10 +8,11 @@ import ProfilePhoto from '../../ProfilePhotos/ProfilePhoto/ProfilePhoto';
 const Contact = props => {
     return (
         <div 
-            className={classes.Contact} style={{
-                backgroundColor: props.notify ? "white" : "#252b30",
-                color: props.notify ? "black" : "white"
-            }} 
+            className={[
+                classes.Contact, 
+                props.isCurrentContact ? classes.Selected : "", 
+                props.notify ? classes.Notification : ""
+            ].join(" ")} 
             onClick={props.contactClickHandler}
         >
             <ProfilePhoto 

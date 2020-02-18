@@ -1,0 +1,81 @@
+.Message {
+    text-align: right;
+    margin: 10px;
+    position: relative;
+    margin-top: 3%;
+}
+
+.MessageContent {
+    flex: 1;
+    text-align: left;
+    word-break: break-all;
+}
+
+.OtherArrow {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #1da355;
+    position: relative;
+    left: 2%;
+}
+
+.MyArrow {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid rgb(62, 181, 228);
+    position: relative;
+    left: 95%;
+}
+
+.MyMessage {
+    display: inline-flex;
+    background-color: rgb(62, 181, 228);
+    padding: 10px;
+    border-radius: 10px 10px 10px 10px;
+    position: relative;
+    align-items: flex-end;
+    justify-content: flex-start;
+    max-width: 25vw;
+    color:white;
+    min-width: 15%;
+}
+
+.OtherMessage {
+    width: fit-content;
+    text-align: left;
+    padding: 10px;
+    background-color: #1da355;
+    border-radius: 10px 10px 10px 10px;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    max-width: 25vw;
+    min-width: 15%;
+    align-items: flex-start;
+    color:white;
+}
+
+.MessageInfo {
+    display: flex;
+    font-size: 16px;
+    text-align: right;
+    align-items: flex-end;
+}
+
+.OtherMessageInfo {
+    flex-direction: row-reverse;
+}
+
+.MessageName {
+    margin: 2px;
+}
+
+.MessageTime {
+    margin: 2px;
+    color: grey;
+    font-size: 10px;
+}

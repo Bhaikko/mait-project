@@ -10,6 +10,8 @@ import SendIcon from './../../assets/icons/Send.png';
 import UserDetail from './../../utilities/UserDetail';
 import axios from './../../axios';
 
+import Message from './Message/Message';
+
 class MessageBox extends Component {
     constructor (props) {
         super (props);
@@ -108,17 +110,11 @@ class MessageBox extends Component {
 
                 <div className={classes.MessagesBox} ref={this.props.refProp}>
                     {this.props.messages.map(message => (
-                        <div className={classes.Message} key={message.id}>
-                            <div className={Number(message.senderId) === this.userId ? classes.MyMessage : classes.OtherMessage}>
-                                <span className={classes.MessageContent}>{message.message}</span>   
-                                <span className={classes.MessageTimestamp}>
-                                    {new Date(message.time).toLocaleTimeString([], {
-                                        hour: "2-digit",
-                                        minute: "2-digit"
-                                    })}
-                                </span>
-                            </div>           
-                        </div>
+                        <Message 
+                            message={message} 
+                            userId={this.userId}
+                            key={message.id}    
+                        />
                     ))}
                 </div>
                 <div className={classes.SendContainer}>
