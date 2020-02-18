@@ -118,8 +118,21 @@ class MessageBox extends Component {
                     ))}
                 </div>
                 <div className={classes.SendContainer}>
-                    <input placeholder="Type A Message" value={this.state.message} className={classes.SendInput} onChange={this.messageHandler} onKeyDown={this.ehandler} />
-                    <div className={classes.SendIconCont}><img src={SendIcon} alt="..." className={classes.SendIcon} onClick={this.sendMessage}/></div>
+                    <input 
+                        placeholder="Type A Message..." 
+                        value={this.state.message} 
+                        className={classes.SendInput} 
+                        onChange={this.messageHandler} 
+                        onKeyDown={this.ehandler} 
+                    />
+                    <div className={classes.SendIconCont}>
+                        <img 
+                            src={SendIcon} 
+                            alt="..." 
+                            className={classes.SendIcon} 
+                            onClick={this.sendMessage}
+                        />
+                    </div>
                 </div>
             </div>
         );

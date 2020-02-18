@@ -95,7 +95,6 @@ class Inbox extends Component {
 
     setupSocketForStatus = contact => {
         this.socket.on(`user${contact.id}online`, data => {
-            console.log(data);
             const currentContacts = [...this.state.contacts];
 
             currentContacts.map(contact => {
@@ -111,7 +110,6 @@ class Inbox extends Component {
         });
 
         this.socket.on(`user${contact.id}offline`, data => {
-            console.log(data);
             const currentContacts = [...this.state.contacts];
 
             currentContacts.map(contact => {

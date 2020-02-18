@@ -35,8 +35,6 @@
     padding-right: 5px;
 }
 
-
-
 .SendContainer {
     width: 100%;
     background-color:#d1d1d1;
@@ -47,7 +45,6 @@
 
 .SendIconCont{
     width: 5%;
-    /* height: 50%; */
 }
 .SendIcon {
     margin-left: 5px;
@@ -85,6 +82,10 @@
 }
 
 @media screen and (max-width: 768px) {
+    .MessageBox {
+        height: 50%;
+    }
+
     .MyMessage {
         max-width: 60vw;
     }
@@ -99,6 +100,14 @@
 
     .MessageBox {
         margin-top: -5%;
+    }
+
+    .SendContainer {
+        width: 95%;
+    }
+
+    .SendIconCont {
+        width: 10%;
     }
 
 
