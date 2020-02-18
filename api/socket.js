@@ -12,7 +12,9 @@ const socket = (io, redis) => {
             redis.set(data.userId, socket.id);
             makeOnline(data.userId);
 
-            socket.broadcast.emit(`user${data.userId}online`);
+            socket.broadcast.emit(`user${data.userId}online`, {
+                userId: data.userId
+            });
         });
 
         socket.on('disconnectMe', data => {
@@ -20,7 +22,10 @@ const socket = (io, redis) => {
             const time = new Date().toLocaleString();
             makeOffline(data.userId);
 
-            socket.broadcast.emit(`user${data.userId}offline`, time);
+            socket.broadcast.emit(`user${data.userId}offline`, {
+                time: time,
+                userId: data.userId
+            });
         });
 
         socket.on('sendMessage', data => {

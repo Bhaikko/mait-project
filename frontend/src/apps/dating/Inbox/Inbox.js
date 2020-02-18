@@ -69,18 +69,20 @@ class Inbox extends Component {
                     main: true
                 }
                 const extractedContacts = response.data.contacts;
-
+                
                 const notificationContacts = {};
                 response.data.notifications.map(element => {
                     notificationContacts[element.senderId] = element.seen;
                 });
-
+                
                 extractedContacts.map(contact => {
+                    
                     contact.profileImage = (contact.profilePhotos.find(photo => photo.main === true) || defaultPhoto).imageUrl;
                     contact.showNotification = notificationContacts[contact.id] === undefined ? false : true;
                     contact.isOnline = contact.datingProfile.lastSeen === "Online" ? true : false;
                     delete contact.datingProfile;
                     delete contact.profilePhotos;
+                    this.setupSocketForStatus(contact);
                     return "";
                 });
 
@@ -89,6 +91,40 @@ class Inbox extends Component {
                     loading: false
                 });
             });
+    }
+
+    setupSocketForStatus = contact => {
+        this.socket.on(`user${contact.id}online`, data => {
+            console.log(data);
+            const currentContacts = [...this.state.contacts];
+
+            currentContacts.map(contact => {
+                if (contact.id === data.userId) {
+                    contact.isOnline = true;
+                }
+                return "";
+            });
+
+            this.setState({
+                contacts: currentContacts
+            });
+        });
+
+        this.socket.on(`user${contact.id}offline`, data => {
+            console.log(data);
+            const currentContacts = [...this.state.contacts];
+
+            currentContacts.map(contact => {
+                if (contact.id === data.userId) {
+                    contact.isOnline = false;
+                }
+                return "";
+            });
+
+            this.setState({
+                contacts: currentContacts
+            });
+        });
     }
 
     contactClickHandler = (contact, contactIndex) => {

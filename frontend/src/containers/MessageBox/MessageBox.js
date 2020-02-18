@@ -45,7 +45,7 @@ class MessageBox extends Component {
 
         this.socket.on(`user${this.props.currentContact.id}offline`, data => {
             this.setState({
-                contactStatus: data
+                contactStatus: data.time
             });
         });
     }
