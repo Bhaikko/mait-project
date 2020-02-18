@@ -79,6 +79,25 @@ Table DatingProfiles {
   updatedAt timestamp
 }
 
+Table Contacts {
+  id int [pk, increment]
+  userId1 int [ref: - U.id] 
+  userId2 int [ref: - U.id]
+}
+
+Table Notifications {
+  id int [pk, increment]
+  notification text
+  time timestamp
+  userId int [ref: > U.id]
+}
+
+Table Sessions {
+  id int [pk, increment]
+  socketId int
+  userId int [ref: - U.id]
+}
+
 
 // Creating references
 // You can also define relaionship separately
