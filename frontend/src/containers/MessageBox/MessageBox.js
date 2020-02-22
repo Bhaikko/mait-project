@@ -23,6 +23,7 @@ class MessageBox extends Component {
         this.messageBoxRef = React.createRef();
         this.socket = this.props.socket;
         this.userId = UserDetail.get_userId();
+        this.userName = UserDetail.get_username();
     }
 
     componentDidMount() {
@@ -114,6 +115,8 @@ class MessageBox extends Component {
                             message={message} 
                             userId={this.userId}
                             key={message.id}    
+                            contactName={this.props.currentContact.name}
+                            username={this.userName}
                         />
                     ))}
                 </div>

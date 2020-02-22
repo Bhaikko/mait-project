@@ -203,9 +203,6 @@ class Inbox extends Component {
                                     contacts={this.state.filteredContacts === null ? this.state.contacts : this.state.filteredContacts} 
                                     contactClickHandler={this.contactClickHandler}
                                     currentContact={this.state.currentContact}
-                                    downClickHandler={() => {
-                                        this.myRef1.current.classList.toggle(classes.Expand);
-                                    }}
                                 />
                             </div>
 

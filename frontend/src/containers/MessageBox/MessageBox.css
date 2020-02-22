@@ -83,9 +83,6 @@
 }
 
 @media screen and (max-width: 768px) {
-    .MessageBox {
-        height: 50%;
-    }
 
     .MessagesBox::-webkit-scrollbar{
         display: none;
@@ -99,10 +96,6 @@
         max-width: 60vw;
     }
     
-    .MessagesBox {
-        /* height: 50%; */
-    }
-
     .MessageBox {
         margin-top: -5%;
     }

@@ -6,8 +6,11 @@ import downarrow from './../../assets/icons/dropdown-arrow.png';
 
 const Contacts = props => {
     const dropdownHandler = () => {
-        myRef.current.classList.toggle(classes.Expand);
-        props.downClickHandler();
+        if (!props.currentContact) {
+            myRef.current.classList.toggle(classes.ExpandAll);
+        } else {
+            myRef.current.classList.toggle(classes.Expand);
+        }
     }
 
     const myRef = useRef(null);
@@ -31,9 +34,7 @@ const Contacts = props => {
                     key={contact.id}    
                     contactClickHandler={() => {
                         props.contactClickHandler(contact, index);
-                        myRef.current.classList.remove(classes.Expand);
-                        
-                        props.downClickHandler();
+                        myRef.current.classList.remove(classes.Expand);                        
                     }}
                     notify={contact.showNotification}
                     isOnline={contact.isOnline}
