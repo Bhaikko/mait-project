@@ -1,3 +1,20 @@
+.Dropdown {
+    color: white;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.DropDownButton {
+    display: flex;
+}
+
+.Dropdown:hover {
+    border-bottom: 4px solid #40A4C8;
+}
+
 @media (max-width: 768px) {
     .Dropdown {
         display: none;
