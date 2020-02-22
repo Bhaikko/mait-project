@@ -9,6 +9,7 @@ import * as actions from './../../store/actions/index';
 
 import Layout from './../../containers/Layout/Layout';
 import NavigationItem from './../../components/Navigation/NavigationItems/NavigationItem/NavigationItem';
+import Dropdown from './../../components/UI/Dropdown/Dropdown';
 
 import { SERVER_URL } from './../../environments';
 import socketIOClient from 'socket.io-client';
@@ -39,6 +40,7 @@ class DatingRoute extends Component {
     render () {
         let navigationItems = (
             <Fragment>
+                <Dropdown dropdownButtonName="Notifications" />
                 <NavigationItem link="/dating/explore">Explore</NavigationItem>
                 <NavigationItem link="/dating/inbox">Inbox</NavigationItem>
                 <NavigationItem link="/me">Profile</NavigationItem>
