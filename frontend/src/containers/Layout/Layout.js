@@ -20,8 +20,10 @@ class Layout extends Component {
 
     sideDrawerToogleHandler = () => {
         this.setState((prevState) => { 
-            return { showSideDrawer: !prevState.showSideDrawer };
-        }); //prevState is used due to async nature of state
+            return { 
+                showSideDrawer: !prevState.showSideDrawer 
+            };
+        });
     }
 
     render () {
