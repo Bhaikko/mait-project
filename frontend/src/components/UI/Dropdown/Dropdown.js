@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import classes from './Dropdown.css';
 
@@ -8,40 +8,49 @@ class Dropdown extends Component {
     constructor(props) {
         super(props);
 
+
         this.state = {
             open: false
         }
     }
 
-    openHandler = () => {
+    hoverEventHandler = () => {
+        const currentState = this.state.open;
         this.setState({
-            open: true
-        });
-    }
-
-    closeHandler = () => {
-        this.setState({
-            open: false
+            open: !currentState
         });
     }
 
     render() {
         return (
-            <div className={[classes.Dropdown, this.props.buttonClass].join(" ")}>
-                <div className={classes.DropDownButton}>
+            <Fragment>
+                <div className={classes.DropDownButton} onClick={this.hoverEventHandler}>
                     {this.props.dropdownButtonName}
                 </div>
 
-                {this.state.open ? (
-                    <div className={classes.DropDownContent}>
-                        asd
+                <div className={[classes.DropDownContent, this.state.open ? classes.DropdownContentScroll : ""].join(" ")}>
+                    <div className={classes.Notifications}>
+                        <div className={classes.Notification}>
+                            <img className={classes.NotificationPhoto} src="https://picsum.photos/id/24/600/600" alt="..." />
+                            <div className={classes.NotificationContent}>
+                                <div className={classes.NotificationTitle}>
+                                    Hi Rachel
+                                </div>
+                                <div className={classes.NotificationMessage}>
+                                    Batmobile is waiting at your door
+                                </div>
+                                <div className={classes.NotificationTime}>
+                                    {new Date().toLocaleString()}
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                ) : (
-                    null
-                )}
-            </div>
+                </div>
+            </Fragment>
         );
     }
+
+
 };
 
 export default Dropdown;

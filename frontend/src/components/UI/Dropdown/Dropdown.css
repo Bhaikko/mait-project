@@ -1,18 +1,72 @@
-.Dropdown {
+.DropDownButton {
     color: white;
     height: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
+    position: relative;
+    padding-bottom: 4px;
+
+}
+
+.DropDownButton:hover::after {
+    content: "a ";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    bottom: 0;
+    background-color: #40A4C8;
+}
+
+.DropdownContentScroll {
+    height: 100px !important;
 }
 
 
-.DropDownButton {
+.DropDownContent {
+    position: absolute;
+    height: 0px;
+    background-color: red;
+    top: 100%;
+    width: 70%;
+    transition: 0.25s all;
+}
+
+.Notifications {
     display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
-.Dropdown:hover {
-    border-bottom: 4px solid #40A4C8;
+.Notification {
+    display: flex;
+    flex-direction: row;
+    background-color: #40A4C8;
+    color: white;
+}
+
+.NotificationPhoto {
+    width: 2cm;
+    height: 2cm;   
+}
+
+.NotificationContent {
+    margin-left: 2%;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+}
+
+.NotificationTitle {
+    font-weight: bolder;
+}
+
+.NotificationMessage {
+    font-size: 14px;
+}
+
+.NotificationTime {
+    /* color: grey; */
+    font-size: 12px;
 }
 
 @media (max-width: 768px) {
