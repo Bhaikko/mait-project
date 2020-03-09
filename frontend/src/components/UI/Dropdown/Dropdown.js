@@ -7,8 +7,6 @@ class Dropdown extends Component {
 
     constructor(props) {
         super(props);
-
-
         this.state = {
             open: false
         }
@@ -40,7 +38,13 @@ class Dropdown extends Component {
                                     Batmobile is waiting at your door
                                 </div>
                                 <div className={classes.NotificationTime}>
-                                    {new Date().toLocaleString()}
+                                    {new Date().toLocaleString([], {
+                                        hour: '2-digit',
+                                        minute: '2-digit',
+                                        day: '2-digit',
+                                        month: '2-digit',
+                                        year: '2-digit'
+                                    })}
                                 </div>
                             </div>
                         </div>

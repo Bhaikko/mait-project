@@ -21,27 +21,35 @@
     height: 100px !important;
 }
 
-
 .DropDownContent {
+    display: inline-block;
     position: absolute;
     height: 0px;
-    background-color: red;
+    background-color: #622870;
     top: 100%;
-    width: 70%;
+    width: 26%;
     transition: 0.25s all;
+    overflow: hidden;
 }
 
 .Notifications {
     display: flex;
+    height: 0;
     flex-direction: column;
     width: 100%;
+    transition: 2s all;
 }
 
 .Notification {
+    cursor: pointer;
     display: flex;
     flex-direction: row;
     background-color: #40A4C8;
     color: white;
+    padding: 1%;
+    align-items: center;
+    width: 97%;
+    margin: 1%;
 }
 
 .NotificationPhoto {
@@ -53,7 +61,6 @@
     margin-left: 2%;
     display: flex;
     flex-direction: column;
-    padding: 2%;
 }
 
 .NotificationTitle {
