@@ -1,0 +1,35 @@
+.Notification {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    background-color: #40A4C8;
+    color: white;
+    padding: 1%;
+    align-items: center;
+    width: 97%;
+    margin: 1%;
+}
+
+.NotificationPhoto {
+    width: 2cm;
+    height: 2cm;   
+}
+
+.NotificationContent {
+    margin-left: 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+.NotificationTitle {
+    font-weight: bolder;
+}
+
+.NotificationMessage {
+    font-size: 14px;
+}
+
+.NotificationTime {
+    /* color: grey; */
+    font-size: 12px;
+}

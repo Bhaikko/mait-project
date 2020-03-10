@@ -6,7 +6,8 @@ const {
     Tags, 
     Users,
     Reports,
-    Contacts
+    Contacts,
+    Notifications
 } = require('./database');
 const { Op } = require('sequelize');
 
@@ -303,5 +304,62 @@ module.exports.checkOnline = userId => {
             userId
         },
         attributes: ['lastSeen']
+    });
+}
+
+module.exports.addNotification = (title, message, imageUrl, time, userId) => {
+    return Notifications.findOne({
+        where: {
+            message,
+            userId
+        }
+    })
+        .then(notification => {
+            if (notification) {
+                return;
+            } else {
+                return Notifications.create({
+                    title,
+                    message,
+                    imageUrl,
+                    time,
+                    userId
+                });
+            }
+        });
+}
+
+module.exports.deleteNotifications = userId => {
+    return Notifications.destroy({
+        where: {
+            userId
+        }
+    });
+}
+
+module.exports.getNotifications = userId => {
+    return Notifications.findAll({
+        where: {
+            userId
+        }
+    });
+}
+
+module.exports.getUsername = userId => {
+    return Users.findOne({
+        where: {
+            id: userId
+        },
+        attributes: ['username']
+    });
+}
+
+module.exports.getMainProfilePhoto = userId => {
+    return ProfilePhotos.findOne({
+        where: {
+            id: userId,
+            main: true
+        },
+        attributes: ['imageUrl']
     });
 }

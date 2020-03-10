@@ -28,7 +28,12 @@ const {
     getContacts,
     makeOffline,
     makeOnline,
-    checkOnline
+    checkOnline,
+    addNotification,
+    deleteNotifications,
+    getNotifications,
+    getUsername,
+    getMainProfilePhoto
 } = require("./datingHandler");
 
 const {
@@ -70,5 +75,10 @@ module.exports = {
     makeOnline,
     checkOnline,
     getUnreadNotification,
-    updateMessages
+    updateMessages,
+    getNotifications,
+    addNotification,
+    deleteNotifications,
+    getUsername,
+    getMainProfilePhoto
 };

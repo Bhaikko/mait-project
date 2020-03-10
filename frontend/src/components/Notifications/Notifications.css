@@ -1,0 +1,7 @@
+.Notifications {
+    display: flex;
+    height: 0;
+    flex-direction: column;
+    width: 100%;
+    transition: 2s all;
+}

@@ -197,13 +197,20 @@ const Contacts = database.define("contacts", {
 });
 
 const Notifications = database.define("notifications", {
-    notifcation: {
-        type: Sequelize.TEXT,
+    title: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    message: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    imageUrl: {
+        type: Sequelize.STRING,
         allowNull: false 
     },
     time: {
-        type: Sequelize.TIME,
-        allowNull: false
+        type: Sequelize.TIME
     }
 });
 
@@ -223,5 +230,6 @@ module.exports = {
     Matches,
     Tags,
     Reports,
-    Contacts
+    Contacts,
+    Notifications
 }

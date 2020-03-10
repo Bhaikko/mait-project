@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
 import classes from './Dropdown.css';
+import Notifications from './../../Notifications/Notifications';
 
 
 class Dropdown extends Component {
@@ -27,28 +28,7 @@ class Dropdown extends Component {
                 </div>
 
                 <div className={[classes.DropDownContent, this.state.open ? classes.DropdownContentScroll : ""].join(" ")}>
-                    <div className={classes.Notifications}>
-                        <div className={classes.Notification}>
-                            <img className={classes.NotificationPhoto} src="https://picsum.photos/id/24/600/600" alt="..." />
-                            <div className={classes.NotificationContent}>
-                                <div className={classes.NotificationTitle}>
-                                    Hi Rachel
-                                </div>
-                                <div className={classes.NotificationMessage}>
-                                    Batmobile is waiting at your door
-                                </div>
-                                <div className={classes.NotificationTime}>
-                                    {new Date().toLocaleString([], {
-                                        hour: '2-digit',
-                                        minute: '2-digit',
-                                        day: '2-digit',
-                                        month: '2-digit',
-                                        year: '2-digit'
-                                    })}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <Notifications />
                 </div>
             </Fragment>
         );

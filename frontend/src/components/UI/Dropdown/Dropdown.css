@@ -18,7 +18,7 @@
 }
 
 .DropdownContentScroll {
-    height: 100px !important;
+    height: 50vh !important;
 }
 
 .DropDownContent {
@@ -29,52 +29,10 @@
     top: 100%;
     width: 26%;
     transition: 0.25s all;
-    overflow: hidden;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
-.Notifications {
-    display: flex;
-    height: 0;
-    flex-direction: column;
-    width: 100%;
-    transition: 2s all;
-}
-
-.Notification {
-    cursor: pointer;
-    display: flex;
-    flex-direction: row;
-    background-color: #40A4C8;
-    color: white;
-    padding: 1%;
-    align-items: center;
-    width: 97%;
-    margin: 1%;
-}
-
-.NotificationPhoto {
-    width: 2cm;
-    height: 2cm;   
-}
-
-.NotificationContent {
-    margin-left: 2%;
-    display: flex;
-    flex-direction: column;
-}
-
-.NotificationTitle {
-    font-weight: bolder;
-}
-
-.NotificationMessage {
-    font-size: 14px;
-}
-
-.NotificationTime {
-    /* color: grey; */
-    font-size: 12px;
-}
 
 @media (max-width: 768px) {
     .Dropdown {

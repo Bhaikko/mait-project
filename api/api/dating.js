@@ -311,10 +311,33 @@ router.post("/addMatch", (req, res, next) => {
                     });
             } else {
                 databaseHandler.addToContact(req.user.id, req.body.userId)
-                    .then(response => {
+                    .then(async response => {
                         res.status(200).json({
                             message: "Also Likes You"
                         });
+                        
+                        const user = await databaseHandler.getUsername(req.user.id);
+                        const profilePhoto = await databaseHandler.getMainProfilePhoto(req.user.id);
+
+                        const newNotification = {
+                            title: "A New Match!!!",
+                            message: `${user.username} Also Likes You.`,
+                            image: profilePhoto ? profilePhoto.imageUrl : "",
+                            time: new Date(),
+                            userId: req.user.id
+                        };
+
+                        databaseHandler.addNotification(
+                            newNotification.title,
+                            newNotification.message,
+                            newNotification.image,
+                            newNotification.time,
+                            newNotification.userId
+                        )
+                            .then(response => {
+                                // socket call for real time if there exists a socket id
+                            });
+
                     });
             }
         })
@@ -352,6 +375,28 @@ router.post('/checkonline', (req, res) => {
             res.status(200).json({
                 status: response
             })
+        })
+        .catch(err => {
+            errorHandler(err, res);
+        });
+});
+
+router.get('/notifications', (req, res) => {
+    databaseHandler.getNotifications(req.user.id)
+        .then(response => {
+            res.status(200).json({
+                notifications: response
+            })
+        })
+        .catch(err => {
+            errorHandler(err, res);
+        });
+});
+
+router.delete('/notifications', (req, res) => {
+    databaseHandler.deleteNotifications(req.user.id)
+        .then(response => {
+            res.sendStatus(200);
         })
         .catch(err => {
             errorHandler(err, res);
