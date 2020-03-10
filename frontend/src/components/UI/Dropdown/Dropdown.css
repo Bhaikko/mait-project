@@ -5,6 +5,8 @@
     align-items: center;
     position: relative;
     padding-bottom: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
 
 }
 
@@ -31,6 +33,10 @@
     transition: 0.25s all;
     overflow-y: scroll;
     overflow-x: hidden;
+}
+
+.Notify {
+    background-color: #40A4C8;
 }
 
 

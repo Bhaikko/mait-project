@@ -5,6 +5,10 @@ import Spinner from './../UI/Spinner/Spinner';
 
 import classes from './Notifications.css';
 
+import axios from './../../axios';
+
+import DefaultPhoto from './../../assets/icons/Username.png'
+
 const notifications = [
     {
         id: 1,
@@ -54,19 +58,33 @@ class Notifications extends Component {
 
     componentDidMount() {
         // fetch notifications
+        axios.get('/dating/notifications')
+            .then(response => {
+                console.log(response.data.notifications);
+                this.setState({
+                    notifications: response.data.notifications
+                });
+                if (response.data.notifications.length) {
+                    this.props.notify(true);
+                }
+            });
     }
 
     render() {
         return (
             <div className={classes.Notifications}>
                 {this.state.notifications ? (
-                    this.state.notifications.map(notification => <Notification
-                        key={notification.id}
-                        title={notification.title}
-                        message={notification.message}
-                        time={notification.time}
-                        image={notification.image}
-                    />)
+                    this.state.notifications.length !== 0 ? (
+                        this.state.notifications.map(notification => <Notification
+                            key={notification.id}
+                            title={notification.title}
+                            message={notification.message}
+                            time={notification.time}
+                            image={notification.imageUrl || DefaultPhoto}
+                        />)
+                    ) : (
+                        <div className={classes.EmptyMessage}>So Empty :(</div>
+                    )
                 ) : (
                     <Spinner />
                 )}

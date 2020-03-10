@@ -1,7 +1,17 @@
 .Notifications {
     display: flex;
-    height: 0;
+    height: 100%;
     flex-direction: column;
     width: 100%;
     transition: 2s all;
+}
+
+.EmptyMessage {
+    color: white;
+    font-size: 30px;
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
