@@ -2,7 +2,6 @@ const { Op } = require('sequelize');
 const Sequelize = require('sequelize');
 
 const { Messages } = require('./database');
-const { databaseParser } = require('./../api/utility');
 
 module.exports.addMessage = (senderId, recieverId, time, message) => {
     return Messages.create({

@@ -60,7 +60,6 @@ class Notifications extends Component {
         // fetch notifications
         axios.get('/dating/notifications')
             .then(response => {
-                console.log(response.data.notifications);
                 this.setState({
                     notifications: response.data.notifications
                 });

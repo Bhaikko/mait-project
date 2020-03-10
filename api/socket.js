@@ -2,7 +2,10 @@ const {
     addMessage,  
     markRead,
     makeOffline,
-    makeOnline
+    makeOnline,
+    addNotification,
+    getUsername,
+    getMainProfilePhoto
 }  = require('./database/index')
 
 
@@ -31,7 +34,7 @@ const socket = (io, redis) => {
         socket.on('sendMessage', data => {
             redis.get(data.recieverId, (err, recieverSocketId) => {
                 addMessage(data.senderId, data.recieverId, new Date(), data.message)
-                    .then(message => {
+                    .then(async message => {
                         if (recieverSocketId) {
                             message = message.get();
                             const newMessage = {
@@ -42,6 +45,28 @@ const socket = (io, redis) => {
                                 time: message.time
                             };
                             io.to(recieverSocketId).emit('recieveMessage', newMessage);
+                        } else {
+                            // add notification
+                            const user = await getUsername(message.senderId);
+                            const profilePhoto = await getMainProfilePhoto(message.senderId);
+
+                            message = message.get();
+                            const messageContent = message.message;
+                            const newNotification = {
+                                title: `${user.username} texted you while you were away.`,
+                                message: messageContent.length < 20 ? messageContent : messageContent.slice(0, 20) + '...',
+                                image: profilePhoto ? profilePhoto.imageUrl : "",
+                                time: new Date(),
+                                userId: message.recieverId
+                            }
+
+                            addNotification(
+                                newNotification.title,
+                                newNotification.message,
+                                newNotification.image,
+                                newNotification.time,
+                                newNotification.userId
+                            );
                         }
                     })
                     .catch(err => {
