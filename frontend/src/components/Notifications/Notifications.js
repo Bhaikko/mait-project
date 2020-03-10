@@ -9,50 +9,13 @@ import axios from './../../axios';
 
 import DefaultPhoto from './../../assets/icons/Username.png'
 
-const notifications = [
-    {
-        id: 1,
-        title: "Hi Rachel",
-        message: "Batmobile is waiting",
-        time: new Date().toString(),
-        image: "https://picsum.photos/id/24/600/600"
-    },
-    {
-        id: 2,
-        title: "Hi Rachel",
-        message: "Batmobile is waiting",
-        time: new Date().toString(),
-        image: "https://picsum.photos/id/24/600/600"
-    },
-    {
-        id: 3,
-        title: "Hi Rachel",
-        message: "Batmobile is waiting",
-        time: new Date().toString(),
-        image: "https://picsum.photos/id/24/600/600"
-    },
-    {
-        id: 4,
-        title: "Hi Rachel",
-        message: "Batmobile is waiting",
-        time: new Date().toString(),
-        image: "https://picsum.photos/id/24/600/600"
-    },
-    {
-        id: 5,
-        title: "Hi Rachel",
-        message: "Batmobile is waiting",
-        time: new Date().toString(),
-        image: "https://picsum.photos/id/24/600/600"
-    },
-]
 
 class Notifications extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            notifications: notifications
+            notifications: null
         }
     }
 

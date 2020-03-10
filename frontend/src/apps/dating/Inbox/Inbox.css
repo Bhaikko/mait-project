@@ -1,5 +1,5 @@
 .Inbox {
-    height: 90vh;
+    height: calc(100vh - 100px);
     width: 90vw;
     flex-direction: row;
     margin-bottom: 50px;
@@ -15,8 +15,9 @@
     overflow: hidden;
     border-right: 1px solid #ccc;
     background-color: #252b30;
-
 }
+
+
 
 .ProfileHeader {
     padding: 10px;
@@ -66,7 +67,6 @@
     .Inbox {
         flex-wrap: wrap;
         width: 100%;
-        height: 90vh;
         border-radius: 0;
     }
 

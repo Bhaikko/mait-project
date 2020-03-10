@@ -20,6 +20,24 @@ a {
   text-decoration: none;
 }
 
+*::-webkit-scrollbar-track
+{
+	border-radius: 10px;
+	background-color: #252b30;
+}
+
+*::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #252b30;
+}
+
+*::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #555;
+}
+
 @media screen and (max-width: 768) {
 }
 

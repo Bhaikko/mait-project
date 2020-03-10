@@ -7,8 +7,8 @@
 .ProfilePhoto {
     overflow: hidden;
     object-fit: cover;
-    height: 100%;
-    width: 100%;
+    height: 90%;
+    width: 90%;
     padding:1px;
     border:1px solid #2D4571;
     background-color:#9D354B;

@@ -17,18 +17,19 @@
 
 }
 
+.ProfilePhoto {
+    margin-right: 0 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .ProfileContainer {
     width: 20%;
     margin-left: 10%;
     margin-top: 0;
     margin-bottom: 0;
-
-}
-
-.ProfileImage {
-    margin-top: 10px;
-    height: 250px; 
-    width: 250px;  
+    align-items: center;
 }
 
 .InterestContainer {
