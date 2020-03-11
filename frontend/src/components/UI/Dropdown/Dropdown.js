@@ -5,6 +5,8 @@ import Notifications from './../../Notifications/Notifications';
 
 import axios from './../../../axios';
 
+import Alertify from './../../../utilities/Aleretify/Alertify';
+
 class Dropdown extends Component {
 
     constructor(props) {
@@ -26,6 +28,10 @@ class Dropdown extends Component {
     }
 
     newNotifications = state => {
+        console.log(this.state.notify, state);
+        if (this.state.notify !== state && state === true) {
+            Alertify.success('A New Notification');
+        }
         this.setState({
             notify: state
         });

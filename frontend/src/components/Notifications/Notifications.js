@@ -7,8 +7,7 @@ import classes from './Notifications.css';
 
 import axios from './../../axios';
 
-import DefaultPhoto from './../../assets/icons/Username.png'
-
+import DefaultPhoto from './../../assets/icons/Username.png';
 
 class Notifications extends Component {
     constructor(props) {
