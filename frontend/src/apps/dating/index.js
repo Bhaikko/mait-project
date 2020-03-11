@@ -40,7 +40,7 @@ class DatingRoute extends Component {
     render () {
         let navigationItems = (
             <Fragment>
-                <Dropdown dropdownButtonName="Notifications" />
+                <Dropdown dropdownButtonName="Notifications" socket={this.socket}/>
                 <NavigationItem link="/dating/explore">Explore</NavigationItem>
                 <NavigationItem link="/dating/inbox">Inbox</NavigationItem>
                 <NavigationItem link="/me">Profile</NavigationItem>

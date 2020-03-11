@@ -284,9 +284,9 @@ router.get("/explore", (req, res, next) => {
             users = databaseParser(users);
             
             const currentUser = searchUser(users, req.user.id);
-            const selectedUser = getRandomuser(users, currentUser);
+            // const selectedUser = getRandomuser(users, currentUser);
 
-            // const selectedUser = users[0]; // For Successfull match test only
+            const selectedUser = users[0]; // For Successfull match test only
 
             const result = calculateTagPercentage(selectedUser.userTags, currentUser.userTags);
             res.status(200).json({
@@ -298,6 +298,17 @@ router.get("/explore", (req, res, next) => {
             errorHandler(err, res);
         });
 });
+
+class Socket {
+    constructor(io, redis) {
+        this.io = io;
+        this.redis = redis;
+    }
+}
+var newSocket;
+const notificationSocket = (io, redis) => {
+    newSocket = new Socket(io, redis);
+}
 
 router.post("/addMatch", (req, res, next) => {
     databaseHandler.getMatch(req.body.userId, req.user.id)
@@ -324,7 +335,7 @@ router.post("/addMatch", (req, res, next) => {
                             message: `${user.username} Also Likes You.`,
                             image: profilePhoto ? profilePhoto.imageUrl : "",
                             time: new Date(),
-                            userId: req.user.id
+                            userId: req.body.userId
                         };
 
                         databaseHandler.addNotification(
@@ -335,7 +346,12 @@ router.post("/addMatch", (req, res, next) => {
                             newNotification.userId
                         )
                             .then(response => {
-                                // socket call for real time if there exists a socket id
+                                // console.log(newSocket);                                
+                                newSocket.redis.get(newNotification.userId, (err, socketId) => {
+                                    if (socketId && response) {
+                                        newSocket.io.to(socketId).emit(`newNotification`, response);
+                                    }
+                                });
                             });
 
                     });
@@ -404,6 +420,7 @@ router.delete('/notifications', (req, res) => {
 });
 
 module.exports = {
-    router
+    router,
+    notificationSocket
 }
 

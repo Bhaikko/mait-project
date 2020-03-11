@@ -41,6 +41,7 @@ class Dropdown extends Component {
                 <div className={[classes.DropDownContent, this.state.open ? classes.DropdownContentScroll : ""].join(" ")}>
                     <Notifications 
                         notify={this.newNotifications}
+                        socket={this.props.socket}
                     />
                 </div>
             </Fragment>

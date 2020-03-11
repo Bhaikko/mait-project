@@ -17,10 +17,20 @@ class Notifications extends Component {
         this.state = {
             notifications: null
         }
+
+        this.socket = this.props.socket;
+
+        this.socket.on("newNotification", newNotification => {            
+            const newNotifications = [...this.state.notifications, newNotification];
+            this.setState({
+                notifications: newNotifications
+            });
+            this.props.notify(true);
+        });
+
     }
 
     componentDidMount() {
-        // fetch notifications
         axios.get('/dating/notifications')
             .then(response => {
                 this.setState({
@@ -29,7 +39,7 @@ class Notifications extends Component {
                 if (response.data.notifications.length) {
                     this.props.notify(true);
                 }
-            });
+            });        
     }
 
     render() {

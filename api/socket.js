@@ -9,6 +9,10 @@ const {
 }  = require('./database/index')
 
 
+const {
+    notificationSocket
+} = require('./api/dating');
+
 const socket = (io, redis) => {
     io.on('connection', socket => {
         socket.on('connectToChat', data => {
@@ -79,6 +83,8 @@ const socket = (io, redis) => {
                     });
             });
         });
+        
+        notificationSocket(io, redis);
     });
 }
 
