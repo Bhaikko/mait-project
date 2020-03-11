@@ -348,7 +348,7 @@ router.post("/addMatch", (req, res, next) => {
                             .then(response => {
                                 // console.log(newSocket);                                
                                 newSocket.redis.get(newNotification.userId, (err, socketId) => {
-                                    if (socketId && response) {
+                                    if (socketId && response !== undefined) {
                                         newSocket.io.to(socketId).emit(`newNotification`, response);
                                     }
                                 });

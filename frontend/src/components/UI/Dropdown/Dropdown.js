@@ -42,6 +42,7 @@ class Dropdown extends Component {
                     <Notifications 
                         notify={this.newNotifications}
                         socket={this.props.socket}
+                        location={this.props.location}
                     />
                 </div>
             </Fragment>

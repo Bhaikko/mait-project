@@ -310,7 +310,7 @@ module.exports.checkOnline = userId => {
 module.exports.addNotification = (title, message, imageUrl, time, userId) => {
     return Notifications.findOne({
         where: {
-            message,
+            title,
             userId
         }
     })

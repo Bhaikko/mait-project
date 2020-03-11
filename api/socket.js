@@ -39,8 +39,9 @@ const socket = (io, redis) => {
             redis.get(data.recieverId, (err, recieverSocketId) => {
                 addMessage(data.senderId, data.recieverId, new Date(), data.message)
                     .then(async message => {
+                        message = message.get();
+
                         if (recieverSocketId) {
-                            message = message.get();
                             const newMessage = {
                                 id: message.id,
                                 message: message.message,
@@ -49,29 +50,31 @@ const socket = (io, redis) => {
                                 time: message.time
                             };
                             io.to(recieverSocketId).emit('recieveMessage', newMessage);
-                        } else {
-                            // add notification
-                            const user = await getUsername(message.senderId);
-                            const profilePhoto = await getMainProfilePhoto(message.senderId);
+                        } 
 
-                            message = message.get();
-                            const messageContent = message.message;
-                            const newNotification = {
-                                title: `${user.username} texted you while you were away.`,
-                                message: messageContent.length < 20 ? messageContent : messageContent.slice(0, 20) + '...',
-                                image: profilePhoto ? profilePhoto.imageUrl : "",
-                                time: new Date(),
-                                userId: message.recieverId
-                            }
-
-                            addNotification(
-                                newNotification.title,
-                                newNotification.message,
-                                newNotification.image,
-                                newNotification.time,
-                                newNotification.userId
-                            );
+                        const user = await getUsername(message.senderId);
+                        const profilePhoto = await getMainProfilePhoto(message.senderId);
+                        const messageContent = message.message;
+                        const newNotification = {
+                            title: `${user.username} texted you while you were away.`,
+                            message: messageContent.length < 20 ? messageContent : messageContent.slice(0, 20) + '...',
+                            image: profilePhoto ? profilePhoto.imageUrl : "",
+                            time: new Date(),
+                            userId: message.recieverId
                         }
+
+                        addNotification(
+                            newNotification.title,
+                            newNotification.message,
+                            newNotification.image,
+                            newNotification.time,
+                            newNotification.userId
+                        )
+                            .then(response => {
+                                if (recieverSocketId && response !== undefined) {
+                                    io.to(recieverSocketId).emit('newMessageNotification', response);
+                                }
+                            });
                     })
                     .catch(err => {
                         console.log(err);
