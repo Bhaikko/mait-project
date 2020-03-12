@@ -40,7 +40,7 @@ class Dropdown extends Component {
     render() {
         return (
             <Fragment>
-                <div className={[classes.DropDownButton, this.state.notify === true ? classes.Notify : ""].join(" ")} onClick={this.hoverEventHandler}>
+                <div className={[classes.DropDownButton, this.props.classes, this.state.notify === true ? classes.Notify : ""].join(" ")} onClick={this.hoverEventHandler}>
                     {this.props.dropdownButtonName}
                 </div>
 

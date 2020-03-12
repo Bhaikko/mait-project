@@ -6,3 +6,9 @@
     box-sizing: border-box;
     color: white;
 }
+
+@media (max-width: 768px) {
+    header>.Logo {
+        display: none;
+    }
+}

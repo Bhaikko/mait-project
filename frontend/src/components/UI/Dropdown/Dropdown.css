@@ -11,7 +11,7 @@
 }
 
 .DropDownButton:hover::after {
-    content: "a ";
+    content: " ";
     position: absolute;
     width: 100%;
     height: 4px;
@@ -41,7 +41,19 @@
 
 
 @media (max-width: 768px) {
-    .Dropdown {
-        display: none;
+    .DropDownButton {
+        z-index: 100;
+        text-transform: uppercase;
+        font-weight: bolder;
+        padding-top: 5px;
+        letter-spacing: 2px;
+    }
+
+    .DropDownContent {
+        width: 95vw;
+    }
+
+    .DropDownContent {
+        z-index: 100;
     }
 }

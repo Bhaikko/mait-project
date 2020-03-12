@@ -32,8 +32,10 @@ class Layout extends Component {
             <Fragment>
                 <Toolbar 
                     drawerToggleClicked={this.sideDrawerToogleHandler}
-                    navigationItems={this.props.navigationItems}     
+                    navigationItems={this.props.navigationItems}   
+                    notificationComponent={this.props.notificationComponent}  
                 />
+
 
                 <SideDrawer 
                     open={this.state.showSideDrawer}

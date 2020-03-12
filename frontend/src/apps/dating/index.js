@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
+import classes from './index.css';
+
 import Dating from './Dating';
 import Inbox from './Inbox/Inbox';
 import Explore from './Explore/Explore';
@@ -58,7 +60,15 @@ class DatingRoute extends Component {
         );
 
         return (
-            <Layout navigationItems={navigationItems}>
+            <Layout 
+                navigationItems={navigationItems} 
+                notificationComponent={() => <Dropdown 
+                    dropdownButtonName="Notifications" 
+                    socket={this.socket} 
+                    location={this.props.location}
+                    classes={classes.DropdownButton}
+                />}
+            >
                 {routes}
             </Layout>
         );
