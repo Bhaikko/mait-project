@@ -8,7 +8,6 @@ class EditProfileForm extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            loading: true,
             formConfig: {
                 report: {
                     label: "Report Details",
@@ -26,8 +25,6 @@ class EditProfileForm extends Component {
             }
         }
     }
-
-
     render () {
         return (
             <Form 

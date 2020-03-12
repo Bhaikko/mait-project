@@ -2,8 +2,8 @@ import React from 'react';
 
 import classes from './Contact.css';
 
-import ProfileName from '../../ProfileName/ProfileName';
-import ProfilePhoto from '../../ProfilePhotos/ProfilePhoto/ProfilePhoto';
+import ProfileName from '../../Profile/ProfileName/ProfileName';
+import ProfilePhoto from '../../Profile/ProfilePhotos/ProfilePhoto/ProfilePhoto';
 
 const Contact = props => {
     return (

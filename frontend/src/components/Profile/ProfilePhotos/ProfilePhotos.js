@@ -2,7 +2,7 @@ import React from 'react';
 
 import classes from './ProfilePhotos.css';
 import ProfilePhoto from './ProfilePhoto/ProfilePhoto';
-import AddNewPhoto from '../UI/AddNewPhoto/AddNewPhoto';
+import AddNewPhoto from '../../UI/AddNewPhoto/AddNewPhoto';
 
 const ProfilePhotos = props => {
     const photosLength = props.photos.length;

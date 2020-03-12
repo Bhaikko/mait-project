@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import HomepageCard from './../../../components/HomepageComponents/HomepageCard/HomepageCard';
+import HomepageCard from './../../../components/Homepage/HomepageCard/HomepageCard';
 import classes from './Auth.css';
 import LoginForm from './../../../containers/Forms/Homepage/LoginForm/LoginForm';
 import SignupForm from './../../../containers/Forms/Homepage/SignupForm/SignupForm';
@@ -28,7 +28,7 @@ const Auth = props => {
                 <LoginForm />
                 
                 <div className={classes.SignUpLink} onClick={() => scrollToRef(myRef)}>
-                    Sign Up
+                    Sign Up Here
                 </div>
             </HomepageCard>
             

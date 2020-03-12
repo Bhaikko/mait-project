@@ -8,7 +8,7 @@ import Spinner from './../../../components/UI/Spinner/Spinner';
 import Tags from './../../../components/Tags/Tags';
 import CenterContainer from './../../../components/UI/CenterContainer/CenterContainer';
 import ContentContainer from './../../../components/UI/ContentContainer/ContentContainer';
-import ProfilePhoto from './../../../components/ProfilePhotos/ProfilePhoto/ProfilePhoto';
+import ProfilePhoto from './../../../components/Profile/ProfilePhotos/ProfilePhoto/ProfilePhoto';
 import Alertify from '../../../utilities/Aleretify/Alertify';
 import SuccessfulMatchModal from './../../../components/SuccessfulMatchModal/SuccessfulMatchModal';
 

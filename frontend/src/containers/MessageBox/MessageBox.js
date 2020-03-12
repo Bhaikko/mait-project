@@ -3,8 +3,8 @@ import shortid from 'shortid';
 
 import classes from './MessageBox.css';
 
-import ProfilePhoto from './../../components/ProfilePhotos/ProfilePhoto/ProfilePhoto';
-import ProfileName from '../../components/ProfileName/ProfileName';
+import ProfilePhoto from './../../components/Profile/ProfilePhotos/ProfilePhoto/ProfilePhoto';
+import ProfileName from '../../components/Profile/ProfileName/ProfileName';
 import SendIcon from './../../assets/icons/Send.png';
 
 import UserDetail from './../../utilities/UserDetail';

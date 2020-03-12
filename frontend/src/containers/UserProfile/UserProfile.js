@@ -5,11 +5,11 @@ import classes from './UserProfile.css';
 import CenterContainer from './../../components/UI/CenterContainer/CenterContainer';
 import ContentContainer from './../../components/UI/ContentContainer/ContentContainer';
 import ContentTitle from './../../components/UI/ContentTitle/ContentTitle';
-import ProfilePhoto from './../../components/ProfilePhotos/ProfilePhoto/ProfilePhoto';
-import ProfileInfo from './../../components/ProfileInfo/ProfileInfo';
-import ProfileName from './../../components/ProfileName/ProfileName';
+import ProfilePhoto from './../../components/Profile/ProfilePhotos/ProfilePhoto/ProfilePhoto';
+import ProfileInfo from './../../components/Profile/ProfileInfo/ProfileInfo';
+import ProfileName from './../../components/Profile/ProfileName/ProfileName';
 import Tags from './../../components/Tags/Tags';
-import ProfilePhotos from './../../components/ProfilePhotos/ProfilePhotos';
+import ProfilePhotos from './../../components/Profile/ProfilePhotos/ProfilePhotos';
 import Button from './../../components/UI/Button/Button';
 import SubmitReport from './../SubmitReport/SubmitReport';
 

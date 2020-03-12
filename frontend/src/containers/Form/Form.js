@@ -30,7 +30,6 @@ class Form extends Component {
         }
 
         if(rules.isEmail) {
-            // const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
             // eslint-disable-next-line
             const pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             isValid = pattern.test(value) && isValid;
@@ -53,13 +52,11 @@ class Form extends Component {
 
     formSubmitHandler = event => {
         event.preventDefault();
-
-        // const formData = new FormData();
+        
         const formData = {};
 
         // eslint-disable-next-line
         for(let formElementIdentifier in this.state.form) {
-            // formData.append(formElementIdentifier, this.state.form[formElementIdentifier].value);
             formData[formElementIdentifier] = this.state.form[formElementIdentifier].value;
         }
 
@@ -151,7 +148,6 @@ class Form extends Component {
         }
 
         let form = (
-
             <form style={{height: "100%"}}>
                 {formElementsArray.map(formElement => (
                     <Input 

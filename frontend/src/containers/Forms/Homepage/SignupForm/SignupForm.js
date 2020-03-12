@@ -76,7 +76,7 @@ class LoginForm extends Component {
                     A New Friend!!!
                 </div>
                 <Form 
-                    className={classes.SignupForm}
+                    classes={classes.SignupForm}
                     FormClassName={classes.SignupFormName}
                     formConfig={this.state.formConfig} 
                     formName="Sign Up" 

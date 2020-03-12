@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import classes from './homepage.css';
 import Logo from './../../components/Logo/Logo';
-import Infos from './../../components/HomepageComponents/Infos/Infos';
+import Infos from './../../components/Homepage/Infos/Infos';
 import Button from './../../components/UI/Button/Button';
 
 
@@ -12,9 +12,9 @@ import DatingBackground from './../../assets/images/dating.jpeg';
 import FeedBackground from './../../assets/images/feed.jpeg';
 import MarketplaceBackground from './../../assets/images/marketplace.jpeg';
 
-import HomepageCard from './../../components/HomepageComponents/HomepageCard/HomepageCard';
-import PeopleCard from './../../components/HomepageComponents/PeopleCard/PeopleCard';
-import CommunityCard from './../../components/HomepageComponents/CommunityCard/CommunityCard';
+import HomepageCard from './../../components/Homepage/HomepageCard/HomepageCard';
+import PeopleCard from './../../components/Homepage/PeopleCard/PeopleCard';
+import CommunityCard from './../../components/Homepage/CommunityCard/CommunityCard';
 
 
 import * as authActions from './../../store/actions/index';

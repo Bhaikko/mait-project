@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 
 import classes from './Inbox.css';
 import MessageBox from './../../../containers/MessageBox/MessageBox';
-import ProfilePhoto from './../../../components/ProfilePhotos/ProfilePhoto/ProfilePhoto';
+
+import ProfilePhoto from './../../../components/Profile/ProfilePhotos/ProfilePhoto/ProfilePhoto';
+import ProfileName from '../../../components/Profile/ProfileName/ProfileName';
+
 import Contacts from './../../../components/Contacts/Contacts';
 import CenterContainer from '../../../components/UI/CenterContainer/CenterContainer';
 import ContentContainer from './../../../components/UI/ContentContainer/ContentContainer';
-import ProfileName from '../../../components/ProfileName/ProfileName';
 import FilterContainer from './../../../containers/FilterContainer/FilterContainer';
 import Spinner from './../../../components/UI/Spinner/Spinner';
 

@@ -1,11 +1,11 @@
 import React from 'react';
 
 import classes from './ProfilePhoto.css';
-import CrossIcon from '../../UI/CrossIcon/CrossIcon';
-import HeartIcon from '../../UI/HeartIcon/HeartIcon';
-import DefaultPhoto from './../../../assets/icons/Username.png';
+import CrossIcon from '../../../UI/CrossIcon/CrossIcon';
+import HeartIcon from '../../../UI/HeartIcon/HeartIcon';
+import DefaultPhoto from './../../../../assets/icons/Username.png';
 
-import { SERVER_URL } from '../../../environments';
+import { SERVER_URL } from '../../../../environments';
 
 const ProfileImage = props => {
     let imageSrc = props.src;

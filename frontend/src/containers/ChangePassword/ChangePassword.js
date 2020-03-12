@@ -7,8 +7,6 @@ import Modal from './../../components/UI/Modal/Modal';
 import ChangePasswordForm from '../Forms/Homepage/ChangePasswordForm/ChangePasswordForm';
 
 class AddNew extends Component {
-
-
     state = {
         showForm: false
     }

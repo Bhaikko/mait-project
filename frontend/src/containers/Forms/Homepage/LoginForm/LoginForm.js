@@ -50,7 +50,7 @@ class LoginForm extends Component {
                     Hello Friend
                 </div>
                 <Form 
-                    className={classes.LoginForm}
+                    classes={classes.LoginForm}
                     FormClassName={classes.LoginFormName}
                     formConfig={this.state.formConfig} 
                     formName="Login" 
