@@ -96,14 +96,16 @@ class ExplorePage extends Component {
                         <ContentContainer classes={classes.ContentContainer}>
                             <div className={classes.ProfileSection}>
                                 <div className={classes.InfoContainer}>
-                                    <span className={classes.Name}>{this.state.selectedUser.name},</span>
-                                    <div className={classes.AgeContainer}>
+                                    <div className={classes.NameAgeContainer}>
+                                        <span className={classes.Name}>{this.state.selectedUser.name},</span>
                                         <span className={classes.Age}>{this.state.selectedUser.datingProfile.age || "-"}</span>
-                                        <span className={classes.CollegeName}>{this.state.selectedUser.datingProfile.collegeName || "-"}</span>
                                     </div>
+                                    <span className={classes.CollegeName}>{this.state.selectedUser.datingProfile.collegeName || "-"}</span>
                                 </div>
-                                <span className={classes.Matchbox}>{this.state.percentage}%</span>
-                                <Link to={"/profile/" + this.state.selectedUser.id} className={classes.ViewProfile}>Visit Profile</Link>
+                                <div className={classes.MatchboxContainer}>
+                                    <span className={classes.Matchbox}>{this.state.percentage}%</span>
+                                    <Link to={"/profile/" + this.state.selectedUser.id} className={classes.ViewProfile}>Visit Profile</Link>
+                                </div>
                                 <Button 
                                     style={{
                                         backgroundColor: "#fa8575",
@@ -162,19 +164,16 @@ class ExplorePage extends Component {
                                         {this.state.selectedUser.datingProfile.about}
                                     </div>
                                 </div>
-                                <div className={classes.RightSection}>
-                                    <div className={classes.AboutBox}>
-                                        <div className={classes.About}><span className={classes.AboutKey}>I'm Currently</span> {this.state.selectedUser.datingProfile.relationshipStatus}</div>
-                                        <div className={classes.About}><span className={classes.AboutKey}>Intrested In</span> {this.state.selectedUser.datingProfile.intrestedIn}</div>
-                                        <div className={classes.About}><span className={classes.AboutKey}>Graduation From</span> {this.state.selectedUser.datingProfile.collegeName}</div>
-                                    </div>
-                                    <hr />
-                                    <div className={classes.TagsContainer}>
-                                        <div className={classes.TagHeading}>Here's what you too have in common</div>
-                                        <Tags tags={this.state.commonTags} />
-                                    </div>
+                                <div className={classes.AboutBox}>
+                                    <div className={classes.About}><span className={classes.AboutKey}>I'm Currently</span> {this.state.selectedUser.datingProfile.relationshipStatus}</div>
+                                    <div className={classes.About}><span className={classes.AboutKey}>Intrested In</span> {this.state.selectedUser.datingProfile.intrestedIn}</div>
+                                    <div className={classes.About}><span className={classes.AboutKey}>Graduation From</span> {this.state.selectedUser.datingProfile.collegeName}</div>
                                 </div>
-                                
+                            </div>
+                            
+                            <div className={classes.TagsContainer}>
+                                <div className={classes.TagHeading}>Here's what you too have in common</div>
+                                <Tags tags={this.state.commonTags} />
                             </div>
 
                         </ContentContainer>

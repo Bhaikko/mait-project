@@ -10,50 +10,41 @@
 
 .Name {
     font-weight: bolder;
+    font-size: 22px;
 }
 
 .Age {
     margin-left: 10px;
-}
-
-
-.Age:after {
-    content: "\2022";
-    position: absolute;
-    font-size: 19px;
-    float: right;
-    text-align: right;
+    font-size: 20px;
 }
 
 .CollegeName {
-    margin-left: 15px;
-}
-
-
-.CollegeName:after {
-    content: "\2022";
-    position: absolute;
-    font-size: 19px;
-    float: right;
-    text-align: right;
+    margin-top: 5px;
+    font-size: 20px;
 }
 
 .Matchbox {
-    width: 50px;
-    height: 50px;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
     background-color: pink;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 25px;
+}
+
+.MatchboxContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .ViewProfile {
     text-decoration: none;
     color: blue;
-    margin-right: 10%;
-    margin-left: 5px;
+    font-size: 16px;
+    margin-top: 10px;
 }
 
 .ViewProfile:visited {
@@ -100,12 +91,9 @@
     line-height: 30px;
 }
 
-.RightSection {
-    width: 50%;
-}
-
 .AboutBox {
     padding: 10px;
+    padding-left: 10%;
     letter-spacing: 2px;
     line-height: 30px;
     width: 100%;
@@ -116,8 +104,9 @@
 }
 
 .TagsContainer {
-    width: 100%;
+    width: 90%;
     padding: 10px;
+    margin-top: 10px;
 }
 
 .TagHeading {
@@ -136,8 +125,7 @@
 
 .InfoContainer {
     display: flex;
-    flex-direction: row;
-    align-items: flex-end;
+    flex-direction: column;
     width: 50%;
 }
 .AgeContainer {
@@ -169,6 +157,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        margin-top: 40px;
     }
 
     .ProfileSection::after {
@@ -176,22 +165,6 @@
         border: 0.5px solid grey;
         width: 100%;
         margin-top: 5px;
-    }
-
-    .Name {
-        font-weight: bold;
-        font-size: 30px;
-    }
-
-    .Age {
-        font-weight: bold;
-        margin-left: 0;
-        font-size: 20px;
-    }
-
-
-    .CollegeName {
-        margin-left: 10;
     }
     
     .CollegeName:after {
@@ -211,7 +184,7 @@
         display: inline-flex;
         justify-content: center;
         margin-right: 0;
-        margin-top: 10px;
+        margin-top: 50px;
     }
 
     .AboutSection {
@@ -246,6 +219,7 @@
         display: inline-block;
         text-align: center;
         order: 1;
+        margin-top: 25px;
     }
 
     .InfoContainer {
@@ -270,12 +244,19 @@
         width: 100%;
     }
 
-    .RightSection {
-        width: 95%;
-    }
-
     .ContentContainer { 
         width: 100%;
+        height: auto;
+        margin: 0;
+        padding-bottom: 100px;
+    }
+
+    .TagsContainer {
+        order: 5;
+    }
+
+    .AboutBox {
+        padding-left: 10px;
     }
 
 }

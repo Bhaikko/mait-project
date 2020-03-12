@@ -284,9 +284,9 @@ router.get("/explore", (req, res, next) => {
             users = databaseParser(users);
             
             const currentUser = searchUser(users, req.user.id);
-            const selectedUser = getRandomuser(users, currentUser);
+            // const selectedUser = getRandomuser(users, currentUser);
 
-            // const selectedUser = users[0]; // For Successfull match test only
+            const selectedUser = users[0]; // For Successfull match test only
 
             const result = calculateTagPercentage(selectedUser.userTags, currentUser.userTags);
             res.status(200).json({

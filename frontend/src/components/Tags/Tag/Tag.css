@@ -8,11 +8,10 @@
 }
 
 .Tag {
-    width: 130px;
+    width: 120px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    margin: 10px;
 }
 
 .TagName {
