@@ -11,6 +11,7 @@ import Button from './../../components/UI/Button/Button';
 import DatingBackground from './../../assets/images/dating.jpeg';
 import FeedBackground from './../../assets/images/feed.jpeg';
 import MarketplaceBackground from './../../assets/images/marketplace.jpeg';
+import NotesBackground from './../../assets/images/notes.jpeg';
 
 import HomepageCard from './../../components/Homepage/HomepageCard/HomepageCard';
 import PeopleCard from './../../components/Homepage/PeopleCard/PeopleCard';
@@ -129,7 +130,7 @@ class Homepage extends Component {
 
                             <CommunityCard
                                 link="/notes"
-                                backgroundImage={MarketplaceBackground}
+                                backgroundImage={NotesBackground}
                             >
                                 Notes
                             </CommunityCard>

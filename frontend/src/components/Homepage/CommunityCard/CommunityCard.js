@@ -9,8 +9,11 @@ const communityCard = props => {
             to={props.link}
             style={{ textDecoration: "none" }}
         >
-            <div className={classes.CommunityCard} style={{backgroundImage: `url(${props.backgroundImage})`}}>
-                {props.children}
+            <div className={classes.CommunityCard}>
+                <img className={classes.CommunityCardImage} src={props.backgroundImage} alt="..."/>
+                <div className={classes.CommunityCardText}>
+                    {props.children}
+                </div>
             </div>
         </Link>
     );
