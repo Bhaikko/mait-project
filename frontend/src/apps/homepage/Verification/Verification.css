@@ -1,0 +1,40 @@
+.CenterContainer {
+    height: 100vh;
+}
+
+.ContentContainer {
+    padding: 20px;
+}
+
+.VerificationMessage {
+    margin-top: 10px;
+}
+
+.VerificationInput {
+    outline: none;
+    border: none;
+    width: 100%;
+    border-radius: 10px;
+    padding: 5%;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.SubmitButton {
+    margin-top: 10px;
+    color: black;
+    outline: 2px solid black;
+}
+
+.SmallMessage {
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.SmallButton {
+    margin-top: 10px;
+    color: black;
+    outline: 2px solid black;
+    width: 200px;
+}

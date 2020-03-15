@@ -1,6 +1,6 @@
 const { Users, DatingProfiles } = require("./database");
 
-module.exports.addUser = (name, username, email, password) => {
+module.exports.addUser = (name, username, email, password, verificationCode) => {
     username = username.trim();
     username = username.toLowerCase();
     username = username.split(" ");
@@ -15,7 +15,8 @@ module.exports.addUser = (name, username, email, password) => {
         email,
         password,
         username,
-        isVerified: true // this is for development build only
+        // isVerified: true // this is for development build only
+        isVerified: verificationCode
     })
         .then(response => {
             return DatingProfiles.create({
@@ -47,8 +48,35 @@ module.exports.getPasswordHash = id => {
     });
 }
 
+module.exports.getVerificationCode = id => {
+    return Users.findOne({
+        where: {
+            id
+        },
+        attributes: ['isVerified']
+    });
+}
+
 module.exports.getUser = email => {
     return Users.findOne({
         email 
+    });
+}
+
+module.exports.checkVerification = id => {
+    return Users.findOne({
+        where: {
+            id
+        }
+    });
+}
+
+module.exports.updateVerification = id => {
+    return Users.update({
+        isVerified: true
+    }, {
+        where: {
+            id
+        }
     });
 }

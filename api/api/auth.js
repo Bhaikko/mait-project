@@ -1,6 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { v4 } = require('uuid');
 
 const saltRounds = 10;
 
@@ -85,7 +86,10 @@ router.post("/signup", (req, res, next) => {
             throw err;
         }
 
-        databaseHandler.addUser(req.body.name, req.body.username, req.body.email, password)
+        
+        const verificationCode = v4(); 
+
+        databaseHandler.addUser(req.body.name, req.body.username, req.body.email, password, verificationCode)
             .then(user => res.status(201).json({
                 user: user 
             }))
@@ -126,14 +130,14 @@ router.post("/login", (req, res, next) => {
                 username: user.name,
                 email: user.email,
                 expirationTime: expirationTime,
-                token: token 
+                token: token,
+                isVerified: user.isVerified === "1" ? true : false 
             });
         });
     })(req, res, next);
 });
 
 router.put('/updatePassword', (req, res, next) => {
-
     const {
         oldPassword,
         newPassword,
@@ -179,6 +183,39 @@ router.put('/updatePassword', (req, res, next) => {
                 message: "Password Changed Successfully"
             });
         });
+});
+
+router.put('/verify', (req, res) => {
+    databaseHandler.getVerificationCode(req.body.userId)
+        .then(response => {
+            const userVerificationCode = req.body.code;
+            const verificationCode = response.isVerified;
+
+            if (verificationCode === userVerificationCode) {
+                databaseHandler.updateVerification(req.body.userId)
+                    .then(resposne => {
+                        res.status(200).json({
+                            message: "Thank you for verifying yourself."
+                        });
+                    })
+            } else {
+                res.status(400).json({
+                    message: "Wrong Verification Code, Try Again"
+                });
+            }
+        });
+});
+
+router.get('/verification', (req, res) => {
+    databaseHandler.checkVerification(req.query.id)
+        .then(response => {
+            if (response.isVerified) {
+                // console.log(response);
+                res.status(200).json({
+                    isVerified: response.isVerified === "1" ? true : false
+                });
+            }
+        })
 });
 
 router.get("/logout", (req, res, next) => {

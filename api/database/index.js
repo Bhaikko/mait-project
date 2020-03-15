@@ -2,7 +2,10 @@ const {
     getUser,
     addUser,
     updatePassword,
-    getPasswordHash
+    getPasswordHash,
+    getVerificationCode,
+    checkVerification,
+    updateVerification
 } = require("./authHandler");
 
 
@@ -80,5 +83,8 @@ module.exports = {
     addNotification,
     deleteNotifications,
     getUsername,
-    getMainProfilePhoto
+    getMainProfilePhoto,
+    checkVerification,
+    getVerificationCode,
+    updateVerification
 };
