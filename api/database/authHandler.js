@@ -80,3 +80,11 @@ module.exports.updateVerification = id => {
         }
     });
 }
+
+module.exports.getUserByUserid = userId => {
+    return Users.findOne({
+        where: {
+            id: userId
+        }
+    });
+}

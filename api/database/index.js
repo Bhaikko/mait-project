@@ -5,7 +5,8 @@ const {
     getPasswordHash,
     getVerificationCode,
     checkVerification,
-    updateVerification
+    updateVerification,
+    getUserByUserid
 } = require("./authHandler");
 
 
@@ -86,5 +87,6 @@ module.exports = {
     getMainProfilePhoto,
     checkVerification,
     getVerificationCode,
-    updateVerification
+    updateVerification,
+    getUserByUserid
 };

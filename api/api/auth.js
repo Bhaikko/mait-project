@@ -2,12 +2,13 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { v4 } = require('uuid');
+const nodemailer = require('nodemailer');
 
 const saltRounds = 10;
 
 const databaseHandler = require("./../database/index");
 const passport = require("./../passport").passport;
-const { TOKEN_SECRET_KEY } = require("./../enviroments");
+const { TOKEN_SECRET_KEY, EMAIL_ADDRESS, EMAIL_PASSWORD } = require("./../enviroments");
 
 const router = express.Router();
 
@@ -77,6 +78,44 @@ const validatePassword = (password, res) => {
     }
 }
 
+
+const sendVerificationEmail = (userId) => {
+    return databaseHandler.getUserByUserid(userId)
+        .then(response => {
+            const message = `
+                Hi There, Thank you registering yourself on our site.
+                Your Verification Code is
+                ${response.isVerified}
+
+            `;
+            let transporter = nodemailer.createTransport({
+                host: "smtp.gmail.com",
+                port: 587,
+                secure: false, 
+                auth: {
+                  user: EMAIL_ADDRESS, 
+                  pass: EMAIL_PASSWORD 
+                }
+            });
+
+            const mailOptions = {
+                from: EMAIL_ADDRESS,
+                to: response.email, 
+                subject: 'Verification Code',
+                text: message
+            }
+
+            transporter.sendMail(mailOptions, function(error, response){
+                if (error) {
+                    console.log(error);
+                    return;
+                } 
+
+                console.log(`New User Signed Up, ${response.get().email}`);
+            });
+        });
+}
+
 router.post("/signup", (req, res, next) => {
     if (!validatePassword(req.body.password, res)) {
         return;
@@ -90,16 +129,35 @@ router.post("/signup", (req, res, next) => {
         const verificationCode = v4(); 
 
         databaseHandler.addUser(req.body.name, req.body.username, req.body.email, password, verificationCode)
-            .then(user => res.status(201).json({
-                user: user 
-            }))
+            .then(user => {
+                sendVerificationEmail(user.id)
+                    .then(response => {
+                        res.status(201).json({
+                            user: user 
+                        });
+                    });
+                
+            })
             .catch(err => {
                 res.status(400).json({
                     message: err.errors[0].message
                 });
-                // throw err;
             });
     });
+});
+
+router.post('/resendVerification', (req, res) => {
+    sendVerificationEmail(req.body.userId)
+        .then(response => {
+            res.status(200).json({
+                message: "Verfication Code Sent"
+            });
+        })
+        .catch(err => {
+            res.status(400)({
+                message: "Something Went Wrong"
+            });
+        })
 });
 
 router.post("/login", (req, res, next) => {
@@ -206,11 +264,11 @@ router.put('/verify', (req, res) => {
         });
 });
 
+
 router.get('/verification', (req, res) => {
     databaseHandler.checkVerification(req.query.id)
         .then(response => {
             if (response.isVerified) {
-                // console.log(response);
                 res.status(200).json({
                     isVerified: response.isVerified === "1" ? true : false
                 });

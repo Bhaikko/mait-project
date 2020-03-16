@@ -8,3 +8,4 @@
 *.db
 *.sqlite
 
+credentials.js

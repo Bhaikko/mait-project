@@ -32,9 +32,9 @@ class Verification extends Component {
         });
     }
 
-    submitHandler = () => [
+    submitHandler = () => {
         axios.put('/auth/verify', {
-            code: this.state.verificationCode,
+            code: this.state.verificationCode.trim(),
             userId: UserDetail.get_userId()
         })
             .then(resposne => {
@@ -47,7 +47,16 @@ class Verification extends Component {
                     }, 1000);
                 }
             })
-    ]
+    }
+
+    resendHandler = () => {
+        axios.post('/auth/resendVerification', {
+            userId: UserDetail.get_userId()
+        })
+            .then(response => {
+                Alertify.success('Verification Code Sent');
+            });
+    }
 
     render() {
         let navigationItems = (
@@ -75,7 +84,7 @@ class Verification extends Component {
                             Didn't recieve the verification code? <br />
                             Click Below to resend.
                         </div>
-                        <Button classes={classes.SmallButton}>Resend Code</Button>
+                        <Button classes={classes.SmallButton} onClick={this.resendHandler}>Resend Code</Button>
                         <div className={classes.SmallMessage}>
                             Still Having Problems, Mail us your issue at <br />
                             xyz@gmail.com
