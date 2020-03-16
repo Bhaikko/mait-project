@@ -9,11 +9,11 @@ import LogoutPage from './../../containers/Logout/Logout';
 import NotFoundPage from './NotFound/NotFound';
 import VerificationPage from './Verification/Verification';
 
+
 class HomepageRoute extends Component {
     render () {
         return (
             <Switch>
-                <Route path="/verification" component={VerificationPage} />
                 <Route path="/auth" component={AuthPage} />
                 <Route path="/me" component={MePage} />
                 <Route path="/notfound" component={NotFoundPage} />

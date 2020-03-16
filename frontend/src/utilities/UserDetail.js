@@ -14,6 +14,10 @@ class UserDetail {
         return JSON.parse(localStorage.getItem("userdata")).email;
     }
 
+    static get_verified() {
+        return JSON.parse(localStorage.getItem('userdata')).isVerified;
+    }
+
 
 }
 

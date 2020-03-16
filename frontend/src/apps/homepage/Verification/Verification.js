@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import classes from './Verification.css';
@@ -13,6 +13,8 @@ import Alertify from './../../../utilities/Aleretify/Alertify';
 import UserDetail from './../../../utilities/UserDetail';
 
 import * as authActions from './../../../store/actions/index';
+import NavigationItem from '../../../components/Navigation/NavigationItems/NavigationItem/NavigationItem';
+import Layout from '../../../containers/Layout/Layout';
 
 class Verification extends Component {
 
@@ -37,11 +39,8 @@ class Verification extends Component {
         })
             .then(resposne => {
                 if (resposne.status === 200) {
-                    Alertify.success(`
-                        You'll Now be redirected to Auth page and will be required to re-login to complete process.
-                        Have Fun. :)
-                    `);
-    
+                    Alertify.success(`You'll Now be redirected to Auth page and will be required to re-login to complete process.`);
+                    Alertify.success('Have Fun');
     
                     setTimeout(() => {
                         this.props.onLogout();
@@ -51,32 +50,39 @@ class Verification extends Component {
     ]
 
     render() {
+        let navigationItems = (
+            <Fragment>
+                <NavigationItem link="/logout">Logout</NavigationItem>
+            </Fragment>
+        )
         return (
-            <CenterContainer classes={classes.CenterContainer}>
-                <ContentContainer classes={classes.ContentContainer}>
-                    <ContentTitle>Verification</ContentTitle>
-                    <div className={classes.VerificationMessage}>
-                        Hi There, it seems you haven't verified your E-mail yet. <br/>
-                        This is mandatory to avoid spam and fake profiles on our sites. <br/>
-                        We have mailed you the verification code to the E-mail you provided. <br/>
-                        Submit the verification code down below to verify.
-                    </div>
+            <Layout navigationItems={navigationItems}>
+                <CenterContainer classes={classes.CenterContainer}>
+                    <ContentContainer classes={classes.ContentContainer}>
+                        <ContentTitle>Verification</ContentTitle>
+                        <div className={classes.VerificationMessage}>
+                            Hi There, it seems you haven't verified your E-mail yet. <br/>
+                            This is mandatory to avoid spam and fake profiles on our sites. <br/>
+                            We have mailed you the verification code to the E-mail you provided. <br/>
+                            Submit the verification code down below to verify.
+                        </div>
 
-                    <input className={classes.VerificationInput} onChange={this.inputHandler} />
+                        <input className={classes.VerificationInput} onChange={this.inputHandler} />
 
-                    <Button classes={classes.SubmitButton} onClick={this.submitHandler}>Submit Verification Code.</Button>
+                        <Button classes={classes.SubmitButton} onClick={this.submitHandler}>Submit Verification Code.</Button>
 
-                    <div className={classes.SmallMessage}>
-                        Didn't recieve the verification code? <br />
-                        Click Below to resend.
-                    </div>
-                    <Button classes={classes.SmallButton}>Resend Code</Button>
-                    <div className={classes.SmallMessage}>
-                        Still Having Problems, Mail us your issue at <br />
-                        xyz@gmail.com
-                    </div>
-                </ContentContainer>
-            </CenterContainer>
+                        <div className={classes.SmallMessage}>
+                            Didn't recieve the verification code? <br />
+                            Click Below to resend.
+                        </div>
+                        <Button classes={classes.SmallButton}>Resend Code</Button>
+                        <div className={classes.SmallMessage}>
+                            Still Having Problems, Mail us your issue at <br />
+                            xyz@gmail.com
+                        </div>
+                    </ContentContainer>
+                </CenterContainer>
+            </Layout>
         );
     }
 }

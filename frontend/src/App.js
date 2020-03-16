@@ -14,6 +14,8 @@ import * as authActions from './store/actions/index';
 
 import UserDetail from './utilities/UserDetail';
 
+import VerificationPage from './apps/homepage/Verification/Verification';
+import LogoutPage from './containers/Logout/Logout';
 
 class App extends Component {
 
@@ -45,6 +47,17 @@ class App extends Component {
           <Redirect to="/auth" />
         </Switch>
       );
+    }
+
+    if (localStorage.getItem("userdata") && !UserDetail.get_verified()) {
+      routes = (
+        <Switch>
+          <Route path="/" exact component={HomepageApp} />
+          <Route path="/verification" component={VerificationPage} />
+          <Route path="/logout" component={LogoutPage} />
+          <Redirect to="/verification" />
+        </Switch>
+      )
     }
 
     return (

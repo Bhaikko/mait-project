@@ -8,7 +8,8 @@ const _login = (response, dispatch) => {
         token: response.data.token,
         userId: response.data.userId,
         username: response.data.username,
-        email: response.data.email
+        email: response.data.email,
+        isVerified: response.data.isVerified
     }
     localStorage.setItem("userdata", JSON.stringify(userdata));
 
@@ -25,10 +26,6 @@ export const login = (formdata) => {
         dispatch({
             type: actionTypes.AUTH_START
         });
-
-
-        // const object = {};
-        // formdata.forEach((value, key) => {object[key] = value});
 
         axios.post("/auth/login", formdata)
             .then(response => {
@@ -48,9 +45,6 @@ export const signup = (formdata) => {
         dispatch({
             type: actionTypes.AUTH_START
         });
-
-        // const object = {};
-        // formdata.forEach((value, key) => {object[key] = value});
 
         axios.post("/auth/signup", formdata)
             .then(response => {

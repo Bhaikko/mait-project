@@ -226,7 +226,8 @@ const searchUser = (users, userId) => {
     let end = users.length - 1;
 
     while (start <= end) {
-        let mid = (end + start) / 2;
+        let mid = parseInt((end + start) / 2);
+
         if (users[mid].id === userId) {
             return users[mid];
         } else if (userId <= users[mid].id) {
