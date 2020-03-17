@@ -13,6 +13,15 @@
     margin-bottom: 20px;
 }
 
+.ForgotPasswordForm {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.ForgotPasswordHeader {
+    color: black;
+}
+
 @media screen and (max-width: 768px) {
     .Header {
         font-size: 30px;

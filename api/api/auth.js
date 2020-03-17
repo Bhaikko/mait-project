@@ -83,7 +83,7 @@ const sendVerificationEmail = (userId) => {
     return databaseHandler.getUserByUserid(userId)
         .then(response => {
             const message = `
-                Hi There, Thank you registering yourself on our site.
+                Hi ${respose.username}, Thank you registering yourself on our site.
                 Your Verification Code is
                 ${response.isVerified}
 

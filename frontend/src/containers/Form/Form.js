@@ -29,6 +29,12 @@ class Form extends Component {
             isValid = value.trim() !== "" && isValid;
         }
 
+        if (rules.isUsername) {
+            if (value.includes(" ")) {
+                isValid = false;
+            }
+        }
+
         if(rules.isEmail) {
             // eslint-disable-next-line
             const pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -170,6 +176,8 @@ class Form extends Component {
                 >
                     {this.props.buttonName}
                 </Button>
+
+                {this.props.children}
             </form>
         );
         
@@ -181,7 +189,9 @@ class Form extends Component {
 
         return (
             <div className={[classes.Form, this.props.classes].join(" ")}>
-                <div className={[classes.FormName , this.props.headerclass].join(" ")}>{this.props.formName}</div>
+                <div className={[classes.FormName , this.props.headerclass].join(" ")}>
+                    {this.props.formName}
+                </div>
                 {form}
             </div>
         );

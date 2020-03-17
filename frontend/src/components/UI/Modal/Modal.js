@@ -7,7 +7,7 @@ import CrossIcon from './../CrossIcon/CrossIcon';
 
 class Modal extends Component {
     shouldComponentUpdate (nextProps, nextState) {
-        return nextProps.show !== this.props.show || nextProps.children !== this.props.children;    //Because of the spinner to update, children check should be done
+        return nextProps.show !== this.props.show || nextProps.children !== this.props.children;    
     }
 
     render () {

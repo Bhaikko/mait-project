@@ -29,7 +29,8 @@ class LoginForm extends Component {
                     },
                     value: "",
                     validation: {
-                        required: true
+                        required: true,
+                        isUsername: true
                     },
                     valid: false,
                     touched: false
