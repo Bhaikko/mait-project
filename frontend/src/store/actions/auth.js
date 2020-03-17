@@ -98,6 +98,31 @@ export const updatePassword = (formdata) => {
     }
 }
 
+export const forgotPassword = formdata => {
+    return dispatch => {
+        dispatch({
+            type: actionTypes.FORGOT_PASSWORD_START
+        });
+
+        formdata.username = formdata.username.toLowerCase();
+
+        axios.post('/auth/forgotPassword', formdata)
+            .then(response => {
+                console.log(response);
+                dispatch({
+                    type: actionTypes.UPDATE_PASSWORD_END
+                });
+
+                Alertify.success(response.data.message);
+            })
+            .catch(response => {
+                dispatch({
+                    type: actionTypes.UPDATE_PASSWORD_END
+                });
+            });
+    }
+}
+
 export const autoLogin = (token, userId, username) => {
     return {
         type: actionTypes.AUTH_SUCCESS,

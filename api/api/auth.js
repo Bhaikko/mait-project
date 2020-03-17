@@ -78,41 +78,45 @@ const validatePassword = (password, res) => {
     }
 }
 
+const sendEmail = (mailOptions) => {
+    let transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false, 
+        auth: {
+          user: EMAIL_ADDRESS, 
+          pass: EMAIL_PASSWORD 
+        }
+    });
+
+    transporter.sendMail(mailOptions, function(error, response){
+        if (error) {
+            console.log(error);
+            return;
+        } 
+
+        console.log(`New User Signed Up, ${response.get().email}`);
+    });
+}
 
 const sendVerificationEmail = (userId) => {
     return databaseHandler.getUserByUserid(userId)
         .then(response => {
             const message = `
-                Hi ${respose.username}, Thank you registering yourself on our site.
+                Hi ${response.username}, Thank you registering yourself on our site.
                 Your Verification Code is
                 ${response.isVerified}
 
             `;
-            let transporter = nodemailer.createTransport({
-                host: "smtp.gmail.com",
-                port: 587,
-                secure: false, 
-                auth: {
-                  user: EMAIL_ADDRESS, 
-                  pass: EMAIL_PASSWORD 
-                }
-            });
-
+            
             const mailOptions = {
                 from: EMAIL_ADDRESS,
                 to: response.email, 
                 subject: 'Verification Code',
                 text: message
-            }
-
-            transporter.sendMail(mailOptions, function(error, response){
-                if (error) {
-                    console.log(error);
-                    return;
-                } 
-
-                console.log(`New User Signed Up, ${response.get().email}`);
-            });
+            }       
+            
+            return sendEmail(mailOptions);
         });
 }
 
@@ -154,7 +158,8 @@ router.post('/resendVerification', (req, res) => {
             });
         })
         .catch(err => {
-            res.status(400)({
+            console.log(err);
+            res.status(400).json({
                 message: "Something Went Wrong"
             });
         })
@@ -238,7 +243,7 @@ router.put('/updatePassword', (req, res, next) => {
         })
         .catch(err => {
             res.status(500).json({
-                message: "Password Changed Successfully"
+                message: "Something Went Wrong."
             });
         });
 });
@@ -275,6 +280,54 @@ router.get('/verification', (req, res) => {
             }
         })
 });
+
+router.post('/forgotPassword', (req, res) => {
+    databaseHandler.getUseByEmailAndUsername(req.body.email, req.body.username)
+        .then(user => {
+            if (!user) {
+                res.status(400).json({
+                    message: "No User Exist"
+                });
+                return;
+            }
+
+            const newPassword = v4();
+            bcrypt.hash(newPassword, saltRounds, function(err, hashedPassword) {
+                if (err) {
+                    throw err;
+                }
+                
+                databaseHandler.updatePassword(user.get().id, hashedPassword)
+                    .then(response => {
+                        const message = `
+                            Hi ${user.get().username},
+                            Your New Password is ${newPassword}
+                            However, You can change this password from profile tab of the website.
+
+                        `;
+                        
+                        const mailOptions = {
+                            from: EMAIL_ADDRESS,
+                            to: user.get().email, 
+                            subject: 'Reset Password',
+                            text: message
+                        }       
+                        
+                        sendEmail(mailOptions);
+                        res.status(200).json({
+                            message: "New Password Has Been Mailed to your Email."
+                        });
+                    });
+                
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(400).json({
+                message: "Somthing Went Wrong"
+            });
+        })
+})
 
 router.get("/logout", (req, res, next) => {
     res.logout();

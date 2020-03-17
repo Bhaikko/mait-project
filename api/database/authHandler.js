@@ -88,3 +88,12 @@ module.exports.getUserByUserid = userId => {
         }
     });
 }
+
+module.exports.getUseByEmailAndUsername = (email, username) => {
+    return Users.findOne({
+        where: {
+            username,
+            email
+        }
+    });
+}

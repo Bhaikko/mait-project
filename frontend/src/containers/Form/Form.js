@@ -92,6 +92,10 @@ class Form extends Component {
                 formData.reportForId = reportForId;
                 this.props.onSubmitReport(formData);
                 break;
+
+            case "/auth/forgotPassword":
+                this.props.onForgotPassword(formData);
+                return;
             
             default:
                 console.log("No Url Assigned for Form");
@@ -211,7 +215,8 @@ const mapDispatchToProps = dispatch => {
         onSignUp: formData => dispatch(actions.signup(formData)),
         onUpdateDatingProfile: formData => dispatch(actions.updateDatingProfile(formData)),
         onUpdatePassword: formData => dispatch(actions.updatePassword(formData)),
-        onSubmitReport: formData => dispatch(actions.submitReport(formData))
+        onSubmitReport: formData => dispatch(actions.submitReport(formData)),
+        onForgotPassword: formData => dispatch(actions.forgotPassword(formData))
     }
 }
 

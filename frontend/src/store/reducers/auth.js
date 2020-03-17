@@ -40,6 +40,18 @@ const reducer = (state = initialState, action) => {
                 loading: false
             }
 
+        case actionTypes.FORGOT_PASSWORD_START:
+            return {
+                ...state,
+                loading: true,
+            }
+
+        case actionTypes.FORGOT_PASSWORD_END:
+            return {
+                ...state,
+                loading: false
+            }
+
         default: 
             return state;
     }

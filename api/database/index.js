@@ -6,7 +6,8 @@ const {
     getVerificationCode,
     checkVerification,
     updateVerification,
-    getUserByUserid
+    getUserByUserid,
+    getUseByEmailAndUsername
 } = require("./authHandler");
 
 
@@ -88,5 +89,6 @@ module.exports = {
     checkVerification,
     getVerificationCode,
     updateVerification,
-    getUserByUserid
+    getUserByUserid,
+    getUseByEmailAndUsername
 };

@@ -3,7 +3,8 @@ export {
     signup,
     autoLogin,
     updatePassword,
-    logout
+    logout,
+    forgotPassword
 } from './auth';
 
 export {
