@@ -73,9 +73,7 @@ class Inbox extends Component {
                 const extractedContacts = response.data.contacts;
                 
                 const notificationContacts = {};
-                response.data.notifications.map(element => {
-                    notificationContacts[element.senderId] = element.seen;
-                });
+                response.data.notifications.map(element => notificationContacts[element.senderId] = element.seen);
                 
                 extractedContacts.map(contact => {
                     
