@@ -21,9 +21,10 @@ class App extends Component {
 
   constructor (props) {
     super(props);
-    const userdata = UserDetail.get_token();
+
+    const userdata = UserDetail.get_userdata();
     if (userdata) {      
-      this.props.onAutoLogin(userdata.token, userdata.userId, userdata.username);
+      this.props.onAutoLogin(UserDetail.get_token());
     }
   }
   render () {

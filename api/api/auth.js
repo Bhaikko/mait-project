@@ -175,7 +175,6 @@ router.post("/login", (req, res, next) => {
 
         req.login(user, { session: false }, err => {
             if (err) {
-                // res.json(err);
                 res.status(400).json({
                     message: "Invalid Email or Password"
                 });
@@ -189,12 +188,8 @@ router.post("/login", (req, res, next) => {
             }, TOKEN_SECRET_KEY);
 
             return res.json({
-                userId: user.id,
-                username: user.name,
-                email: user.email,
                 expirationTime: expirationTime,
-                token: token,
-                isVerified: user.isVerified === "1" ? true : false 
+                token: token
             });
         });
     })(req, res, next);

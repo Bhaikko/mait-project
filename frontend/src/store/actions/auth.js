@@ -1,8 +1,7 @@
 import * as actionTypes from './actionTypes';
 import axios from './../../axios';
 import Alertify from './../../utilities/Aleretify/Alertify';
-import UserDetails from './../../utilities/UserDetail';
-
+import UserDetail from './../../utilities/UserDetail';
 
 export const setToken = token => {
     return {
@@ -19,7 +18,7 @@ export const updatePassword = (formdata) => {
 
         formdata = {
             ...formdata,
-            id: UserDetails.get_userId()
+            id: UserDetail.get_userId()
         }
 
         axios.put('/auth/updatePassword', formdata)
@@ -39,18 +38,17 @@ export const updatePassword = (formdata) => {
     }
 }
 
-export const autoLogin = (token, userId, username) => {
+export const autoLogin = (token) => {
     return {
         type: actionTypes.AUTH_SUCCESS,
-        token:token,
-        userId: userId,
-        username: username
+        token:token
     }
 }
 
 
 export const logout = () => {
     localStorage.clear("userdata");
+    UserDetail.clear_userdata();
     
     Alertify.success("Logged out succesfully");
     Alertify.success("Bye, Take Care :)");
