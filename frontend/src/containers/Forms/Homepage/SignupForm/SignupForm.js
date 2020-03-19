@@ -1,73 +1,55 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 
 import Form from '../../../Form/Form';
 import classes from './SignupForm.css';
 
-class LoginForm extends Component {
+import { SignupFormConfig } from './../../formConfigs';
+import axios from './../../../../axios';
+
+import Alertify from './../../../../utilities/Aleretify/Alertify';
+
+import Spinner from './../../../../components/UI/Spinner/Spinner';
+
+import { setToken } from './../../../../store/actions/index';
+
+class SignUpForm extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            formConfig: {
-                name: {
-                    elementType: "input",
-                    elementConfig: {
-                        type: "text",
-                        placeholder: "Your Name",
-                    },
-                    value: "",
-                    validation: {
-                        required: true
-                    },
-                    valid: false,
-                    touched: false
-                },
-                username: {
-                    elementType: "input",
-                    elementConfig: {
-                        type: "text",
-                        placeholder: "Your Username",
-                    },
-                    value: "",
-                    validation: {
-                        required: true,
-                        isUsername: true
-                    },
-                    valid: false,
-                    touched: false
-                },
-                email: {
-                    elementType: "input",
-                    elementConfig: {
-                        type: "email",
-                        placeholder: "Your Email",
-                    },
-                    value: "",
-                    validation: {
-                        required: true,
-                        isEmail: true
-                    },
-                    valid: false,
-                    touched: false
-                },
-                password: {
-                    elementType: "input",
-                    elementConfig: {
-                        type: "password",
-                        min: "8",
-                        placeholder: "Your Password, Min 8 Characters"
-                    },
-                    value: "",
-                    validation: {
-                        required: true,
-                        minLength: 8 
-                    },
-                    valid: false,
-                    touched: false 
-                },
-
-            },
-            formIsValid: false
+            formConfig: SignupFormConfig,
+            loading: false
         }
+    }
+
+    sumbitHandler = formdata => {
+        this.setState({
+            loading: true
+        });
+        
+        axios.post("/auth/signup", formdata)
+            .then(response => {
+                axios.post("/auth/login", formdata)
+                    .then(response => {
+                        localStorage.setItem("userdata", JSON.stringify({
+                            token: response.data.token
+                        }));
+
+                        this.setState({
+                            loading: false
+                        });
+
+                        this.props.onSetToken(response.data.token);
+
+                        Alertify.success("Login Successful.");
+                    });
+                
+            })
+            .catch(err => {
+                this.setState({
+                    loading: false
+                })
+            });
     }
 
     render () {
@@ -76,17 +58,28 @@ class LoginForm extends Component {
                 <div className={classes.Header}>
                     A New Friend!!!
                 </div>
-                <Form 
-                    classes={classes.SignupForm}
-                    FormClassName={classes.SignupFormName}
-                    formConfig={this.state.formConfig} 
-                    formName="Sign Up" 
-                    url="/auth/signup" 
-                    buttonName="Sign Up Now!"
-                />
+                {this.state.loading ? (
+                    <Spinner />
+                ) : (
+                    <Form 
+                        classes={classes.SignupForm}
+                        FormClassName={classes.SignupFormName}
+                        formConfig={this.state.formConfig} 
+                        formName="Sign Up"  
+                        buttonName="Sign Up Now!"
+                        onFormSubmit={this.sumbitHandler}
+                    />
+                )}
             </Fragment>
         );
     }
 }
 
-export default LoginForm;
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onSetToken: token => dispatch(setToken(token))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(SignUpForm);

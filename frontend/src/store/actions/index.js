@@ -1,10 +1,8 @@
 export {
-    login,
-    signup,
     autoLogin,
     updatePassword,
-    logout,
-    forgotPassword
+    setToken,
+    logout
 } from './auth';
 
 export {

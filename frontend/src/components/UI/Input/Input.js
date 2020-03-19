@@ -13,13 +13,9 @@ const input = (props) => {
         event.target.parentNode.previousSibling.children[0].click();
     }
 
-    if(
-        props.invalid &&
-        props.shouldValidate &&
-        props.touched
-      ) {
-            inputClasses.push(classes.Invalid);
-        }
+    if(props.invalid && props.shouldValidate && props.touched) {
+        inputClasses.push(classes.Invalid);
+    }
 
     switch (props.elementType) {
         case "input":
@@ -68,9 +64,7 @@ const input = (props) => {
                         style={{
                             fontSize: "10px"
                         }} 
-                        onClick={
-                            fileHandler
-                        }
+                        onClick={fileHandler}
                     >
                         {props.elementConfig.uploadinfo}
                     </Button>

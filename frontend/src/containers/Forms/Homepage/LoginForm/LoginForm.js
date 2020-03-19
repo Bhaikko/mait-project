@@ -1,81 +1,29 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 
 import Form from '../../../Form/Form';
 import classes from './LoginForm.css';
 import Button from '../../../../components/UI/Button/Button';
 
+import axios from './../../../../axios';
+
 import Modal from './../../../../components/UI/Modal/Modal';
+import Spinner from './../../../../components/UI/Spinner/Spinner';
+import Alertify from './../../../../utilities/Aleretify/Alertify';
+
+import { LoginFormConfig, ForgetPasswordFormConfig } from './../../formConfigs';
+
+import { setToken } from './../../../../store/actions/index';
 
 class LoginForm extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            formConfig: {
-                email: {
-                    // label: "Email: ",
-                    elementType: "input",
-                    elementConfig: {
-                        type: "email",
-                        placeholder: "Enter Your Email",
-                    },
-                    value: "",
-                    validation: {
-                        required: true,
-                        isEmail: true
-                    },
-                    valid: false,
-                    touched: false
-                },
-                password: {
-                    // label: "Password: ",
-                    elementType: "input",
-                    elementConfig: {
-                        type: "password",
-                        placeholder: "Enter Your Password"
-                    },
-                    value: "",
-                    validation: {
-                        required: true
-                    },
-                    valid: false,
-                    touched: false 
-                }
-            },
-            formIsValid: false,
+            formConfig: LoginFormConfig,
+            forgotPasswordConfig: ForgetPasswordFormConfig,
             showForgotPasswordModal: false,
-            forgotPasswordConfig: {
-                email: {
-                    // label: "Email: ",
-                    elementType: "input",
-                    elementConfig: {
-                        type: "email",
-                        placeholder: "Enter Your Email",
-                    },
-                    value: "",
-                    validation: {
-                        required: true,
-                        isEmail: true
-                    },
-                    valid: false,
-                    touched: false
-                },
-                username: {
-                    // label: "Email: ",
-                    elementType: "input",
-                    elementConfig: {
-                        type: "text",
-                        placeholder: "Enter Your Username",
-                    },
-                    value: "",
-                    validation: {
-                        required: true,
-                        isUsername: true
-                    },
-                    valid: false,
-                    touched: false
-                },
-                
-            }
+            loginLoading: false,
+            forgetLoading: false
         }
     }
 
@@ -92,6 +40,53 @@ class LoginForm extends Component {
         });
     }
 
+    forgetPasswordSubmitHandler = formdata => {
+        this.setState({
+            forgetLoading: true
+        });
+
+        formdata.username = formdata.username.toLowerCase();
+        axios.post('/auth/forgotPassword', formdata)
+            .then(response => {
+                this.setState({
+                    forgetLoading: false
+                });
+
+                Alertify.success(response.data.message);
+            })
+            .catch(response => {
+                this.setState({
+                    forgetLoading: false
+                });
+            });
+    }
+
+    loginSubmitHandler = formdata => {
+        this.setState({
+            loginLoading: true
+        });
+        axios.post("/auth/login", formdata)
+            .then(response => {
+                this.setState({
+                    loginLoading: false
+                });
+
+                localStorage.setItem("userdata", JSON.stringify({
+                    token: response.data.token
+                }));
+                
+                this.props.onSetToken(response.data.token);
+            
+                Alertify.success("Login Successful.");
+            })
+            .catch(err => {
+                this.setState({
+                    loginLoading: false
+                });
+            });
+        
+    }
+
     render () {
         return (
             <Fragment>
@@ -104,6 +99,7 @@ class LoginForm extends Component {
                     formName="Login" 
                     url="/auth/login" 
                     buttonName="Login"
+                    onFormSubmit={this.loginSubmitHandler}
                 >
                     <Button 
                         classes={classes.ForgotPassword} 
@@ -114,14 +110,18 @@ class LoginForm extends Component {
                 </Form>
 
                 <Modal show={this.state.showForgotPasswordModal} modalClosed={this.closeModal}>
-                    <Form
-                        formConfig={this.state.forgotPasswordConfig}
-                        formName="Forgot Password"
-                        url="/auth/forgotPassword"
-                        buttonName="Request Password"
-                        classes={classes.ForgotPasswordForm}
-                        headerclass={classes.ForgotPasswordHeader}
-                    />
+                    {this.state.forgetLoading ? (
+                        <Spinner />
+                    ) : (
+                        <Form
+                            formConfig={this.state.forgotPasswordConfig}
+                            formName="Forgot Password"
+                            buttonName="Request Password"
+                            classes={classes.ForgotPasswordForm}
+                            headerclass={classes.ForgotPasswordHeader}
+                            onFormSubmit={this.forgetPasswordSubmitHandler}
+                        />
+                    )}
                 </Modal>
 
             </Fragment>
@@ -129,4 +129,10 @@ class LoginForm extends Component {
     }
 }
 
-export default LoginForm;
+const mapDispatchToProps = dispatch => {
+    return {
+        onSetToken: token => dispatch(setToken(token))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(LoginForm);

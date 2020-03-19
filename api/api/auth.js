@@ -124,12 +124,12 @@ router.post("/signup", (req, res, next) => {
     if (!validatePassword(req.body.password, res)) {
         return;
     }
+
     bcrypt.hash(req.body.password, saltRounds, function(err, password) {
         if (err) {
             throw err;
         }
 
-        
         const verificationCode = v4(); 
 
         databaseHandler.addUser(req.body.name, req.body.username, req.body.email, password, verificationCode)

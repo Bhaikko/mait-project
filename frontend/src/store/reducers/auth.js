@@ -7,22 +7,10 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.AUTH_START:
-            return {
-                ...initialState,
-                loading: true
-            }
-
         case actionTypes.AUTH_SUCCESS:
             return {
                 loading: false,
-                token: action.token,
-            }
-
-        case actionTypes.AUTH_FAILED:
-            return {
-                ...initialState,
-                loading: false
+                token: action.token
             }
 
         case actionTypes.LOGOUT:
@@ -35,18 +23,6 @@ const reducer = (state = initialState, action) => {
             }
 
         case actionTypes.UPDATE_PASSWORD_END:
-            return {
-                ...state,
-                loading: false
-            }
-
-        case actionTypes.FORGOT_PASSWORD_START:
-            return {
-                ...state,
-                loading: true,
-            }
-
-        case actionTypes.FORGOT_PASSWORD_END:
             return {
                 ...state,
                 loading: false

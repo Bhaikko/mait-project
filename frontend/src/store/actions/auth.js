@@ -3,72 +3,13 @@ import axios from './../../axios';
 import Alertify from './../../utilities/Aleretify/Alertify';
 import UserDetails from './../../utilities/UserDetail';
 
-const _login = (response, dispatch) => {
-    const userdata = {
-        token: response.data.token,
-        userId: response.data.userId,
-        username: response.data.username,
-        email: response.data.email,
-        isVerified: response.data.isVerified
-    }
-    localStorage.setItem("userdata", JSON.stringify(userdata));
 
-    dispatch({
+export const setToken = token => {
+    return {
         type: actionTypes.AUTH_SUCCESS,
-        token: response.data.token
-    });
-
-    Alertify.success("Login Successful.");
-}
-
-export const login = (formdata) => {
-    return dispatch => {
-        dispatch({
-            type: actionTypes.AUTH_START
-        });
-
-        axios.post("/auth/login", formdata)
-            .then(response => {
-                _login(response, dispatch);
-            })
-            .catch(err => {
-                dispatch({
-                    type: actionTypes.AUTH_FAILED,
-                });
-            });
-
+        token: token
     }
 }
-
-export const signup = (formdata) => {
-    return dispatch => {
-        dispatch({
-            type: actionTypes.AUTH_START
-        });
-
-        axios.post("/auth/signup", formdata)
-            .then(response => {
-                if (response.status === 201) {
-                    axios.post("/auth/login", formdata)
-                        .then(response => {
-                            _login(response, dispatch);
-                        });
-                } else {
-                    dispatch({
-                        type: actionTypes.AUTH_FAILED,
-                    });
-                }
-            })
-            .catch(err => {
-                console.log(err);
-                dispatch({
-                    type: actionTypes.AUTH_FAILED,
-                });
-            });
-
-    }
-}
-
 
 export const updatePassword = (formdata) => {
     return dispatch => {
@@ -91,31 +32,6 @@ export const updatePassword = (formdata) => {
             })
             .catch(err => {
                 console.log(err);
-                dispatch({
-                    type: actionTypes.UPDATE_PASSWORD_END
-                });
-            });
-    }
-}
-
-export const forgotPassword = formdata => {
-    return dispatch => {
-        dispatch({
-            type: actionTypes.FORGOT_PASSWORD_START
-        });
-
-        formdata.username = formdata.username.toLowerCase();
-
-        axios.post('/auth/forgotPassword', formdata)
-            .then(response => {
-                console.log(response);
-                dispatch({
-                    type: actionTypes.UPDATE_PASSWORD_END
-                });
-
-                Alertify.success(response.data.message);
-            })
-            .catch(response => {
                 dispatch({
                     type: actionTypes.UPDATE_PASSWORD_END
                 });
