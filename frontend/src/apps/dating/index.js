@@ -23,7 +23,7 @@ class DatingRoute extends Component {
         super(props);
         this.socket = socketIOClient(SERVER_URL);
         this.userId = UserDetail.get_userId();
-
+        console.log(this.userId);
         this.socket.emit('connectToChat', {
             userId: this.userId
         });

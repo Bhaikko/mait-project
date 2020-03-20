@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Form from '../../../Form/Form';
 import classes from './SignupForm.css';
 
-import { SignupFormConfig } from './../../formConfigs';
+import { SignupFormConfig } from './../formConfigs';
 import axios from './../../../../axios';
 
 import Alertify from './../../../../utilities/Aleretify/Alertify';

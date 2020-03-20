@@ -10,34 +10,6 @@ export const setToken = token => {
     }
 }
 
-export const updatePassword = (formdata) => {
-    return dispatch => {
-        dispatch({
-            type: actionTypes.UPDATE_PASSWORD_START
-        });
-
-        formdata = {
-            ...formdata,
-            id: UserDetail.get_userId()
-        }
-
-        axios.put('/auth/updatePassword', formdata)
-            .then(response => {
-                dispatch({
-                    type: actionTypes.UPDATE_PASSWORD_END
-                });
-
-                Alertify.success(response.data.message);
-            })
-            .catch(err => {
-                console.log(err);
-                dispatch({
-                    type: actionTypes.UPDATE_PASSWORD_END
-                });
-            });
-    }
-}
-
 export const autoLogin = (token) => {
     return {
         type: actionTypes.AUTH_SUCCESS,

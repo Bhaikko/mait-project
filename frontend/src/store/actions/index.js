@@ -1,6 +1,5 @@
 export {
     autoLogin,
-    updatePassword,
     setToken,
     logout
 } from './auth';

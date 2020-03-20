@@ -117,3 +117,51 @@ module.exports.ForgetPasswordFormConfig = {
         touched: false
     }
 }
+
+module.exports.ChangePasswordFormConfig = {
+    oldPassword: {
+        label: "Enter Your Last Password",
+        elementType: "input",
+        elementConfig: {
+            placeholder: "Last Password",
+            type: "password"
+        },
+        validation: {
+            required: true,
+            minLength: 8
+        },
+        value: "",
+        valid: false,
+        touched: false
+    },
+    newPassword: {
+        label: "Enter Your New Password",
+        elementType: "input",
+        elementConfig: {
+            placeholder: "New Password",
+            type: "password"
+        },
+        validation: {
+            required: true,
+            minLength: 8
+        },
+        value: "",
+        valid: false,
+        touched: false 
+    },
+    confirmPassword: {
+        label: "Retype Your New Password",
+        elementType: "input",
+        elementConfig: {
+            placeholder: "Retype New Password",
+            type: "password"
+        },
+        validation: {
+            required: true,
+            minLength: 8
+        },
+        value: "",
+        valid: false,
+        touched: false 
+    }
+}

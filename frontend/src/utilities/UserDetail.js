@@ -44,7 +44,7 @@ class UserDetail {
             this._reset();
         }
 
-        return this.userdata.userId
+        return this.userdata.id
     }
     static get_email () {
         if (!this.userdata) {

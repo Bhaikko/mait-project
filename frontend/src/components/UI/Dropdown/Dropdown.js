@@ -28,7 +28,6 @@ class Dropdown extends Component {
     }
 
     newNotifications = state => {
-        console.log(this.state.notify, state);
         if (this.state.notify !== state && state === true) {
             Alertify.success('A New Notification');
         }

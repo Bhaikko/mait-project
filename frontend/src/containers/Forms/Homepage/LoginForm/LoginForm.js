@@ -11,7 +11,7 @@ import Modal from './../../../../components/UI/Modal/Modal';
 import Spinner from './../../../../components/UI/Spinner/Spinner';
 import Alertify from './../../../../utilities/Aleretify/Alertify';
 
-import { LoginFormConfig, ForgetPasswordFormConfig } from './../../formConfigs';
+import { LoginFormConfig, ForgetPasswordFormConfig } from './../formConfigs';
 
 import { setToken } from './../../../../store/actions/index';
 

@@ -40,7 +40,7 @@ class App extends Component {
       </Switch>
     );
 
-    if (!this.props.token) {
+    if (!localStorage.getItem("userdata")) {
       routes = (
         <Switch>
           <Route path="/auth" component={AuthPage} />
@@ -50,7 +50,7 @@ class App extends Component {
       );
     }
 
-    if (this.props.token && !UserDetail.get_verified()) {
+    if (localStorage.getItem("userdata") && !UserDetail.get_verified()) {
       routes = (
         <Switch>
           <Route path="/" exact component={HomepageApp} />

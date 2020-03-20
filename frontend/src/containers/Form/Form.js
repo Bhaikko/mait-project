@@ -71,10 +71,6 @@ class Form extends Component {
         // }
 
         switch (this.props.url) {
-            case "/auth/changePassword":
-                this.props.onUpdatePassword(formData);
-                break;
-
             case "/dating/updateDatingProfile":
                 this.props.onUpdateDatingProfile(formData);
                 break;
@@ -198,7 +194,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onUpdateDatingProfile: formData => dispatch(actions.updateDatingProfile(formData)),
-        onUpdatePassword: formData => dispatch(actions.updatePassword(formData)),
         onSubmitReport: formData => dispatch(actions.submitReport(formData)),
     }
 }
