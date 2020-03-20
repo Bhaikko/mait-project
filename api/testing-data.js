@@ -1083,12 +1083,12 @@ const hashPassword = password => {
 module.exports.seedData = async () => {
 
     console.log("[+] Initializing Database......");
-    const hashedPassword = await hashPassword("password");
+    const hashedPassword = await hashPassword("Password123");
 
     console.log("[+] Adding Users......");
     await Promise.all(
         users.map(async (user) => {
-            await addUser(user.name, user.username, user.email, hashedPassword);
+            await addUser(user.name, user.username, user.email, hashedPassword, true);
         })
     );
     console.log("[+] Users Added");
@@ -1109,13 +1109,13 @@ module.exports.seedData = async () => {
     );
     console.log("[+] Dating Profiles Updated");
 
-    console.log("[+] Updating Profile Photos.......");
-    await Promise.all(
-        profilePhotos.map(async (photo) => {
-            await addProfilePhoto(photo.userId, photo.imageUrl);
-        })
-    );
-    console.log("[+] Profile Photos Updated");
+    // console.log("[+] Updating Profile Photos.......");
+    // await Promise.all(
+    //     profilePhotos.map(async (photo) => {
+    //         await addProfilePhoto(photo.userId, photo.imageUrl);
+    //     })
+    // );
+    // console.log("[+] Profile Photos Updated");
 
     console.log("[+] Assigning Tags......");
 

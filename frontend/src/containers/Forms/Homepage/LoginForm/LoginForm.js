@@ -44,7 +44,7 @@ class LoginForm extends Component {
         this.setState({
             forgetLoading: true
         });
-
+        
         formdata.username = formdata.username.toLowerCase();
         axios.post('/auth/forgotPassword', formdata)
             .then(response => {
@@ -65,6 +65,7 @@ class LoginForm extends Component {
         this.setState({
             loginLoading: true
         });
+
         axios.post("/auth/login", formdata)
             .then(response => {
                 this.setState({
@@ -80,6 +81,7 @@ class LoginForm extends Component {
                 Alertify.success("Login Successful.");
             })
             .catch(err => {
+                console.log(err);
                 this.setState({
                     loginLoading: false
                 });

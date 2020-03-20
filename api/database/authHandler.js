@@ -15,7 +15,6 @@ module.exports.addUser = (name, username, email, password, verificationCode) => 
         email,
         password,
         username,
-        // isVerified: true // this is for development build only
         isVerified: verificationCode
     })
         .then(response => {
