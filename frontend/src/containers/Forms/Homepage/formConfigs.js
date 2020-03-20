@@ -50,7 +50,8 @@ module.exports.SignupFormConfig = {
         value: "",
         validation: {
             required: true,
-            minLength: 8 
+            minLength: 8,
+            isPassword: true 
         },
         valid: false,
         touched: false 
@@ -80,7 +81,8 @@ module.exports.LoginFormConfig = {
         },
         value: "",
         validation: {
-            required: true
+            required: true,
+            isPassword: true
         },
         valid: false,
         touched: false 
@@ -128,7 +130,8 @@ module.exports.ChangePasswordFormConfig = {
         },
         validation: {
             required: true,
-            minLength: 8
+            minLength: 8,
+            isPassword: true
         },
         value: "",
         valid: false,
@@ -143,7 +146,8 @@ module.exports.ChangePasswordFormConfig = {
         },
         validation: {
             required: true,
-            minLength: 8
+            minLength: 8,
+            isPassword: true
         },
         value: "",
         valid: false,
@@ -158,7 +162,8 @@ module.exports.ChangePasswordFormConfig = {
         },
         validation: {
             required: true,
-            minLength: 8
+            minLength: 8,
+            isPassword: true
         },
         value: "",
         valid: false,

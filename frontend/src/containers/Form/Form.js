@@ -5,6 +5,8 @@ import Input from './../../components/UI/Input/Input';
 import Button from './../../components/UI/Button/Button';
 import Spinner from './../../components/UI/Spinner/Spinner';
 
+import validation from './../../utilities/Validate';
+
 import * as actions from './../../store/actions/index';
 
 import classes from './Form.css';
@@ -26,31 +28,31 @@ class Form extends Component {
         let isValid = true;
 
         if(rules.required) {
-            isValid = value.trim() !== "" && isValid;
+            isValid = validation.required(value) && isValid;
         }
 
         if (rules.isUsername) {
-            if (value.includes(" ")) {
-                isValid = false;
-            }
+            isValid = validation.isUsername(value) && isValid;
         }
 
         if(rules.isEmail) {
-            // eslint-disable-next-line
-            const pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            isValid = pattern.test(value) && isValid;
+            isValid = validation.isEmail(value) && isValid;
         }
 
         if(rules.minLength) {
-            isValid = value.trim().length > rules.minLength && isValid
+            isValid = validation.minLength(value, rules.minLength) && isValid;
         }
 
         if(rules.isPhone) {
-            isValid = value.length === 10 && isValid
+            isValid = validation.isPhone(value) && isValid
         }
 
         if (rules.min) {
-            isValid = value >= rules.min && isValid
+            isValid = validation.min(value, rules.min) && isValid
+        }
+
+        if (rules.isPassword) {
+            isValid = validation.isPassword(value) && isValid;
         }
 
         return isValid;

@@ -8,187 +8,187 @@ const users = [
         name: "Leanne Graham1",
         username: "Bret1",
         email: "test1@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham2",
         username: "Bret2",
         email: "test2@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham3",
         username: "Bret3",
         email: "test3@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham4",
         username: "Bret4",
         email: "test4@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham5",
         username: "Bret5",
         email: "test5@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham6",
         username: "Bret6",
         email: "test6@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham7",
         username: "Bret7",
         email: "test7@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham8",
         username: "Bret8",
         email: "test8@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham9",
         username: "Bret9",
         email: "test9@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham10",
         username: "Bret10",
         email: "test10@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham11",
         username: "Bret11",
         email: "test11@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham12",
         username: "Bret12",
         email: "test12@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham13",
         username: "Bret13",
         email: "test13@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham14",
         username: "Bret14",
         email: "test14@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham15",
         username: "Bret15",
         email: "test15@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham16",
         username: "Bret16",
         email: "test16@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham17",
         username: "Bret17",
         email: "test17@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham18",
         username: "Bret18",
         email: "test18@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham19",
         username: "Bret19",
         email: "test19@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham20",
         username: "Bret20",
         email: "test20@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham21",
         username: "Bret21",
         email: "test21@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham22",
         username: "Bret22",
         email: "test22@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham23",
         username: "Bret23",
         email: "test23@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham24",
         username: "Bret24",
         email: "test24@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham25",
         username: "Bret",
         email: "test25@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham26",
         username: "Bret26",
         email: "test26@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham27",
         username: "Bret27",
         email: "test27@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham28",
         username: "Bret28",
         email: "test28@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham29",
         username: "Bret29",
         email: "test29@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham30",
         username: "Bret30",
         email: "test30@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     {
         name: "Leanne Graham31",
         username: "Bret31",
         email: "test31@gmail.com",
-        password: "password"        
+        password: "Password123"        
     },
     
 ]

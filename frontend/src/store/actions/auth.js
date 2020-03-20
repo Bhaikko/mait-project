@@ -1,5 +1,4 @@
 import * as actionTypes from './actionTypes';
-import axios from './../../axios';
 import Alertify from './../../utilities/Aleretify/Alertify';
 import UserDetail from './../../utilities/UserDetail';
 
