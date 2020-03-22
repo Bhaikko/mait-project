@@ -32,6 +32,14 @@ class UserDetail {
         return JSON.parse(localStorage.getItem("userdata")).token;
     }
 
+    static get_name = () => {
+        if (!this.userdata) {
+            this._reset();
+        }
+
+        return this.userdata.name;
+    }
+
     static get_username = () => {
         if (!this.userdata) {
             this._reset();

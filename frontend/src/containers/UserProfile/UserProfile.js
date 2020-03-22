@@ -37,122 +37,122 @@ class UserProfile extends Component {
         })
             .then(response => {
                 Alertify.success(response.data.message + " " + this.props.profile.name + "!");
-            })
-            .catch(err => {
-                console.log(err);
             });
     }
 
     render () {
         return (
-            <Fragment>
-                <CenterContainer style={{
-                    paddingBottom: 30
-                }}>
-                    {this.props.loading ? (
-                        <Spinner />
-                    ) : (
-                        <Fragment>
-                            <ContentContainer classes={classes.ProfileContainer}>
-                                <ContentTitle editable={this.props.editable} form={<EditProfileForm />}>Profile</ContentTitle>
-                                
+            <CenterContainer classes={classes.CenterContainer}>
+                {this.props.loading ? (
+                    <Spinner />
+                ) : (
+                    <Fragment>
+                        <ContentContainer classes={classes.ProfileContainer}>
+                            <ContentTitle 
+                                editable={this.props.editable} 
+                                form={<EditProfileForm />}
+                            >
+                                Profile
+                            </ContentTitle>
+                            
+                            {this.props.loading || !this.props.mainProfilePhoto ? (
+                                <Spinner />
+                            ) : (
+                                <ProfilePhoto 
+                                    src={this.props.mainProfilePhoto.imageUrl}
+                                    alt="..." 
+                                    classname={classes.ProfilePhoto}
+                                    borderRadius="50%"
+                                />
+                            )}
+                        
+                            <ProfileName
+                                style={{
+                                    textAlign: "center",
+                                    marginTop: 10,
+                                    fontSize: 20
+                                }}
+                            >
+                                {this.props.profile.name}
+                            </ProfileName>
+                        
+                            <ProfileInfo infoimage={UsernameIcon}>{this.props.profile.username}</ProfileInfo>
+                            {this.props.editable ? (
+                                <Fragment>
+                                    <ProfileInfo infoimage={MailIcon}>{this.props.profile.email}</ProfileInfo>
+                                </Fragment>
+                            ) : (
+                                null
+                            )}
+                            <ProfileInfo infoimage={GradIcon}>{this.props.datingProfile.collegeName || "-"}</ProfileInfo>
+                            <ProfileInfo infoimage={HeartIcon}>{this.props.datingProfile.relationshipStatus || "-"}</ProfileInfo>
+                            <ProfileInfo infoimage={AgeIcon}>{this.props.datingProfile.age || "-"}</ProfileInfo>
+                            <ProfileInfo infoimage={GenderIcon}>{this.props.datingProfile.gender || "-"}</ProfileInfo>
+                            <ProfileInfo infoimage={InterestIcon}>{this.props.datingProfile.intrestedIn || "-"}</ProfileInfo>
+
+
+                            <div className={classes.ProfileButtonsContainer}>
+                                {this.props.editable ? (
+                                    <ChangePassword />
+                                ) : (
+                                    <Fragment>
+                                        <Button 
+                                            classes={classes.LikeButton}
+                                            onClick={this.likeHandler}
+                                        >
+                                            Like
+                                        </Button>  
+                                        <SubmitReport />
+                                    </Fragment>
+                                )}
+                            </div>
+
+                        </ContentContainer>
+                        <div className={classes.Rcontainer}>                        
+                            <ContentContainer classes={classes.BioContainer}>
+                                <ContentTitle >Bio</ContentTitle>
+                                <div className={classes.SummaryContent}>
+                                    {this.props.datingProfile.about || "-"}
+                                </div>
+
+                            </ContentContainer>
+
+                            <ContentContainer classes={classes.InterestContainer}>
+                                <ContentTitle>Interests</ContentTitle>
+                                {this.props.loading ? (
+                                    <Spinner />
+                                ) : (
+                                    <Tags 
+                                        tags={this.props.tags} 
+                                        editable={this.props.editable}
+                                        deleteTagHandler={this.props.onDeleteTag}    
+                                        updateprofile={this.props.updateprofile}
+                                    />
+                                )}
+
+                            </ContentContainer>
+
+                            <ContentContainer classes={classes.PhotosContainer}>
+                                <ContentTitle>Photos</ContentTitle>
                                 {this.props.loading || !this.props.mainProfilePhoto ? (
                                     <Spinner />
                                 ) : (
-                                    <ProfilePhoto 
-                                        src={this.props.mainProfilePhoto.imageUrl}
-                                        alt="..." 
-                                        classname={classes.ProfilePhoto}
-                                        borderRadius="50%"
+                                    <ProfilePhotos 
+                                        photos={this.props.profilePhotos} 
+                                        editable={this.props.editable}
+                                        addPhotoHandler={this.props.onAddPhoto}
+                                        deletePhotoHandler={this.props.onDeletePhoto}
+                                        setMainProfilePhotoHandler={this.props.onSetMainProfilePhoto}
+                                        mainPhotoId={this.props.mainPhotoId}
                                     />
                                 )}
-                            
-                                <ProfileName
-                                    style={{
-                                        textAlign: "center",
-                                        marginTop: 10,
-                                        fontSize: 20
-                                    }}
-                                >
-                                    {this.props.profile.name}
-                                </ProfileName>
-                            
-                                <ProfileInfo infoimage={UsernameIcon}>{this.props.profile.username}</ProfileInfo>
-                                {this.props.editable ? (
-                                    <Fragment>
-                                        <ProfileInfo infoimage={MailIcon}>{this.props.profile.email}</ProfileInfo>
-                                    </Fragment>
-                                ) : (
-                                    null
-                                )}
-                                <ProfileInfo infoimage={GradIcon}>{this.props.datingProfile.collegeName || "-"}</ProfileInfo>
-                                <ProfileInfo infoimage={HeartIcon}>{this.props.datingProfile.relationshipStatus || "-"}</ProfileInfo>
-                                <ProfileInfo infoimage={AgeIcon}>{this.props.datingProfile.age || "-"}</ProfileInfo>
-                                <ProfileInfo infoimage={GenderIcon}>{this.props.datingProfile.gender || "-"}</ProfileInfo>
-                                <ProfileInfo infoimage={InterestIcon}>{this.props.datingProfile.intrestedIn || "-"}</ProfileInfo>
-
-
-                                <div className={classes.ProfileButtonsContainer}>
-                                    {this.props.editable ? (
-                                        <ChangePassword />
-                                    ) : (
-                                        <Fragment>
-                                            <Button 
-                                                classes={classes.LikeButton}
-                                                onClick={this.likeHandler}
-                                            >Like</Button>  
-                                            <SubmitReport />
-                                        </Fragment>
-                                    )}
-                                </div>
-        
+                                
                             </ContentContainer>
-                            <div className={classes.Rcontainer}>                        
-                                <ContentContainer classes={classes.BioContainer}>
-                                    <ContentTitle >Bio</ContentTitle>
-                                    <div className={classes.SummaryContent}>
-                                        {this.props.datingProfile.about || "-"}
-                                    </div>
-        
-                                </ContentContainer>
-        
-                                <ContentContainer classes={classes.InterestContainer}>
-                                    <ContentTitle>Interests</ContentTitle>
-                                    {this.props.loading ? (
-                                        <Spinner />
-                                    ) : (
-                                        <Tags 
-                                            tags={this.props.tags} 
-                                            editable={this.props.editable}
-                                            deleteTagHandler={this.props.onDeleteTag}    
-                                        />
-                                    )}
-        
-                                </ContentContainer>
-        
-                                <ContentContainer classes={classes.PhotosContainer}>
-                                    <ContentTitle>Photos</ContentTitle>
-                                    {this.props.loading || !this.props.mainProfilePhoto ? (
-                                        <Spinner />
-                                    ) : (
-                                        <ProfilePhotos 
-                                            photos={this.props.profilePhotos} 
-                                            editable={this.props.editable}
-                                            addPhotoHandler={this.props.onAddPhoto}
-                                            deletePhotoHandler={this.props.onDeletePhoto}
-                                            setMainProfilePhotoHandler={this.props.onSetMainProfilePhoto}
-                                            mainPhotoId={this.props.mainPhotoId}
-                                        />
-                                    )}
-                                    
-                                </ContentContainer>
-                            </div>
-                        </Fragment>
-                    )}
-                </CenterContainer>
-                
-            </Fragment>
-        )
+                        </div>
+                    </Fragment>
+                )}
+            </CenterContainer>
+        );
     }
 
 }

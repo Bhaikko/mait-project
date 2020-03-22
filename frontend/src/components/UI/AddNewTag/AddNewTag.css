@@ -11,3 +11,7 @@
     height: 50px;
     cursor: pointer;
 }
+
+.Modal {
+    width: 600px !important; 
+}

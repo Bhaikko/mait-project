@@ -17,63 +17,57 @@ router.get("/", (req, res, next) => {
 });
 
 const validatePassword = (password, res) => {
-    if (process.env.MODE === "Production") {
-        // strict validation for password
-        if (password.length < 8) {
-            res.status(400).json({
-                message: "Password Length Must Be Greater Than 8"
-            });
-        } else {
-            const checkList = {
-                hasUpperCaseLetter: false,
-                hasLowerCaseLetter: false,
-                hasNumber: false
-            }
+    if (password.length < 8) {
+        res.status(400).json({
+            message: "Password Length Must Be Greater Than 8"
+        });
+    } else {
+        const checkList = {
+            hasUpperCaseLetter: false,
+            hasLowerCaseLetter: false,
+            hasNumber: false
+        }
 
-            for (let i = 0; i < password.length; i++) {
-                if (!checkList.hasLowerCaseLetter) {
-                    if (password[i] >= 'a' && password <= 'z') {
-                        checkList.hasLowerCaseLetter = true;
-                    }
-                }
-
-                if (!checkList.hasUpperCaseLetter) {
-                    if (password[i] >= 'A' && password[i] <= 'Z') {
-                        checkList.hasUpperCaseLetter = true;
-                    }
-                }
-
-                if (!checkList.hasNumber) {
-                    if (password[i] <= '9' && password[i] >= '0') {
-                        checkList.hasNumber = true;
-                    }
+        for (let i = 0; i < password.length; i++) {
+            if (!checkList.hasLowerCaseLetter) {
+                if (password[i] >= 'a' && password <= 'z') {
+                    checkList.hasLowerCaseLetter = true;
                 }
             }
 
             if (!checkList.hasUpperCaseLetter) {
-                res.status(400).json({
-                    message: "Password Must Have Atleast One Uppercase Letter"
-                });
-                return false;
-            }
-            if (!checkList.hasLowerCaseLetter) {
-                res.status(400).json({
-                    message: "Password Must Have Atleast One Lowercase Letter"
-                });
-                return false;
-            }
-            if (!checkList.hasNumber) {
-                res.status(400).json({
-                    message: "Password Must Have Atleast One Number"
-                });
-                
-                return false;
+                if (password[i] >= 'A' && password[i] <= 'Z') {
+                    checkList.hasUpperCaseLetter = true;
+                }
             }
 
-            return true;
+            if (!checkList.hasNumber) {
+                if (password[i] <= '9' && password[i] >= '0') {
+                    checkList.hasNumber = true;
+                }
+            }
         }
-    } else {
-        // no need to validate testing passwords
+
+        if (!checkList.hasUpperCaseLetter) {
+            res.status(400).json({
+                message: "Password Must Have Atleast One Uppercase Letter"
+            });
+            return false;
+        }
+        if (!checkList.hasLowerCaseLetter) {
+            res.status(400).json({
+                message: "Password Must Have Atleast One Lowercase Letter"
+            });
+            return false;
+        }
+        if (!checkList.hasNumber) {
+            res.status(400).json({
+                message: "Password Must Have Atleast One Number"
+            });
+            
+            return false;
+        }
+
         return true;
     }
 }

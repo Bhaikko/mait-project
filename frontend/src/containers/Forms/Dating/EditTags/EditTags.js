@@ -13,22 +13,14 @@ class EditTags extends Component {
             tags: [],
             filteredTags: null
         }
-
-        this._isMounted = false;
     }
 
     componentDidMount () {
-        this._isMounted = true;
         axios.get("/dating/tags")
             .then(response => {
-                if (this._isMounted) {
-                    this.setState({
-                        tags: response.data
-                    });
-                }
-            })
-            .catch(err => {
-                console.log(err); 
+                this.setState({
+                    tags: response.data
+                });
             });
     }
 
@@ -39,7 +31,15 @@ class EditTags extends Component {
     }
 
     addTag = tag => {
-        this.props.onAddTag(tag);
+        axios.post('/dating/usertag', tag)
+            .then(response => {
+                const newTags = this.props.tags;
+                newTags.push(response.data.tag);
+                this.props.updateprofile("tag", newTags, response.data.message);
+
+            })
+            .catch(() => {})
+        
         this.props.closeModal();
     }
 
@@ -61,10 +61,6 @@ class EditTags extends Component {
                 )}
             </React.Fragment>
         );
-    }
-
-    componentWillUnmount() {
-        this._isMounted = false;
     }
 }
 

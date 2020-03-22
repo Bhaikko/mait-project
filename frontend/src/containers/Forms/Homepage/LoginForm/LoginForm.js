@@ -81,7 +81,6 @@ class LoginForm extends Component {
                 Alertify.success("Login Successful.");
             })
             .catch(err => {
-                console.log(err);
                 this.setState({
                     loginLoading: false
                 });

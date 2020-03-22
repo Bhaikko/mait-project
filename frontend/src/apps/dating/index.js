@@ -7,7 +7,6 @@ import classes from './index.css';
 import Dating from './Dating';
 import Inbox from './Inbox/Inbox';
 import Explore from './Explore/Explore';
-import * as actions from './../../store/actions/index';
 
 import Layout from './../../containers/Layout/Layout';
 import NavigationItem from './../../components/Navigation/NavigationItems/NavigationItem/NavigationItem';
@@ -34,11 +33,6 @@ class DatingRoute extends Component {
             });
         }
     }
-
-    componentDidMount () {
-        this.props.onGetProfile();
-    }
-
     render () {
         let navigationItems = (
             <Fragment>
@@ -81,10 +75,5 @@ class DatingRoute extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onGetProfile: () => dispatch(actions.getProfile())
-    }
-}
 
-export default connect(null, mapDispatchToProps)(DatingRoute);
+export default DatingRoute;

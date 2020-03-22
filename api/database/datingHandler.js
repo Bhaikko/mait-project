@@ -64,9 +64,11 @@ module.exports.getProfilePhotos = userId => {
 }
 
 module.exports.addUserTag = (userId, tag) => {
-    return UserTags.create({
-        userId, 
-        tag
+    return UserTags.findOrCreate({
+        where: {
+            userId, 
+            tag
+        }
     });
 }
 

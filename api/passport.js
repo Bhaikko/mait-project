@@ -23,6 +23,7 @@ passport.use("user", new LocalStrategy({ usernameField: "email", passwordField: 
                 if (res) {
                     return done(null, {
                         id: user.id,
+                        name: user.name,
                         username: user.username,
                         email: user.email,
                         isVerified: user.isVerified === "1" ? true : false

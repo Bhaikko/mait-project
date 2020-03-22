@@ -7,8 +7,6 @@ import EditTags from './../../../containers/Forms/Dating/EditTags/EditTags';
 import Modal from '../Modal/Modal';
 
 class AddNew extends Component {
-
-
     state = {
         showForm: false
     }
@@ -27,10 +25,7 @@ class AddNew extends Component {
 
     render () {
         return (
-            <div 
-                className={classes.AddNewContainer}
-                {...this.props}
-            >
+            <div className={classes.AddNewContainer}>
                 <img 
                     className={classes.AddNewIcon} 
                     src={AddIcon} 
@@ -38,8 +33,12 @@ class AddNew extends Component {
                     onClick={this.clickHandler}
                 />
 
-                <Modal show={this.state.showForm} modalClosed={this.closeForm}>
-                    <EditTags closeModal={this.closeForm} />
+                <Modal show={this.state.showForm} modalClosed={this.closeForm} classes={classes.Modal}>
+                    <EditTags 
+                        closeModal={this.closeForm} 
+                        updateprofile={this.props.updateprofile} 
+                        tags={this.props.tags}
+                    />
                     
                 </Modal>
     

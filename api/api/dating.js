@@ -15,6 +15,7 @@ router.get("/", (req, res, next) => {
     res.send("Dating Router Working");
 });
 
+
 const errorHandler = (error, res, message = "Something Went wrong") => {
     console.log(error);
     res.status(500).json({
@@ -40,10 +41,21 @@ router.post("/usertag", (req, res, next) => {
         });
     } else {
         databaseHandler.addUserTag(req.user.id, req.body.tag)
-            .then(resposne => {
-                res.status(201).json({
-                    message: "Tag Added Successfully"
-                });
+            .then(response => {
+                if (response[1]) {
+                    const tag = {
+                        id: response[0].id,
+                        tag: response[0].tag
+                    }
+                    res.status(201).json({
+                        tag: tag,
+                        message: "Tag Added Successfully"
+                    }); 
+                } else {
+                    res.status(400).json({
+                        message: "Tag Already Exist"
+                    });
+                }
             })
             .catch(err => {
                 errorHandler(err, res);

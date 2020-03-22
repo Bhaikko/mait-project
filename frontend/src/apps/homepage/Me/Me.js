@@ -7,11 +7,52 @@ import UserProfile from './../../../containers/UserProfile/UserProfile';
 
 import * as actions from './../../../store/actions/index';
 import Spinner from '../../../components/UI/Spinner/Spinner';
+import axios from './../../../axios';
+import UserDetail from '../../../utilities/UserDetail';
+import Alertify from '../../../utilities/Aleretify/Alertify';
 
 class Me extends Component {
 
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            loading: false,
+            tags: [],
+            profilePhotos: [],
+            datingProfile: {},
+            profile: {
+                id: UserDetail.get_userId(),
+                username: UserDetail.get_username(),
+                name: UserDetail.get_name()
+            }
+        }
+    }
+
     componentDidMount () {
-        this.props.onGetProfile();
+        axios.get(`/dating/profile/${UserDetail.get_userId()}`)
+            .then(response => {
+                this.setState({
+                    loading: false,
+                    tags: response.data.userTags,
+                    datingProfile: response.data.datingProfile,
+                    profilePhotos: response.data.profilePhotos
+                })
+            })
+            .catch(err => {
+               this.setState({
+                loading: false
+               });
+            });
+    }
+
+    updateProfile = (key, value, message) => {
+        console.log(key, value);
+        this.setState({
+            [key]: value
+        });
+
+        Alertify.success(message);
     }
 
     render () {
@@ -24,26 +65,27 @@ class Me extends Component {
             </Fragment>
         );
         
+        const mainProfilePhoto = this.state.profilePhotos.filter(photo => photo.main);
 
         return (
             <Layout navigationItems={navigationItems}>
-                {this.props.loading || !this.props.mainProfilePhoto ? (
+                {this.props.loading ? (
                     <Spinner />
                 ) : (
                     <UserProfile
-                        profile={this.props.profile}
-                        datingProfile={this.props.datingProfile}
-                        tags={this.props.tags}
-                        mainProfilePhoto={this.props.mainProfilePhoto}
-                        profilePhotos={this.props.profilePhotos}
+                        datingProfile={this.state.datingProfile}
+                        tags={this.state.tags}
+                        mainProfilePhoto={mainProfilePhoto}
+                        profilePhotos={this.state.profilePhotos}
+                        loading={this.state.loading}
+                        profile={this.state.profile}
+                        updateprofile={this.updateProfile}
                         editable
 
-                        loading={this.props.loading}
                         onAddPhoto={this.props.onAddPhoto}
                         onDeletePhoto={this.props.onDeletePhoto}
                         onSetMainProfilePhoto={this.props.onSetMainProfilePhoto}
                         onDeleteTag={this.props.onDeleteTag}  
-                        mainPhotoId={this.props.mainProfilePhoto.id}
                     />
                 )}
             </Layout>
@@ -51,20 +93,9 @@ class Me extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        loading: state.dating.loading,
-        profile: state.dating.profile,
-        mainProfilePhoto: state.dating.mainProfilePhoto,
-        datingProfile: state.dating.datingProfile,
-        tags: state.dating.tags,
-        profilePhotos: state.dating.profilePhotos
-    }
-}
 
 const mapDispatchToProps = dispatch => {
     return {
-        onGetProfile: () => dispatch(actions.getProfile()),
         onDeleteTag: tag => dispatch(actions.deleteTag(tag)),
         onAddPhoto: photo => dispatch(actions.addProfilePhoto(photo)),
         onDeletePhoto: photo => dispatch(actions.deleteProfilePhoto(photo)),
@@ -73,4 +104,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Me);
+export default connect(null, mapDispatchToProps)(Me);
