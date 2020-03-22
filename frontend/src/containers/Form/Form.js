@@ -72,17 +72,7 @@ class Form extends Component {
         //     console.log(pair[0]+ ', ' + pair[1]); 
         // }
 
-        switch (this.props.url) {
-            case "/dating/report":
-                const reportForId = window.location.href.split("/").pop();
-                formData.reportForId = reportForId;
-                this.props.onSubmitReport(formData);
-                break;
-            
-            default:
-                this.props.onFormSubmit(formData);
-                break;
-        }
+        this.props.onFormSubmit(formData); 
 
         this.setState({
             form: this.props.formConfig,

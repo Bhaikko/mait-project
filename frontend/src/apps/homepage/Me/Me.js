@@ -33,7 +33,6 @@ class Me extends Component {
         axios.get(`/dating/profile/${UserDetail.get_userId()}`)
             .then(response => {
                 const mainProfilePhoto = response.data.profilePhotos.find(cPhoto => cPhoto.main === true);
-                console.log(mainProfilePhoto)
                 this.setState({
                     loading: false,
                     tags: response.data.userTags,
@@ -127,6 +126,7 @@ class Me extends Component {
                     } else {
                         cPhoto.main = false
                     }
+                    return "";
                 });
                 this.updateProfile("profilePhotos", currentPhotos, response.data.message);
             })

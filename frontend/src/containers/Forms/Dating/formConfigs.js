@@ -73,3 +73,19 @@ module.exports.EditProfileFormConfig = {
         touched: false 
     }
 }
+
+module.exports.SubmitReportFormConfig = {
+    report: {
+        label: "Report Details",
+        elementType: "textarea",
+        elementConfig: {
+            placeholder: "Report...",
+        },
+        validation: {
+            required: true
+        },
+        value: "",
+        valid: false,
+        touched: false
+    }
+}

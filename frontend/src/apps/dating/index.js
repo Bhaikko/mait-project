@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import classes from './index.css';
@@ -22,7 +21,7 @@ class DatingRoute extends Component {
         super(props);
         this.socket = socketIOClient(SERVER_URL);
         this.userId = UserDetail.get_userId();
-        console.log(this.userId);
+
         this.socket.emit('connectToChat', {
             userId: this.userId
         });

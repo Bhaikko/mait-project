@@ -31,7 +31,7 @@ class AddNew extends Component {
                     Submit Report
                 </Button>
                 <Modal show={this.state.showForm} modalClosed={this.closeForm}>
-                    <ReportForm />
+                    <ReportForm closeModal={this.closeForm}/>
                 </Modal>
            </Fragment>  
         );

@@ -3,28 +3,31 @@ import React, { Component } from 'react';
 import Form from '../../../Form/Form';
 import classes from './ReportForm.css';
 
+import { SubmitReportFormConfig } from './../formConfigs';
 
-class EditProfileForm extends Component {
+import Alertify from './../../../../utilities/Aleretify/Alertify';
+
+import axios from './../../../../axios';
+
+class ReportForm extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            formConfig: {
-                report: {
-                    label: "Report Details",
-                    elementType: "textarea",
-                    elementConfig: {
-                        placeholder: "Report...",
-                    },
-                    validation: {
-                        required: true
-                    },
-                    value: "",
-                    valid: false,
-                    touched: false
-                }
-            }
+            formConfig: SubmitReportFormConfig
         }
     }
+
+    formSubmitHandler = formdata => {
+        const reportForId = window.location.href.split("/").pop();
+        formdata.reportForId = reportForId;
+        axios.post('/dating/report', formdata)
+            .then(response => {
+                Alertify.success(response.data.message);
+                this.props.closeModal();
+            })
+            .catch(() => this.props.closeModal());    
+    }
+
     render () {
         return (
             <Form 
@@ -32,8 +35,8 @@ class EditProfileForm extends Component {
                 headerclass={classes.Header}
                 formConfig={this.state.formConfig} 
                 formName="Submit Report" 
-                url="/dating/report" 
                 buttonName="Submit"
+                onFormSubmit={this.formSubmitHandler}
             />
 
         );
@@ -41,4 +44,4 @@ class EditProfileForm extends Component {
 
 }
 
-export default EditProfileForm;
+export default ReportForm;
