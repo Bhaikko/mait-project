@@ -2,58 +2,6 @@ import * as actionTypes from './actionTypes';
 import axios from './../../axios';
 import Alertify from './../../utilities/Aleretify/Alertify';
 
-export const addTag = tag => {
-    return (dispatch) => {
-        dispatch({
-            type: actionTypes.DATING_REQUEST_START
-        });
-
-           axios.post("/dating/usertag", tag)
-               .then(response => {
-                   dispatch({
-                       type: actionTypes.ADD_TAG_SUCCESS,
-                       tag: tag
-                   })
-                   Alertify.success(response.data.message);
-               })
-               .catch(err => {
-                   console.log(err);
-                   dispatch({
-                       type: actionTypes.DATING_REQUEST_FAILED
-                   });
-               });
-       
-
-    }
-}
-
-export const deleteTag = tag => {
-    return dispatch => {
-        dispatch({
-            type: actionTypes.DATING_REQUEST_START
-        });
-        axios.delete('/dating/usertag', {
-            data: {
-                tag: tag 
-            }
-        })
-            .then(response => {
-                dispatch({
-                    type: actionTypes.DELETE_TAG_SUCCESS,
-                    tag: tag 
-                });
-
-                Alertify.success(response.data.message);
-            })
-            .catch(err => {
-                console.log(err);
-                dispatch({
-                    type: actionTypes.DATING_REQUEST_FAILED
-                });
-            });
-    }
-}
-
 export const addProfilePhoto = photo => {
     return dispatch => {
         dispatch({

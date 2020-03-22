@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 import FilterContainer from '../../../FilterContainer/FilterContainer';
 import axios from '../../../../axios';
 import Tags from '../../../../components/Tags/Tags';
-import * as actions from '../../../../store/actions/index';
 
 class EditTags extends Component {
     constructor (props) {
@@ -64,10 +62,4 @@ class EditTags extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onAddTag: tag => dispatch(actions.addTag(tag))
-    }
-}
-
-export default connect(null, mapDispatchToProps)(EditTags);
+export default EditTags;

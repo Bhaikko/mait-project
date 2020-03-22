@@ -5,8 +5,6 @@ export {
 } from './auth';
 
 export {
-    addTag,
-    deleteTag,
     addProfilePhoto,
     deleteProfilePhoto,
     setMainProfilePhoto,

@@ -54,6 +54,21 @@ class Me extends Component {
 
         Alertify.success(message);
     }
+    
+    deleteTagHandler = tag => {
+        axios.delete('/dating/usertag', {
+            data: {
+                tag: tag 
+            }
+        })
+            .then(response => {
+                const currentTags = this.state.tags;
+                const newTags = currentTags.filter(cTag => cTag.id !== tag.id);
+                
+                this.updateProfile("tags", newTags, response.data.message);
+
+            });
+    }
 
     render () {
         let navigationItems = (
@@ -85,7 +100,7 @@ class Me extends Component {
                         onAddPhoto={this.props.onAddPhoto}
                         onDeletePhoto={this.props.onDeletePhoto}
                         onSetMainProfilePhoto={this.props.onSetMainProfilePhoto}
-                        onDeleteTag={this.props.onDeleteTag}  
+                        onDeleteTag={this.deleteTagHandler}  
                     />
                 )}
             </Layout>
@@ -96,7 +111,6 @@ class Me extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onDeleteTag: tag => dispatch(actions.deleteTag(tag)),
         onAddPhoto: photo => dispatch(actions.addProfilePhoto(photo)),
         onDeletePhoto: photo => dispatch(actions.deleteProfilePhoto(photo)),
         onSetMainProfilePhoto: photo => dispatch(actions.setMainProfilePhoto(photo)),
