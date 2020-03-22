@@ -16,7 +16,6 @@ export const autoLogin = (token) => {
     }
 }
 
-
 export const logout = () => {
     localStorage.clear("userdata");
     UserDetail.clear_userdata();

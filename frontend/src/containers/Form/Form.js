@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 import Input from './../../components/UI/Input/Input';
 import Button from './../../components/UI/Button/Button';
 import Spinner from './../../components/UI/Spinner/Spinner';
 
 import validation from './../../utilities/Validate';
-
-import * as actions from './../../store/actions/index';
 
 import classes from './Form.css';
 
@@ -172,17 +169,4 @@ class Form extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        loading: state.auth.loading, 
-        token: state.auth.token
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        onSubmitReport: formData => dispatch(actions.submitReport(formData)),
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Form);
+export default Form;
