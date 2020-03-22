@@ -5,9 +5,5 @@ export {
 } from './auth';
 
 export {
-    addProfilePhoto,
-    deleteProfilePhoto,
-    setMainProfilePhoto,
-    updateDatingProfile,
     submitReport
 } from './dating';

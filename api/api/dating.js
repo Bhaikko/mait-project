@@ -108,14 +108,17 @@ router.post('/profilephoto', upload.single('profilePhoto'), (req, res, next) => 
 
         databaseHandler.addProfilePhoto(req.user.id, req.file.path)
             .then(response => {
-                databaseHandler.getProfilePhotos(req.user.id)
-                    .then(photos => {
-                        photos = databaseParser(photos);
-                        res.status(201).json({
-                            message: "Profile Photo Added",
-                            photos: photos 
-                        });
-                    })
+                const newPhoto = {
+                    id: response.id,
+                    imageUrl: response.imageUrl,
+                    main: response.main
+                };
+
+                res.status(201).json({
+                    photo: newPhoto,
+                    message: "Photo Added Successfully"
+                });
+
             })
             .catch(err => {
                 errorHandler(err, res);

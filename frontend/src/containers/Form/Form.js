@@ -73,10 +73,6 @@ class Form extends Component {
         // }
 
         switch (this.props.url) {
-            case "/dating/updateDatingProfile":
-                this.props.onUpdateDatingProfile(formData);
-                break;
-
             case "/dating/report":
                 const reportForId = window.location.href.split("/").pop();
                 formData.reportForId = reportForId;
@@ -195,7 +191,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onUpdateDatingProfile: formData => dispatch(actions.updateDatingProfile(formData)),
         onSubmitReport: formData => dispatch(actions.submitReport(formData)),
     }
 }

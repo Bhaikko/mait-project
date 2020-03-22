@@ -98,7 +98,6 @@ class LoginForm extends Component {
                     classes={classes.LoginForm}
                     formConfig={this.state.formConfig} 
                     formName="Login" 
-                    url="/auth/login" 
                     buttonName="Login"
                     onFormSubmit={this.loginSubmitHandler}
                 >

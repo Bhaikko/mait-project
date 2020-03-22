@@ -5,8 +5,6 @@ import classes from './EditIcon.css';
 import editIcon from './../../../assets/icons/Edit.png';
 import Modal from './../Modal/Modal';
 
-
-
 class EditIcon extends Component {
 
     state = {
@@ -36,7 +34,7 @@ class EditIcon extends Component {
                 />
 
                 <Modal show={this.state.showForm} modalClosed={this.closeForm}>
-                    {this.props.form}
+                    {this.props.children}
                 </Modal>
             </React.Fragment>
         );

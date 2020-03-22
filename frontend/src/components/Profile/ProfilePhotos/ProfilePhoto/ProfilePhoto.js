@@ -8,13 +8,8 @@ import DefaultPhoto from './../../../../assets/icons/Username.png';
 import { SERVER_URL } from '../../../../environments';
 
 const ProfileImage = props => {
-    let imageSrc = props.src;
-
-    if (!imageSrc) {
-        imageSrc = DefaultPhoto;
-    } else if (!imageSrc.includes('https://')) {
-        imageSrc = SERVER_URL + "/" + props.src;
-    } 
+    
+    const imageSrc = props.src ? SERVER_URL + "/" + props.src : DefaultPhoto;
 
     return (
         <div 

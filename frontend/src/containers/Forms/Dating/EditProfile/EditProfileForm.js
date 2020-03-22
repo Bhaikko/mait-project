@@ -5,6 +5,7 @@ import classes from './EditProfileForm.css';
 import axios from '../../../../axios';
 
 import UserDetail from '../../../../utilities/UserDetail';
+import EditIcon from './../../../../components/UI/EditIcon/EditIcon';
 
 import { EditProfileFormConfig } from './../formConfigs';
 
@@ -52,9 +53,22 @@ class EditProfileForm extends Component {
             
             })
             .catch(err => {
-                
+
             });
-        
+    }
+
+    updateProfile = formdata => {
+        this.setState({
+            loading: true
+        });
+        axios.put('/dating/datingprofile', formdata)
+            .then(response => {
+                this.props.updateprofile("datingProfile", formdata, response.data.message);
+                this.setState({
+                    loading: false
+                });
+            })
+            .catch(() => this.setState({loading: false}));
     }
 
     render () {
@@ -62,22 +76,20 @@ class EditProfileForm extends Component {
             <React.Fragment>
                 {this.state.loading ? 
                     null : 
-                    <Form 
-                        classes={classes.EditProfileForm}
-                        headerclass={classes.Header}
-                        formConfig={this.state.formConfig} 
-                        formName="Update Profile" 
-                        url="/dating/updateDatingProfile" 
-                        buttonName="Save"
-                    />
+                    <EditIcon>
+                        <Form 
+                            classes={classes.EditProfileForm}
+                            headerclass={classes.Header}
+                            formConfig={this.state.formConfig} 
+                            formName="Update Profile" 
+                            buttonName="Save"
+                            onFormSubmit={this.updateProfile}
+                        />
+                    </EditIcon>
                 }
             </React.Fragment>
                 
         );
-    }
-
-     componentWillUnmount() {
-        this._isMounted = false;
     }
 }
 
