@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 import classes from './Inbox.css';
 import MessageBox from './../../../containers/MessageBox/MessageBox';
@@ -29,7 +28,8 @@ class Inbox extends Component {
             filteredContacts: null,
             loading: true,
             messages: null,
-            contacts: null
+            contacts: null,
+            mainProfilePhoto: null
         }
 
         this.socket = this.props.socket;
@@ -91,6 +91,14 @@ class Inbox extends Component {
                     loading: false
                 });
             });
+
+        axios.get('/dating/mainprofilePhoto')
+            .then(response => {
+                this.setState({
+                    mainProfilePhoto: response.data.photo ? response.data.photo.imageUrl : null
+                });
+            })
+            .catch(() => {});
     }
 
     setupSocketForStatus = contact => {
@@ -176,7 +184,7 @@ class Inbox extends Component {
                             <div className={classes.ContactsContainer}>
                                 <div className={classes.ProfileHeader}>
                                     <ProfilePhoto 
-                                        src={this.props.mainProfilePhoto}
+                                        src={this.state.mainProfilePhoto}
                                         alt="..." 
                                         style={{
                                             height: 50,
@@ -246,15 +254,4 @@ class Inbox extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    if (!state.dating.mainProfilePhoto) {
-        return {
-            mainProfilePhoto: ""
-        }
-    }
-    return {
-        mainProfilePhoto: state.dating.mainProfilePhoto.imageUrl,
-    }
-}
-
-export default connect(mapStateToProps, null)(Inbox);
+export default Inbox;

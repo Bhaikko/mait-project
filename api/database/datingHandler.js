@@ -359,7 +359,7 @@ module.exports.getUsername = userId => {
 module.exports.getMainProfilePhoto = userId => {
     return ProfilePhotos.findOne({
         where: {
-            id: userId,
+            userId: userId,
             main: true
         },
         attributes: ['imageUrl']

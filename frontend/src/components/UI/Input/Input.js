@@ -113,9 +113,11 @@ const input = (props) => {
 
             {props.tooltip ? (
                 <Fragment>
-                    <img src={InfoIcon} alt="..." className={classes.TooltipButton}/>
+                    <img src={InfoIcon} alt="..." className={classes.TooltipButton} style={{
+                        top: props.label ? 47 : 25
+                    }}/>
                     
-                    <div className={classes.TooltipContent}>
+                    <div className={classes.TooltipContent} >
                         {props.tooltip}
                     </div>
                 </Fragment>

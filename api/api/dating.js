@@ -435,6 +435,18 @@ router.delete('/notifications', (req, res) => {
         });
 });
 
+router.get('/mainprofilePhoto', (req, res) => {
+    databaseHandler.getMainProfilePhoto(req.user.id)
+        .then(response => {
+            res.status(200).json({
+                photo: response
+            });
+        })
+        .catch(err => {
+            errorHandler(err, res);
+        });
+});
+
 module.exports = {
     router,
     notificationSocket

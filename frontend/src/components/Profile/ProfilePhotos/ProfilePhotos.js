@@ -6,7 +6,7 @@ import AddNewPhoto from '../../UI/AddNewPhoto/AddNewPhoto';
 
 const ProfilePhotos = props => {
     const photosLength = props.photos.length;
-
+    console.log(props.photos);
     return (
         <div className={classes.Photos}>
             {props.photos.map(photo => (<ProfilePhoto
@@ -20,7 +20,7 @@ const ProfilePhotos = props => {
                     width : "30%"
                 }}
                 editable={props.editable}
-                main={props.mainPhotoId === photo.id}
+                main={photo.main}
                 photoDeleteHandler={() => props.deletePhotoHandler(photo)}
                 setMainProfilePhotoHandler={() => props.setMainProfilePhotoHandler(photo)}
             />))}

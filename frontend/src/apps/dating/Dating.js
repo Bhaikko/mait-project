@@ -1,94 +1,80 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-
 
 import classes from './Dating.css';
 import Button from './../../components/UI/Button/Button';
 import CenterContainer from './../../components/UI/CenterContainer/CenterContainer';
 import LandingpageImage from './../../assets/images/Landingpage.png';
 
-class ExplorePage extends Component {
+const DatingLandingPage = () => {
+    return (
+        <CenterContainer classes={classes.CenterContainer}>
+            <div className={classes.LeftContainer} >
+                <span className={classes.LeftContainerHeader}>
+                    Mait Talks <br/>
+                    Dating App
+                </span>
+                <span className={classes.LeftContainerContent}>
+                    <p>
+                        Hi There. <br />
+                        Thank you for showing interest in our dating app. <br/>
+                        We will try our best to find you your best match. <br/>
+                        But first how about you setup your dating profile. <br/>
+                        The more life your profile has, Better the Chances. <br/>
+                        Feel Me??? <br />
+                        You will see. <br/>
+                    </p>
+                </span>
 
-    constructor (props) {
-        super(props);        
-
-        this.state = {
-            
-        }
-    }
-
-    render () {
-        
-        return (
-            <CenterContainer classes={classes.CenterContainer}>
-                <div className={classes.LeftContainer} >
-                    <span className={classes.LeftContainerHeader}>
-                        Mait Talks <br/>
-                        Dating App
-                    </span>
-                    <span className={classes.LeftContainerContent}>
-                        <p>
-                            Hi There. <br />
-                            Thank you for showing interest in our dating app. <br/>
-                            We will try our best to find you your best match. <br/>
-                            But first how about you setup your dating profile. <br/>
-                            The more life your profile has, Better the Chances. <br/>
-                            Feel Me??? <br />
-                            You will see. <br/>
-                        </p>
-                    </span>
-
-                    <div className={classes.ButtonContainer}>
-                        <Link 
-                            to="/me"
+                <div className={classes.ButtonContainer}>
+                    <Link 
+                        to="/me"
+                        style={{
+                            width: "30%",
+                            textAlign: "center",
+                            display: "inline-block",
+                            textDecoration: "none"
+                        }}    
+                    >
+                        <Button 
                             style={{
-                                width: "30%",
-                                textAlign: "center",
-                                display: "inline-block",
-                                textDecoration: "none"
-                            }}    
+                                backgroundColor: "#9D354B"
+                            }}
+                            classes={classes.Button}
+                            
                         >
-                            <Button 
-                                style={{
-                                    backgroundColor: "#9D354B"
-                                }}
-                                classes={classes.Button}
-                                
-                            >
-                                Set-up Profile
-                            </Button>
+                            Set-up Profile
+                        </Button>
 
-                        </Link>
+                    </Link>
 
-                        <Link 
-                            to="/dating/explore"
+                    <Link 
+                        to="/dating/explore"
+                        style={{
+                            width: "30%",
+                            textAlign: "center",
+                            display: "inline-block",
+                            textDecoration: "none"
+                        }}  
+                    >
+                        <Button 
                             style={{
-                                width: "30%",
-                                textAlign: "center",
-                                display: "inline-block",
-                                textDecoration: "none"
-                            }}  
+                                backgroundColor: "#2D4571"
+                            }}
+                            classes={classes.Button}
                         >
-                            <Button 
-                                style={{
-                                    backgroundColor: "#2D4571"
-                                }}
-                                classes={classes.Button}
-                            >
-                                Explore page.
-                            </Button>
+                            Explore page.
+                        </Button>
 
-                        </Link>
-                    </div>
+                    </Link>
                 </div>
-                <div className={classes.RightContainer}>
-                    <img src={LandingpageImage} className={classes.LandingpageImage} alt="..." />
-                </div>
+            </div>
+            <div className={classes.RightContainer}>
+                <img src={LandingpageImage} className={classes.LandingpageImage} alt="..." />
+            </div>
 
-            </CenterContainer>
-
-        );
-    }
+        </CenterContainer>
+    );
 }
 
-export default ExplorePage;
+export default DatingLandingPage;
