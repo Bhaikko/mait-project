@@ -3,7 +3,9 @@ module.exports.required = value => {
 }
 
 module.exports.isUsername = value => {
-    return !value.includes(" ");
+    // eslint-disable-next-line
+    const pattern = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    return !pattern.test(value);
 }
 
 module.exports.isEmail = value => {

@@ -137,6 +137,7 @@ class Form extends Component {
                         invalid={!formElement.config.valid}
                         shouldValidate={formElement.config.validation}
                         touched={formElement.config.touched} 
+                        tooltip={formElement.config.tooltip}
                     />
                 ))}
                 

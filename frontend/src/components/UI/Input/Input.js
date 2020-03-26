@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import classes from './Input.css';
 import Button from './../Button/Button';
+
+import InfoIcon from './../../../assets/icons/Info.png';
 
 const input = (props) => {
     
@@ -105,9 +107,19 @@ const input = (props) => {
     }
 
     return (
-        <div className={classes.Input} >
+        <div className={classes.Input}>
             <label className={classes.Label} >{props.label}</label>
             {inputElement}
+
+            {props.tooltip ? (
+                <Fragment>
+                    <img src={InfoIcon} alt="..." className={classes.TooltipButton}/>
+                    
+                    <div className={classes.TooltipContent}>
+                        {props.tooltip}
+                    </div>
+                </Fragment>
+            ) : null}
         </div>
     );
 }

@@ -24,7 +24,8 @@ module.exports.SignupFormConfig = {
             isUsername: true
         },
         valid: false,
-        touched: false
+        touched: false,
+        tooltip: "Username Cannot Have Any Special Characters."
     },
     email: {
         elementType: "input",
@@ -45,7 +46,7 @@ module.exports.SignupFormConfig = {
         elementConfig: {
             type: "password",
             min: "8",
-            placeholder: "Your Password, Min 8 Characters"
+            placeholder: "Your Password"
         },
         value: "",
         validation: {
@@ -54,7 +55,8 @@ module.exports.SignupFormConfig = {
             isPassword: true 
         },
         valid: false,
-        touched: false 
+        touched: false ,
+        tooltip: "Passwords Should Have Length 8, One Uppercase Letter, One Lowercase Letter, One Digit."
     }
 }
 
@@ -151,7 +153,8 @@ module.exports.ChangePasswordFormConfig = {
         },
         value: "",
         valid: false,
-        touched: false 
+        touched: false,
+        tooltip: "Passwords Should Have Length 8, One Uppercase Letter, One Lowercase Letter, One Digit." 
     },
     confirmPassword: {
         label: "Retype Your New Password",
@@ -167,6 +170,6 @@ module.exports.ChangePasswordFormConfig = {
         },
         value: "",
         valid: false,
-        touched: false 
+        touched: false
     }
 }

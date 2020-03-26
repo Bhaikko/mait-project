@@ -2,6 +2,7 @@
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
+    position: relative;
 }
 
 .Label {
@@ -28,7 +29,37 @@
 }
 
 .Invalid {
-    /* border: 2px solid red; */
     outline: 2px solid red;
     background-color: salmon;
+}
+
+.TooltipButton {
+	position: absolute;
+	right: 20px;
+    top: 25px;
+    width: 20px;
+} 
+
+.TooltipButton:hover {
+	overflow: unset;
+}
+
+.TooltipButton:hover + .TooltipContent {
+	height: max-content;
+    opacity: 1;
+    z-index: 2;
+    margin-top: 10px;
+} 
+
+.TooltipContent {
+	height: 0px;
+	opacity: 0;
+	transition: 0.5s;
+	background-color: #453E3E;
+	position: absolute;
+	width: 95%;
+    padding: 2%;
+    color: #fff;
+    font-size: 14px;
+
 }
