@@ -6,7 +6,6 @@ import AddNewPhoto from '../../UI/AddNewPhoto/AddNewPhoto';
 
 const ProfilePhotos = props => {
     const photosLength = props.photos.length;
-    console.log(props.photos);
     return (
         <div className={classes.Photos}>
             {props.photos.map(photo => (<ProfilePhoto

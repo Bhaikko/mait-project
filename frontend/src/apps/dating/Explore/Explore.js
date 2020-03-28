@@ -56,15 +56,12 @@ class ExplorePage extends Component {
                     this.setState({
                         matchFound: true
                     });
-                    // Modal for navigation to contacts or keep exploring
                 } else {
                     Alertify.success(response.data.message + " " + this.state.selectedUser.name + "!");
                 }
                 this.getNewUser();
             })
-            .catch(err => {
-                console.log(err);
-            });
+            .catch(() => {});
     }
 
     keepExploringHandler = () => {
@@ -129,17 +126,27 @@ class ExplorePage extends Component {
                             </div>
 
                             <div className={classes.DesktopPhotos}>
-                                {this.state.selectedUser.profilePhotos.map((photo, index) => (
+                                {this.state.selectedUser.profilePhotos.length === 0 ? (
                                     <ProfilePhoto 
-                                        src={photo.imageUrl}
-                                        style={{
-                                            width: 250,
-                                            height: 300,
-                                            margin: 10
-                                        }}
-                                        key={photo.id}
-                                    />
-                                ))}
+                                    src={mainPhoto ? mainPhoto.imageUrl : ""}
+                                    style={{
+                                        width: 300,
+                                        height: 300
+                                    }}
+                                />
+                                ) : (
+                                    this.state.selectedUser.profilePhotos.map((photo, index) => (
+                                        <ProfilePhoto 
+                                            src={photo.imageUrl}
+                                            style={{
+                                                width: 250,
+                                                height: 300,
+                                                margin: 10
+                                            }}
+                                            key={photo.id}
+                                        />
+                                    ))
+                                )}
                             </div>
                             <div className={classes.MainFooter}>If you like each other, we'll let you know!</div>
 

@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import axios from './../../../axios';
 
+import { Redirect } from 'react-router-dom';
+
 import UserProfile from './../../../containers/UserProfile/UserProfile';
 import NavigationItem from './../../../components/Navigation/NavigationItems/NavigationItem/NavigationItem';
 import Layout from './../../../containers/Layout/Layout';
@@ -16,7 +18,8 @@ class Profile extends Component {
             profilePhotos: [],
             mainProfilePhoto: null,
             profile: null,
-            datingProfile: null
+            datingProfile: null,
+            error: false
         }
     }
 
@@ -31,6 +34,7 @@ class Profile extends Component {
                 }
                 this.setState({
                     loading: false,
+                    error: false,
                     profile: {
                         id: userdata.id,
                         name: userdata.name,
@@ -44,11 +48,11 @@ class Profile extends Component {
 
 
             })
-            .catch(err => {
+            .catch(() => {
                 this.setState({
-                    loading: false
-                })
-                console.log(err);
+                    loading: true,
+                    error: true
+                });
             });
     }
     render () {
@@ -65,6 +69,7 @@ class Profile extends Component {
         
         return (  
             <Layout navigationItems={navigationItems}>
+                {this.state.error ? <Redirect to="/notfound" /> : null}
                 {this.state.loading ? (
                     <Spinner />
                 ) : (

@@ -204,7 +204,8 @@ router.get('/profile/:id', (req, res, next) => {
 
     databaseHandler.getCompleteProfile(req.params.id)
         .then(profile => {
-            res.send(profile.get());
+
+            res.send(profile);
         })
         .catch(err => {
             errorHandler(err, res);
@@ -261,7 +262,6 @@ const getRandomuser = (users, currentUser) => {
         return getRandomuser(users, currentUser);
     }
     const selecteduserGender = selectedUser.datingProfile.get().gender === "Male" ? "Men" : "Women";
-
 
     if (currentUser.datingProfile.get().intrestedIn === selecteduserGender) {
         return selectedUser;

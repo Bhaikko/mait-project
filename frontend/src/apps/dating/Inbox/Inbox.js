@@ -218,7 +218,7 @@ class Inbox extends Component {
                                 {!this.state.currentContact ? (
                                     <div className={classes.EmptyBox}>
                                         <ProfilePhoto 
-                                            src={this.props.mainProfilePhoto}
+                                            src={this.state.mainProfilePhoto}
                                             alt="..." 
                                             style={{
                                                 height: 300,
