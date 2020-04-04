@@ -8,15 +8,10 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    color:white;
+    background-color: #9D354B;
 }
 
-.ContentTitleContainer::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    width: 93%;
-    border: 1px solid gray;
-}
 
 .ContentTitle {
     margin-left: 5px;

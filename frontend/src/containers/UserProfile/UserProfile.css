@@ -5,12 +5,21 @@
     flex-direction: column;
     margin-right: 4%;
 }
+.labelContainer{
+    width: 90%;
+}
 
 .CenterContainer {
     padding-bottom: 30px;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
 .SummaryContent{
+    font-family: 'Josefin Sans', sans-serif;
+    color: #746875;
+    font-size: 20px;
+    line-height: 4px;
     margin-left: 10px;
     margin-bottom: 20px;
     padding-right: 50px;
@@ -39,19 +48,19 @@
 }
 
 .InterestContainer {
-    width: 90%;
-    margin-left: 10px;
+    width: 100%;
+    /* margin-left: 10px; */
     margin-top: 10px;
 }
 
 .BioContainer {
-    width: 90%;
-    margin-left: 10px; 
+    width: 100%;
+    /* margin-left: 10px;  */
 }
 
 .PhotosContainer {
-    width: 90%;
-    margin-left: 10px;
+    width: 100%;
+    /* margin-left: 10px; */
     margin-top: 10px;
     flex-direction: row;
     flex-wrap: wrap;

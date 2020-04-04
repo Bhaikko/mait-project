@@ -4,6 +4,8 @@ import classes from './UserProfile.css';
 
 import CenterContainer from './../../components/UI/CenterContainer/CenterContainer';
 import ContentContainer from './../../components/UI/ContentContainer/ContentContainer';
+import Tabs from './../../components/UI/Tabs/Tabs'
+import Tab from './../../components/UI/Tabs/Tab/Tab'
 import ContentTitle from './../../components/UI/ContentTitle/ContentTitle';
 import ProfilePhoto from './../../components/Profile/ProfilePhotos/ProfilePhoto/ProfilePhoto';
 import ProfileInfo from './../../components/Profile/ProfileInfo/ProfileInfo';
@@ -26,6 +28,7 @@ import Alertify from '../../utilities/Aleretify/Alertify';
 import axios from './../../axios';
 
 import EditProfileFrom from './../../containers/Forms/Dating/EditProfile/EditProfileForm';
+
 
 class UserProfile extends Component {
 
@@ -96,7 +99,42 @@ class UserProfile extends Component {
                     </div>
 
                 </ContentContainer>
-                <div className={classes.Rcontainer}>                        
+                <div className={classes.Rcontainer}>
+                    <Tabs>
+                        <div label="Bio" className={classes.labelContainer}>
+                            <ContentContainer classes={classes.BioContainer}>
+                                <div className={classes.SummaryContent}>
+                                    {this.props.datingProfile.about || "-"}
+                                </div>
+
+                            </ContentContainer>
+                        </div>
+                        <div label="Interets">
+                            <ContentContainer classes={classes.InterestContainer}>
+                                <Tags 
+                                    tags={this.props.tags} 
+                                    editable={this.props.editable}
+                                    deleteTagHandler={this.props.onDeleteTag}    
+                                    updateprofile={this.props.updateprofile}
+                                />
+                            
+                            </ContentContainer>
+                        </div>
+                        <div label="Photos">
+                            <ContentContainer classes={classes.PhotosContainer}>
+                                <ProfilePhotos 
+                                    photos={this.props.profilePhotos} 
+                                    editable={this.props.editable}
+                                    addPhotoHandler={this.props.onAddPhoto}
+                                    deletePhotoHandler={this.props.onDeletePhoto}
+                                    setMainProfilePhotoHandler={this.props.onSetMainProfilePhoto}
+                                    mainPhotoId={this.props.mainPhotoId}
+                                />                           
+                            </ContentContainer>
+                        </div>
+                    </Tabs>
+                 </div>
+                {/* <div className={classes.Rcontainer}>                        
                     <ContentContainer classes={classes.BioContainer}>
                         <ContentTitle >Bio</ContentTitle>
                         <div className={classes.SummaryContent}>
@@ -127,7 +165,7 @@ class UserProfile extends Component {
                             mainPhotoId={this.props.mainPhotoId}
                         />                           
                     </ContentContainer>
-                </div>
+                </div> */}
                 
             </CenterContainer>
         );
