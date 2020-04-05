@@ -13,7 +13,10 @@
     padding-left: 0;
     cursor: pointer;
   }
-  
+  .tabcontent{
+    transition: 1s;
+    left: 0;
+  }
   @media (max-width:768px){
     .tabs{
       width: 100%;
