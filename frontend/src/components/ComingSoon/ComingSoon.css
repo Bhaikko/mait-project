@@ -3,7 +3,7 @@
     flex-direction: column;
     height: 100vh;
     justify-content: center;
-    width: 100vh;
+    width: 100vw;
 }
 
 .ComingSoon {
@@ -22,8 +22,15 @@
     color: #ccc;
 }
 
-
-
 .Link:visited {
     color: #ccc;
+}
+@media screen and (max-width: 768px) {
+    .CenterContainer {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        justify-content: center;
+    }
 }
