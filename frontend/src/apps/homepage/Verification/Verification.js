@@ -87,7 +87,7 @@ class Verification extends Component {
                         <Button classes={classes.SmallButton} onClick={this.resendHandler}>Resend Code</Button>
                         <div className={classes.SmallMessage}>
                             Still Having Problems, Mail us your issue at <br />
-                            xyz@gmail.com
+                            thecollegetalks@gmail.com
                         </div>
                     </ContentContainer>
                 </CenterContainer>

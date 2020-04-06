@@ -105,6 +105,74 @@
     line-height: 40px;
 }
 
+.FooterContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;   
+    background-color: #26272b;
+    color: #737373;
+}
+
+.UpperFooter {
+    display: flex;
+    flex-direction: row;
+}
+
+.UpperLeft {
+    width: 50%;
+}
+
+.FooterTitle {
+    font-size: 30px;
+}
+
+.UpperRight {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+}
+
+.GithubLink {
+    color: #737373;
+    border: 2px solid black;
+    border-radius: 100%;
+}
+
+.GithubLink>img {
+    width: 50px;
+}
+
+.AboutContent {
+    margin-top: 10px;
+}
+
+.FooterDivider {
+    margin-top: 20px;
+    width: 100%;
+    border: 1px solid #737373;
+}
+
+.FooterTitle {
+    text-transform: uppercase;
+    font-weight: bolder;
+    color: white;
+}
+
+.LowerFooter {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.LowerFooterContent {
+    width: 97%;
+}
+
 @media screen and (max-width: 768px) {
     .CardContainer {
         flex-direction: column;
@@ -134,5 +202,24 @@
 
     .LogoutButton {
         top: 10px;
+    }
+
+    .UpperFooter {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    .FooterTitle {
+        text-align: center;
+    }
+
+
+    .UpperLeft {
+        width: 100%;
+    }
+
+    .UpperRight {
+        margin-top: 50px;
+        width: 100%;
     }
 }
