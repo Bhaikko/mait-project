@@ -13,7 +13,8 @@
     padding-left: 0;
     cursor: pointer;
   }
-  .tabcontent{
+  .tabContent{
+    height: 100%;
     transition: 1s;
     left: 0;
   }

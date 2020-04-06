@@ -79,3 +79,11 @@
     color: grey;
     font-size: 10px;
 }
+@media (max-width:768px){
+    .MyMessage {
+        max-width: 50vw;   
+    }
+    .OtherMessage{
+        max-width: 50vw;
+    }
+}
