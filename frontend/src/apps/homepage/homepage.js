@@ -12,6 +12,7 @@ import DatingBackground from './../../assets/images/dating.jpeg';
 import FeedBackground from './../../assets/images/feed.jpeg';
 import MarketplaceBackground from './../../assets/images/marketplace.jpeg';
 import NotesBackground from './../../assets/images/notes.jpeg';
+import GithubIcon from './../../assets/icons/Github.png';
 
 import HomepageCard from './../../components/Homepage/HomepageCard/HomepageCard';
 import PeopleCard from './../../components/Homepage/PeopleCard/PeopleCard';
@@ -138,11 +139,33 @@ class Homepage extends Component {
                         </div>
                     </HomepageCard>
                 </div>
-                <div className={classes.AboutContainer}>
-                    Mait talks is an open source project. If you would like to report an issue or conribute to the project. Feel free to visit our github page.
-                </div>
-                <div className={classes.AboutContainer}>
-                    c Copyright 2019. Mait Talks
+                <div className={classes.FooterContainer}>
+                    <div className={classes.UpperFooter}>
+                        <div className={classes.UpperLeft}>
+                            <div className={classes.FooterTitle}>
+                                About
+                            </div>
+                            <div className={classes.AboutContent}>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            </div>
+                        </div>
+                        <div className={classes.UpperRight} >
+                            <Logo style={{
+                                fontSize: 40
+                            }} />
+                            thecollegetalks@gmail.com <br />
+                        </div>
+                    </div>
+                    <div className={classes.FooterDivider}></div>
+
+                    <div className={classes.LowerFooter}>
+                        <div className={classes.LowerFooterContent}>
+                            Copyright &copy; 2020. All Rights Reserved by College Talks
+                        </div>
+                        <a href="https://github.com/Bhaikko/mait-project" className={classes.GithubLink} target="__blank">
+                            <img src={GithubIcon} alt=" " />
+                        </a>
+                    </div>
                 </div>
             </div>
         );

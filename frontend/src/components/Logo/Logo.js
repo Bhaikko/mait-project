@@ -14,7 +14,7 @@ const logo = props => {
             className={[classes.Logo, props.classes].join(" ")}
             
         > 
-            Mait Talks
+            College Talks
         </Link>
     );
 }
