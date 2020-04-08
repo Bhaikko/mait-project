@@ -146,7 +146,12 @@ class Homepage extends Component {
                                 About
                             </div>
                             <div className={classes.AboutContent}>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                Made from the minds of 3 bored students, College Talks is a place for anyone and everyone from our college. <br />
+                                Tired of finding creepy profiles on other dating apps? <br />
+                                Want to date someone from same college? Checkout our DATING SECTION.<br />
+                                Want to get latest updates and stories? Our FEED will take care of that.<br />
+                                Don't want to buy expensive books? Find cheap options from our MARKETPLACE.<br />
+                                Bunked your way through semester and didn't make notes? Dont worry, our NOTES section got you covered.<br />
                             </div>
                         </div>
                         <div className={classes.UpperRight} >
