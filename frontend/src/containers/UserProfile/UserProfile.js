@@ -134,39 +134,6 @@ class UserProfile extends Component {
                         </div>
                     </Tabs>
                  </div>
-                {/* <div className={classes.Rcontainer}>                        
-                    <ContentContainer classes={classes.BioContainer}>
-                        <ContentTitle >Bio</ContentTitle>
-                        <div className={classes.SummaryContent}>
-                            {this.props.datingProfile.about || "-"}
-                        </div>
-
-                    </ContentContainer>
-
-                    <ContentContainer classes={classes.InterestContainer}>
-                        <ContentTitle>Interests</ContentTitle>
-                        <Tags 
-                            tags={this.props.tags} 
-                            editable={this.props.editable}
-                            deleteTagHandler={this.props.onDeleteTag}    
-                            updateprofile={this.props.updateprofile}
-                        />
-                        
-                    </ContentContainer>
-
-                    <ContentContainer classes={classes.PhotosContainer}>
-                        <ContentTitle>Photos</ContentTitle>
-                        <ProfilePhotos 
-                            photos={this.props.profilePhotos} 
-                            editable={this.props.editable}
-                            addPhotoHandler={this.props.onAddPhoto}
-                            deletePhotoHandler={this.props.onDeletePhoto}
-                            setMainProfilePhotoHandler={this.props.onSetMainProfilePhoto}
-                            mainPhotoId={this.props.mainPhotoId}
-                        />                           
-                    </ContentContainer>
-                </div> */}
-                
             </CenterContainer>
         );
     }

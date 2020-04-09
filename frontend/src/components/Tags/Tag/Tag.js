@@ -1,32 +1,19 @@
 import React from 'react';
 
 import classes from './Tag.css';
-import TagImage from './../../../assets/images/Tag.png';
 import CrossIcon from './../../UI/CrossIcon/CrossIcon';
 
 const Tag = props => {
     return (
-        <div 
-            className={[classes.Container, props.hoverable ? classes.Pointer : ""].join(" ")} 
-            onClick={props.clickHandler}
-        >
-            <img 
-                className={classes.Tag}
-                src={TagImage}
-                alt="..."
-            />
-            <div className={classes.TagName}>
-                {props.children}
-            </div>
-
+        <div className={[classes.TagContainer, props.hoverable ? classes.Pointer : ""].join(" ")} onClick={props.clickHandler}>
+            {props.children}
             {props.editable ? (
-                <CrossIcon onClick={props.deleteTagHandler}/>
+                <CrossIcon onClick={props.deleteTagHandler} classes={classes.CrossIcon}/>
             ) : (
                 null
             )}
         </div>
-        
-    );
+    )
 }
 
 export default Tag;
