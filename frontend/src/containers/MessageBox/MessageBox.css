@@ -106,6 +106,10 @@
 
     .SendIconCont {
         width: 10%;
+        padding-top: 5px;
+    }
+    .SendIcon{
+        width: 100%;
     }
 
 
