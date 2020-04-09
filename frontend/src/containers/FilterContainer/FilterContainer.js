@@ -20,6 +20,10 @@ class FilterContainer extends Component {
         });
         const filteredContent = this.props.content.filter(el => el[this.props.attribute].toLowerCase().includes(event.target.value.toLowerCase()));
         this.props.filterAssigner(filteredContent);
+
+        if (this.props.setFilterString) {
+            this.props.setFilterString(event.target.value);
+        }
     }
 
     render () {

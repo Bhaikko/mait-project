@@ -477,148 +477,148 @@ const datingProfiles = [
 
 const tags = [
     {
-        tag: "Sitcoms"
+        tag: "sitcoms"
     },
     {
-        tag: "TV Shows"
+        tag: "tv shows"
     },
     {
-        tag: "Hollywood"
+        tag: "hollywood"
     },
     {
-        tag: "Bollywood"
+        tag: "bollywood"
     },
     {
-        tag: "Feminism"
+        tag: "feminism"
     },
     {
-        tag: "Left Wing"
+        tag: "left wing"
     },
     {
-        tag: "Foodie"
+        tag: "foodie"
     },
     {
-        tag: "Geek"
+        tag: "geek"
     },
     {
-        tag: "Nerd"
+        tag: "nerd"
     },
     {
-        tag: "Travel"
+        tag: "travel"
     },
     {
-        tag: "Adventure"
+        tag: "adventure"
     },
     {
-        tag: "Sports"
+        tag: "sports"
     },
     {
-        tag: "Coding"
+        tag: "coding"
     },
     {
-        tag: "Electronics"
+        tag: "electronics"
     },
     {
-        tag: "Cars"
+        tag: "cars"
     },
     {
-        tag: "Robotics"
+        tag: "robotics"
     },
     {
-        tag: "Fashion"
+        tag: "fashion"
     },
     {
-        tag: "Make up"
+        tag: "make up"
     },
     {
-        tag: "Introvert"
+        tag: "introvert"
     },
     {
-        tag: "Extrovert"
+        tag: "extrovert"
     },
     {
-        tag: "Ambivert"
+        tag: "ambivert"
     },
     {
-        tag: "Reader"
+        tag: "reader"
     },
     {
-        tag: "Gamer"
+        tag: "gamer"
     },
     {
-        tag: "Memes"
+        tag: "memes"
     },
     {
-        tag: "Active Drinker"
+        tag: "active drinker"
     },
     {
-        tag: "Ocassional Drinker"
+        tag: "ocassional drinker"
     },
     {
-        tag: "Active Smoker"
+        tag: "active smoker"
     },
     {
-        tag: "Tea over Coffee"
+        tag: "tea over coffee"
     },
     {
-        tag: "Coffee over Tea"
+        tag: "coffee over tea"
     },
     {
-        tag: "Dance"
+        tag: "dance"
     },
     {
-        tag: "Music"
+        tag: "music"
     },
     {
-        tag: "Dogs"
+        tag: "dogs"
     },
     {
-        tag: "Birds"
+        tag: "birds"
     },
     {
-        tag: "Cats"
+        tag: "cats"
     },
     {
-        tag: "Nature"
+        tag: "nature"
     },
     {
-        tag: "Home"
+        tag: "home"
     },
     {
-        tag: "Hostel Life"
+        tag: "hostel life"
     },
     {
-        tag: "Front Bencher"
+        tag: "front bencher"
     },
     {
-        tag: "Back Bencher"
+        tag: "back bencher"
     },
     {
-        tag: "Organised"
+        tag: "organised"
     },
     {
-        tag: "Messy"
+        tag: "messy"
     },
     {
-        tag: "Morning Person"
+        tag: "morning person"
     },
     {
-        tag: "Casual"
+        tag: "casual"
     },
     {
-        tag: "Gym"
+        tag: "gym"
     },
     {
-        tag: "Tik Tok"
+        tag: "tik tok"
     },
     {
-        tag: "Anime"
+        tag: "anime"
     },
     {
-        tag: "Photography"
+        tag: "photography"
     },
     {
-        tag: "Reading"
+        tag: "reading"
     }
 ]
 
@@ -1117,21 +1117,21 @@ module.exports.seedData = async () => {
     // );
     // console.log("[+] Profile Photos Updated");
 
-    console.log("[+] Assigning Tags......");
+    // console.log("[+] Assigning Tags......");
 
-    await Promise.all(
-        datingProfiles.map(async (profile) => {
-            await addUserTag(profile.userId, tags[getRandomNumber(tags.length)].tag);
-            await addUserTag(profile.userId, tags[getRandomNumber(tags.length)].tag);
-            await addUserTag(profile.userId, tags[getRandomNumber(tags.length)].tag);
-            await addUserTag(profile.userId, tags[getRandomNumber(tags.length)].tag);
-            await addUserTag(profile.userId, tags[getRandomNumber(tags.length)].tag);
-            await addUserTag(profile.userId, tags[getRandomNumber(tags.length)].tag);
-            await addUserTag(profile.userId, tags[getRandomNumber(tags.length)].tag);
-            await addUserTag(profile.userId, tags[getRandomNumber(tags.length)].tag);
+    // await Promise.all(
+    //     datingProfiles.map(async (profile) => {
+    //         await addUserTag(profile.userId, tags[getRandomNumber(tags.length)].tag);
+    //         await addUserTag(profile.userId, tags[getRandomNumber(tags.length)].tag);
+    //         await addUserTag(profile.userId, tags[getRandomNumber(tags.length)].tag);
+    //         await addUserTag(profile.userId, tags[getRandomNumber(tags.length)].tag);
+    //         await addUserTag(profile.userId, tags[getRandomNumber(tags.length)].tag);
+    //         await addUserTag(profile.userId, tags[getRandomNumber(tags.length)].tag);
+    //         await addUserTag(profile.userId, tags[getRandomNumber(tags.length)].tag);
+    //         await addUserTag(profile.userId, tags[getRandomNumber(tags.length)].tag);
             
-        })
-    );
+    //     })
+    // );
 
     console.log("[+] Tags Assigned");
     console.log("[+] Database Initialized");

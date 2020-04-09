@@ -11,11 +11,12 @@ class EditTags extends Component {
         super(props);
         this.state = {
             tags: [],
-            filteredTags: null
+            filteredTags: null,
+            tag: ""
         }
     }
 
-    componentDidMount () {
+    getTags = () => {
         axios.get("/dating/tags")
             .then(response => {
                 this.setState({
@@ -24,23 +25,38 @@ class EditTags extends Component {
             });
     }
 
+    componentDidMount () {
+        this.getTags()
+    }
+
     serFilterTags = tags => {
         this.setState({
             filteredTags: tags
         });
     }
 
+    setFilterString = tag => {
+        this.setState({
+            tag: tag
+        });
+    }
+
     addTag = tag => {
-        axios.post('/dating/usertag', tag)
+        axios.post('/dating/usertag', {
+            tag: tag
+        })
             .then(response => {
                 const newTags = this.props.tags;
                 newTags.push(response.data.tag);
                 this.props.updateprofile("tag", newTags, response.data.message);
+                this.getTags();
 
             })
             .catch(() => {})
         
         this.props.closeModal();
+
+
     }
 
     render () {
@@ -54,8 +70,9 @@ class EditTags extends Component {
                         filterAssigner={this.serFilterTags}
                         placeholder="Enter Tag"
                         classes={classes.FilterContainer}
+                        setFilterString={this.setFilterString}
                     />
-                    <Button classes={classes.Button}>Add</Button>
+                    <Button classes={classes.Button} onClick={() => this.addTag(this.state.tag)}>Add</Button>
                 </div>
                 {this.state.tags ? (
                     <Tags 

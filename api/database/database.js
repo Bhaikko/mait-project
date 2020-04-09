@@ -166,7 +166,8 @@ const Matches = database.define("matches", {
 
 const Tags = database.define("tags", {
     tag: {
-        type: Sequelize.STRING 
+        type: Sequelize.STRING,
+        allowNull: false
     }
 });
 

@@ -11,7 +11,7 @@ const Tags = props => {
             {props.tags.map(tag => <Tag 
                 key={tag.id}
                 editable={props.editable}
-                clickHandler={props.clickHandler ? () => props.clickHandler(tag) : () => {}}
+                clickHandler={props.clickHandler ? () => props.clickHandler(tag.tag) : () => {}}
                 deleteTagHandler={props.deleteTagHandler ? () => props.deleteTagHandler(tag) : () => {}}
                 hoverable={props.clickHandler ? true : false}
             >

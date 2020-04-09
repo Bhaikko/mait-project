@@ -110,9 +110,18 @@ module.exports.getMatch = (likerId, likeeId) => {
 
 
 module.exports.addTag = tag => {
-    return Tags.create({
-        tag
-    });
+    return Tags.findOne({
+        where: {
+            tag
+        }
+    })
+        .then(response => {
+            if (!response) {
+                return Tags.create({
+                    tag
+                });
+            }
+        });
 }
 
 module.exports.getTags = () => {
