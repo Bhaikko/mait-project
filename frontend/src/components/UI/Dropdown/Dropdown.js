@@ -6,6 +6,7 @@ import Notifications from './../../Notifications/Notifications';
 import axios from './../../../axios';
 
 import Alertify from './../../../utilities/Aleretify/Alertify';
+import notifIcon from './../../../assets/icons/notif.png';
 
 class Dropdown extends Component {
 
@@ -40,7 +41,8 @@ class Dropdown extends Component {
         return (
             <Fragment>
                 <div className={[classes.DropDownButton, this.props.classes, this.state.notify === true ? classes.Notify : ""].join(" ")} onClick={this.hoverEventHandler}>
-                    {this.props.dropdownButtonName}
+                    {/* {this.props.dropdownButtonName} */}
+                    <img src={notifIcon} alt={this.props.dropdownButtonName} className={classes.notifIcon}/>
                 </div>
 
                 <div className={[classes.DropDownContent, this.state.open ? classes.DropdownContentScroll : ""].join(" ")}>

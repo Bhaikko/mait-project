@@ -4,7 +4,8 @@ import classes from './UserProfile.css';
 
 import CenterContainer from './../../components/UI/CenterContainer/CenterContainer';
 import ContentContainer from './../../components/UI/ContentContainer/ContentContainer';
-import Tabs from './../../components/UI/Tabs/Tabs'
+
+import Tabs from './../../components/UI/Tabs/Tabs';
 import ContentTitle from './../../components/UI/ContentTitle/ContentTitle';
 import ProfilePhoto from './../../components/Profile/ProfilePhotos/ProfilePhoto/ProfilePhoto';
 import ProfileInfo from './../../components/Profile/ProfileInfo/ProfileInfo';
@@ -100,7 +101,7 @@ class UserProfile extends Component {
                 </ContentContainer>
                 <div className={classes.Rcontainer}>
                     <Tabs>
-                        <div label="Bio" className={classes.labelContainer}>
+                        <div className={classes.labelContainer} label="Bio" >
                             <ContentContainer classes={classes.BioContainer}>
                                 <div className={classes.SummaryContent}>
                                     {this.props.datingProfile.about || "-"}
@@ -108,7 +109,7 @@ class UserProfile extends Component {
 
                             </ContentContainer>
                         </div>
-                        <div label="Interets">
+                        <div label="Interets" className={classes.labelContainer}>
                             <ContentContainer classes={classes.InterestContainer}>
                                 <Tags 
                                     tags={this.props.tags} 
@@ -119,7 +120,7 @@ class UserProfile extends Component {
                             
                             </ContentContainer>
                         </div>
-                        <div label="Photos">
+                        <div label="Photos" className={classes.labelContainer}>
                             <ContentContainer classes={classes.PhotosContainer}>
                                 <ProfilePhotos 
                                     photos={this.props.profilePhotos} 

@@ -3,9 +3,15 @@
     list-style: none;
     margin-bottom: -1px;
     padding: 0.7rem 0.75rem;
+    color:#d1d1d1;
+    /* transition: .2s; */
+  }
+  .tabListItem:hover{
+    color: white;
   }
   
   .tabListActive {
-    background-color: #2D4571;
-    /* border-width: 1px 1px 0 1px; */
+    color:white;
+    border-bottom: 4px solid white;
+    transition: .2s all ease;
   }
