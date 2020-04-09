@@ -3,7 +3,7 @@
     justify-content: space-around;
     flex-wrap: wrap;
     align-items: center;
-    margin-top: 50px;
+    /* margin-top: 50px; */
 }
 .NewPhotoContainer{
     height:100%;

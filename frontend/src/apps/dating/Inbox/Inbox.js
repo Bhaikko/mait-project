@@ -205,6 +205,7 @@ class Inbox extends Component {
                                     content={this.state.contacts}
                                     attribute={'name'}
                                     filterAssigner={this.setFilterContacts}
+                                    placeholder="Search Contact"
                                 />
 
                                 <Contacts 

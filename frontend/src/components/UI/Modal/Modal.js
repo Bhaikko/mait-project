@@ -21,13 +21,7 @@ class Modal extends Component {
                         opacity: this.props.show ? '1' : '0'
                     }} 
                 >
-                    <CrossIcon 
-                        style={{
-                            top: "5%",
-                            right: "5%"
-                        }}
-                        onClick={this.props.modalClosed}
-                    />
+                    <CrossIcon onClick={this.props.modalClosed} classes={classes.CrossIcon}/>
 
                     {this.props.children}
                     

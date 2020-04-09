@@ -1,0 +1,26 @@
+.Header {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    display: block;
+    box-sizing: border-box;
+    color: black;
+    font-size: 30px;
+    text-align: center;
+}
+
+.SubHeader {
+    display: flex;
+    align-items: center;
+}
+
+.Button {
+    padding: 10px;
+    color: black;
+    border: 2px solid black;  
+    width: 20%;
+    margin-left: 10px;  
+}
+
+.FilterContainer {
+    margin: 0 !important;   
+}

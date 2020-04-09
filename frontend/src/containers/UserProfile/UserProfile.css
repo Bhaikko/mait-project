@@ -88,7 +88,7 @@
 .PhotoTabPhotos {
     width: 7cm;
     height: 7cm;
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
 @media (max-width:768px){
@@ -122,5 +122,10 @@
        width: 80vw;
        height: 80vw;
    }
+
+
+    .PhotoTabPhotos {
+        margin-top: 20px;
+    }
 
 }

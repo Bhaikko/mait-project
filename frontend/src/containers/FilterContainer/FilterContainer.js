@@ -19,8 +19,6 @@ class FilterContainer extends Component {
             filterString: event.target.value 
         });
         const filteredContent = this.props.content.filter(el => el[this.props.attribute].toLowerCase().includes(event.target.value.toLowerCase()));
-
-        // console.log(filteredContent);
         this.props.filterAssigner(filteredContent);
     }
 
@@ -28,7 +26,7 @@ class FilterContainer extends Component {
         return (
             <div className={[classes.SearchContainer, this.props.classes].join(" ")}>
                 <img src={SearchIcon} alt="..." className={classes.SearchIcon} />
-                <input type="text" placeholder="Search or start new chat" className={classes.SearchBar} onChange={this.filterHandler}/>
+                <input type="text" placeholder={this.props.placeholder} className={classes.SearchBar} onChange={this.filterHandler}/>
             </div>
         );
     }

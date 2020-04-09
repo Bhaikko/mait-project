@@ -46,7 +46,7 @@ class UserProfile extends Component {
                 
                 <ContentContainer classes={classes.ProfileContainer}>
                     <ContentTitle>
-                        <EditProfileFrom updateprofile={this.props.updateprofile} />
+                        {this.props.editable ? <EditProfileFrom updateprofile={this.props.updateprofile} /> : "" }
                         Profile
                     </ContentTitle>
                     

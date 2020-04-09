@@ -15,3 +15,11 @@
 .Modal {
     width: 600px !important; 
 }
+
+
+@media (max-width: 768px) {
+    .Modal {
+        width: 70% !important;
+        left: calc(50% - 250px);
+    }
+}

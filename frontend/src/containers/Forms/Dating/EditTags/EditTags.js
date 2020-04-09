@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import FilterContainer from '../../../FilterContainer/FilterContainer';
 import axios from '../../../../axios';
 import Tags from '../../../../components/Tags/Tags';
+import classes from './EditTags.css';
+import Button from './../../../../components/UI/Button/Button';
 
 class EditTags extends Component {
     constructor (props) {
@@ -44,11 +46,17 @@ class EditTags extends Component {
     render () {
         return (
             <React.Fragment>
-                <FilterContainer
-                    content={this.state.tags}
-                    attribute={'tag'}
-                    filterAssigner={this.serFilterTags}
-                />
+                <div className={classes.Header}>Add New Tags</div>
+                <div className={classes.SubHeader}>
+                    <FilterContainer
+                        content={this.state.tags}
+                        attribute={'tag'}
+                        filterAssigner={this.serFilterTags}
+                        placeholder="Enter Tag"
+                        classes={classes.FilterContainer}
+                    />
+                    <Button classes={classes.Button}>Add</Button>
+                </div>
                 {this.state.tags ? (
                     <Tags 
                         tags={this.state.filteredTags === null ? this.state.tags : this.state.filteredTags}
