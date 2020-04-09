@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
 .Rcontainer{
     width:65%;
     height:100%;
@@ -12,8 +14,6 @@
 .CenterContainer {
     padding-bottom: 30px;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
 
 .SummaryContent{
     font-family: 'Josefin Sans', sans-serif;
@@ -83,6 +83,12 @@
     justify-content: space-around;
     align-items: center;
     width: 100%;
+}
+
+.PhotoTabPhotos {
+    width: 7cm;
+    height: 7cm;
+    margin-top: 20px;
 }
 
 @media (max-width:768px){

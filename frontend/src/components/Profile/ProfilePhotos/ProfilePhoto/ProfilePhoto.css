@@ -4,6 +4,10 @@
     margin-right: 10px;
 }
 
+.PhotoOptions {
+    display: flex;
+}
+
 .ProfilePhoto {
     overflow: hidden;
     object-fit: cover;

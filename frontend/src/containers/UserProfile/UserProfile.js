@@ -5,7 +5,6 @@ import classes from './UserProfile.css';
 import CenterContainer from './../../components/UI/CenterContainer/CenterContainer';
 import ContentContainer from './../../components/UI/ContentContainer/ContentContainer';
 import Tabs from './../../components/UI/Tabs/Tabs'
-import Tab from './../../components/UI/Tabs/Tab/Tab'
 import ContentTitle from './../../components/UI/ContentTitle/ContentTitle';
 import ProfilePhoto from './../../components/Profile/ProfilePhotos/ProfilePhoto/ProfilePhoto';
 import ProfileInfo from './../../components/Profile/ProfileInfo/ProfileInfo';
@@ -129,6 +128,7 @@ class UserProfile extends Component {
                                     deletePhotoHandler={this.props.onDeletePhoto}
                                     setMainProfilePhotoHandler={this.props.onSetMainProfilePhoto}
                                     mainPhotoId={this.props.mainPhotoId}
+                                    photoClass={classes.PhotoTabPhotos}
                                 />                           
                             </ContentContainer>
                         </div>

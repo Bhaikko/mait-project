@@ -16,6 +16,20 @@ const ProfileImage = props => {
             className={[classes.ProfileImageContainer, props.classname].join(" ")}
             style={props.style}
         >
+            {props.editable ? (
+                <div className={classes.PhotoOptions}>
+                    <CrossIcon
+                        onClick={props.photoDeleteHandler}
+                    />
+                    <HeartIcon
+                        main={props.main} 
+                        clickHandler={props.setMainProfilePhotoHandler}
+                    />
+                </div>
+
+            ) : (
+                null
+            )}
             <img 
                 src={imageSrc}
                 className={classes.ProfilePhoto}
@@ -24,29 +38,6 @@ const ProfileImage = props => {
                     borderRadius: props.borderRadius
                 }}
             />
-            {props.editable ? (
-                <React.Fragment>
-                    <CrossIcon
-                        style={{
-                            top: -45,
-                            width: 40,
-                        }}
-                        onClick={props.photoDeleteHandler}
-                    />
-                    <HeartIcon
-                        style={{
-                            top: -45,
-                            right: 45,
-                            width: 40
-                        }}
-                        main={props.main} 
-                        clickHandler={props.setMainProfilePhotoHandler}
-                    />
-                </React.Fragment>
-
-            ) : (
-                null
-            )}
         </div>
     );
 }

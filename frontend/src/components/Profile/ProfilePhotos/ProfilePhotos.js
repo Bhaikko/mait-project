@@ -13,15 +13,11 @@ const ProfilePhotos = props => {
                 src={photo.imageUrl}
                 key={photo.id}
                 alt="..."
-                style={{
-                    margin: "10px",
-                    height : "100%", 
-                    width : "30%"
-                }}
                 editable={props.editable}
                 main={photo.main}
                 photoDeleteHandler={() => props.deletePhotoHandler(photo)}
                 setMainProfilePhotoHandler={() => props.setMainProfilePhotoHandler(photo)}
+                classname={props.photoClass}
             />))}
 
             {photosLength < 5 && props.editable ? 
