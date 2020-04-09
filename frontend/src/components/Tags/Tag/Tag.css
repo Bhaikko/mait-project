@@ -1,7 +1,21 @@
 
-.TagContainer {
-    background-color: #DBF6F6;
-    padding: 10px;
+.TagContainerU {
+    color:white;
+    background-color: #2d4571;
+    padding:1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    margin: 5px;
+    display: flex;    
+    align-items: center;
+    text-transform: capitalize;
+
+}
+.TagContainer{
+    color:white;
+    background-color: #2d4571;
+    padding:10px;
     border-radius: 10px;
     margin: 5px;
     display: flex;    
@@ -11,4 +25,13 @@
 
 .Pointer {
     cursor: pointer;
+}
+.CrossIcon{
+    margin-top: 5px;
+    margin-left: 5px;
+    transition: transform .2s;
+}
+
+.CrossIcon:hover{
+    transform: scale(1.5);
 }

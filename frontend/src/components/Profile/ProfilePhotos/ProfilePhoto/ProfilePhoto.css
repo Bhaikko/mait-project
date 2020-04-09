@@ -2,6 +2,7 @@
     position: relative;
     display: inline-block;
     margin-right: 10px;
+    /* height: 100%; */
 }
 
 .PhotoOptions {
@@ -16,4 +17,20 @@
     padding:1px;
     border:1px solid #2D4571;
     background-color:#9D354B;
+}
+
+.CrossIcon{
+    transition: transform .2s;
+}
+
+.CrossIcon:hover{
+    transform: scale(1.5);
+}
+
+.HeartIcon{
+    transition: transform .2s;
+}
+
+.HeartIcon:hover{
+    transform: scale(1.5);
 }

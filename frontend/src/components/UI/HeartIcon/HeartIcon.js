@@ -10,14 +10,14 @@ const HeartIcon = props => {
             {props.main ? (
                 <img 
                     src={HeartIconFilled} 
-                    className={classes.HeartIcon} 
+                    className={[classes.HeartIcon, props.classes].join(" ")} 
                     style={{...props.style}}
                     alt="..."
                 />
             ) : (
                 <img 
                     src={HeartIconUnfilled} 
-                    className={classes.HeartIcon} 
+                    className={[classes.HeartIcon, props.classes].join(" ")} 
                     style={{...props.style}}
                     alt="..."
                     onClick={props.clickHandler}
