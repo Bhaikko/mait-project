@@ -20,10 +20,12 @@ const ProfileImage = props => {
                 <div className={classes.PhotoOptions}>
                     <CrossIcon
                         onClick={props.photoDeleteHandler}
+                        classes={classes.CrossIcon}
                     />
                     <HeartIcon
                         main={props.main} 
                         clickHandler={props.setMainProfilePhotoHandler}
+                        classes={classes.HeartIcon}
                     />
                 </div>
 

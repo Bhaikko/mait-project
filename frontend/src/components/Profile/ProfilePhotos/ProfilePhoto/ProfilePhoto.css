@@ -4,6 +4,7 @@
     margin-right: 10px;
     justify-content: center;
     align-items: center;
+
 }
 
 .PhotoOptions {
@@ -18,4 +19,20 @@
     padding:1px;
     border:1px solid #2D4571;
     background-color:#9D354B;
+}
+
+.CrossIcon{
+    transition: transform .2s;
+}
+
+.CrossIcon:hover{
+    transform: scale(1.5);
+}
+
+.HeartIcon{
+    transition: transform .2s;
+}
+
+.HeartIcon:hover{
+    transform: scale(1.5);
 }
