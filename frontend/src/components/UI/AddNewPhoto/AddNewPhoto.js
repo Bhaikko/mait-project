@@ -36,7 +36,7 @@ const AddNewPhoto = props => {
                 onClick={clickHandler}
             />
 
-            <input type="file" accept="image/" className={classes.PhotoUpload} onChange={fileHandler}/>
+            <input type="file" accept=".png, .jpg, .jpeg" className={classes.PhotoUpload} onChange={fileHandler}/>
 
         </div>
     );
