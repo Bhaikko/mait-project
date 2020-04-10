@@ -106,7 +106,7 @@ class ExplorePage extends Component {
                                 <Button 
                                     style={{
                                         backgroundColor: "#fa8575",
-                                        left: "30%"                                    
+                                        left: "20%"                                    
                                     }}
                                     classes={classes.Button}
                                     onClick={this.passHandler}

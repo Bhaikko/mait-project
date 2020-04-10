@@ -42,6 +42,14 @@ class DatingRoute extends Component {
                 <NavigationItem link="/logout">Logout</NavigationItem>
             </Fragment>
         );
+        let mobileNavigationItems=(
+            <Fragment>
+                <NavigationItem link="/dating/explore">Explore</NavigationItem>
+                <NavigationItem link="/dating/inbox">Inbox</NavigationItem>
+                <NavigationItem link="/me">Profile</NavigationItem>
+                <NavigationItem link="/logout">Logout</NavigationItem>
+            </Fragment>
+        );
         
         let routes = (
             <Switch>
@@ -55,6 +63,7 @@ class DatingRoute extends Component {
         return (
             <Layout 
                 navigationItems={navigationItems} 
+                mobileNavigationItems={mobileNavigationItems}
                 notificationComponent={() => <Dropdown 
                     dropdownButtonName="Notifications" 
                     socket={this.socket} 

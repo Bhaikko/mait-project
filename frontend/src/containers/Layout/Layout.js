@@ -40,7 +40,7 @@ class Layout extends Component {
                 <SideDrawer 
                     open={this.state.showSideDrawer}
                     closed={this.sideDrawerClosedHandler} 
-                    navigationItems={this.props.navigationItems}
+                    navigationItems={this.props.mobileNavigationItems}
                 />
 
                 <main className={classes.Content}>
