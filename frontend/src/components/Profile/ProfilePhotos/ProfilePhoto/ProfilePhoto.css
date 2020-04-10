@@ -1,7 +1,9 @@
 .ProfileImageContainer {
     position: relative;
-    display: inline-block;
+    display: inline-flex;
     margin-right: 10px;
+    justify-content: center;
+    align-items: center;
 }
 
 .PhotoOptions {

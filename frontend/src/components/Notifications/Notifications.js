@@ -9,6 +9,8 @@ import axios from './../../axios';
 
 import DefaultPhoto from './../../assets/icons/Username.png';
 
+import { SERVER_URL } from './../../environments'
+
 class Notifications extends Component {
     constructor(props) {
         super(props);
@@ -61,7 +63,7 @@ class Notifications extends Component {
                             title={notification.title}
                             message={notification.message}
                             time={notification.time}
-                            image={notification.imageUrl || DefaultPhoto}
+                            image={notification.imageUrl ? SERVER_URL + "/" + notification.imageUrl : DefaultPhoto}
                         />)
                     ) : (
                         <div className={classes.EmptyMessage}>So Empty :(</div>

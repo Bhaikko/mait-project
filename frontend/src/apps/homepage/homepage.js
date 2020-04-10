@@ -33,7 +33,7 @@ class Homepage extends Component {
                 <div className={classes.CardContainer}>
                     <HomepageCard >
                         <Fragment>
-                            <Logo style={{fontSize: 40}} />
+                            <Logo />
                             <Infos />
                         </Fragment>
                     </HomepageCard>
@@ -155,9 +155,7 @@ class Homepage extends Component {
                             </div>
                         </div>
                         <div className={classes.UpperRight} >
-                            <Logo style={{
-                                fontSize: 40
-                            }} />
+                            <Logo/>
                             thecollegetalks@gmail.com <br />
                         </div>
                     </div>

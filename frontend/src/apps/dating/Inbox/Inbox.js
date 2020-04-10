@@ -223,10 +223,10 @@ class Inbox extends Component {
                                             alt="..." 
                                             style={{
                                                 height: 300,
-                                                width: 300
+                                                width: 300,
+                                                marginRight: 0
                                             }}
                                             borderRadius="50%" 
-                                            classname={classes.ProfilePhoto}   
                                         />
                                         <div className={classes.ProfileName}>Hi {UserDetail.get_username()}</div>
                                         <div className={classes.EmptyBoxMessage}>

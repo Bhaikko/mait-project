@@ -54,6 +54,7 @@ const socket = (io, redis) => {
 
                         const user = await getUsername(message.senderId);
                         const profilePhoto = await getMainProfilePhoto(message.senderId);
+
                         const messageContent = message.message;
                         const newNotification = {
                             title: `${user.username} texted you while you were away.`,

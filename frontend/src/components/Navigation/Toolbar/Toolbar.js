@@ -12,7 +12,7 @@ const toolbar = (props) => (
 
         {props.notificationComponent ? props.notificationComponent() : ""}
         
-        <Logo height="80%" classes={classes.Logo}/>
+        <Logo style={{fontSize: 20}} classes={classes.Logo}/>
         <nav className={classes.DesktopOnly}>
             <NavigationItems navigationItems={props.navigationItems} />
         </nav>

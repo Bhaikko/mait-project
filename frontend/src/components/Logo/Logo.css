@@ -5,10 +5,17 @@
     display: inline-block;
     box-sizing: border-box;
     color: white;
+    font-size: 40px;
 }
 
 @media (max-width: 768px) {
     header>.Logo {
         display: none;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .Logo {
+        font-size: 24px;
     }
 }

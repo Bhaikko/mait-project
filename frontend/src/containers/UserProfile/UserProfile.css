@@ -2,7 +2,6 @@
 
 .Rcontainer{
     width:65%;
-    height:100vh;
     display: flex;
     flex-direction: column;
     margin-right: 4%;
