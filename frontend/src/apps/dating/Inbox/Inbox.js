@@ -224,7 +224,8 @@ class Inbox extends Component {
                                             style={{
                                                 height: 300,
                                                 width: 300,
-                                                marginRight: 0
+                                                marginRight: 0,
+                                                marginLeft:"10%"
                                             }}
                                             borderRadius="50%" 
                                         />
