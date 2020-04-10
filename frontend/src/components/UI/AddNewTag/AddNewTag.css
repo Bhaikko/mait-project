@@ -13,13 +13,13 @@
 }
 
 .Modal {
-    width: 600px !important; 
+    width: 60%; 
 }
 
 
 @media (max-width: 768px) {
     .Modal {
-        width: 70% !important;
-        left: calc(50% - 250px);
+        width: 90% !important;
+        left: 5%;
     }
 }

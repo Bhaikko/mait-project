@@ -59,7 +59,7 @@ class EditProfileForm extends Component {
 
     updateProfile = formdata => {
         this.setState({
-            loading: true
+            loading: true,
         });
         axios.put('/dating/datingprofile', formdata)
             .then(response => {
