@@ -16,7 +16,7 @@ module.exports.getDatingProfile = userId => {
         where: {
             userId 
         },
-        attributes: ['id', 'about', 'relationshipStatus', 'intrestedIn', 'age', 'collegeName']
+        attributes: ['id', 'about', 'relationshipStatus', 'intrestedIn', 'age', 'collegeName', 'gender']
     });
 }
 

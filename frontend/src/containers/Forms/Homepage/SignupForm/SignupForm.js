@@ -29,20 +29,26 @@ class SignUpForm extends Component {
         
         axios.post("/auth/signup", formdata)
             .then(response => {
-                axios.post("/auth/login", formdata)
-                    .then(response => {
-                        localStorage.setItem("userdata", JSON.stringify({
-                            token: response.data.token
-                        }));
-
-                        this.setState({
-                            loading: false
+                if (response.status === 201) {
+                    axios.post("/auth/login", formdata)
+                        .then(response => {
+                            localStorage.setItem("userdata", JSON.stringify({
+                                token: response.data.token
+                            }));
+    
+                            this.setState({
+                                loading: false
+                            });
+    
+                            this.props.onSetToken(response.data.token);
+    
+                            Alertify.success("Login Successful.");
                         });
-
-                        this.props.onSetToken(response.data.token);
-
-                        Alertify.success("Login Successful.");
+                } else {
+                    this.setState({
+                        loading: false
                     });
+                }
                 
             })
             .catch(err => {

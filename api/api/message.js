@@ -5,7 +5,7 @@ const router = express.Router();
 const databaseHandler = require("./../database/index");
 // const { databaseParser } = require('./utility');
 
-router.get("/", (req, res, next) => {
+router.get("/", (req, res) => {
     res.send("Message Router Working");
 });
 

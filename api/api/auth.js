@@ -12,7 +12,7 @@ const { TOKEN_SECRET_KEY, EMAIL_ADDRESS, EMAIL_PASSWORD } = require("./../enviro
 
 const router = express.Router();
 
-router.get("/", (req, res, next) => {
+router.get("/", (req, res) => {
     res.send("Auth Router Working");
 });
 
@@ -114,7 +114,7 @@ const sendVerificationEmail = (userId) => {
         });
 }
 
-router.post("/signup", (req, res, next) => {
+router.post("/signup", (req, res) => {
     if (!validatePassword(req.body.password, res)) {
         return;
     }
@@ -189,7 +189,7 @@ router.post("/login", (req, res, next) => {
     })(req, res, next);
 });
 
-router.put('/updatePassword', (req, res, next) => {
+router.put('/updatePassword', (req, res) => {
     const {
         oldPassword,
         newPassword,
@@ -318,7 +318,7 @@ router.post('/forgotPassword', (req, res) => {
         })
 })
 
-router.get("/logout", (req, res, next) => {
+router.get("/logout", (req, res) => {
     res.logout();
     res.sendStatus(200);
 });

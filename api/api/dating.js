@@ -11,7 +11,7 @@ const upload = multer({
 });
 
 
-router.get("/", (req, res, next) => {
+router.get("/", (req, res) => {
     res.send("Dating Router Working");
 });
 
@@ -23,7 +23,7 @@ const errorHandler = (error, res, message = "Something Went wrong") => {
     });
 }
 
-router.get("/tags", (req, res, next) => {
+router.get("/tags", (req, res) => {
     databaseHandler.getTags()
         .then(tags => {
             tags = databaseParser(tags);
@@ -34,7 +34,7 @@ router.get("/tags", (req, res, next) => {
         });
 });
 
-router.post("/usertag", (req, res, next) => {
+router.post("/usertag", (req, res) => {
     if (!req.user) {
         res.status(401).json({
             message: "Unauthorized"
@@ -67,7 +67,7 @@ router.post("/usertag", (req, res, next) => {
     }
 });
 
-router.get("/usertag/:id", (req, res, next) => {
+router.get("/usertag/:id", (req, res) => {
     if (!req.user) {
         res.status(401).json({
             message: "Unauthorized"
@@ -85,7 +85,7 @@ router.get("/usertag/:id", (req, res, next) => {
 
 });
 
-router.delete("/usertag", (req, res, next) => {
+router.delete("/usertag", (req, res) => {
     if (!req.user) {
         res.status(401).json({
             message: "Unauthorized"
@@ -103,7 +103,7 @@ router.delete("/usertag", (req, res, next) => {
     }
 });
 
-router.post('/profilephoto', upload.single('profilePhoto'), (req, res, next) => {
+router.post('/profilephoto', upload.single('profilePhoto'), (req, res) => {
     if (!req.user) {
         res.status(401).json({
             message: 'Unauthorized'
@@ -130,7 +130,7 @@ router.post('/profilephoto', upload.single('profilePhoto'), (req, res, next) => 
     }
 });
 
-router.get('/profilephoto/:id', (req, res, next) => {
+router.get('/profilephoto/:id', (req, res) => {
     databaseHandler.getProfilePhotos(req.params.id)
         .then(photos => {
             photos = databaseParser(photos);
@@ -142,7 +142,7 @@ router.get('/profilephoto/:id', (req, res, next) => {
 });
 
 
-router.delete('/profilephoto', (req, res, next) => {
+router.delete('/profilephoto', (req, res) => {
     databaseHandler.deleteProfilePhoto(req.user.id, req.body.photo.id)
         .then(response => {
             try {
@@ -162,7 +162,7 @@ router.delete('/profilephoto', (req, res, next) => {
 
 });
 
-router.put('/profilephoto', (req, res, next) => {
+router.put('/profilephoto', (req, res) => {
     databaseHandler.setMainProfilePhoto(req.user.id, req.body.id)
         .then(response => {
             res.status(200).json({
@@ -174,7 +174,7 @@ router.put('/profilephoto', (req, res, next) => {
         });
 });
 
-router.get('/datingprofile/:id', (req, res, next) => {
+router.get('/datingprofile/:id', (req, res) => {
     databaseHandler.getDatingProfile(req.params.id)
         .then(response => {
             res.send(response.get());
@@ -184,8 +184,7 @@ router.get('/datingprofile/:id', (req, res, next) => {
         });
 });
 
-router.put('/datingprofile', (req, res, next) => {
-
+router.put('/datingprofile', (req, res) => {
     if (!req.user) {
         res.status(401).json({
             message: 'Unauthorized'
@@ -204,7 +203,7 @@ router.put('/datingprofile', (req, res, next) => {
 
 });
 
-router.get('/profile/:id', (req, res, next) => {
+router.get('/profile/:id', (req, res) => {
 
     databaseHandler.getCompleteProfile(req.params.id)
         .then(profile => {
@@ -216,7 +215,7 @@ router.get('/profile/:id', (req, res, next) => {
         });
 });
 
-router.post('/report', (req, res, next) => {
+router.post('/report', (req, res) => {
     if (!req.user) {
         res.status(401).json({
             message: "Unauthorized"
@@ -298,7 +297,7 @@ const calculateTagPercentage = (selectedUserTags, currentUserTags) => {
 }
 
 
-router.get("/explore", (req, res, next) => {
+router.get("/explore", (req, res) => {
     databaseHandler.getAllUsers()
         .then(users => {
             users = databaseParser(users);
@@ -330,7 +329,7 @@ const notificationSocket = (io, redis) => {
     newSocket = new Socket(io, redis);
 }
 
-router.post("/addMatch", (req, res, next) => {
+router.post("/addMatch", (req, res) => {
     databaseHandler.getMatch(req.body.userId, req.user.id)
         .then(response => {
             if (!response) {
@@ -382,7 +381,7 @@ router.post("/addMatch", (req, res, next) => {
         });
 });
 
-router.get('/getContacts', (req, res, next) => {
+router.get('/getContacts', (req, res) => {
     databaseHandler.getContactsIds(req.user.id)
         .then(response => {
             const contacts = databaseParser(response);

@@ -65,8 +65,7 @@ class Profile extends Component {
                 <NavigationItem link="/logout">Logout</NavigationItem>
             </Fragment>
         );
-
-        
+                
         return (  
             <Layout navigationItems={navigationItems}>
                 {this.state.error ? <Redirect to="/notfound" /> : null}

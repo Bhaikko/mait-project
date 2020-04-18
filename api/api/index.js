@@ -12,7 +12,7 @@ router.use("/dating", passport.authenticate("jwt", { session: false }), datingRo
 router.use("/messages", passport.authenticate("jwt", { session: false }), messagesRouter);
 
 
-router.get("/", (req, res, next) => {
+router.get("/", (req, res) => {
     res.send("api Route working");
 });
 

@@ -143,6 +143,8 @@ class Me extends Component {
             </Fragment>
         );
 
+        // console.log(this.state);
+
         return (
             <Layout navigationItems={navigationItems}>
                 {this.state.loading ? (
