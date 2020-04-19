@@ -18,7 +18,12 @@ class ExplorePage extends Component {
         super(props);        
 
         this.state = {
-            selectedUser: null,
+            selectedUserDatingProfile: null,
+            selectedUserName: null,
+            selectedUserId: null,
+            selectedUserProfilePhotos: null,
+            selectedUserCommonTags: null,
+            selectedUserProfilePhotos: null,
             loading: true,
             matchFound: false,
         }
@@ -32,9 +37,12 @@ class ExplorePage extends Component {
         axios.get('dating/explore')
             .then(response => {
                 this.setState({
-                    selectedUser: response.data.selectedUser,
+                    selectedUserDatingProfile: response.data.selectedUserCompleteProfile.datingProfile,
+                    selectedUserName: response.data.selectedUserCompleteProfile.name,
+                    selectedUserCommonTags: response.data.matchedResult.matchedTags,
+                    selectedUserId: response.data.selectedUserCompleteProfile.id,
+                    selectedUserProfilePhotos: response.data.selectedUserCompleteProfile.profilePhotos,
                     percentage: response.data.matchedResult.percentage,
-                    commonTags: response.data.matchedResult.matchedTags,
                     loading: false 
                 });
             })
@@ -94,14 +102,14 @@ class ExplorePage extends Component {
                             <div className={classes.ProfileSection}>
                                 <div className={classes.InfoContainer}>
                                     <div className={classes.NameAgeContainer}>
-                                        <span className={classes.Name}>{this.state.selectedUser.name},</span>
-                                        <span className={classes.Age}>{this.state.selectedUser.datingProfile.age || "-"}</span>
+                                        <span className={classes.Name}>{this.state.selectedUserName},</span>
+                                        <span className={classes.Age}>{this.state.selectedUserDatingProfile.age || "-"}</span>
                                     </div>
-                                    <span className={classes.CollegeName}>{this.state.selectedUser.datingProfile.collegeName || "-"}</span>
+                                    <span className={classes.CollegeName}>{this.state.selectedUserDatingProfile.collegeName || "-"}</span>
                                 </div>
                                 <div className={classes.MatchboxContainer}>
                                     <span className={classes.Matchbox}>{this.state.percentage}%</span>
-                                    <Link to={"/profile/" + this.state.selectedUser.id} className={classes.ViewProfile}>Visit Profile</Link>
+                                    <Link to={"/profile/" + this.state.selectedUserId} className={classes.ViewProfile}>Visit Profile</Link>
                                 </div>
                                 <Button 
                                     style={{
@@ -126,7 +134,7 @@ class ExplorePage extends Component {
                             </div>
 
                             <div className={classes.DesktopPhotos}>
-                                {this.state.selectedUser.profilePhotos.length === 0 ? (
+                                {this.state.selectedUserProfilePhotos.length === 0 ? (
                                     <ProfilePhoto 
                                     src={mainPhoto ? mainPhoto.imageUrl : ""}
                                     style={{
@@ -135,7 +143,7 @@ class ExplorePage extends Component {
                                     }}
                                 />
                                 ) : (
-                                    this.state.selectedUser.profilePhotos.map((photo, index) => (
+                                    this.state.selectedUserProfilePhotos.map((photo, index) => (
                                         <ProfilePhoto 
                                             src={photo.imageUrl}
                                             style={{
@@ -168,19 +176,19 @@ class ExplorePage extends Component {
                                         My Self-Summary
                                     </div>
                                     <div className={classes.SelfSummaryBoxContent}>
-                                        {this.state.selectedUser.datingProfile.about}
+                                        {this.state.selectedUserDatingProfile.about}
                                     </div>
                                 </div>
                                 <div className={classes.AboutBox}>
-                                    <div className={classes.About}><span className={classes.AboutKey}>I'm Currently</span> {this.state.selectedUser.datingProfile.relationshipStatus}</div>
-                                    <div className={classes.About}><span className={classes.AboutKey}>Intrested In</span> {this.state.selectedUser.datingProfile.intrestedIn}</div>
-                                    <div className={classes.About}><span className={classes.AboutKey}>Graduation From</span> {this.state.selectedUser.datingProfile.collegeName}</div>
+                                    <div className={classes.About}><span className={classes.AboutKey}>I'm Currently</span> {this.state.selectedUserDatingProfile.relationshipStatus}</div>
+                                    <div className={classes.About}><span className={classes.AboutKey}>Intrested In</span> {this.state.selectedUserDatingProfile.intrestedIn}</div>
+                                    <div className={classes.About}><span className={classes.AboutKey}>Graduation From</span> {this.state.selectedUserDatingProfile.collegeName}</div>
                                 </div>
                             </div>
                             
                             <div className={classes.TagsContainer}>
                                 <div className={classes.TagHeading}>Here's what you too have in common</div>
-                                <Tags tags={this.state.commonTags} />
+                                <Tags tags={this.state.selectedUserCommonTags} />
                             </div>
 
                         </ContentContainer>
@@ -188,7 +196,7 @@ class ExplorePage extends Component {
                         <SuccessfulMatchModal 
                             show={this.state.matchFound}
                             closeModalHandler={this.keepExploringHandler}
-                            likeeName={this.state.selectedUser.name}
+                            likeeName={this.state.selectedUserName}
                         />
                     </Fragment>
                 )}

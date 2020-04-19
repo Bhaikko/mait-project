@@ -236,49 +236,36 @@ router.post('/report', (req, res) => {
 
 // Explore Algorithm
 
-const getRandomInt = (max) => {
-    return Math.floor(Math.random() * Math.floor(max)) + 1;
+const getRandomInt = userIdsArray => {
+    const max = userIdsArray.length;
+    const randomIndex = Math.floor(Math.random() * Math.floor(max)) + 1;
+
+    return userIdsArray[randomIndex];
 }
 
-const searchUser = (users, userId) => {
-    let start = 0;
-    let end = users.length - 1;
+const getRandomuser = async (userIdsArray, currentUser) => {
+    const randomId = getRandomInt(userIdsArray);
 
-    while (start <= end) {
-        let mid = parseInt((end + start) / 2);
-
-        if (users[mid].id === userId) {
-            return users[mid];
-        } else if (userId <= users[mid].id) {
-            end = mid - 1; 
-        } else {
-            start = mid + 1;
-        }
+    if (!randomId) {
+        return getRandomuser(userIdsArray, currentUser);
     }
-}
 
-const getRandomuser = (users, currentUser) => {
-    const randomId = getRandomInt(users.length) % users.length;
+    const selectedUser = await databaseHandler.getDatingProfile(randomId);
 
-    const selectedUser = searchUser(users, randomId);
-    if (!selectedUser) {
-        return getRandomuser(users, currentUser);
-    }
-    const selecteduserGender = selectedUser.datingProfile.get().gender === "Male" ? "Men" : "Women";
+    const selecteduserGender = selectedUser.get().gender === "Male" ? "Men" : "Women";
 
-    if (currentUser.datingProfile.get().intrestedIn === selecteduserGender) {
-        return selectedUser;
+    if (currentUser.get().intrestedIn === selecteduserGender) {
+        return randomId;
     } else {
-        return getRandomuser(users, currentUser);
+        return getRandomuser(userIdsArray, currentUser);
     }
 }
 
 const calculateTagPercentage = (selectedUserTags, currentUserTags) => {
-    selectedUserTags = databaseParser(selectedUserTags);
-    currentUserTags = databaseParser(currentUserTags);
 
     let matchesCount = 0;
     const matchedTags = [];
+
     for (let i = 0; i < selectedUserTags.length; i++) {
         for (let j = 0; j < currentUserTags.length; j++) {
             if (selectedUserTags[i].tag === currentUserTags[j].tag) {
@@ -298,18 +285,26 @@ const calculateTagPercentage = (selectedUserTags, currentUserTags) => {
 
 
 router.get("/explore", (req, res) => {
-    databaseHandler.getAllUsers()
-        .then(users => {
-            users = databaseParser(users);
+    databaseHandler.getAllUserIds(req.user.id)
+        .then(async users => {
+            let userIDs = databaseParser(users);
+            const userIdsArray = [];
+            userIDs.map(current => {
+                userIdsArray.push(current.id);
+            });
             
-            const currentUser = searchUser(users, req.user.id);
-            const selectedUser = getRandomuser(users, currentUser);
 
-            // const selectedUser = users[0]; // For Successfull match test only
+            const currentUser = await databaseHandler.getDatingProfile(req.user.id);
+            const selectedUserId = await getRandomuser(userIdsArray, currentUser);
 
-            const result = calculateTagPercentage(selectedUser.userTags, currentUser.userTags);
+            const selectedUserCompleteProfile = await databaseHandler.getCompleteProfile(selectedUserId);
+            const selectedUserTags = selectedUserCompleteProfile.userTags;
+            const currentUserTags = databaseParser(await databaseHandler.getUserTags(currentUser.id));
+
+            const result = calculateTagPercentage(selectedUserTags, currentUserTags);
+            
             res.status(200).json({
-                selectedUser,
+                selectedUserCompleteProfile,
                 matchedResult: result
             });
         })

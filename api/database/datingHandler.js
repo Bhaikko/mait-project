@@ -374,3 +374,14 @@ module.exports.getMainProfilePhoto = userId => {
         attributes: ['imageUrl']
     });
 }
+
+module.exports.getAllUserIds = userId => {
+    return Users.findAll({
+        where: {
+            id: {
+                [Op.ne]: userId
+            }
+        },
+        attributes: ["id"]
+    });
+}

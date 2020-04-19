@@ -38,7 +38,8 @@ const {
     deleteNotifications,
     getNotifications,
     getUsername,
-    getMainProfilePhoto
+    getMainProfilePhoto,
+    getAllUserIds
 } = require("./datingHandler");
 
 const {
@@ -90,5 +91,6 @@ module.exports = {
     getVerificationCode,
     updateVerification,
     getUserByUserid,
-    getUseByEmailAndUsername
+    getUseByEmailAndUsername,
+    getAllUserIds
 };
