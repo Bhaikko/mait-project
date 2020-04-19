@@ -18,44 +18,31 @@ class EditProfileForm extends Component {
         }
     }
 
-    componentDidMount() {
+    getProfileInfo = () => {
         axios.get('/dating/datingprofile/' + UserDetail.get_userId())
             .then(response => {
-                console.log(response.data);
+                
+                const newFormConfig = EditProfileFormConfig;
+                newFormConfig.about.value = response.data.about;
+                newFormConfig.relationshipStatus.value = response.data.relationshipStatus;
+                newFormConfig.collegeName.value = response.data.collegeName;
+                newFormConfig.age.value = response.data.age;
+                newFormConfig.gender.value = response.data.gender;
+                newFormConfig.intrestedIn.value = response.data.intrestedIn;
+
                 this.setState({
-                    formConfig: {
-                        about: {
-                            ...this.state.formConfig.about,
-                            value: response.data.about
-                        },
-                        relationshipStatus: {
-                            ...this.state.formConfig.relationshipStatus,
-                            value: response.data.relationshipStatus
-                        },
-                        collegeName: {
-                            ...this.state.formConfig.collegeName,
-                            value: response.data.collegeName
-                        },
-                        age: {
-                            ...this.state.formConfig.age,
-                            value: response.data.age
-                        },
-                        gender: {
-                            ...this.state.formConfig.gender,
-                            value: response.data.gender
-                        },
-                        intrestedIn: {
-                            ...this.state.formConfig.intrestedIn ,
-                            value: response.data.intrestedIn
-                        }
-                    },
+                    formConfig: newFormConfig,
                     loading: false
                 });
-            
+
             })
             .catch(err => {
 
             });
+    }
+
+    componentDidMount() {
+        this.getProfileInfo();
     }
 
     updateProfile = formdata => {
@@ -66,6 +53,7 @@ class EditProfileForm extends Component {
         axios.put('/dating/datingprofile', formdata)
             .then(response => {
                 this.props.updateprofile("datingProfile", formdata, response.data.message);
+                this.getProfileInfo();
                 this.setState({
                     loading: false
                 });

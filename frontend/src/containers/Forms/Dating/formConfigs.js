@@ -9,6 +9,16 @@ module.exports.EditProfileFormConfig = {
         valid: true,
         touched: false
     },
+    collegeName: {
+        label: "Your College",
+        elementType: "input",
+        elementConfig: {
+            placeholder: "Your College Name"
+        },
+        value: "",
+        valid: true,
+        touched: false 
+    },
     relationshipStatus: {
         label: "Your Relationship Status",
         elementType: "select",
@@ -19,6 +29,20 @@ module.exports.EditProfileFormConfig = {
             ]
         },
         value: "Single",
+        valid: true,
+        touched: false 
+    },
+    age: {
+        label: "Your Age",
+        elementType: "input",
+        elementConfig: {
+            placeholder: "Your Age",
+            type: "number"
+        },
+        validation: {
+            min: 18
+        },
+        value: 18,
         valid: true,
         touched: false 
     },
@@ -48,30 +72,8 @@ module.exports.EditProfileFormConfig = {
         valid: true,
         touched: false 
     },
-    collegeName: {
-        label: "Your College",
-        elementType: "input",
-        elementConfig: {
-            placeholder: "Your College Name"
-        },
-        value: "",
-        valid: true,
-        touched: false 
-    },
-    age: {
-        label: "Your Age",
-        elementType: "input",
-        elementConfig: {
-            placeholder: "Your Age",
-            type: "number"
-        },
-        validation: {
-            min: 18
-        },
-        value: 18,
-        valid: true,
-        touched: false 
-    }
+    
+   
 }
 
 module.exports.SubmitReportFormConfig = {

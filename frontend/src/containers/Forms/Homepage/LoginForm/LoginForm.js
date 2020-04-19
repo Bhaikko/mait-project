@@ -94,20 +94,24 @@ class LoginForm extends Component {
                 <div className={classes.Header}>
                     Hello Friend
                 </div>
-                <Form 
-                    classes={classes.LoginForm}
-                    formConfig={this.state.formConfig} 
-                    formName="Login" 
-                    buttonName="Login"
-                    onFormSubmit={this.loginSubmitHandler}
-                >
-                    <Button 
-                        classes={classes.ForgotPassword} 
-                        onClick={this.forgotPasswordHandler}
+                {this.state.loginLoading ? (
+                    <Spinner />
+                ) : (
+                    <Form 
+                        classes={classes.LoginForm}
+                        formConfig={this.state.formConfig} 
+                        formName="Login" 
+                        buttonName="Login"
+                        onFormSubmit={this.loginSubmitHandler}
                     >
-                        Forgot Password
-                    </Button>
-                </Form>
+                        <Button 
+                            classes={classes.ForgotPassword} 
+                            onClick={this.forgotPasswordHandler}
+                        >
+                            Forgot Password
+                        </Button>
+                    </Form>
+                )}
 
                 <Modal show={this.state.showForgotPasswordModal} modalClosed={this.closeModal}>
                     {this.state.forgetLoading ? (
