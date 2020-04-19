@@ -88,8 +88,8 @@ class ExplorePage extends Component {
 
     render () {
         let mainPhoto = null;
-        if (this.state.selectedUser) {
-            mainPhoto = this.state.selectedUser.profilePhotos.find(photo => photo.main === true);
+        if (this.state.selectedUserProfilePhotos) {
+            mainPhoto = this.state.selectedUserProfilePhotos.find(photo => photo.main === true);
         }
         
         return (
@@ -143,7 +143,7 @@ class ExplorePage extends Component {
                                     }}
                                 />
                                 ) : (
-                                    this.state.selectedUserProfilePhotos.map((photo, index) => (
+                                    this.state.selectedUserProfilePhotos.map((photo) => (
                                         <ProfilePhoto 
                                             src={photo.imageUrl}
                                             style={{
