@@ -55,6 +55,14 @@ const Users = database.define("users", {
         validate: {
             isIn: [["Member", "VIP", "Moderator", "Admin"]]
         }
+    },
+    enrollment: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: {
+            args: true,
+            msg: "Enrollment Number Already Exists."
+        }
     }
 });
 

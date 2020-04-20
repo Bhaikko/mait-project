@@ -12,6 +12,20 @@ module.exports.SignupFormConfig = {
         valid: false,
         touched: false
     },
+    enrollmentNumber: {
+        elementType: "input",
+        elementConfig: {
+            type: "text",
+            placeholder: "Your University Enrollment Number",
+        },
+        value: "",
+        validation: {
+            required: true
+        },
+        valid: false,
+        touched: false,
+        tooltip: "Required To Validate If You Are Student Of IPU."
+    },
     username: {
         elementType: "input",
         elementConfig: {

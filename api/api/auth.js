@@ -72,6 +72,47 @@ const validatePassword = (password, res) => {
     }
 }
 
+const validateEnrollmentNumber = (enrollmentNumber, res) => {
+    if (enrollmentNumber.length === 10) {
+        enrollmentNumber = "0" + enrollmentNumber;
+    }
+
+    const rollNumber = enrollmentNumber.slice(0, 3);
+    const clgCode = enrollmentNumber.slice(3, 6);
+    const courseCode = enrollmentNumber.slice(6, 9);
+    const yearCode = enrollmentNumber.slice(9, 11);
+
+    const ipuCollegeCode = {
+        101: true,
+        512: true,
+        115: true,
+        207: true,
+        702: true,
+        962: true,
+        156: true,
+        209: true,
+        768: true,
+        132: true,
+        965: true,
+        133: true,
+        964: true,
+        148: true,
+        963: true,
+        150: true,
+        161: true,
+        164: true,
+        208: true
+    };
+
+    if (ipuCollegeCode[clgCode]) {
+        return true;
+    } else {
+        res.status(400).json({
+            message: "Invalid Enrollment Number."
+        });
+    }
+}
+
 const sendEmail = (mailOptions) => {
     let transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -119,6 +160,10 @@ router.post("/signup", (req, res) => {
         return;
     }
 
+    if (!validateEnrollmentNumber(req.body.enrollmentNumber, res)) {
+        return;
+    }
+
     bcrypt.hash(req.body.password, saltRounds, function(err, password) {
         if (err) {
             throw err;
@@ -126,7 +171,7 @@ router.post("/signup", (req, res) => {
 
         const verificationCode = v4(); 
 
-        databaseHandler.addUser(req.body.name, req.body.username, req.body.email, password, verificationCode)
+        databaseHandler.addUser(req.body.name, req.body.username, req.body.email, password, verificationCode, req.body.enrollmentNumber)
             .then(user => {
                 sendVerificationEmail(user.id)
                     .then(response => {
@@ -134,7 +179,6 @@ router.post("/signup", (req, res) => {
                             user: user 
                         });
                     });
-                
             })
             .catch(err => {
                 res.status(400).json({

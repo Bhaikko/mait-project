@@ -1,6 +1,6 @@
 const { Users, DatingProfiles } = require("./database");
 
-module.exports.addUser = (name, username, email, password, verificationCode) => {
+module.exports.addUser = (name, username, email, password, verificationCode, enrollment) => {
     username = username.trim();
     username = username.toLowerCase();
     username = username.split(" ");
@@ -15,7 +15,8 @@ module.exports.addUser = (name, username, email, password, verificationCode) => 
         email,
         password,
         username,
-        isVerified: verificationCode
+        isVerified: verificationCode,
+        enrollment
     })
         .then(response => {
             return DatingProfiles.create({
