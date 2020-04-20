@@ -23,9 +23,9 @@ class ExplorePage extends Component {
             selectedUserId: null,
             selectedUserProfilePhotos: null,
             selectedUserCommonTags: null,
-            selectedUserProfilePhotos: null,
             loading: true,
             matchFound: false,
+            matchedName: ""
         }
     }
 
@@ -43,11 +43,11 @@ class ExplorePage extends Component {
                     selectedUserId: response.data.selectedUserCompleteProfile.id,
                     selectedUserProfilePhotos: response.data.selectedUserCompleteProfile.profilePhotos,
                     percentage: response.data.matchedResult.percentage,
-                    loading: false 
+                    loading: false,
                 });
             })
             .catch(err => {
-                console.log(err);
+
             });
     }
 
@@ -56,16 +56,19 @@ class ExplorePage extends Component {
             loading: true
         });
         axios.post('dating/addMatch', {
-            userId: this.state.selectedUser.id 
+            userId: this.state.selectedUserId
         })
             .then(response => {
                 if (response.status === 200) {
-                    Alertify.success(this.state.selectedUser.name + " " + response.data.message + "!");
                     this.setState({
-                        matchFound: true
+                        matchFound: true,
+                        loading: false,
+                        matchedName: this.state.selectedUserName
                     });
+                    Alertify.success(this.state.selectedUserName + " " + response.data.message + "!");
+                    
                 } else {
-                    Alertify.success(response.data.message + " " + this.state.selectedUser.name + "!");
+                    Alertify.success(response.data.message + " " + this.state.selectedUserName + "!");
                 }
                 this.getNewUser();
             })
@@ -196,7 +199,7 @@ class ExplorePage extends Component {
                         <SuccessfulMatchModal 
                             show={this.state.matchFound}
                             closeModalHandler={this.keepExploringHandler}
-                            likeeName={this.state.selectedUserName}
+                            likeeName={this.state.matchedName}
                         />
                     </Fragment>
                 )}

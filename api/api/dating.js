@@ -238,7 +238,7 @@ router.post('/report', (req, res) => {
 
 const getRandomInt = userIdsArray => {
     const max = userIdsArray.length;
-    const randomIndex = Math.floor(Math.random() * Math.floor(max)) + 1;
+    const randomIndex = Math.floor(Math.random() * Math.floor(max));
 
     return userIdsArray[randomIndex];
 }
@@ -293,7 +293,7 @@ router.get("/explore", (req, res) => {
                 userIdsArray.push(current.id);
             });
             
-
+            
             const currentUser = await databaseHandler.getDatingProfile(req.user.id);
             const selectedUserId = await getRandomuser(userIdsArray, currentUser);
 
