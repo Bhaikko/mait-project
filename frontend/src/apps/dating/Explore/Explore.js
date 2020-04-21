@@ -190,7 +190,7 @@ class ExplorePage extends Component {
                             </div>
                             
                             <div className={classes.TagsContainer}>
-                                <div className={classes.TagHeading}>Here's what you too have in common</div>
+                                <div className={classes.TagHeading}>Here's what you two have in common</div>
                                 <Tags tags={this.state.selectedUserCommonTags} />
                             </div>
 

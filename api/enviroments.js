@@ -10,6 +10,6 @@ module.exports.PORT = 4000;
 module.exports.SERVER_URL = `http://127.0.0.1:${PORT}`;
 
 
-const { EMAIL_ADDRESS, EMAIL_PASSWORD } = require('./credentials');
-module.exports.EMAIL_ADDRESS = EMAIL_ADDRESS;
-module.exports.EMAIL_PASSWORD = EMAIL_PASSWORD;
+// const { EMAIL_ADDRESS, EMAIL_PASSWORD } = require('./credentials');
+module.exports.EMAIL_ADDRESS ="something@gmail.com";
+module.exports.EMAIL_PASSWORD ="password";

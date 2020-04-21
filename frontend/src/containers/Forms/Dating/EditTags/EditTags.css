@@ -24,3 +24,10 @@
 .FilterContainer {
     margin: 0 !important;   
 }
+
+@media screen and (max-width: 768px){
+    .Header{
+        letter-spacing: 3px;
+        font-size: 25px;
+    }
+}

@@ -75,7 +75,7 @@ class Homepage extends Component {
                                     with like-minded people. <br />
                                 </div>
                                 <div className={classes.SignupContainer}>
-                                    Join Mait Talks today.
+                                    Join College Talks today.
                                     <Link 
                                         to="/auth"
                                     >
