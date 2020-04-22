@@ -151,7 +151,8 @@ class Homepage extends Component {
                                 Want to date someone from same college? Checkout our DATING SECTION.<br />
                                 Want to get latest updates and stories? Our FEED will take care of that.<br />
                                 Don't want to buy expensive books? Find cheap options from our MARKETPLACE.<br />
-                                Bunked your way through semester and didn't make notes? Dont worry, our NOTES section got you covered.<br />
+                                Bunked your way through semester and didn't make notes? Dont worry, our NOTES section got you covered.<br /> <br />
+                                College Talks is an open source project. Head to out github repo to contribute.
                             </div>
                         </div>
                         <div className={classes.UpperRight} >
