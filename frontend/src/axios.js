@@ -28,7 +28,11 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
     response => response,
     error => {
-        Alertify.error(error.response.data.message);
+        try {
+            Alertify.error(error.response.data.message);
+        } catch (err) {
+            Alertify.error("Something Went Wrong!");
+        }
         // if (!error.response.config.url.includes("/auth")) {
         //     Alertify.error("Try Refreshing The Page");
         // }

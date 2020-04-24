@@ -147,7 +147,7 @@ const Messages = database.define("messages", {
         allowNull: false
     },
     time: {
-        type: Sequelize.TIME,
+        type: Sequelize.DATE,
         allowNull: false
     },
     message: {
@@ -219,7 +219,7 @@ const Notifications = database.define("notifications", {
         allowNull: false 
     },
     time: {
-        type: Sequelize.TIME
+        type: Sequelize.DATE
     }
 });
 

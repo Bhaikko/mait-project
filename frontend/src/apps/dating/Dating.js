@@ -11,7 +11,7 @@ const DatingLandingPage = () => {
         <CenterContainer classes={classes.CenterContainer}>
             <div className={classes.LeftContainer} >
                 <span className={classes.LeftContainerHeader}>
-                    Mait Talks <br/>
+                    College Talks <br/>
                     Dating App
                 </span>
                 <span className={classes.LeftContainerContent}>
