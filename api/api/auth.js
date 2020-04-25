@@ -73,6 +73,13 @@ const validatePassword = (password, res) => {
 }
 
 const validateEnrollmentNumber = (enrollmentNumber, res) => {
+    if (enrollmentNumber.length !== 10 && enrollmentNumber.length !== 11) {
+        res.status(400).json({
+            message: "Invalid Enrollment Number."
+        });
+        return false;
+    }
+
     if (enrollmentNumber.length === 10) {
         enrollmentNumber = "0" + enrollmentNumber;
     }
@@ -137,6 +144,9 @@ const sendEmail = (mailOptions) => {
 const sendVerificationEmail = (userId) => {
     return databaseHandler.getUserByUserid(userId)
         .then(response => {
+            if (!response) {
+                return;
+            }
             const message = `
                 Hi ${response.username}, Thank you registering yourself on our site.
                 Your Verification Code is
@@ -170,7 +180,6 @@ router.post("/signup", (req, res) => {
         }
 
         const verificationCode = v4(); 
-
         databaseHandler.addUser(req.body.name, req.body.username, req.body.email, password, verificationCode, req.body.enrollmentNumber)
             .then(user => {
                 sendVerificationEmail(user.id)
