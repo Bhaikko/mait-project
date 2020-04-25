@@ -21,8 +21,6 @@ const DatingLandingPage = () => {
                         We will try our best to find you your best match. <br/>
                         But first how about you setup your dating profile. <br/>
                         The more life your profile has, Better the Chances. <br/>
-                        Feel Me??? <br />
-                        You will see. <br/>
                     </p>
                 </span>
 

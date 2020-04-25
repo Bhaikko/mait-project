@@ -19,7 +19,7 @@ const Tags = props => {
             </Tag>)}
 
             {
-                tagsLength < 10 && props.editable ? 
+                tagsLength < 20 && props.editable ? 
                 <AddNewTag 
                     updateprofile={props.updateprofile}
                     tags={props.tags}

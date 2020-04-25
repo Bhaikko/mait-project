@@ -56,7 +56,7 @@ router.post("/usertag", (req, res) => {
                             }); 
                         } else {
                             res.status(400).json({
-                                message: "Tag Already Exist"
+                                message: "Tag Already Exists"
                             });
                         }
                     })
