@@ -263,6 +263,13 @@ const getRandomuser = async (userIdsArray, currentUser) => {
 
 const calculateTagPercentage = (selectedUserTags, currentUserTags) => {
 
+    if (selectedUserTags.length === 0 || currentUserTags.length === 0) {
+        return {
+            percentage: 0,
+            matchedTags: []
+        };
+    }
+
     let matchesCount = 0;
     const matchedTags = [];
 
@@ -275,8 +282,9 @@ const calculateTagPercentage = (selectedUserTags, currentUserTags) => {
             }
         }
     }
+
     const result = {
-        percentage: Math.ceil((matchesCount / selectedUserTags.length) * 100) || 0,
+        percentage: Math.ceil((matchesCount / currentUserTags.length) * 100) || 0,
         matchedTags
     }
 
@@ -299,7 +307,7 @@ router.get("/explore", (req, res) => {
 
             const selectedUserCompleteProfile = await databaseHandler.getCompleteProfile(selectedUserId);
             const selectedUserTags = selectedUserCompleteProfile.userTags;
-            const currentUserTags = databaseParser(await databaseHandler.getUserTags(currentUser.id));
+            const currentUserTags = databaseParser(await databaseHandler.getUserTags(req.user.id));
 
             const result = calculateTagPercentage(selectedUserTags, currentUserTags);
             

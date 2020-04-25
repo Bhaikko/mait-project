@@ -29,7 +29,7 @@ class FilterContainer extends Component {
     render () {
         return (
             <div className={[classes.SearchContainer, this.props.classes].join(" ")}>
-                <img src={SearchIcon} alt="..." className={classes.SearchIcon} />
+                <img src={SearchIcon} alt="..." className={classes.SearchIcon}/>
                 <input type="text" placeholder={this.props.placeholder} className={classes.SearchBar} onChange={this.filterHandler}/>
             </div>
         );
