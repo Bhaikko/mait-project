@@ -7,7 +7,8 @@ const {
     checkVerification,
     updateVerification,
     getUserByUserid,
-    getUseByEmailAndUsername
+    getUseByEmailAndUsername,
+    deleteUser
 } = require("./authHandler");
 
 
@@ -92,5 +93,6 @@ module.exports = {
     updateVerification,
     getUserByUserid,
     getUseByEmailAndUsername,
-    getAllUserIds
+    getAllUserIds,
+    deleteUser
 };

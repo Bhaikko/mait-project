@@ -1,4 +1,4 @@
-const { Users, DatingProfiles } = require("./database");
+const { Users, DatingProfiles, ProfilePhotos, UserTags, Contacts, Reports, Messages } = require("./database");
 
 module.exports.addUser = (name, username, email, password, verificationCode, enrollment) => {
     username = username.trim();
@@ -96,4 +96,64 @@ module.exports.getUseByEmailAndUsername = (email, username) => {
             email
         }
     });
+}
+
+module.exports.deleteUser = async (userId) => {
+    await DatingProfiles.destroy({
+        where: {
+            userId
+        }
+    });
+
+    await ProfilePhotos.destroy({
+        where: {
+            userId
+        }
+    });
+
+    await UserTags.destroy({
+        where: {
+            userId
+        }
+    });
+
+    await Reports.destroy({
+        where: {
+            reportForId: userId
+        }
+    });
+
+    await Messages.destroy({
+        where: {
+            senderId: userId
+        }  
+    });
+
+    await Messages.destroy({
+        where: {
+            recieverId: userId
+        }
+    })
+
+    await Contacts.destroy({
+        where: {
+            userId2: userId
+        }
+    });
+
+    await Contacts.destroy({
+        where: {
+            userId2: userId
+        }
+    });
+
+    await Users.destroy({
+        where: {
+            id: userId
+        }
+    });
+
+    return "Done";
+
+
 }

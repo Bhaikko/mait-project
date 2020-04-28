@@ -492,6 +492,20 @@ router.get('/mainprofilePhoto', (req, res) => {
         });
 });
 
+
+router.delete('/user', (req, res) => {
+    if (!req.user.id) {
+        res.status(401).json({
+            message: 'Unauthorized'
+        });
+        return;
+    }
+    databaseHandler.deleteUser(req.user.id);
+    res.status(200).json({
+        message: "Account Deleted, Goodbye."
+    });
+});
+
 module.exports = {
     router,
     notificationSocket
