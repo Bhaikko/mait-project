@@ -1,0 +1,28 @@
+.DeleteAccountButton {
+    background-color: red;
+    height: 50px;
+    width: 100%;
+    border-radius: 35px;
+}
+.heading{
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 5px;
+
+}
+.deleteAccountModalButton{
+    background-color: red;
+    width: 50%;
+    height: 50px;
+    text-align : center;
+}
+.warning{
+    font-size: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+.modalButtonContainer{
+    text-align: center;
+}
