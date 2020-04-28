@@ -1,9 +1,12 @@
 const express = require("express");
 const multer = require("multer");
 const fs = require('fs');
+const nodemailer = require('nodemailer');
 
 const databaseHandler = require("./../database/index");
 const { databaseParser } = require('./utility');
+
+const { EMAIL_ADDRESS, EMAIL_PASSWORD } = require("./../enviroments");
 
 const router = express.Router();
 const upload = multer({
@@ -14,7 +17,6 @@ const upload = multer({
 router.get("/", (req, res) => {
     res.send("Dating Router Working");
 });
-
 
 const errorHandler = (error, res, message = "Something Went wrong") => {
     console.log(error);
@@ -332,6 +334,25 @@ const notificationSocket = (io, redis) => {
     newSocket = new Socket(io, redis);
 }
 
+const sendEmail = (mailOptions) => {
+    let transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false, 
+        auth: {
+          user: EMAIL_ADDRESS, 
+          pass: EMAIL_PASSWORD 
+        }
+    });
+
+    transporter.sendMail(mailOptions, function(error, response){
+        if (error) {
+            console.log(error);
+            return;
+        } 
+    });
+}
+
 router.post("/addMatch", (req, res) => {
     databaseHandler.getMatch(req.body.userId, req.user.id)
         .then(response => {
@@ -367,15 +388,33 @@ router.post("/addMatch", (req, res) => {
                             newNotification.time,
                             newNotification.userId
                         )
-                            .then(response => {
+                            .then(async response => {
                                 // console.log(newSocket);                                
                                 newSocket.redis.get(newNotification.userId, (err, socketId) => {
                                     if (socketId && response !== undefined) {
                                         newSocket.io.to(socketId).emit(`newNotification`, response);
                                     }
                                 });
-                            });
 
+                                const emailRecieveUser = await databaseHandler.getUserByUserid(req.body.userId);
+
+                                const message = `
+                                    Hi ${emailRecieveUser.username},
+                                    Seems like, ${user.username} Also Likes You.
+                                    Vist our Site,
+                                    collegeTalks.wtf 
+                                    To start conversation now.
+                                `;
+
+                                const mailOptions = {
+                                    from: EMAIL_ADDRESS,
+                                    to: emailRecieveUser.email, 
+                                    subject: 'A New Match!!',
+                                    text: message
+                                } 
+
+                                return sendEmail(mailOptions);
+                            });
                     });
             }
         })
