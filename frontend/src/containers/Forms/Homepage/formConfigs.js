@@ -81,13 +81,7 @@ module.exports.LoginFormConfig = {
             type: "email",
             placeholder: "Enter Your Email",
         },
-        value: "",
-        validation: {
-            required: true,
-            isEmail: true
-        },
-        valid: false,
-        touched: false
+        value: ""
     },
     password: {
         elementType: "input",
@@ -95,13 +89,7 @@ module.exports.LoginFormConfig = {
             type: "password",
             placeholder: "Enter Your Password"
         },
-        value: "",
-        validation: {
-            required: true,
-            isPassword: true
-        },
-        valid: false,
-        touched: false 
+        value: ""
     }
 }
 
@@ -144,14 +132,7 @@ module.exports.ChangePasswordFormConfig = {
             placeholder: "Last Password",
             type: "password"
         },
-        validation: {
-            required: true,
-            minLength: 8,
-            isPassword: true
-        },
-        value: "",
-        valid: false,
-        touched: false
+        value: ""
     },
     newPassword: {
         label: "Enter Your New Password",
