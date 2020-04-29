@@ -502,7 +502,7 @@ router.delete('/user', (req, res) => {
     }
     databaseHandler.deleteUser(req.user.id);
     res.status(200).json({
-        message: "Account Deleted, Goodbye."
+        message: "Account Deleted, Goodbye Friend."
     });
 });
 

@@ -1,14 +1,19 @@
 import React, { Component, Fragment } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import classes from './DeleteAccount.css';
 
 import Button from './../../components/UI/Button/Button';
 import Modal from './../../components/UI/Modal/Modal';
-// import DeleteAccountForm from '../Forms/Homepage/DeleteAccountForm/DeleteAccountForm';
+
+import axios from './../../axios';
+import Alertify from '../../utilities/Aleretify/Alertify';
+
 
 class AddNew extends Component {
     state = {
-        showForm: false
+        showForm: false,
+        redirect: false
     }
 
     clickHandler = () => {
@@ -16,8 +21,16 @@ class AddNew extends Component {
             showForm: true
         });
     }
-    clickHandlerModal = () => {
 
+    clickHandlerModal = () => {
+        axios.delete('/dating/user')
+            .then(response => {
+                this.setState({
+                    redirect: true
+                })
+
+                Alertify.success(response.data.message);
+            });
     }
 
     closeForm = () => {
@@ -27,13 +40,17 @@ class AddNew extends Component {
     }
 
     render () {
+        if (this.state.redirect) {
+            return (
+                <Redirect to="/logout" />
+            );
+        }
         return (
            <Fragment>
                <Button classes={classes.DeleteAccountButton} onClick={this.clickHandler}>
                     Delete Account
                 </Button>
                 <Modal show={this.state.showForm} modalClosed={this.closeForm}>
-                    {/* <DeleteAccountForm /> */}
                     <div className={classes.heading}>
                         DELETE ACCOUNT
                     </div>
