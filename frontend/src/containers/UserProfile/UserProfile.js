@@ -24,6 +24,7 @@ import InterestIcon from './../../assets/icons/Interest.png';
 import GenderIcon from './../../assets/icons/Gender.png';
 
 import ChangePassword from './../../containers/ChangePassword/ChangePassword';
+import DeleteAccount from './../../containers/DeleteAccount/DeleteAccount';
 import Alertify from '../../utilities/Aleretify/Alertify';
 import axios from './../../axios';
 
@@ -84,7 +85,10 @@ class UserProfile extends Component {
 
                     <div className={classes.ProfileButtonsContainer}>
                         {this.props.editable ? (
-                            <ChangePassword />
+                            <Fragment>
+                                <ChangePassword />
+                                <DeleteAccount />
+                            </Fragment>
                         ) : (
                             <Fragment>
                                 <Button 
